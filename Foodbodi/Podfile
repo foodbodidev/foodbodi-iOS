@@ -1,0 +1,24 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'Foodbodi' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for Foodbodi
+#  pod 'Moya','~> 13.0.1'
+#  pod 'ObjectMapper', '~> 3.5.0'
+#  pod 'IQKeyboardManagerSwift', '~> 6.4.0'
+#  pod 'Kingfisher', '~> 5.6.0'
+
+  target 'FoodbodiTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'FoodbodiUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
