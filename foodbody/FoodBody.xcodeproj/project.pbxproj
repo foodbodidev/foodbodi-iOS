@@ -28,6 +28,8 @@
 		98C34F5722CE57C100A933DE /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98C34F5522CE57C100A933DE /* MenuTableViewCell.xib */; };
 		98C34F5A22CE57D800A933DE /* FoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C34F5822CE57D800A933DE /* FoodTableViewCell.swift */; };
 		98C34F5B22CE57D800A933DE /* FoodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98C34F5922CE57D800A933DE /* FoodTableViewCell.xib */; };
+		98C34F5E22CFAE3400A933DE /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C34F5C22CFAE3300A933DE /* RestaurantTableViewCell.swift */; };
+		98C34F5F22CFAE3400A933DE /* RestaurantTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98C34F5D22CFAE3300A933DE /* RestaurantTableViewCell.xib */; };
 		98CEA1FD22B9431200E82063 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CEA1F422B9431100E82063 /* UIColor.swift */; };
 		98CEA1FE22B9431200E82063 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CEA1F522B9431200E82063 /* UIView.swift */; };
 		98CEA1FF22B9431200E82063 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CEA1F622B9431200E82063 /* String.swift */; };
@@ -109,6 +111,8 @@
 		98C34F5522CE57C100A933DE /* MenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
 		98C34F5822CE57D800A933DE /* FoodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTableViewCell.swift; sourceTree = "<group>"; };
 		98C34F5922CE57D800A933DE /* FoodTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodTableViewCell.xib; sourceTree = "<group>"; };
+		98C34F5C22CFAE3300A933DE /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
+		98C34F5D22CFAE3300A933DE /* RestaurantTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RestaurantTableViewCell.xib; sourceTree = "<group>"; };
 		98CEA1F422B9431100E82063 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		98CEA1F522B9431200E82063 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		98CEA1F622B9431200E82063 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -286,6 +290,8 @@
 				98C34F5522CE57C100A933DE /* MenuTableViewCell.xib */,
 				98C34F5822CE57D800A933DE /* FoodTableViewCell.swift */,
 				98C34F5922CE57D800A933DE /* FoodTableViewCell.xib */,
+				98C34F5C22CFAE3300A933DE /* RestaurantTableViewCell.swift */,
+				98C34F5D22CFAE3300A933DE /* RestaurantTableViewCell.xib */,
 			);
 			path = AddRestaurantVC;
 			sourceTree = "<group>";
@@ -675,6 +681,7 @@
 				2FD1CF3622BBDED7002D4AF6 /* client_513844011252-2qlodmja1av20n55vro79uv0jc5vj3ck.apps.googleusercontent.com.plist in Resources */,
 				98C34F5B22CE57D800A933DE /* FoodTableViewCell.xib in Resources */,
 				D5B24B2622B73DBB00DA16C4 /* LaunchScreen.storyboard in Resources */,
+				98C34F5F22CFAE3400A933DE /* RestaurantTableViewCell.xib in Resources */,
 				D5B424D722BCD42100141818 /* Assets.xcassets in Resources */,
 				98282BE622C26E64003ED8BC /* YourBasicVC.xib in Resources */,
 				98C34F5722CE57C100A933DE /* MenuTableViewCell.xib in Resources */,
@@ -892,6 +899,7 @@
 				98CEA21422B94A9E00E82063 /* BaseVC.swift in Sources */,
 				98CEA20322B9431200E82063 /* UIImage.swift in Sources */,
 				98CEA20122B9431200E82063 /* UITextField.swift in Sources */,
+				98C34F5E22CFAE3400A933DE /* RestaurantTableViewCell.swift in Sources */,
 				D5B24B3222B73F0900DA16C4 /* ReservationVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

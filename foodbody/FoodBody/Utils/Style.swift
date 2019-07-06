@@ -16,6 +16,7 @@ enum Style { // now all style of app should use this stype uniformly
     struct Color {
         static let darkBlueGreen = #colorLiteral(red: 0, green: 0.4156862745, blue: 0.2352941176, alpha: 1)
         static let backgroundTf = #colorLiteral(red: 0.8980392157, green: 0.9294117647, blue: 0.937254902, alpha: 1)
+        static let placeHoderColor = #colorLiteral(red: 0.7254901961, green: 0.7607843137, blue: 0.768627451, alpha: 1)
     }
     
     enum FontStyle {

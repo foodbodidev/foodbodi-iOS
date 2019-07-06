@@ -1,21 +1,98 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SFProText-Light.otf">
+            <string>SFProText-Light</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="FoodTableViewCell" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FoodTableViewCell" rowHeight="108" id="KGk-i7-Jjw" customClass="FoodTableViewCell" customModule="FoodBody" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="384" height="108"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="384" height="107.5"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jmY-sm-58a">
+                        <rect key="frame" x="0.0" y="0.0" width="384" height="107.5"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FMG-WJ-hTu">
+                                <rect key="frame" x="276.5" y="5" width="97.5" height="97.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="FMG-WJ-hTu" secondAttribute="height" multiplier="1:1" id="84M-xW-6NF"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rice with Cheese, Beef Rib and Kimchi" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuZ-iw-NxH">
+                                <rect key="frame" x="25" y="5" width="241.5" height="43"/>
+                                <fontDescription key="fontDescription" name="SFProText-Light" family="SF Pro Text" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5$" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WLP-lT-7Kq">
+                                <rect key="frame" x="25" y="53" width="20.5" height="19.5"/>
+                                <fontDescription key="fontDescription" name="SFProText-Light" family="SF Pro Text" pointSize="16"/>
+                                <color key="textColor" red="0.42745098039215684" green="0.44705882352941173" blue="0.47058823529411764" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fOO-pJ-65c">
+                                <rect key="frame" x="50.5" y="53" width="1" height="19.5"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="1" id="FBz-FY-0Hl"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100kcal" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WSu-0V-zka">
+                                <rect key="frame" x="56.5" y="53" width="57" height="19.5"/>
+                                <fontDescription key="fontDescription" name="SFProText-Light" family="SF Pro Text" pointSize="16"/>
+                                <color key="textColor" red="0.45098039215686275" green="0.59607843137254901" blue="0.47843137254901957" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="FMG-WJ-hTu" secondAttribute="bottom" constant="5" id="30F-0E-t0U"/>
+                            <constraint firstItem="WSu-0V-zka" firstAttribute="centerY" secondItem="WLP-lT-7Kq" secondAttribute="centerY" id="9wG-a5-kIS"/>
+                            <constraint firstItem="fOO-pJ-65c" firstAttribute="leading" secondItem="WLP-lT-7Kq" secondAttribute="trailing" constant="5" id="Cn5-75-oAE"/>
+                            <constraint firstItem="uuZ-iw-NxH" firstAttribute="top" secondItem="FMG-WJ-hTu" secondAttribute="top" id="FJG-d7-oYX"/>
+                            <constraint firstItem="FMG-WJ-hTu" firstAttribute="centerY" secondItem="jmY-sm-58a" secondAttribute="centerY" id="GqL-29-xse"/>
+                            <constraint firstItem="FMG-WJ-hTu" firstAttribute="leading" secondItem="uuZ-iw-NxH" secondAttribute="trailing" constant="10" id="Lao-tt-eL5"/>
+                            <constraint firstItem="fOO-pJ-65c" firstAttribute="top" secondItem="WLP-lT-7Kq" secondAttribute="top" id="My0-k7-Guj"/>
+                            <constraint firstItem="FMG-WJ-hTu" firstAttribute="top" secondItem="jmY-sm-58a" secondAttribute="top" constant="5" id="XD5-Ar-dne"/>
+                            <constraint firstAttribute="trailing" secondItem="FMG-WJ-hTu" secondAttribute="trailing" constant="10" id="f6T-UC-xEa"/>
+                            <constraint firstItem="uuZ-iw-NxH" firstAttribute="leading" secondItem="jmY-sm-58a" secondAttribute="leading" constant="25" id="kLG-4l-L7D"/>
+                            <constraint firstItem="WSu-0V-zka" firstAttribute="leading" secondItem="fOO-pJ-65c" secondAttribute="trailing" constant="5" id="mJZ-0R-d4f"/>
+                            <constraint firstItem="WLP-lT-7Kq" firstAttribute="top" secondItem="uuZ-iw-NxH" secondAttribute="bottom" constant="5" id="nvI-1n-N0t"/>
+                            <constraint firstItem="WLP-lT-7Kq" firstAttribute="leading" secondItem="uuZ-iw-NxH" secondAttribute="leading" id="yWB-9s-kOg"/>
+                            <constraint firstItem="fOO-pJ-65c" firstAttribute="bottom" secondItem="WLP-lT-7Kq" secondAttribute="bottom" id="zsg-Bs-fn3"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="jmY-sm-58a" secondAttribute="trailing" id="AvM-Ik-7X8"/>
+                    <constraint firstAttribute="bottom" secondItem="jmY-sm-58a" secondAttribute="bottom" id="Hg7-7Z-fxX"/>
+                    <constraint firstItem="jmY-sm-58a" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="grG-uX-JSa"/>
+                    <constraint firstItem="jmY-sm-58a" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="tAE-dd-mp4"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="foodImageView" destination="FMG-WJ-hTu" id="nJY-FT-jPb"/>
+                <outlet property="nameKalor" destination="WSu-0V-zka" id="uJQ-v4-aNL"/>
+                <outlet property="nameLabel" destination="uuZ-iw-NxH" id="mAy-zY-6QB"/>
+                <outlet property="namePrice" destination="WLP-lT-7Kq" id="XkL-tg-eCS"/>
+            </connections>
+            <point key="canvasLocation" x="91.304347826086968" y="99.776785714285708"/>
         </tableViewCell>
     </objects>
 </document>
