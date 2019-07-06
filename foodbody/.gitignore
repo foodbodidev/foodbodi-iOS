@@ -1,0 +1,10 @@
+bin/
+# Cocoapods
+Pods/
+Podfile.lock
+# Mac OS X Finder
+.DS_Store
+
+# Xcode
+xcuserdata/
+DerivedData/
