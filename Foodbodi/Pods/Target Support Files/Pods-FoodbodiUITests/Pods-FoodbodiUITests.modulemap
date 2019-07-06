@@ -1,6 +1,0 @@
-framework module Pods_FoodbodiUITests {
-  umbrella header "Pods-FoodbodiUITests-umbrella.h"
-
-  export *
-  module * { export * }
-}
