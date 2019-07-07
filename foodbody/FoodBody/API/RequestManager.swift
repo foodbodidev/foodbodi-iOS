@@ -176,6 +176,30 @@ struct RequestManager {
             }
         }
     }
+    //Create restaurant.
+    static func createRestaurant(request: RestaurantRequest, completion: @escaping (_ result: ResonseModel?, _ error: Error?) -> ()){
+        
+        print(request.toJSON())
+        
+        provider.request(.updateUserProfile(dic: request.toJSON())) { result in
+            do {
+                switch result {
+                case .success(let response):
+                    let json = try response.mapJSON()
+                    print(String(describing: response.request))
+                    print(String(describing: json))
+                    let response = Mapper<ResonseModel>().map(JSONObject:json)
+                    completion(response, nil)
+                case .failure(let error):
+                    completion(nil, error)
+                    print(error)
+                }
+            } catch let error {
+                completion(nil, error)
+                print(error)
+            }
+        }
+    }
 }
 
 

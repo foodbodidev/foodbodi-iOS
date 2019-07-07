@@ -25,6 +25,11 @@ class AddRestaurantVC: BaseVC {
         self.navigationController?.navigationBar.isHidden = true
 
         registerNib()
+        let restaurant = RestaurantRequest()
+        
+        RequestManager.createRestaurant(request: restaurant) { (result, error) in
+            
+        }
     }
         
     private func registerNib() {

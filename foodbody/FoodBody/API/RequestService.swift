@@ -17,6 +17,7 @@ enum RequestService {
     case facbookSignIn(dic: [String: Any])
     case getProfile
     case updateUserProfile(dic: [String: Any])
+    case createRestaurant(dic: [String: Any])
 }
 
 extension RequestService: TargetType {
@@ -41,6 +42,8 @@ extension RequestService: TargetType {
             return APIConstant.getProfile
         case .updateUserProfile:
             return APIConstant.updateUserProfile
+        case .createRestaurant:
+            return APIConstant.createRestaurant
         default:
             return ""
         }
@@ -52,7 +55,8 @@ extension RequestService: TargetType {
              .login,
              .googleSignIn,
              .facbookSignIn,
-             .updateUserProfile:
+             .updateUserProfile,
+             .createRestaurant:
             return .post
         case .getProfile:
             return .get

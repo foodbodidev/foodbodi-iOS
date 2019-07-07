@@ -16,5 +16,8 @@ struct APIConstant {
     static let facebookSignIn = "/api/facebookSignIn"
     static let getProfile = "/api/profile"
     static let updateUserProfile = "/api/profile"
+    //API Restaurant.
+    static let createRestaurant = "/api/restaurant"
+    
     
 }
