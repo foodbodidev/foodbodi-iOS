@@ -181,7 +181,7 @@ struct RequestManager {
         
         print(request.toJSON())
         
-        provider.request(.updateUserProfile(dic: request.toJSON())) { result in
+        provider.request(.createRestaurant(dic: request.toJSON())) { result in
             do {
                 switch result {
                 case .success(let response):

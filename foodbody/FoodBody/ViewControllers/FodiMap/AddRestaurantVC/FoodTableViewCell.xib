@@ -87,10 +87,10 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="calorLabel" destination="WSu-0V-zka" id="YI5-Am-nYh"/>
                 <outlet property="foodImageView" destination="FMG-WJ-hTu" id="nJY-FT-jPb"/>
-                <outlet property="nameKalor" destination="WSu-0V-zka" id="uJQ-v4-aNL"/>
                 <outlet property="nameLabel" destination="uuZ-iw-NxH" id="mAy-zY-6QB"/>
-                <outlet property="namePrice" destination="WLP-lT-7Kq" id="XkL-tg-eCS"/>
+                <outlet property="priceLabel" destination="WLP-lT-7Kq" id="6y1-6Z-G96"/>
             </connections>
             <point key="canvasLocation" x="91.304347826086968" y="99.776785714285708"/>
         </tableViewCell>

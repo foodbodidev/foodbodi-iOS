@@ -8,12 +8,14 @@
 
 import UIKit
 
+
+
 class FoodTableViewCell: UITableViewCell {
     
     //MARK: Outlet
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var namePrice: UILabel!
-    @IBOutlet weak var nameKalor: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var calorLabel: UILabel!
     @IBOutlet weak var foodImageView: UIImageView!
     
 
@@ -26,6 +28,13 @@ class FoodTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func bindData(data: Menu) {
+        nameLabel.text = data.title
+        priceLabel.text = data.price
+        calorLabel.text = data.calor
+        
     }
     
 }

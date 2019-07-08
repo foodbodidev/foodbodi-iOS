@@ -55,13 +55,13 @@
                         </constraints>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits"/>
+                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                     </textField>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add kcal" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9bQ-V8-dpI" customClass="InforTextField" customModule="FoodBody" customModuleProvider="target">
                         <rect key="frame" x="90" y="112" width="262" height="30"/>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits"/>
+                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                     </textField>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Aj-WJ-CG4" customClass="FoodBodyButton" customModule="FoodBody" customModuleProvider="target">
                         <rect key="frame" x="20" y="152" width="386" height="30"/>
@@ -100,6 +100,12 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="addMenuButton" destination="4Aj-WJ-CG4" id="Clp-kR-f7l"/>
+                <outlet property="calorTextField" destination="9bQ-V8-dpI" id="K2F-IQ-TWH"/>
+                <outlet property="priceTextField" destination="mqk-dd-r9K" id="Aeu-Yd-ZOf"/>
+                <outlet property="titleTextField" destination="6HD-LT-gSW" id="6YW-e3-fau"/>
+            </connections>
             <point key="canvasLocation" x="126.08695652173914" y="101.45089285714285"/>
         </tableViewCell>
     </objects>

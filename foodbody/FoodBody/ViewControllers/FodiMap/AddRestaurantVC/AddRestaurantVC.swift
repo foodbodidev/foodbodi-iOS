@@ -19,6 +19,10 @@ class AddRestaurantVC: BaseVC {
     
     //MARK: ==== Outlet ====
     @IBOutlet weak var tableView: UITableView!
+    
+    //MARK: Properties
+    
+    var foodModel: [Menu] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +60,9 @@ extension AddRestaurantVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == AddResEnum.foodDisplay.rawValue {
+            return foodModel.count
+        }
         return 1
     }
     
@@ -65,15 +72,18 @@ extension AddRestaurantVC: UITableViewDataSource {
         switch indexPath.section {
             
         case AddResEnum.restaurant.rawValue:
-            let resCell = tableView.dequeueReusableCell(withIdentifier: RestaurantTableViewCell.className, for: indexPath)
+            let resCell = tableView.dequeueReusableCell(withIdentifier: RestaurantTableViewCell.className, for: indexPath) as! RestaurantTableViewCell
+            resCell.delegate = self
             return resCell
             
         case AddResEnum.addMenu.rawValue :
-            let addMenuCell = tableView.dequeueReusableCell(withIdentifier: MenuTableViewCell.className, for: indexPath)
+            let addMenuCell = tableView.dequeueReusableCell(withIdentifier: MenuTableViewCell.className, for: indexPath) as! MenuTableViewCell
+            addMenuCell.delegate = self
             return addMenuCell
             
         case AddResEnum.foodDisplay.rawValue:
-            let foodCell = tableView.dequeueReusableCell(withIdentifier: FoodTableViewCell.className, for: indexPath)
+            let foodCell = tableView.dequeueReusableCell(withIdentifier: FoodTableViewCell.className, for: indexPath) as! FoodTableViewCell
+            foodCell.bindData(data: foodModel[indexPath.row])
             return foodCell
         default:
             return UITableViewCell()
@@ -100,4 +110,20 @@ extension AddRestaurantVC: UITableViewDelegate {
             return 0
         }
     }
+}
+
+extension AddRestaurantVC: RestaurantTableViewCellDelegate, MenuTableViewCellDelegate {
+    
+    func didClickOnAddButton(menuModel: Menu) {
+        foodModel.append(menuModel)
+        tableView.reloadData()
+    }
+    
+    
+    
+    func restaurantTableViewCellEndEditing(restaurantModel: Restaurant) {
+        
+    }
+    
+    
 }

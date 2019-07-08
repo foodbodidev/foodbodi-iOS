@@ -32,18 +32,27 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="KGk-i7-Jjw" id="jJa-Xx-jIV"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Category" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fcM-Un-jpC" customClass="InforTextField" customModule="FoodBody" customModuleProvider="target">
                                 <rect key="frame" x="24" y="84.5" width="442" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="KGk-i7-Jjw" id="zBS-cz-6hN"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MEp-zo-Xsh" customClass="InforTextField" customModule="FoodBody" customModuleProvider="target">
                                 <rect key="frame" x="24" y="178" width="211" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="KGk-i7-Jjw" id="nqU-We-aMs"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open hours" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tnb-cW-bj8">
                                 <rect key="frame" x="29" y="122.5" width="77" height="45.5"/>
@@ -52,7 +61,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Close hours" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0W4-dd-Jyx">
-                                <rect key="frame" x="255" y="122.5" width="78.5" height="17"/>
+                                <rect key="frame" x="255" y="137" width="78.5" height="17"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                                 <color key="textColor" red="0.098039215690000001" green="0.24313725489999999" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -62,6 +71,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="KGk-i7-Jjw" id="csl-2a-wze"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -69,6 +81,7 @@
                             <constraint firstItem="fcM-Un-jpC" firstAttribute="top" secondItem="hdt-cc-u6Q" secondAttribute="bottom" constant="10" id="2UA-TP-2a2"/>
                             <constraint firstItem="MEp-zo-Xsh" firstAttribute="leading" secondItem="fcM-Un-jpC" secondAttribute="leading" id="6hK-6S-2rW"/>
                             <constraint firstItem="hdt-cc-u6Q" firstAttribute="top" secondItem="rxQ-72-aYT" secondAttribute="top" constant="20" id="9mU-T3-ZAU"/>
+                            <constraint firstItem="0W4-dd-Jyx" firstAttribute="centerY" secondItem="Tnb-cW-bj8" secondAttribute="centerY" id="AxB-gI-f0Z"/>
                             <constraint firstItem="Tnb-cW-bj8" firstAttribute="leading" secondItem="rxQ-72-aYT" secondAttribute="leading" constant="29" id="BMU-ca-JEq"/>
                             <constraint firstItem="MEp-zo-Xsh" firstAttribute="width" secondItem="fcM-Un-jpC" secondAttribute="width" multiplier="1/2" constant="-10" id="H0P-aD-L2Z"/>
                             <constraint firstItem="fcM-Un-jpC" firstAttribute="leading" secondItem="rxQ-72-aYT" secondAttribute="leading" constant="24" id="KGj-6t-tNs"/>
@@ -86,7 +99,6 @@
                             <constraint firstAttribute="trailing" secondItem="fcM-Un-jpC" secondAttribute="trailing" constant="24" id="sX8-my-0UF"/>
                             <constraint firstAttribute="trailing" secondItem="hdt-cc-u6Q" secondAttribute="trailing" constant="24" id="tnk-eg-l7o"/>
                             <constraint firstItem="MEp-zo-Xsh" firstAttribute="height" secondItem="fcM-Un-jpC" secondAttribute="height" id="ugr-ZJ-R03"/>
-                            <constraint firstItem="0W4-dd-Jyx" firstAttribute="top" secondItem="Tnb-cW-bj8" secondAttribute="top" id="yOB-s7-PAL"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k8s-Sc-ILL">
@@ -104,12 +116,18 @@
                                 <state key="normal" title="Restaurant">
                                     <color key="titleColor" red="0.070588235289999995" green="0.74117647060000003" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="actionRestaurant" destination="KGk-i7-Jjw" eventType="touchUpInside" id="tW2-KO-YhO"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5qP-S0-uaf">
                                 <rect key="frame" x="245.5" y="0.0" width="244.5" height="63.5"/>
                                 <state key="normal" title="Food truck">
                                     <color key="titleColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="actionFoodTruck" destination="KGk-i7-Jjw" eventType="touchUpInside" id="4Vd-lI-y5G"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -141,6 +159,14 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="categoryTextField" destination="fcM-Un-jpC" id="IZT-Dd-Rqd"/>
+                <outlet property="closeHoursTextField" destination="LQT-FA-zbB" id="tsy-we-cBB"/>
+                <outlet property="foodTruckButton" destination="5qP-S0-uaf" id="uBq-7h-aMc"/>
+                <outlet property="openHoursTextField" destination="MEp-zo-Xsh" id="rr9-Tw-eXy"/>
+                <outlet property="restaurantButton" destination="4wb-bk-ZRA" id="3rs-vc-g6g"/>
+                <outlet property="titleTextField" destination="hdt-cc-u6Q" id="Hcm-kk-PaM"/>
+            </connections>
             <point key="canvasLocation" x="157.97101449275362" y="194.19642857142856"/>
         </tableViewCell>
     </objects>
