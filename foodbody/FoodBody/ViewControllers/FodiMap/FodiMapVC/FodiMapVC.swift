@@ -10,24 +10,25 @@ import UIKit
 import GoogleMaps
 import Firebase
 
-class FodiMapVC: UIViewController {
+class FodiMapVC: UIViewController,CLLocationManagerDelegate {
     @IBOutlet weak var btnAdd: FoodBodyButton!
     @IBOutlet weak var googleMapView:GMSMapView!
-    
+    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
-        googleMapView.camera = camera
-        // Creates a marker in the center of the map.
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20)
-        marker.title = "Sydney"
-        marker.snippet = "Australia"
-        marker.map = googleMapView
         //get data
 //        self.getDataRestaurant();
+        self.locationManager.requestAlwaysAuthorization()
+        
+        // For use in foreground
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
     }
 //    //MARK: read data from firestore.
 //    func getDataRestaurant() -> Void {
@@ -42,7 +43,24 @@ class FodiMapVC: UIViewController {
 //            }
 //        }
 //    }
-    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        let camera = GMSCameraPosition.camera(withLatitude: locValue.latitude, longitude: locValue.longitude, zoom: 6.0)
+        googleMapView.camera = camera
+        // Creates a marker in the center of the map.
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2D(latitude: 10.800971, longitude: 106.638621)
+        marker.title = "Sydney"
+        marker.snippet = "Australia"
+        marker.map = googleMapView
+
+        let marker2 = GMSMarker()
+        marker2.position = CLLocationCoordinate2D(latitude: 10.798715, longitude: 106.639136)
+        marker2.title = "AAA"
+        marker2.snippet = "BBBB"
+        marker2.map = googleMapView
+    }
     //MARK: action.
     
     @IBAction func addAction(sender:UIButton){
