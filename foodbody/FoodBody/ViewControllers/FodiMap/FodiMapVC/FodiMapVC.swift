@@ -10,61 +10,73 @@ import UIKit
 import GoogleMaps
 import Firebase
 
-class FodiMapVC: UIViewController,CLLocationManagerDelegate {
+class FodiMapVC: BaseVC,CLLocationManagerDelegate {
     @IBOutlet weak var btnAdd: FoodBodyButton!
     @IBOutlet weak var googleMapView:GMSMapView!
     let locationManager = CLLocationManager()
+    var currentLocation:CLLocationCoordinate2D = CLLocationCoordinate2D.init()
+    var listRestaurant:NSMutableArray = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //get data
-//        self.getDataRestaurant();
+         // For use in foreground
         self.locationManager.requestAlwaysAuthorization()
-        
-        // For use in foreground
         self.locationManager.requestWhenInUseAuthorization()
-        
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
         }
     }
-//    //MARK: read data from firestore.
-//    func getDataRestaurant() -> Void {
-//        let db = Firestore.firestore()
-//        db.collection("restaurants").getDocuments() { (querySnapshot, err) in
-//            if let err = err {
-//                print("Error getting documents: \(err)")
-//            } else {
-//                for document in querySnapshot!.documents {
-//                    print("\(document.documentID) => \(document.data())")
-//                }
-//            }
-//        }
-//    }
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        
-        manager.stopUpdatingLocation();
-        
-        print("locations = \(locValue.latitude) \(locValue.longitude)")
-        let camera = GMSCameraPosition.camera(withLatitude: locValue.latitude, longitude: locValue.longitude, zoom: 20.0)
+    //MARK:init Data
+    func getDataRestaurant() -> Void {
+        let db = Firestore.firestore()
+        self.showLoading();
+        db.collection("restaurants").getDocuments() { (querySnapshot, err) in
+            self.hideLoading()
+            if let err = err {
+                self.alertMessage(message: "Error getting documents \(err.localizedDescription)")
+            } else {
+                for document in querySnapshot!.documents {
+                    print("\(document.documentID) => \(document.data())")
+                    let restaurant = RestaurantModel();
+                    let dict:NSDictionary = document.data() as NSDictionary;
+                    restaurant.address = dict.object(forKey: "address") as! String;
+                    restaurant.category = dict.object(forKey: "category") as! String;
+                     restaurant.name = dict.object(forKey: "name") as! String;
+                    restaurant.lat = dict.object(forKey: "lat") as! Double;
+                    restaurant.lng = dict.object(forKey: "lng") as! Double;
+                    restaurant.creator = dict.object(forKey: "creator") as! String;
+                    restaurant.open_hour = dict.object(forKey: "open_hour") as! String;
+                    self.listRestaurant.add(restaurant);
+                }
+                self.showDataOnMapWithCurrentLocation(curentLocation: self.currentLocation)
+            }
+        }
+    }
+    func showDataOnMapWithCurrentLocation(curentLocation:CLLocationCoordinate2D) -> Void {
+        let camera = GMSCameraPosition.camera(withLatitude: curentLocation.latitude, longitude: curentLocation.longitude, zoom: 15.0)
         googleMapView.camera = camera
         // Creates a marker in the center of the map.
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: 10.800971, longitude: 106.638621)
-        marker.title = "Sydney"
-        marker.snippet = "Australia"
-        marker.icon = UIImage.init(named: "ic_restaurant_caloHigh")
-        marker.map = googleMapView
-
-        let marker2 = GMSMarker()
-        marker2.position = CLLocationCoordinate2D(latitude: 10.798715, longitude: 106.639136)
-        marker2.title = "AAA"
-        marker2.snippet = "BBBB"
-        marker2.icon = UIImage.init(named: "ic_restaurant_caloLow")
-        marker2.map = googleMapView
+        listRestaurant.enumerateObjects { (object, index, isStop) in
+            
+            if let object = object as? RestaurantModel {
+                let marker = GMSMarker()
+                marker.position = CLLocationCoordinate2D(latitude: object.lat, longitude: object.lng)
+                marker.title = object.name
+                marker.snippet = object.address
+                marker.icon = UIImage.init(named: "ic_restaurant_caloHigh")
+                marker.map = googleMapView
+            }
+           
+        }
+    }
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locationValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        self.currentLocation = locationValue;
+        self.getDataRestaurant();
+        
+        manager.stopUpdatingLocation();
         
     }
     //MARK: action.

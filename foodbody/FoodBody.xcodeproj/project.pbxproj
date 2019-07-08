@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,7 @@
 		2F427B9922BD1E6000099B0F /* SFProText-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F427B9322BD1E6000099B0F /* SFProText-Regular.otf */; };
 		2F427B9A22BD1E6000099B0F /* SFProText-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F427B9422BD1E6000099B0F /* SFProText-Light.otf */; };
 		2F427B9B22BD1E6000099B0F /* SFProText-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F427B9522BD1E6000099B0F /* SFProText-Semibold.otf */; };
+		2FCB77FC22D377F300F6966B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2FCB77FB22D377F300F6966B /* GoogleService-Info.plist */; };
 		2FD1CF3622BBDED7002D4AF6 /* client_513844011252-2qlodmja1av20n55vro79uv0jc5vj3ck.apps.googleusercontent.com.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2FD1CF3522BBDED7002D4AF6 /* client_513844011252-2qlodmja1av20n55vro79uv0jc5vj3ck.apps.googleusercontent.com.plist */; };
 		3A63DE1E3F1781093FC8CA99 /* Pods_FoodBodyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56BCAE63C6880B6151D80DD1 /* Pods_FoodBodyUITests.framework */; };
 		454FF7506EF8AA610C4161C4 /* Pods_FoodBodyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BD1CD60C850D4005402E010 /* Pods_FoodBodyTests.framework */; };
@@ -95,6 +96,7 @@
 		2F427B9322BD1E6000099B0F /* SFProText-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Regular.otf"; sourceTree = "<group>"; };
 		2F427B9422BD1E6000099B0F /* SFProText-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Light.otf"; sourceTree = "<group>"; };
 		2F427B9522BD1E6000099B0F /* SFProText-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Semibold.otf"; sourceTree = "<group>"; };
+		2FCB77FB22D377F300F6966B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2FD1CF3522BBDED7002D4AF6 /* client_513844011252-2qlodmja1av20n55vro79uv0jc5vj3ck.apps.googleusercontent.com.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "client_513844011252-2qlodmja1av20n55vro79uv0jc5vj3ck.apps.googleusercontent.com.plist"; sourceTree = "<group>"; };
 		56BCAE63C6880B6151D80DD1 /* Pods_FoodBodyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodBodyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D5F0D26CF73EE3FA799D27E /* Pods_FoodBody.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodBody.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -453,6 +455,7 @@
 		D5B24B1E22B73D8400DA16C4 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				2FCB77FB22D377F300F6966B /* GoogleService-Info.plist */,
 				2F427B9222BD1E6000099B0F /* Fonts */,
 				D5B424DD22BCD5D900141818 /* Info.plist */,
 				2FD1CF3522BBDED7002D4AF6 /* client_513844011252-2qlodmja1av20n55vro79uv0jc5vj3ck.apps.googleusercontent.com.plist */,
@@ -686,6 +689,7 @@
 				D5B24B2622B73DBB00DA16C4 /* LaunchScreen.storyboard in Resources */,
 				98C34F5F22CFAE3400A933DE /* RestaurantTableViewCell.xib in Resources */,
 				D5B424D722BCD42100141818 /* Assets.xcassets in Resources */,
+				2FCB77FC22D377F300F6966B /* GoogleService-Info.plist in Resources */,
 				98282BE622C26E64003ED8BC /* YourBasicVC.xib in Resources */,
 				98C34F5722CE57C100A933DE /* MenuTableViewCell.xib in Resources */,
 				98282BCD22BE8607003ED8BC /* FBTextField.xib in Resources */,
