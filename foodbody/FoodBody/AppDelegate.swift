@@ -10,6 +10,7 @@ import UIKit
 import IQKeyboardManagerSwift
 import GoogleSignIn;
 import GoogleMaps
+import Firebase
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -21,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+//        FirebaseApp.configure()
+        
         IQKeyboardManager.shared.enable = true // use to manage keyboard
         GIDSignIn.sharedInstance().clientID = FbConstants.REVERSED_CLIENT_ID;
         GMSServices.provideAPIKey(FbConstants.MAP_API_KEY)

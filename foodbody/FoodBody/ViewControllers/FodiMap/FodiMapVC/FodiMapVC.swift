@@ -8,14 +8,16 @@
 
 import UIKit
 import GoogleMaps
+import Firebase
 
 class FodiMapVC: UIViewController {
     @IBOutlet weak var btnAdd: FoodBodyButton!
     @IBOutlet weak var googleMapView:GMSMapView!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
         googleMapView.camera = camera
         // Creates a marker in the center of the map.
@@ -24,7 +26,22 @@ class FodiMapVC: UIViewController {
         marker.title = "Sydney"
         marker.snippet = "Australia"
         marker.map = googleMapView
+        //get data
+//        self.getDataRestaurant();
     }
+//    //MARK: read data from firestore.
+//    func getDataRestaurant() -> Void {
+//        let db = Firestore.firestore()
+//        db.collection("restaurants").getDocuments() { (querySnapshot, err) in
+//            if let err = err {
+//                print("Error getting documents: \(err)")
+//            } else {
+//                for document in querySnapshot!.documents {
+//                    print("\(document.documentID) => \(document.data())")
+//                }
+//            }
+//        }
+//    }
     
     //MARK: action.
     
