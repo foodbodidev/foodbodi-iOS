@@ -45,21 +45,27 @@ class FodiMapVC: UIViewController,CLLocationManagerDelegate {
 //    }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        
+        manager.stopUpdatingLocation();
+        
         print("locations = \(locValue.latitude) \(locValue.longitude)")
-        let camera = GMSCameraPosition.camera(withLatitude: locValue.latitude, longitude: locValue.longitude, zoom: 6.0)
+        let camera = GMSCameraPosition.camera(withLatitude: locValue.latitude, longitude: locValue.longitude, zoom: 20.0)
         googleMapView.camera = camera
         // Creates a marker in the center of the map.
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2D(latitude: 10.800971, longitude: 106.638621)
         marker.title = "Sydney"
         marker.snippet = "Australia"
+        marker.icon = UIImage.init(named: "ic_restaurant_caloHigh")
         marker.map = googleMapView
 
         let marker2 = GMSMarker()
         marker2.position = CLLocationCoordinate2D(latitude: 10.798715, longitude: 106.639136)
         marker2.title = "AAA"
         marker2.snippet = "BBBB"
+        marker2.icon = UIImage.init(named: "ic_restaurant_caloLow")
         marker2.map = googleMapView
+        
     }
     //MARK: action.
     
