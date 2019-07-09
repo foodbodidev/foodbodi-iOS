@@ -13,9 +13,6 @@
         <array key="SFProText-Light.otf">
             <string>SFProText-Light</string>
         </array>
-        <array key="SFProText-Regular.otf">
-            <string>SFProText-Regular</string>
-        </array>
         <array key="SFProText-Semibold.otf">
             <string>SFProText-Semibold</string>
         </array>
@@ -249,21 +246,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in Your" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mti-ox-ga7">
-                                <rect key="frame" x="20" y="62" width="300" height="43"/>
+                                <rect key="frame" x="20" y="40" width="300" height="43"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="SFProText-Light" family="SF Pro Text" pointSize="36"/>
                                 <color key="textColor" red="0.098039215690000001" green="0.24313725489999999" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4xe-tn-h8M">
-                                <rect key="frame" x="20" y="105" width="300" height="43"/>
+                                <rect key="frame" x="20" y="83" width="300" height="43"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="36"/>
                                 <color key="textColor" red="0.098039215690000001" green="0.24313725489999999" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.070588235289999995" green="0.74117647060000003" blue="0.46274509800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1qM-dZ-Uia">
-                                <rect key="frame" x="40" y="168" width="240" height="54"/>
+                                <rect key="frame" x="40" y="146" width="240" height="54"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QBP-Fn-m3y">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="54"/>
@@ -287,7 +284,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E09-0T-Ifj">
-                                <rect key="frame" x="40" y="242" width="240" height="54"/>
+                                <rect key="frame" x="40" y="220" width="240" height="54"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ce-5w-QuO">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="54"/>
@@ -310,7 +307,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="whe-P9-9RN">
-                                <rect key="frame" x="40" y="316" width="240" height="54"/>
+                                <rect key="frame" x="40" y="294" width="240" height="54"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J8g-yF-CAx">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="54"/>
@@ -330,11 +327,15 @@
                                     <constraint firstItem="J8g-yF-CAx" firstAttribute="leading" secondItem="whe-P9-9RN" secondAttribute="leading" id="yhV-Ct-04q"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I4a-gI-ONI">
-                                <rect key="frame" x="10" y="20" width="310" height="42"/>
-                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="25"/>
-                                <state key="normal" title="cancel">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I4a-gI-ONI">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                                <color key="backgroundColor" red="0.89803921568627454" green="0.92941176470588238" blue="0.93725490196078431" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="YEI-cz-XuP"/>
+                                </constraints>
+                                <state key="normal" image="backArow">
                                     <color key="titleColor" red="0.098039215686274508" green="0.24313725490196078" blue="0.32156862745098036" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="actionCancel:" destination="Wb9-T5-oRC" eventType="touchUpInside" id="Ly1-cs-ZBK"/>
@@ -346,7 +347,7 @@
                             <constraint firstItem="Mti-ox-ga7" firstAttribute="top" secondItem="I4a-gI-ONI" secondAttribute="bottom" id="3Za-8g-LC8"/>
                             <constraint firstItem="whe-P9-9RN" firstAttribute="height" secondItem="E09-0T-Ifj" secondAttribute="height" id="5pk-yC-Xsn"/>
                             <constraint firstItem="Mti-ox-ga7" firstAttribute="leading" secondItem="fDz-lj-WtJ" secondAttribute="leading" constant="20" id="Aew-36-AeN"/>
-                            <constraint firstItem="I4a-gI-ONI" firstAttribute="top" secondItem="4Jq-zy-283" secondAttribute="top" constant="20" id="B5M-yK-O5w"/>
+                            <constraint firstItem="I4a-gI-ONI" firstAttribute="top" secondItem="4Jq-zy-283" secondAttribute="top" id="B5M-yK-O5w"/>
                             <constraint firstItem="fDz-lj-WtJ" firstAttribute="trailing" secondItem="whe-P9-9RN" secondAttribute="trailing" constant="40" id="CpY-CV-ydq"/>
                             <constraint firstItem="fDz-lj-WtJ" firstAttribute="trailing" secondItem="1qM-dZ-Uia" secondAttribute="trailing" constant="40" id="GPX-2A-NgM"/>
                             <constraint firstItem="1qM-dZ-Uia" firstAttribute="leading" secondItem="fDz-lj-WtJ" secondAttribute="leading" constant="40" id="JoV-en-74e"/>
@@ -357,7 +358,7 @@
                             <constraint firstItem="whe-P9-9RN" firstAttribute="top" secondItem="E09-0T-Ifj" secondAttribute="bottom" constant="20" id="bGT-BW-1Th"/>
                             <constraint firstItem="E09-0T-Ifj" firstAttribute="top" secondItem="1qM-dZ-Uia" secondAttribute="bottom" constant="20" id="e7i-lk-sFa"/>
                             <constraint firstItem="whe-P9-9RN" firstAttribute="leading" secondItem="fDz-lj-WtJ" secondAttribute="leading" constant="40" id="eoV-B9-lwl"/>
-                            <constraint firstItem="I4a-gI-ONI" firstAttribute="leading" secondItem="fDz-lj-WtJ" secondAttribute="leading" constant="10" id="l4u-yQ-5HX"/>
+                            <constraint firstItem="I4a-gI-ONI" firstAttribute="leading" secondItem="fDz-lj-WtJ" secondAttribute="leading" id="l4u-yQ-5HX"/>
                             <constraint firstItem="fDz-lj-WtJ" firstAttribute="trailing" secondItem="I4a-gI-ONI" secondAttribute="trailing" id="myr-rp-DVP"/>
                             <constraint firstItem="fDz-lj-WtJ" firstAttribute="trailing" secondItem="E09-0T-Ifj" secondAttribute="trailing" constant="40" id="n9y-6E-rjf"/>
                             <constraint firstItem="4xe-tn-h8M" firstAttribute="leading" secondItem="fDz-lj-WtJ" secondAttribute="leading" constant="20" id="oEn-gb-Eqg"/>
@@ -484,6 +485,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="backArow" width="24" height="24"/>
         <image name="ic_girl" width="122" height="128"/>
         <image name="ic_man" width="122" height="145"/>
         <image name="ic_welcome" width="272" height="203"/>

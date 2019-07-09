@@ -31,5 +31,21 @@ class FoodbodyUtils: NSObject {
             alpha: CGFloat(1.0)
         )
     }
+    func checkDataString(dict:NSDictionary,key:String) -> String {
+        if let actionString = dict[key] as? String {
+            // action is not nil, is a String type, and is now stored in actionString
+            return actionString;
+        } else {
+            // action was either nil, or not a String type
+            return "";
+        }
+    }
+    func checkDataFloat(dict:NSDictionary, key:String) -> Double {
+        if let actionFloat = dict[key] as? Double {
+            return actionFloat;
+        } else {
+            return -1;
+        }
+    }
     
 }

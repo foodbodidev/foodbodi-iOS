@@ -11,8 +11,11 @@ import GoogleMaps
 import Firebase
 
 class FodiMapVC: BaseVC,CLLocationManagerDelegate {
+    //MARK: IBOutlet.
     @IBOutlet weak var btnAdd: FoodBodyButton!
     @IBOutlet weak var googleMapView:GMSMapView!
+    @IBOutlet weak var clvFodi:UICollectionView!
+    //MARK: variable.
     let locationManager = CLLocationManager()
     var currentLocation:CLLocationCoordinate2D = CLLocationCoordinate2D.init()
     var listRestaurant:NSMutableArray = []
@@ -27,6 +30,8 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate {
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
         }
+        self.clvFodi.delegate = self;
+        self.clvFodi.dataSource = self;
     }
     //MARK:init Data
     func getDataRestaurant() -> Void {
@@ -41,16 +46,18 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate {
                     print("\(document.documentID) => \(document.data())")
                     let restaurant = RestaurantModel();
                     let dict:NSDictionary = document.data() as NSDictionary;
-                    restaurant.address = dict.object(forKey: "address") as! String;
-                    restaurant.category = dict.object(forKey: "category") as! String;
-                     restaurant.name = dict.object(forKey: "name") as! String;
-                    restaurant.lat = dict.object(forKey: "lat") as! Double;
-                    restaurant.lng = dict.object(forKey: "lng") as! Double;
-                    restaurant.creator = dict.object(forKey: "creator") as! String;
-                    restaurant.open_hour = dict.object(forKey: "open_hour") as! String;
+                    restaurant.address = FoodbodyUtils.shared.checkDataString(dict: dict, key: "address");
+                    restaurant.category = FoodbodyUtils.shared.checkDataString(dict: dict, key: "category");
+                     restaurant.name = FoodbodyUtils.shared.checkDataString(dict: dict, key: "name");
+                    restaurant.lat = FoodbodyUtils.shared.checkDataFloat(dict: dict, key: "lat");
+                    restaurant.lng = FoodbodyUtils.shared.checkDataFloat(dict: dict, key: "lng");
+                    restaurant.creator = FoodbodyUtils.shared.checkDataString(dict: dict, key: "creator");
+                    restaurant.open_hour = FoodbodyUtils.shared.checkDataString(dict: dict, key: "open_hour");
+                    restaurant.close_hour = FoodbodyUtils.shared.checkDataString(dict: dict, key: "close_hour");
                     self.listRestaurant.add(restaurant);
                 }
                 self.showDataOnMapWithCurrentLocation(curentLocation: self.currentLocation)
+                self.clvFodi.reloadData();
             }
         }
     }
@@ -95,4 +102,29 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate {
         }
     }
 
+}
+
+extension FodiMapVC:UICollectionViewDelegate, UICollectionViewDataSource{
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1;
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return listRestaurant.count;
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FodiMapCell", for: indexPath) as! FodiMapCell;
+        let restaurant:RestaurantModel = listRestaurant[indexPath.row] as! RestaurantModel;
+        cell.lblName.text = restaurant.name;
+        cell.lblCategory.text = restaurant.category;
+        cell.lblKcal.text = "300kcal"
+        cell.lblTime.text = restaurant.open_hour + "-" + restaurant.close_hour;
+        
+        return cell;
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let height:CGFloat = 150;
+        let width:CGFloat = self.clvFodi.frame.size.width/3.0;
+        let size:CGSize = CGSize.init(width: width, height: height);
+        return size;
+    }
 }
