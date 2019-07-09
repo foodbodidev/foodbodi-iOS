@@ -9,7 +9,7 @@
 import UIKit
 
 
-struct Menu {
+struct Food {
     var title: String = ""
     var price: String = ""
     var calor: String = ""
@@ -17,7 +17,7 @@ struct Menu {
 
 
 protocol MenuTableViewCellDelegate: class {
-    func didClickOnAddButton(menuModel: Menu)
+    func didClickOnAddButton(food: Food)
 }
 
 
@@ -33,7 +33,6 @@ class MenuTableViewCell: UITableViewCell {
     
     //MARK: Properties
     weak var delegate: MenuTableViewCellDelegate?
-    var model: Menu = Menu()
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -49,13 +48,34 @@ class MenuTableViewCell: UITableViewCell {
     //MARK: Action
     
     @IBAction func actionAddMenu() {
+		guard validateData() else {
+			return
+		}
+		
+		var model: Food = Food()
         model.title = titleTextField.text!
         model.price = priceTextField.text!
         model.calor = calorTextField.text!
         
         if let delegate = self.delegate {
-            delegate.didClickOnAddButton(menuModel: model)
+            delegate.didClickOnAddButton(foodModel: model)
         }
     }
+	
+	private func validateData() -> Bool {
+		if titleTextField.text?.isEmpty {
+			return false
+		}
+		
+		if priceTextField.text?.isEmpty {
+			return false
+		}
+		
+		if calorTextField.text?.isEmpty {
+			return false
+		}
+		
+		return true
+	}
     
 }

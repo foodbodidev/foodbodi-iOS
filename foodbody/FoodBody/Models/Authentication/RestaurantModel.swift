@@ -94,6 +94,7 @@ class RestaurantRequest: Mappable  {
     var geohash: String = ""
     var open_hour: String = ""
     var close_hour: String = ""
+	var foodRequest: [FoodRequest] = []
     
     required init?(map: Map) {
         
@@ -114,7 +115,31 @@ class RestaurantRequest: Mappable  {
         geohash <- map["geohash"]
         open_hour <- map["open_hour"]
         close_hour <- map["close_hour"]
+		foodRequest <- map["foods"]
     }
     
 }
+
+class FoodRequest: Mappable  {
+	var name: String = ""
+	var price: String = ""
+	var calor: String = ""
+	
+	required init?(map: Map) {
+		
+	}
+	
+	init(name: String, price: String, calor: String) {
+		self.name = name
+		self.price = price
+		self.calor = calor
+	}
+	
+	func mapping(map: Map) {
+		name <- map["name"]
+		price <- map["price"]
+		calor <- map["calor"]
+	}
+}
+
 
