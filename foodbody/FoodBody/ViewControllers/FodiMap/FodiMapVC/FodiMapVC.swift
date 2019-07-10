@@ -38,12 +38,14 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate {
         let db = Firestore.firestore()
         listRestaurant.removeAllObjects();
         self.showLoading();
-        let geohash:String = Geohash.encode(latitude: self.currentLocation.latitude, longitude: self.currentLocation.longitude, length: 1);
+        let geohash:String = Geohash.encode(latitude: self.currentLocation.latitude, longitude: self.currentLocation.longitude, 5);
+        
         db.collection("restaurants").whereField("geohash", isEqualTo: geohash).getDocuments() { (querySnapshot, err) in
             self.hideLoading()
             if let err = err {
                 self.alertMessage(message: "Error getting documents \(err.localizedDescription)")
             } else {
+                print("Toan12520447",  querySnapshot!.documents.count);
                 for document in querySnapshot!.documents {
                     print("\(document.documentID) => \(document.data())")
                     let restaurant = RestaurantModel();

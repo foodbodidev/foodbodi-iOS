@@ -1,169 +1,166 @@
-// The MIT License (MIT)
 //
-// Copyright (c) 2019 Naoki Hiroshima
+//  Geohash.swift
+//  GeohashKit
 //
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
+//  Created by Maxim Veksler on 5/4/15.
+//  Based on work done by David Troy https://github.com/davetroy/geohash-js/blob/master/geohash.js
 //
-// The above copyright notice and this permission notice shall be included in all
-// copies or substantial portions of the Software.
+//  (c) 2015 Maxim Veksler.
+//  Distributed under the MIT License
 //
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-// SOFTWARE.
 
-import Foundation
+enum CompassPoint {
+    case north // Top
+    case south // Bottom
+    case east // Right
+    case west  // Left
+}
+
+enum Parity {
+    case even, odd
+}
+
+prefix func !(a: Parity) -> Parity {
+    return a == .even ? .odd : .even
+}
 
 public struct Geohash {
-    public static func decode(hash: String) -> (latitude: (min: Double, max: Double), longitude: (min: Double, max: Double))? {
-        // For example: hash = u4pruydqqvj
+    public static let defaultPrecision = 5
+    
+    private static let DecimalToBase32Map = Array("0123456789bcdefghjkmnpqrstuvwxyz") // decimal to 32base mapping (0 => "0", 31 => "z")
+    private static let Base32BitflowInit: UInt8 = 0b10000
 
-        let bits = hash.map { bitmap[$0] ?? "?" }.joined(separator: "")
-        guard bits.count % 5 == 0 else { return nil }
-        // bits = 1101000100101011011111010111100110010110101101101110001
+    // - MARK: Public
+    public static func encode(latitude: Double, longitude: Double, _ precision: Int = Geohash.defaultPrecision) -> String {
+        return geohashbox(latitude: latitude, longitude: longitude, precision)!.hash
+    }
+    
+    public static func decode(_ hash: String) -> (latitude: Double, longitude: Double)? {
+        return geohashbox(hash)?.point
+    }
+    
+    public static func neighbors(_ centerHash: String) -> [String]? {
+        // neighbor precision *must* be them same as center'ed bounding box.
+        let precision = centerHash.count
+        
+        guard let box = geohashbox(centerHash),
+            let n = neighbor(box, direction: .north, precision: precision), // n
+            let s = neighbor(box, direction: .south, precision: precision), // s
+            let e = neighbor(box, direction: .east, precision: precision),  // e
+            let w = neighbor(box, direction: .west, precision: precision),  // w
+            let ne = neighbor(n, direction: .east, precision: precision),   // ne
+            let nw = neighbor(n, direction: .west, precision: precision),   // nw
+            let se = neighbor(s, direction: .east, precision: precision),   // se
+            let sw = neighbor(s, direction: .west, precision: precision)   // sw
+            else { return nil }
 
-        let (lat, lon) = bits.enumerated().reduce(into: ([Character](), [Character]())) {
-            if $1.0 % 2 == 0 {
-                $0.1.append($1.1)
-            } else {
-                $0.0.append($1.1)
+        // in clockwise order
+        return [n.hash, ne.hash, e.hash, se.hash, s.hash, sw.hash, w.hash, nw.hash]
+    }
+    
+    // - MARK: Private
+    static func geohashbox(latitude: Double, longitude: Double, _ precision: Int = Geohash.defaultPrecision) -> GeohashBox? {
+        var lat = (-90.0, 90.0)
+        var lon = (-180.0, 180.0)
+        
+        // to be generated result.
+        var geohash = String()
+        
+        // Loop helpers
+        var parity_mode = Parity.even;
+        var base32char = 0
+        var bit = Base32BitflowInit
+        
+        repeat {
+            switch (parity_mode) {
+            case .even:
+                let mid = (lon.0 + lon.1) / 2
+                if(longitude >= mid) {
+                    base32char |= Int(bit)
+                    lon.0 = mid;
+                } else {
+                    lon.1 = mid;
+                }
+            case .odd:
+                let mid = (lat.0 + lat.1) / 2
+                if(latitude >= mid) {
+                    base32char |= Int(bit)
+                    lat.0 = mid;
+                } else {
+                    lat.1 = mid;
+                }
+            }
+            
+            // Flip between Even and Odd
+            parity_mode = !parity_mode
+            // And shift to next bit
+            bit >>= 1
+            
+            if(bit == 0b00000) {
+                geohash += String(DecimalToBase32Map[base32char])
+                bit = Base32BitflowInit // set next character round.
+                base32char = 0
+            }
+            
+        } while geohash.count < precision
+        
+        return GeohashBox(hash: geohash, north: lat.1, west: lon.0, south: lat.0, east: lon.1)
+    }
+    
+    static func geohashbox(_ hash: String) -> GeohashBox? {
+        var parity_mode = Parity.even;
+        var lat = (-90.0, 90.0)
+        var lon = (-180.0, 180.0)
+        
+        for c in hash {
+            guard let bitmap = DecimalToBase32Map.index(of: c) else {
+                // Break on non geohash code char.
+                return nil
+            }
+
+            var mask = Int(Base32BitflowInit)
+            while mask != 0 {
+
+                switch (parity_mode) {
+                case .even:
+                    if(bitmap & mask != 0) {
+                        lon.0 = (lon.0 + lon.1) / 2
+                    } else {
+                        lon.1 = (lon.0 + lon.1) / 2
+                    }
+                case .odd:
+                    if(bitmap & mask != 0) {
+                        lat.0 = (lat.0 + lat.1) / 2
+                    } else {
+                        lat.1 = (lat.0 + lat.1) / 2
+                    }
+                }
+
+                parity_mode = !parity_mode
+                mask >>= 1
             }
         }
-        // lat = [1,1,0,1,0,0,0,1,1,1,1,1,1,1,0,1,0,1,1,0,0,1,1,0,1,0,0]
-        // lon = [1,0,0,0,0,1,1,1,0,1,1,0,0,1,1,0,1,0,0,1,1,1,0,1,1,1,0,1]
 
-        func combiner(array a: (min: Double, max: Double), value: Character) -> (Double, Double) {
-            let mean = (a.min + a.max) / 2
-            return value == "1" ? (mean, a.max) : (a.min, mean)
-        }
-
-        let latRange = lat.reduce((-90.0, 90.0), combiner)
-        // latRange = (57.649109959602356, 57.649111300706863)
-
-        let lonRange = lon.reduce((-180.0, 180.0), combiner)
-        // lonRange = (10.407439023256302, 10.407440364360809)
-
-        return (latRange, lonRange)
+        return GeohashBox(hash: hash, north: lat.1, west: lon.0, south: lat.0, east: lon.1)
     }
+    
+    static func neighbor(_ box: GeohashBox?, direction: CompassPoint, precision: Int) -> GeohashBox? {
+        guard let box = box else { return nil }
 
-    public static func encode(latitude: Double, longitude: Double, length: Int) -> String {
-        // For example: (latitude, longitude) = (57.6491106301546, 10.4074396938086)
-
-        func combiner(array a: (min: Double, max: Double, array: [String]), value: Double) -> (Double, Double, [String]) {
-            let mean = (a.min + a.max) / 2
-            if value < mean {
-                return (a.min, mean, a.array + "0")
-            } else {
-                return (mean, a.max, a.array + "1")
-            }
-        }
-
-        let lat = Array(repeating: latitude, count: length*5).reduce((-90.0, 90.0, [String]()), combiner)
-        // lat = (57.64911063015461, 57.649110630154766, [1,1,0,1,0,0,0,1,1,1,1,1,1,1,0,1,0,1,1,0,0,1,1,0,1,0,0,1,0,0,...])
-
-        let lon = Array(repeating: longitude, count: length*5).reduce((-180.0, 180.0, [String]()), combiner)
-        // lon = (10.407439693808236, 10.407439693808556, [1,0,0,0,0,1,1,1,0,1,1,0,0,1,1,0,1,0,0,1,1,1,0,1,1,1,0,1,0,1,..])
-
-        let latlon = lon.2.enumerated().flatMap { [$1, lat.2[$0]] }
-        // latlon - [1,1,0,1,0,0,0,1,0,0,1,0,1,0,1,1,0,1,1,1,1,1,0,1,0,1,1,1,1,...]
-
-        let bits = latlon.enumerated().reduce([String]()) { $1.0 % 5 > 0 ? $0 << $1.1 : $0 + $1.1 }
-        //  bits: [11010,00100,10101,10111,11010,11110,01100,10110,10110,11011,10001,10010,10101,...]
-
-        let arr = bits.compactMap { charmap[$0] }
-        // arr: [u,4,p,r,u,y,d,q,q,v,j,k,p,b,...]
-
-        return String(arr.prefix(length))
-    }
-
-    // MARK: Private
-
-    private static let bitmap = "0123456789bcdefghjkmnpqrstuvwxyz".enumerated()
-        .map {
-            ($1, String(integer: $0, radix: 2, padding: 5))
-        }
-        .reduce(into: [Character: String]()) {
-            $0[$1.0] = $1.1
-    }
-
-    private static let charmap = bitmap
-        .reduce(into: [String: Character]()) {
-            $0[$1.1] = $1.0
-    }
-}
-
-public extension Geohash {
-    enum Precision: Int {
-        case twentyFiveHundredKilometers = 1    // ±2500 km
-        case sixHundredThirtyKilometers         // ±630 km
-        case seventyEightKilometers             // ±78 km
-        case twentyKilometers                   // ±20 km
-        case twentyFourHundredMeters            // ±2.4 km
-        case sixHundredTenMeters                // ±0.61 km
-        case seventySixMeters                   // ±0.076 km
-        case nineteenMeters                     // ±0.019 km
-        case twoHundredFourtyCentimeters        // ±0.0024 km
-        case sixtyCentimeters                   // ±0.00060 km
-        case seventyFourMillimeters             // ±0.000074 km
-    }
-
-    static func encode(latitude: Double, longitude: Double, precision: Precision) -> String {
-        return encode(latitude: latitude, longitude: longitude, length: precision.rawValue)
-    }
-}
-
-private extension String {
-    init(integer n: Int, radix: Int, padding: Int) {
-        let s = String(n, radix: radix)
-        let pad = (padding - s.count % padding) % padding
-        self = Array(repeating: "0", count: pad).joined(separator: "") + s
-    }
-}
-
-private func + (left: [String], right: String) -> [String] {
-    var arr = left
-    arr.append(right)
-    return arr
-}
-
-private func << (left: [String], right: String) -> [String] {
-    var arr = left
-    var s = arr.popLast()!
-    s += right
-    arr.append(s)
-    return arr
-}
-
-#if os(OSX) || os(iOS)
-
-// MARK: - CLLocationCoordinate2D
-
-import CoreLocation
-
-public extension CLLocationCoordinate2D {
-    init(geohash: String) {
-        if let (lat, lon) = Geohash.decode(hash: geohash) {
-            self = CLLocationCoordinate2DMake((lat.min + lat.max) / 2, (lon.min + lon.max) / 2)
-        } else {
-            self = kCLLocationCoordinate2DInvalid
+        switch (direction) {
+        case .north:
+            let new_latitude = box.point.latitude + box.size.latitude // North is upper in the latitude scale
+            return geohashbox(latitude: new_latitude, longitude: box.point.longitude, precision)
+        case .south:
+            let new_latitude = box.point.latitude - box.size.latitude // South is lower in the latitude scale
+            return geohashbox(latitude: new_latitude, longitude: box.point.longitude, precision)
+        case .east:
+            let new_longitude = box.point.longitude + box.size.longitude // East is bigger in the longitude scale
+            return geohashbox(latitude: box.point.latitude, longitude: new_longitude, precision)
+        case .west:
+            let new_longitude = box.point.longitude - box.size.longitude // West is lower in the longitude scale
+            return geohashbox(latitude: box.point.latitude, longitude: new_longitude, precision)
         }
     }
 
-    func geohash(length: Int) -> String {
-        return Geohash.encode(latitude: latitude, longitude: longitude, length: length)
-    }
-
-    func geohash(precision: Geohash.Precision) -> String {
-        return geohash(length: precision.rawValue)
-    }
 }
-
-#endif
