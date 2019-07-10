@@ -30,10 +30,10 @@ class FoodTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func bindData(data: Menu) {
-        nameLabel.text = data.title
-        priceLabel.text = data.price
-        calorLabel.text = data.calor
+    func bindData(data: FoodRequest) {
+        nameLabel.text = data.name
+        priceLabel.text = data.price + "$"
+        calorLabel.text = data.calor + " Kcal"
         
     }
     

@@ -50,6 +50,7 @@ class LoginVC: BaseVC {
     }
     //MARK: action
     @IBAction func loginPress(sender:UIButton){
+        self.view.endEditing(true)
         if self.validateTextFiled() == false {
             return
         }
@@ -70,7 +71,6 @@ class LoginVC: BaseVC {
             guard let result = result else { return }
                 
             if result.isSuccess {
-                FBAppDelegate.user = result
                 AppManager.user = result
                 FBAppDelegate.gotoMainTab()
             } else {

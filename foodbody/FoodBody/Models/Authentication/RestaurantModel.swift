@@ -138,7 +138,7 @@ class FoodRequest: Mappable  {
 	func mapping(map: Map) {
 		name <- map["name"]
 		price <- map["price"]
-		calor <- map["calor"]
+		calor <- map["calo"]
 	}
 }
 

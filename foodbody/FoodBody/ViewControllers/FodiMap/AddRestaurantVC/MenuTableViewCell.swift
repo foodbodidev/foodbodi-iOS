@@ -10,7 +10,7 @@ import UIKit
 
 
 struct Food {
-    var title: String = ""
+    var name: String = ""
     var price: String = ""
     var calor: String = ""
 }
@@ -53,29 +53,37 @@ class MenuTableViewCell: UITableViewCell {
 		}
 		
 		var model: Food = Food()
-        model.title = titleTextField.text!
+        model.name = titleTextField.text!
         model.price = priceTextField.text!
         model.calor = calorTextField.text!
         
         if let delegate = self.delegate {
-            delegate.didClickOnAddButton(foodModel: model)
+            delegate.didClickOnAddButton(food: model)
         }
+        
+        resetData()
     }
 	
 	private func validateData() -> Bool {
-		if titleTextField.text?.isEmpty {
+        if titleTextField.text!.isEmpty {
 			return false
 		}
 		
-		if priceTextField.text?.isEmpty {
+        if priceTextField.text!.isEmpty {
 			return false
 		}
 		
-		if calorTextField.text?.isEmpty {
+		if calorTextField.text!.isEmpty {
 			return false
 		}
 		
 		return true
 	}
+    
+    private func resetData() {
+        titleTextField.text = ""
+        priceTextField.text = ""
+        calorTextField.text = ""
+    }
     
 }

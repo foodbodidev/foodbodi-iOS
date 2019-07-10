@@ -35,13 +35,13 @@ class RegisterAccountVC: BaseVC, GIDSignInUIDelegate{
     }
     
     fileprivate func configureLayout() {
-        emailView.layer.cornerRadius = 27
+        emailView.layer.cornerRadius = 15
         emailView.clipsToBounds = true
         emailView.layer.borderWidth = 1
         
-        facebookView.layer.cornerRadius = 27
+        facebookView.layer.cornerRadius = 15
         facebookView.clipsToBounds = true
-        btnGoogleSignin.layer.cornerRadius = 27
+        btnGoogleSignin.layer.cornerRadius = 15
         btnGoogleSignin.clipsToBounds = true
         
         emailView.layer.borderColor = UIColor(red: 25, green: 62, blue: 82).cgColor
@@ -100,7 +100,7 @@ class RegisterAccountVC: BaseVC, GIDSignInUIDelegate{
             
             if let result = result {
                 if result.isSuccess {
-                     FBAppDelegate.user = result
+                    AppManager.user = result
                      self.getUserProfile()
                 } else {
                     self.alertMessage(message: result.message)
@@ -160,13 +160,12 @@ extension RegisterAccountVC:GIDSignInDelegate{
                 
                 if let result = result {
                     if result.isSuccess {
-                        FBAppDelegate.user = result;
-                        self!.getUserProfile()
+                        AppManager.user = result
+                        self?.getUserProfile()
                     } else {
-                        self!.alertMessage(message: result.message)
+                        self?.alertMessage(message: result.message)
                     }
                 }
-                
                 
             }
         }

@@ -13,7 +13,7 @@ struct Restaurant {
     var category: String = ""
     var openHours: String = ""
     var closeHours: String = ""
-    var type: String = "Restaurant" // by default
+    var type: String = "RESTAURANT" // by default
 }
 
 protocol RestaurantTableViewCellDelegate: class {
@@ -35,10 +35,26 @@ class RestaurantTableViewCell: UITableViewCell {
     //MARK: Properties
     weak var delegate: RestaurantTableViewCellDelegate?
     var model: Restaurant = Restaurant()
+    
+    enum RestaurantType: String {
+        case restaurant = "RESTAURANT"
+        case foodTruck = "FOOD_TRUCK"
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        //Date Picker
+        let datePickerOpen = UIDatePicker()
+        datePickerOpen.datePickerMode = .time
+        datePickerOpen.addTarget(self, action: #selector(self.setTimeOpen(_sender:)), for: .valueChanged)
+        datePickerOpen.timeZone = TimeZone.current
+        openHoursTextField.inputView = datePickerOpen
+        
+        let datePickerClose = UIDatePicker()
+        datePickerClose.datePickerMode = .time
+        datePickerClose.addTarget(self, action: #selector(self.setTimeClose(_sender:)), for: .valueChanged)
+        datePickerClose.timeZone = TimeZone.current
+        closeHoursTextField.inputView = datePickerClose
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -48,7 +64,7 @@ class RestaurantTableViewCell: UITableViewCell {
     }
     
     @IBAction func actionRestaurant() {
-        model.type = "Restaurant"
+        model.type = RestaurantType.restaurant.rawValue
         
         restaurantButton.setTitleColor(Style.Color.mainGreen, for: .normal)
         foodTruckButton.setTitleColor(Style.Color.mainGray, for: .normal)
@@ -59,13 +75,33 @@ class RestaurantTableViewCell: UITableViewCell {
     }
     
     @IBAction func actionFoodTruck() {
-        model.type = "FoodTruck"
+        model.type = RestaurantType.foodTruck.rawValue
         
         foodTruckButton.setTitleColor(Style.Color.mainGreen, for: .normal)
         restaurantButton.setTitleColor(Style.Color.mainGray, for: .normal)
         
         if let delegate = self.delegate {
             delegate.restaurantTableViewCellEndEditing(restaurantModel: model)
+        }
+    }
+    
+    @objc func setTimeOpen(_sender : UIDatePicker){
+       
+        let calendar = Calendar.current
+        let comp = calendar.dateComponents([.hour, .minute], from: _sender.date)
+        
+        if let hour = comp.hour, let minute = comp.minute {
+            openHoursTextField.text = "\(hour):\(minute)"
+        }
+        
+    }
+    
+    @objc func setTimeClose(_sender : UIDatePicker){
+        let calendar = Calendar.current
+        let comp = calendar.dateComponents([.hour, .minute], from: _sender.date)
+        
+        if let hour = comp.hour, let minute = comp.minute {
+            closeHoursTextField.text = "\(hour):\(minute)"
         }
     }
     

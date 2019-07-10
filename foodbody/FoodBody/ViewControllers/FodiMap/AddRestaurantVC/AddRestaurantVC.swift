@@ -39,11 +39,27 @@ class AddRestaurantVC: BaseVC {
     }
 	
 	@IBAction func actionSubmit() {
-		if validateData() {
-			RequestManager.createRestaurant(request: restaurant) { (result, error) in
-				
-			}
-		}
+        if validateData() {
+            self.showLoading()
+            RequestManager.createRestaurant(request: restaurant) { [weak self] (result, error) in
+
+                guard let strongSelf = self else { return }
+                strongSelf.hideLoading()
+
+                if let result = result {
+                    if result.isSuccess {
+                        strongSelf.alertMessage(message: "Create restaurant successfully", completion: {
+                            strongSelf.actionBack()
+                        })
+                    }
+                }
+                if let error = error {
+                    strongSelf.alertMessage(message: error.localizedDescription)
+                }
+
+            }
+
+        }
 		
 	}
 	
@@ -118,7 +134,7 @@ extension AddRestaurantVC: UITableViewDataSource {
             
         case AddResEnum.foodDisplay.rawValue:
             let foodCell = tableView.dequeueReusableCell(withIdentifier: FoodTableViewCell.className, for: indexPath) as! FoodTableViewCell
-            foodCell.bindData(data: foodModel[indexPath.row])
+            foodCell.bindData(data: restaurant.foodRequest[indexPath.row])
             return foodCell
         default:
             return UITableViewCell()
@@ -163,9 +179,8 @@ extension AddRestaurantVC: RestaurantTableViewCellDelegate, MenuTableViewCellDel
         restaurant.name = restaurantModel.title
 		restaurant.category = restaurantModel.category
 		restaurant.close_hour = restaurantModel.closeHours
-		restaurantModel.openHours = restaurantModel.openHours
-		restaurantModel.type = restaurantModel.type
+		restaurant.open_hour = restaurantModel.openHours
+		restaurant.type = restaurantModel.type
     }
-    
-    
+
 }
