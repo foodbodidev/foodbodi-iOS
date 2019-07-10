@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -69,6 +69,7 @@
 		D5B9AE4D22B9D32D0015DEB2 /* SelectGenderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B9AE4C22B9D32D0015DEB2 /* SelectGenderVC.swift */; };
 		D5C0FDA222B8EE1900411488 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C0FDA122B8EE1900411488 /* LoginVC.swift */; };
 		D5C0FDA522B8EE2A00411488 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C0FDA422B8EE2A00411488 /* SignUpVC.swift */; };
+		D5E5245C22D584F90075E827 /* Geohash.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E5245B22D584F90075E827 /* Geohash.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,6 +166,7 @@
 		D5B9AE4C22B9D32D0015DEB2 /* SelectGenderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGenderVC.swift; sourceTree = "<group>"; };
 		D5C0FDA122B8EE1900411488 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		D5C0FDA422B8EE2A00411488 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		D5E5245B22D584F90075E827 /* Geohash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geohash.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -347,6 +349,7 @@
 			children = (
 				D5B24B1C22B73D2100DA16C4 /* Constant.swift */,
 				D5B24AD522B737B500DA16C4 /* AppDelegate.swift */,
+				D5E5245922D584B70075E827 /* ThirdParty */,
 				98CEA20722B9469000E82063 /* API */,
 				D5B24B1722B73C5F00DA16C4 /* Extension */,
 				D5B24B1622B73C5200DA16C4 /* Utils */,
@@ -588,6 +591,22 @@
 				98282BE422C26E64003ED8BC /* YourBasicVC.xib */,
 			);
 			path = SignUpVC;
+			sourceTree = "<group>";
+		};
+		D5E5245922D584B70075E827 /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				D5E5245A22D584F90075E827 /* Geohash */,
+			);
+			path = ThirdParty;
+			sourceTree = "<group>";
+		};
+		D5E5245A22D584F90075E827 /* Geohash */ = {
+			isa = PBXGroup;
+			children = (
+				D5E5245B22D584F90075E827 /* Geohash.swift */,
+			);
+			path = Geohash;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -921,6 +940,7 @@
 				D5C0FDA522B8EE2A00411488 /* SignUpVC.swift in Sources */,
 				98CEA1FF22B9431200E82063 /* String.swift in Sources */,
 				98282BE522C26E64003ED8BC /* YourBasicVC.swift in Sources */,
+				D5E5245C22D584F90075E827 /* Geohash.swift in Sources */,
 				98C34F5622CE57C100A933DE /* MenuTableViewCell.swift in Sources */,
 				98CEA20422B9431200E82063 /* Button.swift in Sources */,
 				2F1774B622D1EF2200778D05 /* RestaurantModel.swift in Sources */,
