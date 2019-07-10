@@ -19,6 +19,7 @@ class ProfileVC: UIViewController {
 
     @IBAction func logoutPress(sender:UIButton){
         AppManager.user = nil
+        FBAppDelegate.gotoWelcome()
     }
 
 }

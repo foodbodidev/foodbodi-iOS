@@ -80,7 +80,7 @@ extension RequestService: TargetType {
             return ["Content-Type": "application/json"]
         default:
             return ["Content-Type": "application/json",
-                    "Token": FBAppDelegate.user.token]
+                    "Token": AppManager.user?.token ?? ""]
         }
     }
     

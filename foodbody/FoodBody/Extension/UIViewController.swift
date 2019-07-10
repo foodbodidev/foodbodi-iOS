@@ -32,12 +32,12 @@ extension UIViewController{
         self.present(alert, animated: true, completion: nil)
     }
     
-    func alertMessage(message: String, completion: @escaping (_ success: Bool)-> ()) {
+    func alertMessage(message: String, completion: @escaping ()-> ()) {
         let alert = UIAlertController(title: "Message", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
             switch action.style{
             case .default:
-                completion(true)
+                completion()
                 
             case .cancel:
                 print("cancel")
