@@ -36,8 +36,9 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate {
     //MARK:init Data
     func getDataRestaurant() -> Void {
         let db = Firestore.firestore()
+        listRestaurant.removeAllObjects();
         self.showLoading();
-        let geohash:String = Geohash.encode(latitude: self.currentLocation.latitude, longitude: self.currentLocation.longitude, length: 10);
+        let geohash:String = Geohash.encode(latitude: self.currentLocation.latitude, longitude: self.currentLocation.longitude, length: 1);
         db.collection("restaurants").whereField("geohash", isEqualTo: geohash).getDocuments() { (querySnapshot, err) in
             self.hideLoading()
             if let err = err {
