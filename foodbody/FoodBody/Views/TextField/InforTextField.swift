@@ -24,6 +24,7 @@ class InforTextField: UITextField {
         myMutableStringTitle = NSMutableAttributedString(string: self.placeholder ?? "", attributes: [NSAttributedString.Key.font: Style.FontStyle.regular.font(with: 14)]) // Font
         myMutableStringTitle.addAttribute(NSAttributedString.Key.foregroundColor, value: Style.Color.placeHoder, range: NSRange(location:0, length: self.placeholder?.count ?? 0))
         self.attributedPlaceholder = myMutableStringTitle
+        self.font = Style.FontStyle.regular.font(with: 14)
     
     }
     
