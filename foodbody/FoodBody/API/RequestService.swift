@@ -96,6 +96,8 @@ extension RequestService: TargetType {
             return .requestParameters(parameters: dic, encoding: JSONEncoding.default)
         case .updateUserProfile(let dic):
             return .requestParameters(parameters: dic, encoding: JSONEncoding.default)
+        case .createRestaurant(let dic):
+            return .requestParameters(parameters: dic, encoding: JSONEncoding.default)
         default:
             return .requestPlain
         }

@@ -102,7 +102,11 @@ class RestaurantTableViewCell: UITableViewCell {
         let comp = calendar.dateComponents([.hour, .minute], from: _sender.date)
         
         if let hour = comp.hour, let minute = comp.minute {
-            openHoursTextField.text = "\(hour):\(minute)"
+            if minute < 10 {
+                openHoursTextField.text = "\(hour):0\(minute)"
+            } else {
+                openHoursTextField.text = "\(hour):\(minute)"
+            }
         }
         
     }
@@ -112,7 +116,12 @@ class RestaurantTableViewCell: UITableViewCell {
         let comp = calendar.dateComponents([.hour, .minute], from: _sender.date)
         
         if let hour = comp.hour, let minute = comp.minute {
-            closeHoursTextField.text = "\(hour):\(minute)"
+            if minute < 10 {
+                closeHoursTextField.text = "\(hour):0\(minute)"
+            } else {
+                closeHoursTextField.text = "\(hour):\(minute)"
+            }
+            
         }
     }
     

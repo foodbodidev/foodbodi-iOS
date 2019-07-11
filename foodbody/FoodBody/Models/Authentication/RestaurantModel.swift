@@ -122,14 +122,14 @@ class RestaurantRequest: Mappable  {
 
 class FoodRequest: Mappable  {
 	var name: String = ""
-	var price: String = ""
-	var calor: String = ""
+	var price: Int = 0
+	var calor: Int = 0
 	
 	required init?(map: Map) {
 		
 	}
 	
-	init(name: String, price: String, calor: String) {
+	init(name: String, price: Int, calor: Int) {
 		self.name = name
 		self.price = price
 		self.calor = calor

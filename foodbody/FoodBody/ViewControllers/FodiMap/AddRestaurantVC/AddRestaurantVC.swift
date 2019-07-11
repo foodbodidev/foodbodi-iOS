@@ -50,6 +50,8 @@ class AddRestaurantVC: BaseVC {
                         strongSelf.alertMessage(message: "Create restaurant successfully", completion: {
                             strongSelf.actionBack()
                         })
+                    } else {
+                        strongSelf.alertMessage(message: result.message)
                     }
                 }
                 if let error = error {
@@ -177,7 +179,7 @@ extension AddRestaurantVC: RestaurantTableViewCellDelegate, MenuTableViewCellDel
     
     func restaurantTableViewCellEndEditing(restaurantModel: Restaurant) {
         restaurant.name = restaurantModel.title
-		restaurant.category = restaurantModel.category
+		restaurant.category = "FAST_FOOD" // hard code
 		restaurant.close_hour = restaurantModel.closeHours
 		restaurant.open_hour = restaurantModel.openHours
 		restaurant.type = restaurantModel.type

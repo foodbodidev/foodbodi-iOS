@@ -11,8 +11,8 @@ import UIKit
 
 struct Food {
     var name: String = ""
-    var price: String = ""
-    var calor: String = ""
+    var price: Int = 0
+    var calor: Int = 0
 }
 
 
@@ -54,8 +54,8 @@ class MenuTableViewCell: UITableViewCell {
 		
 		var model: Food = Food()
         model.name = titleTextField.text!
-        model.price = priceTextField.text!
-        model.calor = calorTextField.text!
+        model.price = Int(priceTextField.text!) ?? 0
+        model.calor = Int(calorTextField.text!) ?? 0
         
         if let delegate = self.delegate {
             delegate.didClickOnAddButton(food: model)

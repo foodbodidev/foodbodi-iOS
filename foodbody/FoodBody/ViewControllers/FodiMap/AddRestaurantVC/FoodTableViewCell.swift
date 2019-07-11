@@ -32,8 +32,8 @@ class FoodTableViewCell: UITableViewCell {
     
     func bindData(data: FoodRequest) {
         nameLabel.text = data.name
-        priceLabel.text = data.price + "$"
-        calorLabel.text = data.calor + " Kcal"
+        priceLabel.text = "\(data.price)" + "$"
+        calorLabel.text = "\(data.calor)" + " Kcal"
         
     }
     
