@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GooglePlaces
 
 struct Restaurant {
     var title: String = ""
@@ -18,6 +19,7 @@ struct Restaurant {
 
 protocol RestaurantTableViewCellDelegate: class {
     func restaurantTableViewCellEndEditing(restaurantModel: Restaurant)
+    func restaurantTableViewCellDidBeginSearchAddress()
 }
 
 class RestaurantTableViewCell: UITableViewCell {
@@ -27,6 +29,8 @@ class RestaurantTableViewCell: UITableViewCell {
     @IBOutlet weak var categoryTextField: InforTextField!
     @IBOutlet weak var openHoursTextField: InforTextField!
     @IBOutlet weak var closeHoursTextField: InforTextField!
+    @IBOutlet weak var addressTextField: InforTextField!
+    
     @IBOutlet weak var restaurantButton: UIButton!
     @IBOutlet weak var foodTruckButton: UIButton!
     
@@ -85,6 +89,13 @@ class RestaurantTableViewCell: UITableViewCell {
         }
     }
     
+    @IBAction func textFieldTapped(_ sender: Any) {
+       addressTextField.resignFirstResponder()
+        if let delegate = self.delegate {
+            delegate.restaurantTableViewCellDidBeginSearchAddress()
+        }
+    }
+    
     @objc func setTimeOpen(_sender : UIDatePicker){
        
         let calendar = Calendar.current
@@ -103,6 +114,14 @@ class RestaurantTableViewCell: UITableViewCell {
         if let hour = comp.hour, let minute = comp.minute {
             closeHoursTextField.text = "\(hour):\(minute)"
         }
+    }
+    
+    func bindData(restaurant: RestaurantRequest) {
+        titleTextField.text = restaurant.name
+        categoryTextField.text = restaurant.category
+        openHoursTextField.text = restaurant.open_hour
+        closeHoursTextField.text = restaurant.close_hour
+        addressTextField.text = restaurant.address
     }
     
 }

@@ -11,6 +11,8 @@ import IQKeyboardManagerSwift
 import GoogleSignIn;
 import GoogleMaps
 import Firebase
+import GooglePlaces
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -24,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enable = true // use to manage keyboard
         GIDSignIn.sharedInstance().clientID = FbConstants.REVERSED_CLIENT_ID;
         GMSServices.provideAPIKey(FbConstants.MAP_API_KEY)
+        GMSPlacesClient.provideAPIKey(FbConstants.MAP_API_KEY)
         GIDSignIn.sharedInstance().signOut()
         if AppManager.user?.token == nil{
             self.gotoWelcome()

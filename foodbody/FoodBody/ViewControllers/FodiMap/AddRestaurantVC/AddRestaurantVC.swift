@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import GooglePlaces
 
 enum AddResEnum: Int, CaseIterable {
     case restaurant = 0
@@ -29,7 +29,6 @@ class AddRestaurantVC: BaseVC {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         registerNib()
-	
     }
 	
     //MARK: === ACTION  ===
@@ -125,6 +124,7 @@ extension AddRestaurantVC: UITableViewDataSource {
         case AddResEnum.restaurant.rawValue:
             let resCell = tableView.dequeueReusableCell(withIdentifier: RestaurantTableViewCell.className, for: indexPath) as! RestaurantTableViewCell
             resCell.delegate = self
+            resCell.bindData(restaurant: restaurant)
             return resCell
             
         case AddResEnum.addMenu.rawValue :
@@ -149,7 +149,7 @@ extension AddRestaurantVC: UITableViewDelegate {
         switch indexPath.section {
             
         case AddResEnum.restaurant.rawValue:
-           return 0.339*self.view.frame.height
+           return 0.39*self.view.frame.height
             
         case AddResEnum.addMenu.rawValue :
             return 200
@@ -182,5 +182,32 @@ extension AddRestaurantVC: RestaurantTableViewCellDelegate, MenuTableViewCellDel
 		restaurant.open_hour = restaurantModel.openHours
 		restaurant.type = restaurantModel.type
     }
+    
+    func restaurantTableViewCellDidBeginSearchAddress() {
+        let seachAddressVC = GMSAutocompleteViewController()
+        seachAddressVC.delegate = self
+        present(seachAddressVC, animated: true, completion: nil)
+    }
 
+}
+
+extension AddRestaurantVC: GMSAutocompleteViewControllerDelegate {
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+        restaurant.address = place.formattedAddress ?? ""
+        restaurant.lat = place.coordinate.latitude
+        restaurant.lng = place.coordinate.longitude
+        tableView.reloadData()
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
+        print("Error: ", error.localizedDescription)
+    }
+    
+    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
+        // Dismiss when the user canceled the action
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
