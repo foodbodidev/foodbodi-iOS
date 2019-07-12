@@ -25,7 +25,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="222.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emK-Of-Dge">
-                                                <rect key="frame" x="164.5" y="65" width="46" height="46"/>
+                                                <rect key="frame" x="164.5" y="40" width="46" height="46"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="emK-Of-Dge" secondAttribute="height" multiplier="1:1" id="k2M-PC-SFx"/>
                                                     <constraint firstAttribute="width" constant="46" id="zWb-C1-o5C"/>
@@ -52,7 +52,7 @@
                                         <color key="backgroundColor" red="0.89803921568627454" green="0.92941176470588238" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="emK-Of-Dge" firstAttribute="centerX" secondItem="nEf-3M-LHG" secondAttribute="centerX" id="Bpg-DB-5JZ"/>
-                                            <constraint firstItem="emK-Of-Dge" firstAttribute="top" secondItem="nEf-3M-LHG" secondAttribute="top" constant="65" id="TXy-bl-XQm"/>
+                                            <constraint firstItem="emK-Of-Dge" firstAttribute="top" secondItem="nEf-3M-LHG" secondAttribute="top" constant="40" id="TXy-bl-XQm"/>
                                             <constraint firstItem="emK-Of-Dge" firstAttribute="width" secondItem="emK-Of-Dge" secondAttribute="height" multiplier="1:1" id="XqE-Or-Ddy"/>
                                             <constraint firstItem="aCk-Nk-pac" firstAttribute="leading" secondItem="nEf-3M-LHG" secondAttribute="leading" constant="20" id="g0T-u6-veF"/>
                                             <constraint firstItem="aCk-Nk-pac" firstAttribute="top" secondItem="nEf-3M-LHG" secondAttribute="top" constant="53" id="vQ1-Mb-n8L"/>
@@ -73,10 +73,10 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bow-K1-wy6">
-                                        <rect key="frame" x="20" y="146" width="335" height="454.5"/>
+                                        <rect key="frame" x="20" y="100" width="335" height="500.5"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nnA-xc-dMF">
-                                                <rect key="frame" x="0.0" y="0.0" width="335" height="454.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="500.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
                                                     <outlet property="dataSource" destination="BQH-t5-pHj" id="dCM-i4-XNx"/>
@@ -106,7 +106,7 @@
                                     <constraint firstItem="Bow-K1-wy6" firstAttribute="leading" secondItem="2Gy-eT-EMJ" secondAttribute="leading" constant="20" id="XQk-Xv-kpp"/>
                                     <constraint firstItem="nEf-3M-LHG" firstAttribute="leading" secondItem="2Gy-eT-EMJ" secondAttribute="leading" id="Xsv-ye-KeF"/>
                                     <constraint firstItem="ybU-WF-HcR" firstAttribute="height" secondItem="2Gy-eT-EMJ" secondAttribute="height" multiplier="0.1" id="Z7m-cW-qEI"/>
-                                    <constraint firstItem="Bow-K1-wy6" firstAttribute="top" secondItem="2Gy-eT-EMJ" secondAttribute="top" constant="146" id="f8u-aP-yTK"/>
+                                    <constraint firstItem="Bow-K1-wy6" firstAttribute="top" secondItem="2Gy-eT-EMJ" secondAttribute="top" constant="100" id="f8u-aP-yTK"/>
                                     <constraint firstAttribute="trailing" secondItem="Bow-K1-wy6" secondAttribute="trailing" constant="20" id="gR1-Wn-eaS"/>
                                     <constraint firstItem="nEf-3M-LHG" firstAttribute="top" secondItem="2Gy-eT-EMJ" secondAttribute="top" id="pTP-wm-UBC"/>
                                     <constraint firstItem="ybU-WF-HcR" firstAttribute="top" secondItem="Bow-K1-wy6" secondAttribute="bottom" id="sEh-6h-mmW"/>

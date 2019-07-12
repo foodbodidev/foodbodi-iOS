@@ -151,7 +151,7 @@ extension AddRestaurantVC: UITableViewDelegate {
         switch indexPath.section {
             
         case AddResEnum.restaurant.rawValue:
-           return 0.39*self.view.frame.height
+           return 0.41*self.view.frame.height
             
         case AddResEnum.addMenu.rawValue :
             return 200
