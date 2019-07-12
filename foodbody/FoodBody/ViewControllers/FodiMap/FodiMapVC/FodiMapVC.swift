@@ -16,19 +16,20 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate {
     @IBOutlet weak var googleMapView:GMSMapView!
     @IBOutlet weak var clvFodi:UICollectionView!
     //MARK: variable.
-    let locationManager = CLLocationManager()
+    var locationManager:CLLocationManager? = nil;
     var currentLocation:CLLocationCoordinate2D = CLLocationCoordinate2D.init()
     var listRestaurant:NSMutableArray = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
          // For use in foreground
-        self.locationManager.requestAlwaysAuthorization()
-        self.locationManager.requestWhenInUseAuthorization()
+        locationManager = CLLocationManager();
+        self.locationManager?.requestAlwaysAuthorization()
+        self.locationManager?.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.startUpdatingLocation()
+            locationManager?.delegate = self
+            locationManager?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager?.startUpdatingLocation()
         }
         self.clvFodi.delegate = self;
         self.clvFodi.dataSource = self;
@@ -37,12 +38,26 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate {
     func getDataRestaurant() -> Void {
         let db = Firestore.firestore()
         listRestaurant.removeAllObjects();
-        self.showLoading();
-        let geohash:String = Geohash.encode(latitude: self.currentLocation.latitude, longitude: self.currentLocation.longitude, 5);
+        FoodbodyUtils.shared.showLoadingHub(viewController: self);
+    
+        let geohashCenter:String = Geohash.encode(latitude: self.currentLocation.latitude, longitude: self.currentLocation.longitude, 5);
+        let listNeighbors:NSArray = Geohash.neighbors(geohashCenter)! as NSArray;
+        self.queryLocation(geoHash: geohashCenter, db: db);
+        if listNeighbors.count == 8 {
+            self.queryLocation(geoHash: listNeighbors[0] as! String, db: db);
+            self.queryLocation(geoHash: listNeighbors[2] as! String, db: db);
+            self.queryLocation(geoHash: listNeighbors[4] as! String, db: db);
+            self.queryLocation(geoHash: listNeighbors[6] as! String, db: db);
+            FoodbodyUtils.shared.hideLoadingHub(viewController: self);
+        }else{
+            FoodbodyUtils.shared.hideLoadingHub(viewController: self);
+        }
+    }
+    func queryLocation(geoHash:String, db:Firestore) -> Void {
         
-        db.collection("restaurants").whereField("geohash", isEqualTo: geohash).getDocuments() { (querySnapshot, err) in
-            self.hideLoading()
+        db.collection("restaurants").whereField("geohash", isEqualTo: geoHash).getDocuments() { (querySnapshot, err) in
             if let err = err {
+               FoodbodyUtils.shared.hideLoadingHub(viewController: self);
                 self.alertMessage(message: "Error getting documents \(err.localizedDescription)")
             } else {
                 print("Toan12520447",  querySnapshot!.documents.count);
@@ -52,7 +67,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate {
                     let dict:NSDictionary = document.data() as NSDictionary;
                     restaurant.address = FoodbodyUtils.shared.checkDataString(dict: dict, key: "address");
                     restaurant.category = FoodbodyUtils.shared.checkDataString(dict: dict, key: "category");
-                     restaurant.name = FoodbodyUtils.shared.checkDataString(dict: dict, key: "name");
+                    restaurant.name = FoodbodyUtils.shared.checkDataString(dict: dict, key: "name");
                     restaurant.lat = FoodbodyUtils.shared.checkDataFloat(dict: dict, key: "lat");
                     restaurant.lng = FoodbodyUtils.shared.checkDataFloat(dict: dict, key: "lng");
                     restaurant.creator = FoodbodyUtils.shared.checkDataString(dict: dict, key: "creator");
@@ -65,6 +80,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate {
             }
         }
     }
+    
     func showDataOnMapWithCurrentLocation(curentLocation:CLLocationCoordinate2D) -> Void {
         let camera = GMSCameraPosition.camera(withLatitude: curentLocation.latitude, longitude: curentLocation.longitude, zoom: 15.0)
         googleMapView.camera = camera
@@ -83,12 +99,14 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate {
         }
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let locationValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        self.currentLocation = locationValue;
-        self.getDataRestaurant();
-        
-        manager.stopUpdatingLocation();
-        
+        if let locationValue: CLLocationCoordinate2D = manager.location?.coordinate {
+            self.currentLocation = locationValue;
+            print("Toan12520447 call, \(currentLocation)")
+            self.getDataRestaurant();
+            
+            locationManager?.stopUpdatingLocation();
+            locationManager = nil;
+        }
     }
     //MARK: action.
     
