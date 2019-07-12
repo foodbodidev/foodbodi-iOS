@@ -18,7 +18,8 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate {
     //MARK: variable.
     var locationManager:CLLocationManager? = nil;
     var currentLocation:CLLocationCoordinate2D = CLLocationCoordinate2D.init()
-    var listRestaurant:NSMutableArray = []
+    var listRestaurant: [QueryDocumentSnapshot] = []
+    let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +37,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate {
     }
     //MARK:init Data
     func getDataRestaurant() -> Void {
-        let db = Firestore.firestore()
-        listRestaurant.removeAllObjects();
+        listRestaurant.removeAll()
         FoodbodyUtils.shared.showLoadingHub(viewController: self);
     
         let geohashCenter:String = Geohash.encode(latitude: self.currentLocation.latitude, longitude: self.currentLocation.longitude, 5);
@@ -53,6 +53,34 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate {
             FoodbodyUtils.shared.hideLoadingHub(viewController: self);
         }
     }
+    func addListenerOnRestaurantd(db:Firestore) -> Void {
+        db.collection("restaurants")
+            .addSnapshotListener { querySnapshot, error in
+                
+                guard let documents = querySnapshot?.documents else {
+                    print("Error fetching documents: \(error!)")
+                    return
+                }
+                
+                self.replaceDocument(documents: documents)
+                self.clvFodi.reloadData()
+                self.showDataOnMapWithCurrentLocation(curentLocation: self.currentLocation)
+        }
+    }
+    
+    // find replace document in listRestaurant
+    func replaceDocument(documents: [QueryDocumentSnapshot]) {
+        if self.listRestaurant.count > 0 {
+            for i in 0...self.listRestaurant.count - 1 {
+                for j in 0...documents.count - 1 {
+                    if documents[j].documentID == self.listRestaurant[i].documentID {
+                        self.listRestaurant[i] = documents[j]
+                    }
+                }
+            }
+        }
+    }
+    
     func queryLocation(geoHash:String, db:Firestore) -> Void {
         
         db.collection("restaurants").whereField("geohash", isEqualTo: geoHash).getDocuments() { (querySnapshot, err) in
@@ -63,17 +91,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate {
                 print("Toan12520447",  querySnapshot!.documents.count);
                 for document in querySnapshot!.documents {
                     print("\(document.documentID) => \(document.data())")
-                    let restaurant = RestaurantModel();
-                    let dict:NSDictionary = document.data() as NSDictionary;
-                    restaurant.address = FoodbodyUtils.shared.checkDataString(dict: dict, key: "address");
-                    restaurant.category = FoodbodyUtils.shared.checkDataString(dict: dict, key: "category");
-                    restaurant.name = FoodbodyUtils.shared.checkDataString(dict: dict, key: "name");
-                    restaurant.lat = FoodbodyUtils.shared.checkDataFloat(dict: dict, key: "lat");
-                    restaurant.lng = FoodbodyUtils.shared.checkDataFloat(dict: dict, key: "lng");
-                    restaurant.creator = FoodbodyUtils.shared.checkDataString(dict: dict, key: "creator");
-                    restaurant.open_hour = FoodbodyUtils.shared.checkDataString(dict: dict, key: "open_hour");
-                    restaurant.close_hour = FoodbodyUtils.shared.checkDataString(dict: dict, key: "close_hour");
-                    self.listRestaurant.add(restaurant);
+                    self.listRestaurant.append(document)
                 }
                 self.showDataOnMapWithCurrentLocation(curentLocation: self.currentLocation)
                 self.clvFodi.reloadData();
@@ -85,25 +103,25 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate {
         let camera = GMSCameraPosition.camera(withLatitude: curentLocation.latitude, longitude: curentLocation.longitude, zoom: 15.0)
         googleMapView.camera = camera
         // Creates a marker in the center of the map.
-        listRestaurant.enumerateObjects { (object, index, isStop) in
+       
+        for object in listRestaurant {
+            let dict:NSDictionary = object.data() as NSDictionary;
             
-            if let object = object as? RestaurantModel {
-                let marker = GMSMarker()
-                marker.position = CLLocationCoordinate2D(latitude: object.lat, longitude: object.lng)
-                marker.title = object.name
-                marker.snippet = object.address
-                marker.icon = UIImage.init(named: "ic_restaurant_caloHigh")
-                marker.map = googleMapView
-            }
-           
+            let marker = GMSMarker()
+            marker.position = CLLocationCoordinate2D(latitude: FoodbodyUtils.shared.checkDataFloat(dict: dict, key: "lat"), longitude: FoodbodyUtils.shared.checkDataFloat(dict: dict, key: "lng"));
+            marker.title = FoodbodyUtils.shared.checkDataString(dict: dict, key: "name");
+            marker.snippet = FoodbodyUtils.shared.checkDataString(dict: dict, key: "address");
+            marker.icon = UIImage.init(named: "ic_restaurant_caloHigh")
+            marker.map = googleMapView
         }
+    
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let locationValue: CLLocationCoordinate2D = manager.location?.coordinate {
             self.currentLocation = locationValue;
             print("Toan12520447 call, \(currentLocation)")
             self.getDataRestaurant();
-            
+            self.addListenerOnRestaurantd(db: self.db)
             locationManager?.stopUpdatingLocation();
             locationManager = nil;
         }
@@ -135,11 +153,12 @@ extension FodiMapVC:UICollectionViewDelegate, UICollectionViewDataSource{
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FodiMapCell", for: indexPath) as! FodiMapCell;
-        let restaurant:RestaurantModel = listRestaurant[indexPath.row] as! RestaurantModel;
-        cell.lblName.text = restaurant.name;
-        cell.lblCategory.text = restaurant.category;
-        cell.lblKcal.text = "300kcal"
-        cell.lblTime.text = restaurant.open_hour + "-" + restaurant.close_hour;
+        let object:QueryDocumentSnapshot = listRestaurant[indexPath.row] as! QueryDocumentSnapshot;
+        let dict:NSDictionary = object.data() as NSDictionary;
+        cell.lblName.text = FoodbodyUtils.shared.checkDataString(dict: dict, key: "name");
+        cell.lblCategory.text = FoodbodyUtils.shared.checkDataString(dict: dict, key: "category");
+        cell.lblKcal.text = "300kcal";
+        cell.lblTime.text = FoodbodyUtils.shared.checkDataString(dict: dict, key: "open_hour") + "-" + FoodbodyUtils.shared.checkDataString(dict: dict, key: "close_hour");
         
         return cell;
     }
