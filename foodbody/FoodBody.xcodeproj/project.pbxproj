@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F03660522DB837B001C15FE /* RestaurantInfoMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F03660422DB837B001C15FE /* RestaurantInfoMenuVC.swift */; };
 		2F1774B622D1EF2200778D05 /* RestaurantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1774B522D1EF2200778D05 /* RestaurantModel.swift */; };
 		2F427B9922BD1E6000099B0F /* SFProText-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F427B9322BD1E6000099B0F /* SFProText-Regular.otf */; };
 		2F427B9A22BD1E6000099B0F /* SFProText-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F427B9422BD1E6000099B0F /* SFProText-Light.otf */; };
@@ -92,6 +93,7 @@
 
 /* Begin PBXFileReference section */
 		1F70F90E900EE369E36E5A70 /* Pods-FoodBodyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodBodyUITests.debug.xcconfig"; path = "Target Support Files/Pods-FoodBodyUITests/Pods-FoodBodyUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		2F03660422DB837B001C15FE /* RestaurantInfoMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantInfoMenuVC.swift; sourceTree = "<group>"; };
 		2F1774B522D1EF2200778D05 /* RestaurantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantModel.swift; sourceTree = "<group>"; };
 		2F427B9322BD1E6000099B0F /* SFProText-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Regular.otf"; sourceTree = "<group>"; };
 		2F427B9422BD1E6000099B0F /* SFProText-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Light.otf"; sourceTree = "<group>"; };
@@ -199,6 +201,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F03660322DB8369001C15FE /* RestaurantInfoMenuVC */ = {
+			isa = PBXGroup;
+			children = (
+				2F03660422DB837B001C15FE /* RestaurantInfoMenuVC.swift */,
+			);
+			path = RestaurantInfoMenuVC;
+			sourceTree = "<group>";
+		};
 		2F427B9222BD1E6000099B0F /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -434,6 +444,7 @@
 		D5B24B0722B73A3600DA16C4 /* FodiMap */ = {
 			isa = PBXGroup;
 			children = (
+				2F03660322DB8369001C15FE /* RestaurantInfoMenuVC */,
 				D5ACD6E422CD9A3800F8F1E2 /* AddRestaurantVC */,
 				D5B24B2A22B73EB000DA16C4 /* FodiMapVC */,
 			);
@@ -872,6 +883,7 @@
 				D5C0FDA222B8EE1900411488 /* LoginVC.swift in Sources */,
 				98CEA20D22B946FF00E82063 /* RequestService.swift in Sources */,
 				98282BDA22BFE727003ED8BC /* LoadingView.swift in Sources */,
+				2F03660522DB837B001C15FE /* RestaurantInfoMenuVC.swift in Sources */,
 				D5B24B2F22B73EE400DA16C4 /* ProfileVC.swift in Sources */,
 				98CEA20022B9431200E82063 /* Array.swift in Sources */,
 				2FCA49BC22D63F5400E3497D /* Geohash.swift in Sources */,

@@ -9,6 +9,7 @@
 import UIKit
 import GoogleMaps
 import Firebase
+import GooglePlaces
 
 class FodiMapVC: BaseVC,CLLocationManagerDelegate {
     //MARK: IBOutlet.
@@ -20,10 +21,13 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate {
     var currentLocation:CLLocationCoordinate2D = CLLocationCoordinate2D.init()
     var listRestaurant: [QueryDocumentSnapshot] = []
     let db = Firestore.firestore()
-    
+    // MARK: cycle view.
     override func viewDidLoad() {
         super.viewDidLoad()
-         // For use in foreground
+        self.initUI()
+    }
+    //MARK:init.
+    func initUI(){
         locationManager = CLLocationManager();
         self.locationManager?.requestAlwaysAuthorization()
         self.locationManager?.requestWhenInUseAuthorization()
@@ -34,8 +38,11 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate {
         }
         self.clvFodi.delegate = self;
         self.clvFodi.dataSource = self;
+        self.googleMapView.delegate = self;
     }
-    //MARK:init Data
+    func initData(){
+        self.getDataRestaurant()
+    }
     func getDataRestaurant() -> Void {
         listRestaurant.removeAll()
         FoodbodyUtils.shared.showLoadingHub(viewController: self);
@@ -103,7 +110,6 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate {
         let camera = GMSCameraPosition.camera(withLatitude: curentLocation.latitude, longitude: curentLocation.longitude, zoom: 15.0)
         googleMapView.camera = camera
         // Creates a marker in the center of the map.
-       
         for object in listRestaurant {
             let dict:NSDictionary = object.data() as NSDictionary;
             
@@ -141,7 +147,6 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate {
             
         }
     }
-
 }
 
 extension FodiMapVC:UICollectionViewDelegate, UICollectionViewDataSource{
@@ -153,7 +158,7 @@ extension FodiMapVC:UICollectionViewDelegate, UICollectionViewDataSource{
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FodiMapCell", for: indexPath) as! FodiMapCell;
-        let object:QueryDocumentSnapshot = listRestaurant[indexPath.row] as! QueryDocumentSnapshot;
+        let object:QueryDocumentSnapshot = listRestaurant[indexPath.row];
         let dict:NSDictionary = object.data() as NSDictionary;
         cell.lblName.text = FoodbodyUtils.shared.checkDataString(dict: dict, key: "name");
         cell.lblCategory.text = FoodbodyUtils.shared.checkDataString(dict: dict, key: "category");
@@ -168,4 +173,24 @@ extension FodiMapVC:UICollectionViewDelegate, UICollectionViewDataSource{
         let size:CGSize = CGSize.init(width: width, height: height);
         return size;
     }
+}
+
+extension FodiMapVC:GMSMapViewDelegate{
+    func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
+        return nil;
+    }
+    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
+        print("test")
+        for object in self.listRestaurant{
+            let dict:NSDictionary = object.data() as NSDictionary;
+            let lat = FoodbodyUtils.shared.checkDataFloat(dict: dict, key: "lat")
+            let lng = FoodbodyUtils.shared.checkDataFloat(dict: dict, key: "lng")
+            if (marker.position.latitude == lat &&  marker.position.longitude == lng) {
+                let vc:RestaurantInfoMenuVC = getViewController(className: RestaurantInfoMenuVC.className, storyboard: FbConstants.FodiMapSB) as! RestaurantInfoMenuVC
+                vc.document = object;
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
+    }
+    
 }
