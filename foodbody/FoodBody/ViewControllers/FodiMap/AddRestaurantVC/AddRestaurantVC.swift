@@ -22,6 +22,7 @@ class AddRestaurantVC: BaseVC {
     
     //MARK: Properties
 	var restaurant: RestaurantRequest = RestaurantRequest()
+    var categoryList: [CategoryModel] = []
 
 	// MARK: Life cycle of viewcontroller
 	
@@ -29,6 +30,7 @@ class AddRestaurantVC: BaseVC {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         registerNib()
+        getCategory()
     }
 	
     //MARK: === ACTION  ===
@@ -101,6 +103,19 @@ class AddRestaurantVC: BaseVC {
 		tableView.register(UINib.init(nibName: RestaurantTableViewCell.className, bundle: nil), forCellReuseIdentifier: RestaurantTableViewCell.className)
 		
 	}
+    
+    private func getCategory() {
+        self.showLoading()
+        
+        RequestManager.getCategoty { (data, error) in
+            self.hideLoading()
+            
+            if let data  = data {
+                self.categoryList = data
+                self.tableView.reloadData()
+            }
+        }
+    }
 
 }
 
@@ -126,6 +141,7 @@ extension AddRestaurantVC: UITableViewDataSource {
         case AddResEnum.restaurant.rawValue:
             let resCell = tableView.dequeueReusableCell(withIdentifier: RestaurantTableViewCell.className, for: indexPath) as! RestaurantTableViewCell
             resCell.delegate = self
+            resCell.categoryList = categoryList
             resCell.bindData(restaurant: restaurant)
             return resCell
             
@@ -179,7 +195,7 @@ extension AddRestaurantVC: RestaurantTableViewCellDelegate, MenuTableViewCellDel
     
     func restaurantTableViewCellEndEditing(restaurantModel: Restaurant) {
         restaurant.name = restaurantModel.title
-		restaurant.category = "FAST_FOOD" // hard code
+		restaurant.category = restaurantModel.category
 		restaurant.close_hour = restaurantModel.closeHours
 		restaurant.open_hour = restaurantModel.openHours
 		restaurant.type = restaurantModel.type

@@ -18,6 +18,7 @@ enum RequestService {
     case getProfile
     case updateUserProfile(dic: [String: Any])
     case createRestaurant(dic: [String: Any])
+    case getCagegory
 }
 
 extension RequestService: TargetType {
@@ -44,6 +45,8 @@ extension RequestService: TargetType {
             return APIConstant.updateUserProfile
         case .createRestaurant:
             return APIConstant.createRestaurant
+        case .getCagegory:
+            return APIConstant.getCategory
         default:
             return ""
         }
@@ -58,9 +61,6 @@ extension RequestService: TargetType {
              .updateUserProfile,
              .createRestaurant:
             return .post
-        case .getProfile:
-            return .get
-            
         default:
             return .get
         }
@@ -76,7 +76,7 @@ extension RequestService: TargetType {
     var headers: [String: String]? {
         
         switch self {
-        case .login, .signup, .googleSignIn, .facbookSignIn:
+        case .login, .signup, .googleSignIn, .facbookSignIn, .getCagegory:
             return ["Content-Type": "application/json"]
         default:
             return ["Content-Type": "application/json",
