@@ -48,6 +48,7 @@
 		98CEA20D22B946FF00E82063 /* RequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CEA20C22B946FF00E82063 /* RequestService.swift */; };
 		98CEA21422B94A9E00E82063 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CEA21322B94A9E00E82063 /* BaseVC.swift */; };
 		98D9AEC522C85E5600C5DD56 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D9AEC422C85E5600C5DD56 /* Style.swift */; };
+		98F772CA22D9AF560027F4BE /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F772C922D9AF560027F4BE /* CategoryModel.swift */; };
 		A813AAA64346A9D4542E55E4 /* Pods_FoodBody.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73AE9D25C41C4F27A5CE7871 /* Pods_FoodBody.framework */; };
 		AE21F73E1EA182D2A40B879B /* Pods_FoodBodyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDE576CAA46F1C9B5EF69D4 /* Pods_FoodBodyUITests.framework */; };
 		D590B99822D439FB00CC7EE8 /* FodiMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D590B99722D439FB00CC7EE8 /* FodiMapCell.swift */; };
@@ -141,6 +142,7 @@
 		98CEA21322B94A9E00E82063 /* BaseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		98CEA21622B94AF900E82063 /* SelectGenderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectGenderVC.swift; sourceTree = "<group>"; };
 		98D9AEC422C85E5600C5DD56 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
+		98F772C922D9AF560027F4BE /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		A5D4A5F8DFA14D46F1E045B7 /* Pods_FoodBodyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodBodyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1378A63193204787118F887 /* Pods-FoodBodyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodBodyUITests.release.xcconfig"; path = "Target Support Files/Pods-FoodBodyUITests/Pods-FoodBodyUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D590B99722D439FB00CC7EE8 /* FodiMapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FodiMapCell.swift; sourceTree = "<group>"; };
@@ -273,7 +275,6 @@
 			isa = PBXGroup;
 			children = (
 				98282BD622BFD00C003ED8BC /* UserModel.swift */,
-				2F1774B522D1EF2200778D05 /* RestaurantModel.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -310,6 +311,15 @@
 				98CEA21322B94A9E00E82063 /* BaseVC.swift */,
 			);
 			path = BaseVC;
+			sourceTree = "<group>";
+		};
+		98F772C822D9AF310027F4BE /* Restaurant */ = {
+			isa = PBXGroup;
+			children = (
+				2F1774B522D1EF2200778D05 /* RestaurantModel.swift */,
+				98F772C922D9AF560027F4BE /* CategoryModel.swift */,
+			);
+			path = Restaurant;
 			sourceTree = "<group>";
 		};
 		D590B99522D439DF00CC7EE8 /* Cells */ = {
@@ -462,6 +472,7 @@
 		D5B24B1322B73C0B00DA16C4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				98F772C822D9AF310027F4BE /* Restaurant */,
 				98282BD522BFCF41003ED8BC /* Authentication */,
 			);
 			path = Models;
@@ -905,6 +916,7 @@
 				98282BD722BFD00C003ED8BC /* UserModel.swift in Sources */,
 				98CEA20622B943B200E82063 /* GlobalFunc.swift in Sources */,
 				D5ACD6E622CD9A5000F8F1E2 /* AddRestaurantVC.swift in Sources */,
+				98F772CA22D9AF560027F4BE /* CategoryModel.swift in Sources */,
 				98CEA1FE22B9431200E82063 /* UIView.swift in Sources */,
 				D5B24B3522B73FB600DA16C4 /* MainTabBarVC.swift in Sources */,
 				D5C0FDA522B8EE2A00411488 /* SignUpVC.swift in Sources */,

@@ -200,6 +200,36 @@ struct RequestManager {
             }
         }
     }
+    
+   
+    static func getCategoty(completion: @escaping (_ result: [CategoryModel]?, _ error: Error?) -> ()){
+    
+         provider.request(.getCagegory) { result in
+            do {
+                switch result {
+                case .success(let response):
+                    let json = try response.mapJSON()
+                    print(String(describing: response.request))
+                    print(String(describing: json))
+            
+                    let response = Mapper<CategoryModelData>().map(JSONObject: json)
+                    
+                    var categoryArray: [CategoryModel] = []
+                    for (_, value) in response?.data ?? [:] {
+                        categoryArray.append(value)
+                    }
+                    
+                    completion(categoryArray, nil)
+                case .failure(let error):
+                    completion(nil, error)
+                    print(error)
+                }
+            } catch let error {
+                completion(nil, error)
+                print(error)
+            }
+        }
+    }
 }
 
 

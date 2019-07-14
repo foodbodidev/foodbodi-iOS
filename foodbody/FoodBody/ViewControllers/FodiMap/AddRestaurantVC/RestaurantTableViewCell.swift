@@ -35,6 +35,10 @@ class RestaurantTableViewCell: UITableViewCell {
     @IBOutlet weak var foodTruckButton: UIButton!
     
     
+    var  categoryList: [CategoryModel] = []
+    
+    
+    
     
     //MARK: Properties
     weak var delegate: RestaurantTableViewCellDelegate?
@@ -47,6 +51,18 @@ class RestaurantTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.setupDatePiker()
+        self.setupCategoryPicker()
+        
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+    
+    private func setupDatePiker() {
         //Date Picker
         let datePickerOpen = UIDatePicker()
         datePickerOpen.datePickerMode = .time
@@ -60,11 +76,12 @@ class RestaurantTableViewCell: UITableViewCell {
         datePickerClose.timeZone = TimeZone.current
         closeHoursTextField.inputView = datePickerClose
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    private func setupCategoryPicker() {
+        let catePicker = UIPickerView()
+        categoryTextField.inputView = catePicker
+        catePicker.delegate = self
+        catePicker.dataSource = self
     }
     
     @IBAction func actionRestaurant() {
@@ -140,7 +157,6 @@ extension RestaurantTableViewCell: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         model.title = titleTextField.text!
-        model.category = categoryTextField.text!
         model.openHours = openHoursTextField.text!
         model.closeHours = closeHoursTextField.text!
         
@@ -151,5 +167,39 @@ extension RestaurantTableViewCell: UITextFieldDelegate {
             delegate.restaurantTableViewCellEndEditing(restaurantModel: model)
         }
         
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {// disable editing 
+        switch textField {
+        case categoryTextField:
+            return false
+        case openHoursTextField:
+            return false
+        case closeHoursTextField:
+            return false
+        default:
+            return true
+        }
+    }
+}
+
+extension RestaurantTableViewCell: UIPickerViewDelegate, UIPickerViewDataSource {
+    // MARK: UIPickerView Delegation
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return categoryList.count
+    }
+    
+    func pickerView( _ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return categoryList[row].name
+    }
+    
+    func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        categoryTextField.text = categoryList[row].name
+        model.category = categoryList[row].key
     }
 }
