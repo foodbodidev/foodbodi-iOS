@@ -16,11 +16,33 @@ class TabMenuVC: BaseVC {
         super.viewDidLoad()
         self.initUI();
         // Do any additional setup after loading the view.
+        self.getDataFromServer();
     }
     func initUI(){
         self.tbvMenu.register(UINib.init(nibName: "FoodTableViewCell", bundle: nil), forCellReuseIdentifier: "FoodTableViewCell")
         self.tbvMenu!.delegate = self;
         self.tbvMenu!.dataSource = self;
+    }
+    func getDataFromServer() {
+        listMenu?.removeAllObjects();
+        FoodbodyUtils.shared.showLoadingHub(viewController: self);
+        RequestManager.getFoodWithRestaurantId(id: self.idRestaurant!) { (result, error) in
+            FoodbodyUtils.shared.hideLoadingHub(viewController: self);
+            if let error = error {
+                self.alertMessage(message: "Get Data fail \(error.localizedDescription)");
+            }
+            if let result = result {
+                
+                if result.isSuccess {
+                    for object in result.data{
+                        self.listMenu?.add(object);
+                    }
+                    self.tbvMenu.reloadData();
+                } else {
+                    self.alertMessage(message: result.message)
+                }
+            }
+        }
     }
 
 }
@@ -36,10 +58,17 @@ extension TabMenuVC: UITableViewDelegate, UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = indexPath.row;
-        
+        let data:FoodModel = self.listMenu![row] as! FoodModel;
         let foodCell:FoodTableViewCell = tableView.dequeueReusableCell(withIdentifier: "FoodTableViewCell", for: indexPath) as! FoodTableViewCell
+        foodCell.nameLabel.text = data.name
+        foodCell.priceLabel.text = "\(data.price)" + "$"
+        foodCell.calorLabel.text = "\(data.calo)" + " Kcal"
         return foodCell;
         
-        
     }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80;
+    }
+    
+    
 }
