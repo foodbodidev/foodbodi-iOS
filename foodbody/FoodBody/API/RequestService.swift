@@ -19,6 +19,7 @@ enum RequestService {
     case updateUserProfile(dic: [String: Any])
     case createRestaurant(dic: [String: Any])
     case getCagegory
+	case uploadPhoto(dic: Moya.MultipartFormData)
 }
 
 extension RequestService: TargetType {
@@ -47,6 +48,8 @@ extension RequestService: TargetType {
             return APIConstant.createRestaurant
         case .getCagegory:
             return APIConstant.getCategory
+		case .uploadPhoto:
+			return APIConstant.uploadPhoto
         default:
             return ""
         }
@@ -59,7 +62,8 @@ extension RequestService: TargetType {
              .googleSignIn,
              .facbookSignIn,
              .updateUserProfile,
-             .createRestaurant:
+             .createRestaurant,
+			 .uploadPhoto:
             return .post
         default:
             return .get
@@ -98,6 +102,8 @@ extension RequestService: TargetType {
             return .requestParameters(parameters: dic, encoding: JSONEncoding.default)
         case .createRestaurant(let dic):
             return .requestParameters(parameters: dic, encoding: JSONEncoding.default)
+		case .uploadPhoto(let mutipartForm):
+			return .uploadMultipart([mutipartForm])
         default:
             return .requestPlain
         }

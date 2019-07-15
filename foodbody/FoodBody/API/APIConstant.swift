@@ -19,6 +19,8 @@ struct APIConstant {
     //API Restaurant.
     static let createRestaurant = "/api/restaurant"
     static let getCategory = "/api/metadata/restaurant_category"
+	static let uploadPhoto = "/api/upload/photo"
+	
     
     
 }

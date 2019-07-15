@@ -230,6 +230,32 @@ struct RequestManager {
             }
         }
     }
+	
+//	static func uploadPhoto(dataImage: Data, completion: @escaping (_ result: ResonseModel?, _ error: Error?) -> ()){
+//		
+//		let imageName = "\(Date().timeIntervalSinceNow)" // named base on current time
+//		
+//		let mutilPartForm = MultipartFormData(provider: .data(dataImage), name: "file", fileName: imageName, mimeType: "image/jpeg")
+//		
+//		provider.request(.uploadPhoto(dic: mutilPartForm)) { result in
+//			do {
+//				switch result {
+//				case .success(let response):
+//					let json = try response.mapJSON()
+//					print(String(describing: response.request))
+//					print(String(describing: json))
+//					let response = Mapper<ResonseModel>().map(JSONObject:json)
+//					completion(response, nil)
+//				case .failure(let error):
+//					completion(nil, error)
+//					print(error)
+//				}
+//			} catch let error {
+//				completion(nil, error)
+//				print(error)
+//			}
+//		}
+//	}
 }
 
 
