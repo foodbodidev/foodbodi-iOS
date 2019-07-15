@@ -231,31 +231,54 @@ struct RequestManager {
         }
     }
 	
-//	static func uploadPhoto(dataImage: Data, completion: @escaping (_ result: ResonseModel?, _ error: Error?) -> ()){
-//		
-//		let imageName = "\(Date().timeIntervalSinceNow)" // named base on current time
-//		
-//		let mutilPartForm = MultipartFormData(provider: .data(dataImage), name: "file", fileName: imageName, mimeType: "image/jpeg")
-//		
-//		provider.request(.uploadPhoto(dic: mutilPartForm)) { result in
-//			do {
-//				switch result {
-//				case .success(let response):
-//					let json = try response.mapJSON()
-//					print(String(describing: response.request))
-//					print(String(describing: json))
-//					let response = Mapper<ResonseModel>().map(JSONObject:json)
-//					completion(response, nil)
-//				case .failure(let error):
-//					completion(nil, error)
-//					print(error)
-//				}
-//			} catch let error {
-//				completion(nil, error)
-//				print(error)
-//			}
-//		}
-//	}
+    static func uploadPhoto(dataImage: Data, completion: @escaping (_ result: ResonseModel?, _ error: Error?) -> ()){
+        
+        let imageName = "\(Date().timeIntervalSinceNow)" // named base on current time
+        
+        let mutilPartForm = MultipartFormData(provider: .data(dataImage), name: "file", fileName: imageName, mimeType: "image/jpeg")
+        
+        provider.request(.uploadPhoto(dic: mutilPartForm)) { result in
+            do {
+                switch result {
+                case .success(let response):
+                    let json = try response.mapJSON()
+                    print(String(describing: response.request))
+                    print(String(describing: json))
+                    let response = Mapper<ResonseModel>().map(JSONObject:json)
+                    completion(response, nil)
+                case .failure(let error):
+                    completion(nil, error)
+                    print(error)
+                }
+            } catch let error {
+                completion(nil, error)
+                print(error)
+            }
+        }
+    }
+    
+    static func getFoodWithRestaurantId(id: String, completion: @escaping (_ result: FoodResponse?, _ error: Error?) -> ()){
+        
+        
+        provider.request(.getFoodWithRestaurantId(id: id)) { result in
+            do {
+                switch result {
+                case .success(let response):
+                    let json = try response.mapJSON()
+                    print(String(describing: response.request))
+                    print(String(describing: json))
+                    let response = Mapper<FoodResponse>().map(JSONObject:json)
+                    completion(response, nil)
+                case .failure(let error):
+                    completion(nil, error)
+                    print(error)
+                }
+            } catch let error {
+                completion(nil, error)
+                print(error)
+            }
+        }
+    }
 }
 
 
