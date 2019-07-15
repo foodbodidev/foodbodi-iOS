@@ -20,6 +20,7 @@ enum RequestService {
     case createRestaurant(dic: [String: Any])
     case getCagegory
 	case uploadPhoto(dic: Moya.MultipartFormData)
+    case getFoodWithRestaurantId(id: String)
 }
 
 extension RequestService: TargetType {
@@ -50,6 +51,8 @@ extension RequestService: TargetType {
             return APIConstant.getCategory
 		case .uploadPhoto:
 			return APIConstant.uploadPhoto
+        case .getFoodWithRestaurantId(let id):
+            return APIConstant.getFoodWithRestaurantId + "/\(id)" + "/foods"
         default:
             return ""
         }

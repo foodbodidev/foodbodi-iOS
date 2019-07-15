@@ -20,6 +20,7 @@ struct APIConstant {
     static let createRestaurant = "/api/restaurant"
     static let getCategory = "/api/metadata/restaurant_category"
 	static let uploadPhoto = "/api/upload/photo"
+    static let getFoodWithRestaurantId = "/api/restaurant"
 	
     
     
