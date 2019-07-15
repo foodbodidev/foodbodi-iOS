@@ -55,14 +55,10 @@ class RestaurantInfoMenuVC: BaseVC {
     }
     //MARK: action
     @IBAction func menuAction(sender:UIButton){
-//        if !self.navInfoMenu.viewControllers.last!.isKind(of: TabMenuVC.self){
-            self.navInfoMenu.setViewControllers([self.tabMenuVC!], animated: false);
-//        }
+        self.navInfoMenu.setViewControllers([self.tabMenuVC!], animated: false)
     }
     @IBAction func chatAction(sender:UIButton){
-//        if !self.navInfoMenu.viewControllers.last!.isKind(of: TabChatVC.self){
-            self.navInfoMenu.setViewControllers([self.tabChatVC!], animated: false);
-//        }
+        self.navInfoMenu.setViewControllers([self.tabChatVC!], animated: false);
     }
 
 }

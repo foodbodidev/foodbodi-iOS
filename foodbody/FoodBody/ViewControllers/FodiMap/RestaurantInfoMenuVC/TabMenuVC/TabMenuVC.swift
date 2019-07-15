@@ -11,7 +11,7 @@ import UIKit
 class TabMenuVC: BaseVC {
     @IBOutlet weak var tbvMenu: UITableView!
     var idRestaurant:String?
-    var listMenu:NSArray?
+    var listMenu:NSMutableArray? = NSMutableArray.init();
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initUI();
@@ -29,7 +29,10 @@ extension TabMenuVC: UITableViewDelegate, UITableViewDataSource{
         return 1;
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return listMenu!.count;
+        if listMenu!.count > 0{
+            return listMenu!.count;
+        }
+        return 0;
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = indexPath.row;
