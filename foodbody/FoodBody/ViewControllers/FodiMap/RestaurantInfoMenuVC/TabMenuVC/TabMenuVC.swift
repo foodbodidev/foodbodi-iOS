@@ -9,9 +9,11 @@
 import UIKit
 
 class TabMenuVC: BaseVC {
+    
     @IBOutlet weak var tbvMenu: UITableView!
-    var idRestaurant:String?
-    var listMenu:NSMutableArray? = NSMutableArray.init();
+    var idRestaurant: String = ""
+    var listMenu: [FoodModel] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initUI();
@@ -20,13 +22,14 @@ class TabMenuVC: BaseVC {
     }
     func initUI(){
         self.tbvMenu.register(UINib.init(nibName: "FoodTableViewCell", bundle: nil), forCellReuseIdentifier: "FoodTableViewCell")
-        self.tbvMenu!.delegate = self;
-        self.tbvMenu!.dataSource = self;
+        self.tbvMenu.delegate = self
+        self.tbvMenu.dataSource = self
     }
     func getDataFromServer() {
-        listMenu?.removeAllObjects();
+        
+        listMenu.removeAll()
         FoodbodyUtils.shared.showLoadingHub(viewController: self);
-        RequestManager.getFoodWithRestaurantId(id: self.idRestaurant!) { (result, error) in
+        RequestManager.getFoodWithRestaurantId(id: self.idRestaurant) { (result, error) in
             FoodbodyUtils.shared.hideLoadingHub(viewController: self);
             if let error = error {
                 self.alertMessage(message: "Get Data fail \(error.localizedDescription)");
@@ -35,7 +38,7 @@ class TabMenuVC: BaseVC {
                 
                 if result.isSuccess {
                     for object in result.data{
-                        self.listMenu?.add(object);
+                        self.listMenu.append(object)
                     }
                     self.tbvMenu.reloadData();
                 } else {
@@ -48,18 +51,20 @@ class TabMenuVC: BaseVC {
 }
 extension TabMenuVC: UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1;
+        return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if listMenu!.count > 0{
-            return listMenu!.count;
+        if listMenu.count > 0{
+            return listMenu.count
         }
-        return 0;
+        return 0
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let row = indexPath.row;
-        let data:FoodModel = self.listMenu![row] as! FoodModel;
+        
+        let row = indexPath.row
+        let data:FoodModel = self.listMenu[row]
         let foodCell:FoodTableViewCell = tableView.dequeueReusableCell(withIdentifier: "FoodTableViewCell", for: indexPath) as! FoodTableViewCell
+        
         foodCell.nameLabel.text = data.name
         foodCell.priceLabel.text = "\(data.price)" + "$"
         foodCell.calorLabel.text = "\(data.calo)" + " Kcal"

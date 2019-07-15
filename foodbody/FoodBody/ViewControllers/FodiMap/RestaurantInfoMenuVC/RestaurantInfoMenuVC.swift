@@ -35,13 +35,14 @@ class RestaurantInfoMenuVC: BaseVC {
         
     }
     func initVar() {
-        if document != nil {
-            let dict:NSDictionary = document!.data() as NSDictionary;
+        
+        if let document = document {
+            let dict:NSDictionary = document.data() as NSDictionary;
             self.lblName.text = FoodbodyUtils.shared.checkDataString(dict: dict, key: "name");
             self.lblCategory.text = FoodbodyUtils.shared.checkDataString(dict: dict, key: "category");
             self.lblKcal.text = "300kcal";
             self.lblTime.text = FoodbodyUtils.shared.checkDataString(dict: dict, key: "open_hour") + "-" + FoodbodyUtils.shared.checkDataString(dict: dict, key: "close_hour");
-            self.tabMenuVC!.idRestaurant = document?.documentID;
+            self.tabMenuVC!.idRestaurant = document.documentID;
             self.navInfoMenu.setViewControllers([self.tabMenuVC!], animated: false);
         }
     }
