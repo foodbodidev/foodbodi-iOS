@@ -41,6 +41,9 @@
                                                         <real key="value" value="23"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="actionOpenSelectionSheet" destination="BQH-t5-pHj" eventType="touchUpInside" id="NUY-CU-PcZ"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aCk-Nk-pac">
                                                 <rect key="frame" x="20" y="53" width="24" height="24"/>

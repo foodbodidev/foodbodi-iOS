@@ -23,6 +23,7 @@ class AddRestaurantVC: BaseVC {
     //MARK: Properties
 	var restaurant: RestaurantRequest = RestaurantRequest()
     var categoryList: [CategoryModel] = []
+    var imagePicker = UIImagePickerController()
 
 	// MARK: Life cycle of viewcontroller
 	
@@ -65,8 +66,46 @@ class AddRestaurantVC: BaseVC {
         }
 		
 	}
+    
+    @IBAction func actionOpenSelectionSheet() {
+        openActionSheet()
+    }
 	
 	//MARK: OTHER METHOD
+    
+    private func openActionSheet() {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Take Photo", style: .default, handler: { (_) in
+            self.openCamera()
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Open Gallery", style: .default, handler: { (_) in
+            self.openGallery()
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
+            self.dismiss(animated: true, completion: nil)
+        }))
+        present(actionSheet, animated: true)
+    }
+    
+    private func openGallery() {
+        if !UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            print("Library is not available")
+            return
+        }
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    private func openCamera() {
+        if !UIImagePickerController.isSourceTypeAvailable(.camera) {
+            print("Camera is not available")
+            return
+        }
+        imagePicker.sourceType = .camera
+        present(imagePicker, animated: true, completion: nil)
+    }
 	
 	private func validateData() -> Bool {
 		if restaurant.name.isEmpty {
@@ -228,4 +267,26 @@ extension AddRestaurantVC: GMSAutocompleteViewControllerDelegate {
         dismiss(animated: true, completion: nil)
     }
     
+}
+
+extension AddRestaurantVC: UIImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true)
+        
+        guard let image = info[.editedImage] as? UIImage else {
+            print("No image found")
+            return
+        }
+        
+        DispatchQueue.main.async {
+//            let dataImage = image.jpegData(compressionQuality: 0.3)
+//            RequestManager.uploadPhoto(dataImage: dataImage!, completion: { (result, error) in
+//                print(result)
+//                print(error)
+//            })
+        }
+    }
+        
+        
 }
