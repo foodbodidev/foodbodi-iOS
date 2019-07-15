@@ -10,26 +10,18 @@ import UIKit
 
 class TabMenuVC: BaseVC {
     @IBOutlet weak var tbvMenu: UITableView!
+    var idRestaurant:String?
     var listMenu:NSArray?
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.initUI();
         // Do any additional setup after loading the view.
     }
     func initUI(){
         self.tbvMenu.register(UINib.init(nibName: "FoodTableViewCell", bundle: nil), forCellReuseIdentifier: "FoodTableViewCell")
+        self.tbvMenu!.delegate = self;
+        self.tbvMenu!.dataSource = self;
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 extension TabMenuVC: UITableViewDelegate, UITableViewDataSource{

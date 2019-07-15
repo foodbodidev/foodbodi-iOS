@@ -29,6 +29,13 @@ class FoodbodyUtils: NSObject {
             return -1;
         }
     }
+    func checkDataArray(dict:NSDictionary, key:String) -> NSMutableArray {
+        if let listObject = dict[key] as? NSMutableArray {
+            return listObject;
+        } else {
+            return NSMutableArray.init();
+        }
+    }
     func showLoadingHub(viewController:UIViewController) {
         MBProgressHUD.showAdded(to: viewController.view, animated: true)
     }
