@@ -41,6 +41,8 @@ class RestaurantInfoMenuVC: BaseVC {
             self.lblCategory.text = FoodbodyUtils.shared.checkDataString(dict: dict, key: "category");
             self.lblKcal.text = "300kcal";
             self.lblTime.text = FoodbodyUtils.shared.checkDataString(dict: dict, key: "open_hour") + "-" + FoodbodyUtils.shared.checkDataString(dict: dict, key: "close_hour");
+            self.tabMenuVC!.idRestaurant = document?.documentID;
+            self.navInfoMenu.setViewControllers([self.tabMenuVC!], animated: false);
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -49,19 +51,18 @@ class RestaurantInfoMenuVC: BaseVC {
             self.navInfoMenu.navigationBar.isHidden = true;
             self.tabMenuVC = getViewController(className: TabMenuVC.className, storyboard: FbConstants.FodiMapSB) as? TabMenuVC
              self.tabChatVC = getViewController(className: TabChatVC.className, storyboard: FbConstants.FodiMapSB) as? TabChatVC
-            self.navInfoMenu.setViewControllers([self.tabMenuVC!], animated: false);
         }
     }
     //MARK: action
     @IBAction func menuAction(sender:UIButton){
-        if !self.navInfoMenu.viewControllers.last!.isKind(of: TabMenuVC.self){
+//        if !self.navInfoMenu.viewControllers.last!.isKind(of: TabMenuVC.self){
             self.navInfoMenu.setViewControllers([self.tabMenuVC!], animated: false);
-        }
+//        }
     }
     @IBAction func chatAction(sender:UIButton){
-        if !self.navInfoMenu.viewControllers.last!.isKind(of: TabChatVC.self){
+//        if !self.navInfoMenu.viewControllers.last!.isKind(of: TabChatVC.self){
             self.navInfoMenu.setViewControllers([self.tabChatVC!], animated: false);
-        }
+//        }
     }
 
 }
