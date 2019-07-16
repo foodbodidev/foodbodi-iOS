@@ -86,6 +86,7 @@ class RestaurantRequest: Mappable  {
     
     var type: String = ""
     var category: String = ""
+	var photo: String = ""
     var name: String = ""
     var address: String = ""
     var creator: String = ""
@@ -116,6 +117,7 @@ class RestaurantRequest: Mappable  {
         open_hour <- map["open_hour"]
         close_hour <- map["close_hour"]
 		foodRequest <- map["foods"]
+		photo <- map["photo"]
     }
     
 }
@@ -124,6 +126,7 @@ class FoodRequest: Mappable  {
 	var name: String = ""
 	var price: Int = 0
 	var calor: Int = 0
+	var photo: String = ""
 	
 	required init?(map: Map) {
 		
@@ -139,6 +142,7 @@ class FoodRequest: Mappable  {
 		name <- map["name"]
 		price <- map["price"]
 		calor <- map["calo"]
+		photo <- map["photo"]
 	}
 }
 

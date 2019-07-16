@@ -231,7 +231,7 @@ struct RequestManager {
         }
     }
 	
-    static func uploadPhoto(dataImage: Data, completion: @escaping (_ result: ResonseModel?, _ error: Error?) -> ()){
+    static func uploadPhoto(dataImage: Data, completion: @escaping (_ result: PhotoModel?, _ error: Error?) -> ()){
         
         let imageName = "\(Date().timeIntervalSinceNow)" // named base on current time
         
@@ -244,7 +244,7 @@ struct RequestManager {
                     let json = try response.mapJSON()
                     print(String(describing: response.request))
                     print(String(describing: json))
-                    let response = Mapper<ResonseModel>().map(JSONObject:json)
+                    let response = Mapper<PhotoModel>().map(JSONObject:json)
                     completion(response, nil)
                 case .failure(let error):
                     completion(nil, error)

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -49,6 +49,7 @@
 		98D9AEC522C85E5600C5DD56 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D9AEC422C85E5600C5DD56 /* Style.swift */; };
 		98F772CA22D9AF560027F4BE /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F772C922D9AF560027F4BE /* CategoryModel.swift */; };
 		98F772CC22DCBD500027F4BE /* FoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F772CB22DCBD500027F4BE /* FoodModel.swift */; };
+		BA782CAC22DDD71100E25985 /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA782CAB22DDD71100E25985 /* PhotoModel.swift */; };
 		C0FAACD8762ADF4F75EAFC52 /* Pods_FoodBody.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDD44040B71BAEEC8DC6A6F /* Pods_FoodBody.framework */; };
 		D587C45822DC27A100C119BA /* TabMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D587C45722DC27A100C119BA /* TabMenuVC.swift */; };
 		D587C45B22DC27BC00C119BA /* TabChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D587C45A22DC27BC00C119BA /* TabChatVC.swift */; };
@@ -148,6 +149,7 @@
 		A53153F27E165D0BB67BF0F1 /* Pods_FoodBodyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodBodyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF1B9C07DA6A01192E358B5E /* Pods-FoodBody.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodBody.debug.xcconfig"; path = "Target Support Files/Pods-FoodBody/Pods-FoodBody.debug.xcconfig"; sourceTree = "<group>"; };
 		B15723156247380AD3FD739B /* Pods_FoodBodyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodBodyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA782CAB22DDD71100E25985 /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
 		CB1EF7588D4080B50C8B498B /* Pods-FoodBodyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodBodyUITests.release.xcconfig"; path = "Target Support Files/Pods-FoodBodyUITests/Pods-FoodBodyUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D587C45722DC27A100C119BA /* TabMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMenuVC.swift; sourceTree = "<group>"; };
 		D587C45A22DC27BC00C119BA /* TabChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabChatVC.swift; sourceTree = "<group>"; };
@@ -327,6 +329,7 @@
 				2F1774B522D1EF2200778D05 /* RestaurantModel.swift */,
 				98F772C922D9AF560027F4BE /* CategoryModel.swift */,
 				98F772CB22DCBD500027F4BE /* FoodModel.swift */,
+				BA782CAB22DDD71100E25985 /* PhotoModel.swift */,
 			);
 			path = Restaurant;
 			sourceTree = "<group>";
@@ -832,50 +835,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FoodBody/Pods-FoodBody-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
-				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-FoodBody/Pods-FoodBody-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-FoodBody/Pods-FoodBody-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -888,20 +852,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FoodBody/Pods-FoodBody-resources.sh",
-				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
-				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
-				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+				"${PODS_ROOT}/Target Support Files/Pods-FoodBody/Pods-FoodBody-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+				"${PODS_ROOT}/Target Support Files/Pods-FoodBody/Pods-FoodBody-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -991,6 +946,7 @@
 				98CEA20622B943B200E82063 /* GlobalFunc.swift in Sources */,
 				D5ACD6E622CD9A5000F8F1E2 /* AddRestaurantVC.swift in Sources */,
 				98F772CA22D9AF560027F4BE /* CategoryModel.swift in Sources */,
+				BA782CAC22DDD71100E25985 /* PhotoModel.swift in Sources */,
 				98CEA1FE22B9431200E82063 /* UIView.swift in Sources */,
 				D5B24B3522B73FB600DA16C4 /* MainTabBarVC.swift in Sources */,
 				D5C0FDA522B8EE2A00411488 /* SignUpVC.swift in Sources */,
@@ -1183,7 +1139,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RJW2Z623E3;
+				DEVELOPMENT_TEAM = A8TR6EV78R;
 				INFOPLIST_FILE = FoodBody/Resource/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1201,16 +1157,19 @@
 			baseConfigurationReference = 991B3BE91C023CEE7303933D /* Pods-FoodBody.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RJW2Z623E3;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = Y44Y72D55P;
 				INFOPLIST_FILE = FoodBody/Resource/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = KPT.FoodBody;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nail.us;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				PROVISIONING_PROFILE_SPECIFIER = "Nail Distribution";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

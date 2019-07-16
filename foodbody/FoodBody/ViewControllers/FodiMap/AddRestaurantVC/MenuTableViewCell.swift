@@ -13,11 +13,13 @@ struct Food {
     var name: String = ""
     var price: Int = 0
     var calor: Int = 0
+	var photo: String = ""
 }
 
 
 protocol MenuTableViewCellDelegate: class {
     func didClickOnAddButton(food: Food)
+	func didAddFoodPhoto()
 }
 
 
@@ -63,6 +65,12 @@ class MenuTableViewCell: UITableViewCell {
         
         resetData()
     }
+	
+	@IBAction func actionAddPhotoFood() {
+		if let delegate = self.delegate {
+			delegate.didAddFoodPhoto()
+		}
+	}
 	
 	private func validateData() -> Bool {
         if titleTextField.text!.isEmpty {

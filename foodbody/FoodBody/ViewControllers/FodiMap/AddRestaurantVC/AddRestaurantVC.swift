@@ -9,11 +9,6 @@
 import UIKit
 import GooglePlaces
 
-enum AddResEnum: Int, CaseIterable {
-    case restaurant = 0
-    case addMenu
-    case foodDisplay
-}
 
 class AddRestaurantVC: BaseVC {
     
@@ -22,8 +17,24 @@ class AddRestaurantVC: BaseVC {
     
     //MARK: Properties
 	var restaurant: RestaurantRequest = RestaurantRequest()
+	var photoFoodURL: String = ""
     var categoryList: [CategoryModel] = []
     var imagePicker = UIImagePickerController()
+	
+	enum AddResEnum: Int, CaseIterable {
+		case restaurant = 0
+		case addMenu
+		case foodDisplay
+	}
+	
+	enum PhotoType {
+		case restaurant
+		case food
+	}
+	
+	var photoType: PhotoType = .restaurant
+	
+	//MARK: Enum
 
 	// MARK: Life cycle of viewcontroller
 	
@@ -68,6 +79,7 @@ class AddRestaurantVC: BaseVC {
 	}
     
     @IBAction func actionOpenSelectionSheet() {
+		photoType = .restaurant
         openActionSheet()
     }
 	
@@ -223,11 +235,12 @@ extension AddRestaurantVC: UITableViewDelegate {
 extension AddRestaurantVC: RestaurantTableViewCellDelegate, MenuTableViewCellDelegate {
     
     func didClickOnAddButton(food: Food) {
-		
 		let foodRequest = FoodRequest(name: food.name, price: food.price, calor: food.calor)
+		foodRequest.photo = photoFoodURL
 		
         restaurant.foodRequest.append(foodRequest)
         tableView.reloadData()
+		photoFoodURL = "" // reset photo url
     }
     
     
@@ -245,6 +258,11 @@ extension AddRestaurantVC: RestaurantTableViewCellDelegate, MenuTableViewCellDel
         seachAddressVC.delegate = self
         present(seachAddressVC, animated: true, completion: nil)
     }
+	
+	func didAddFoodPhoto() {
+		photoType = .food
+		openActionSheet()
+	}
 
 }
 
@@ -278,13 +296,23 @@ extension AddRestaurantVC: UIImagePickerControllerDelegate {
             print("No image found")
             return
         }
-        
+		
+		self.showLoading()
+
         DispatchQueue.main.async {
-//            let dataImage = image.jpegData(compressionQuality: 0.3)
-//            RequestManager.uploadPhoto(dataImage: dataImage!, completion: { (result, error) in
-//                print(result)
-//                print(error)
-//            })
+			self.hideLoading()
+            let dataImage = image.jpegData(compressionQuality: 0.3)
+            RequestManager.uploadPhoto(dataImage: dataImage!, completion: {  [weak self ](result, error) in
+				
+				guard let strongSelf = self, let photoURL = result?.mediaLink else { return }
+				
+				switch strongSelf.photoType {
+				case .food:
+					strongSelf.photoFoodURL = photoURL
+				case .restaurant:
+					strongSelf.restaurant.photo = photoURL
+				}
+            })
         }
     }
         
