@@ -17,13 +17,17 @@ class RestaurantInfoMenuVC: BaseVC {
     var tabChatVC:TabChatVC?
     weak var navInfoMenu:UINavigationController!
     // MARK: IBOutlet.
-    @IBOutlet weak var viContainer:UIView!
-    @IBOutlet weak var btnMenu:UIButton!
-    @IBOutlet weak var btnChat:UIButton!
-    @IBOutlet weak var lblName:UILabel!
-    @IBOutlet weak var lblCategory:UILabel!
-    @IBOutlet weak var lblKcal:UILabel!
-    @IBOutlet weak var lblTime:UILabel!
+    @IBOutlet weak var viContainer: UIView!
+    @IBOutlet weak var btnMenu: UIButton!
+    @IBOutlet weak var btnChat: UIButton!
+    @IBOutlet weak var lblName: UILabel!
+    @IBOutlet weak var lblCategory: UILabel!
+    @IBOutlet weak var lblKcal: UILabel!
+    @IBOutlet weak var lblTime: UILabel!
+    @IBOutlet weak var viButton: UIView!
+    @IBOutlet weak var viHeader: UIView!
+    @IBOutlet weak var btnCall: UIButton!
+    @IBOutlet weak var btnLike: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +36,14 @@ class RestaurantInfoMenuVC: BaseVC {
     }
     //MARK: init.
     func initUI(){
-        
+        self.viButton.layer.cornerRadius = 8;
+        self.viButton.layer.masksToBounds = true;
+        self.viHeader.layer.cornerRadius = 8;
+        self.viButton.layer.masksToBounds = true;
+        self.btnCall.layer.cornerRadius = 12;
+        self.btnCall.layer.masksToBounds = true;
+        self.btnLike.layer.cornerRadius = 22;
+        self.btnLike.layer.masksToBounds = true;
     }
     func initVar() {
         

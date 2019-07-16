@@ -9,22 +9,25 @@
 import UIKit
 
 class TabMenuVC: BaseVC {
-    
+    // MARK: IBOutlet
     @IBOutlet weak var tbvMenu: UITableView!
+    //MARK: variable.
     var idRestaurant: String = ""
     var listMenu: [FoodModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initUI();
-        // Do any additional setup after loading the view.
         self.getDataFromServer();
     }
+    //MARKL: init
+    
     func initUI(){
         self.tbvMenu.register(UINib.init(nibName: "FoodTableViewCell", bundle: nil), forCellReuseIdentifier: "FoodTableViewCell")
         self.tbvMenu.delegate = self
         self.tbvMenu.dataSource = self
     }
+    
     func getDataFromServer() {
         
         listMenu.removeAll()
@@ -49,6 +52,7 @@ class TabMenuVC: BaseVC {
     }
 
 }
+
 extension TabMenuVC: UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
