@@ -129,7 +129,7 @@ struct RequestManager {
         }
     }
     //Get Profile.
-    static func getProfile(completion: @escaping (_ result: User?, _ error: Error?) -> ()){
+    static func getProfile(completion: @escaping (_ result: UserProfile?, _ error: Error?) -> ()){
         
 
         provider.request(.getProfile) { result in
@@ -139,7 +139,7 @@ struct RequestManager {
                     let json = try response.mapJSON()
                     print(String(describing: response.request))
                     print(String(describing: json))
-                    let response = Mapper<User>().map(JSONObject:json)
+                    let response = Mapper<UserProfile>().map(JSONObject:json)
                     completion(response, nil)
                 case .failure(let error):
                     completion(nil, error)
