@@ -173,7 +173,14 @@ extension FodiMapVC:UICollectionViewDelegate, UICollectionViewDataSource{
         let size:CGSize = CGSize.init(width: width, height: height);
         return size;
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let object:QueryDocumentSnapshot = listRestaurant[indexPath.row];
+        let vc:RestaurantInfoMenuVC = getViewController(className: RestaurantInfoMenuVC.className, storyboard: FbConstants.FodiMapSB) as! RestaurantInfoMenuVC
+        vc.document = object;
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
+
 
 extension FodiMapVC:GMSMapViewDelegate{
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
