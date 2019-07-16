@@ -51,6 +51,7 @@ class YourBasicVC: BaseVC {
     }
     
     private func updateUserProfile() {
+		self.view.endEditing(true)
         self.showLoading()
         
         userInfo.age = Int(ageTextField.textField.text!) ?? 0
