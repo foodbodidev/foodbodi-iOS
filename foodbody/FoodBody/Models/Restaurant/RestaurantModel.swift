@@ -127,6 +127,8 @@ class FoodRequest: Mappable  {
 	var price: Int = 0
 	var calor: Int = 0
 	var photo: String = ""
+    
+    var image: UIImage?  // use for displaying layout
 	
 	required init?(map: Map) {
 		

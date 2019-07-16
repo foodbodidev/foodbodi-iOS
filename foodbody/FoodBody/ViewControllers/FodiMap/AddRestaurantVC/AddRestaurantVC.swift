@@ -14,12 +14,14 @@ class AddRestaurantVC: BaseVC {
     
     //MARK: ==== OUTLET ====
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var headerImageView: UIImageView!
     
     //MARK: Properties
 	var restaurant: RestaurantRequest = RestaurantRequest()
 	var photoFoodURL: String = ""
     var categoryList: [CategoryModel] = []
     var imagePicker = UIImagePickerController()
+    var imageFood: UIImage?
 	
 	enum AddResEnum: Int, CaseIterable {
 		case restaurant = 0
@@ -107,6 +109,7 @@ class AddRestaurantVC: BaseVC {
             return
         }
         imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
         present(imagePicker, animated: true, completion: nil)
     }
     
@@ -116,6 +119,7 @@ class AddRestaurantVC: BaseVC {
             return
         }
         imagePicker.sourceType = .camera
+        imagePicker.delegate = self
         present(imagePicker, animated: true, completion: nil)
     }
 	
@@ -237,10 +241,13 @@ extension AddRestaurantVC: RestaurantTableViewCellDelegate, MenuTableViewCellDel
     func didClickOnAddButton(food: Food) {
 		let foodRequest = FoodRequest(name: food.name, price: food.price, calor: food.calor)
 		foodRequest.photo = photoFoodURL
+        foodRequest.image = imageFood
+        
 		
         restaurant.foodRequest.append(foodRequest)
         tableView.reloadData()
 		photoFoodURL = "" // reset photo url
+        imageFood = nil// reset image
     }
     
     
@@ -287,12 +294,12 @@ extension AddRestaurantVC: GMSAutocompleteViewControllerDelegate {
     
 }
 
-extension AddRestaurantVC: UIImagePickerControllerDelegate {
+extension AddRestaurantVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true)
         
-        guard let image = info[.editedImage] as? UIImage else {
+        guard let image = info[.originalImage] as? UIImage else {
             print("No image found")
             return
         }
@@ -300,21 +307,27 @@ extension AddRestaurantVC: UIImagePickerControllerDelegate {
 		self.showLoading()
 
         DispatchQueue.main.async {
-			self.hideLoading()
+			
             let dataImage = image.jpegData(compressionQuality: 0.3)
             RequestManager.uploadPhoto(dataImage: dataImage!, completion: {  [weak self ](result, error) in
 				
 				guard let strongSelf = self, let photoURL = result?.mediaLink else { return }
-				
+				strongSelf.hideLoading()
+                
 				switch strongSelf.photoType {
 				case .food:
 					strongSelf.photoFoodURL = photoURL
+                    strongSelf.imageFood = image
+                    
 				case .restaurant:
 					strongSelf.restaurant.photo = photoURL
+                    DispatchQueue.main.async {
+                        strongSelf.headerImageView.image = image
+                    }
 				}
             })
         }
     }
-        
+    
         
 }

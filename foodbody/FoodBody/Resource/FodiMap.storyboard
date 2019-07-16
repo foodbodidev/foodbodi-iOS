@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -32,6 +31,9 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nEf-3M-LHG">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="189.5"/>
                                         <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f9w-ua-mQl">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="189.5"/>
+                                            </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emK-Of-Dge">
                                                 <rect key="frame" x="137" y="40" width="46" height="46"/>
                                                 <constraints>
@@ -62,10 +64,14 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.89803921568627454" green="0.92941176470588238" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
+                                            <constraint firstItem="f9w-ua-mQl" firstAttribute="top" secondItem="nEf-3M-LHG" secondAttribute="top" id="45R-nB-IVv"/>
                                             <constraint firstItem="emK-Of-Dge" firstAttribute="centerX" secondItem="nEf-3M-LHG" secondAttribute="centerX" id="Bpg-DB-5JZ"/>
+                                            <constraint firstAttribute="bottom" secondItem="f9w-ua-mQl" secondAttribute="bottom" id="IYa-bB-YcI"/>
                                             <constraint firstItem="emK-Of-Dge" firstAttribute="top" secondItem="nEf-3M-LHG" secondAttribute="top" constant="40" id="TXy-bl-XQm"/>
                                             <constraint firstItem="emK-Of-Dge" firstAttribute="width" secondItem="emK-Of-Dge" secondAttribute="height" multiplier="1:1" id="XqE-Or-Ddy"/>
+                                            <constraint firstAttribute="trailing" secondItem="f9w-ua-mQl" secondAttribute="trailing" id="aEj-SM-sbt"/>
                                             <constraint firstItem="aCk-Nk-pac" firstAttribute="leading" secondItem="nEf-3M-LHG" secondAttribute="leading" constant="20" id="g0T-u6-veF"/>
+                                            <constraint firstItem="f9w-ua-mQl" firstAttribute="leading" secondItem="nEf-3M-LHG" secondAttribute="leading" id="uFr-lE-fY9"/>
                                             <constraint firstItem="aCk-Nk-pac" firstAttribute="top" secondItem="nEf-3M-LHG" secondAttribute="top" constant="53" id="vQ1-Mb-n8L"/>
                                         </constraints>
                                     </view>
@@ -134,6 +140,7 @@
                         <viewLayoutGuide key="safeArea" id="lhg-S5-jMe"/>
                     </view>
                     <connections>
+                        <outlet property="headerImageView" destination="f9w-ua-mQl" id="Gl8-vK-vfS"/>
                         <outlet property="tableView" destination="nnA-xc-dMF" id="IRI-qb-BU5"/>
                     </connections>
                 </viewController>

@@ -34,6 +34,7 @@ class FoodTableViewCell: UITableViewCell {
         nameLabel.text = data.name
         priceLabel.text = "\(data.price)" + "$"
         calorLabel.text = "\(data.calor)" + " Kcal"
+        foodImageView.image = data.image
         
     }
     
