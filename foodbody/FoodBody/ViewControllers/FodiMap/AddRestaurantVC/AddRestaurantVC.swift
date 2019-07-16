@@ -35,8 +35,8 @@ class AddRestaurantVC: BaseVC {
     }
 	
     //MARK: === ACTION  ===
-    
-    @IBAction func actionBack() {
+	
+    @IBAction func actionBacks() {
         self.navigationController?.popViewController(animated: true)
     }
 	

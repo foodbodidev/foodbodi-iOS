@@ -31,7 +31,7 @@ class RegisterAccountVC: BaseVC, GIDSignInUIDelegate{
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = true
+        //self.navigationController?.navigationBar.isHidden = true
     }
     
     fileprivate func configureLayout() {
@@ -54,9 +54,11 @@ class RegisterAccountVC: BaseVC, GIDSignInUIDelegate{
     @IBAction func didTapSignOut(_ sender: AnyObject) {
         GIDSignIn.sharedInstance().signOut()
     }
-    @IBAction func actionCancel(_ sender: Any?){
-        self.navigationController?.dismiss(animated: true, completion: nil)
-    }
+    
+	override func actionBack() {
+		self.navigationController?.dismiss(animated: true, completion: nil)
+	}
+	
     @IBAction func actionGoogleSignin(_ sender: Any?){
         GIDSignIn.sharedInstance()?.signIn()
     }

@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -327,27 +326,11 @@
                                     <constraint firstItem="J8g-yF-CAx" firstAttribute="leading" secondItem="whe-P9-9RN" secondAttribute="leading" id="yhV-Ct-04q"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I4a-gI-ONI">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
-                                <color key="backgroundColor" red="0.89803921568627454" green="0.92941176470588238" blue="0.93725490196078431" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="YEI-cz-XuP"/>
-                                </constraints>
-                                <state key="normal" image="backArow">
-                                    <color key="titleColor" red="0.098039215686274508" green="0.24313725490196078" blue="0.32156862745098036" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="actionCancel:" destination="Wb9-T5-oRC" eventType="touchUpInside" id="Ly1-cs-ZBK"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Mti-ox-ga7" firstAttribute="top" secondItem="I4a-gI-ONI" secondAttribute="bottom" constant="30" id="3Za-8g-LC8"/>
                             <constraint firstItem="whe-P9-9RN" firstAttribute="height" secondItem="E09-0T-Ifj" secondAttribute="height" id="5pk-yC-Xsn"/>
                             <constraint firstItem="Mti-ox-ga7" firstAttribute="leading" secondItem="fDz-lj-WtJ" secondAttribute="leading" constant="20" id="Aew-36-AeN"/>
-                            <constraint firstItem="I4a-gI-ONI" firstAttribute="top" secondItem="4Jq-zy-283" secondAttribute="top" id="B5M-yK-O5w"/>
                             <constraint firstItem="fDz-lj-WtJ" firstAttribute="trailing" secondItem="whe-P9-9RN" secondAttribute="trailing" constant="40" id="CpY-CV-ydq"/>
                             <constraint firstItem="fDz-lj-WtJ" firstAttribute="trailing" secondItem="1qM-dZ-Uia" secondAttribute="trailing" constant="40" id="GPX-2A-NgM"/>
                             <constraint firstItem="1qM-dZ-Uia" firstAttribute="leading" secondItem="fDz-lj-WtJ" secondAttribute="leading" constant="40" id="JoV-en-74e"/>
@@ -356,10 +339,9 @@
                             <constraint firstItem="1qM-dZ-Uia" firstAttribute="top" secondItem="4xe-tn-h8M" secondAttribute="bottom" constant="40" id="Wl4-Ao-Lc4"/>
                             <constraint firstItem="E09-0T-Ifj" firstAttribute="height" secondItem="1qM-dZ-Uia" secondAttribute="height" id="Zak-3C-ZUN"/>
                             <constraint firstItem="whe-P9-9RN" firstAttribute="top" secondItem="E09-0T-Ifj" secondAttribute="bottom" constant="20" id="bGT-BW-1Th"/>
+                            <constraint firstItem="Mti-ox-ga7" firstAttribute="top" secondItem="fDz-lj-WtJ" secondAttribute="top" constant="50" id="dVQ-B2-HzA"/>
                             <constraint firstItem="E09-0T-Ifj" firstAttribute="top" secondItem="1qM-dZ-Uia" secondAttribute="bottom" constant="20" id="e7i-lk-sFa"/>
                             <constraint firstItem="whe-P9-9RN" firstAttribute="leading" secondItem="fDz-lj-WtJ" secondAttribute="leading" constant="40" id="eoV-B9-lwl"/>
-                            <constraint firstItem="I4a-gI-ONI" firstAttribute="leading" secondItem="fDz-lj-WtJ" secondAttribute="leading" id="l4u-yQ-5HX"/>
-                            <constraint firstItem="fDz-lj-WtJ" firstAttribute="trailing" secondItem="I4a-gI-ONI" secondAttribute="trailing" id="myr-rp-DVP"/>
                             <constraint firstItem="fDz-lj-WtJ" firstAttribute="trailing" secondItem="E09-0T-Ifj" secondAttribute="trailing" constant="40" id="n9y-6E-rjf"/>
                             <constraint firstItem="4xe-tn-h8M" firstAttribute="leading" secondItem="fDz-lj-WtJ" secondAttribute="leading" constant="20" id="oEn-gb-Eqg"/>
                             <constraint firstItem="E09-0T-Ifj" firstAttribute="leading" secondItem="fDz-lj-WtJ" secondAttribute="leading" constant="40" id="qqd-aq-ETE"/>
@@ -485,7 +467,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="backArow" width="24" height="24"/>
         <image name="ic_girl" width="122" height="128"/>
         <image name="ic_man" width="122" height="145"/>
         <image name="ic_welcome" width="272" height="203"/>
