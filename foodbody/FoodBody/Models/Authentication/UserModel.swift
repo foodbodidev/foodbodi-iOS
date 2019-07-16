@@ -77,14 +77,14 @@ class User: NSObject, Mappable, NSCoding {
     
     func mapping(map: Map) {
         token <- map["data.token"]
-        email <- map["data.email"]
-        sex <- map["data.sex"]
-        height <- map["data.height"]
-        weight <- map["data.weight"]
-        target_weight <- map["data.target_weight"]
-        age <- map["data.age"]
-        first_name <- map["data.first_name"]
-        last_name <- map["data.last_name"]
+        email <- map["data.user.email"]
+        sex <- map["data.user.sex"]
+        height <- map["data.user.height"]
+        weight <- map["data.user.weight"]
+        target_weight <- map["data.user.target_weight"]
+        age <- map["data.user.age"]
+        first_name <- map["data.user.first_name"]
+        last_name <- map["data.user.last_name"]
         status_code <- map["status_code"]
         message <- map["message"]
         isSuccess = (status_code == 0) ? true : false
