@@ -237,7 +237,23 @@ extension AddRestaurantVC: UITableViewDelegate {
 }
 
 extension AddRestaurantVC: RestaurantTableViewCellDelegate, MenuTableViewCellDelegate {
-    
+	
+	
+	
+	func didClickOnAddButton(food: Food, cell: MenuTableViewCell) {
+		let foodRequest = FoodRequest(name: food.name, price: food.price, calor: food.calor)
+		foodRequest.photo = photoFoodURL
+		foodRequest.image = imageFood
+		
+		
+		restaurant.foodRequest.append(foodRequest)
+		tableView.reloadData()
+		
+		photoFoodURL = "" // reset photo url
+		imageFood = nil// reset image
+		cell.resetData()
+	}
+	
     func didClickOnAddButton(food: Food) {
 		let foodRequest = FoodRequest(name: food.name, price: food.price, calor: food.calor)
 		foodRequest.photo = photoFoodURL
@@ -307,18 +323,21 @@ extension AddRestaurantVC: UIImagePickerControllerDelegate, UINavigationControll
 		self.showLoading()
 
         DispatchQueue.main.async {
-			
-            let dataImage = image.jpegData(compressionQuality: 0.3)
+
+            let dataImage = image.jpegData(compressionQuality: 0.05)
             RequestManager.uploadPhoto(dataImage: dataImage!, completion: {  [weak self ](result, error) in
-				
+
 				guard let strongSelf = self, let photoURL = result?.mediaLink else { return }
 				strongSelf.hideLoading()
-                
+
 				switch strongSelf.photoType {
 				case .food:
 					strongSelf.photoFoodURL = photoURL
                     strongSelf.imageFood = image
-                    
+
+					let cellMenu = strongSelf.tableView.cellForRow(at: IndexPath.init(row: 0, section: AddResEnum.addMenu.rawValue)) as! MenuTableViewCell
+					cellMenu.photoButton.setImage(image, for: .normal)
+
 				case .restaurant:
 					strongSelf.restaurant.photo = photoURL
                     DispatchQueue.main.async {
@@ -328,6 +347,6 @@ extension AddRestaurantVC: UIImagePickerControllerDelegate, UINavigationControll
             })
         }
     }
-    
+	
         
 }

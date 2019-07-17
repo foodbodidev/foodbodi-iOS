@@ -18,7 +18,7 @@ struct Food {
 
 
 protocol MenuTableViewCellDelegate: class {
-    func didClickOnAddButton(food: Food)
+	func didClickOnAddButton(food: Food, cell: MenuTableViewCell)
 	func didAddFoodPhoto()
 }
 
@@ -30,6 +30,7 @@ class MenuTableViewCell: UITableViewCell {
     @IBOutlet weak var priceTextField: InforTextField!
     @IBOutlet weak var calorTextField: InforTextField!
     @IBOutlet weak var addMenuButton: FoodBodyButton!
+	@IBOutlet weak var photoButton: UIButton!
     
     
     
@@ -60,10 +61,8 @@ class MenuTableViewCell: UITableViewCell {
         model.calor = Int(calorTextField.text!) ?? 0
         
         if let delegate = self.delegate {
-            delegate.didClickOnAddButton(food: model)
+			delegate.didClickOnAddButton(food: model, cell: self)
         }
-        
-        resetData()
     }
 	
 	@IBAction func actionAddPhotoFood() {
@@ -88,10 +87,11 @@ class MenuTableViewCell: UITableViewCell {
 		return true
 	}
     
-    private func resetData() {
+	func resetData() {
         titleTextField.text = ""
         priceTextField.text = ""
         calorTextField.text = ""
+		photoButton.setImage(nil, for: .normal)
     }
     
 }
