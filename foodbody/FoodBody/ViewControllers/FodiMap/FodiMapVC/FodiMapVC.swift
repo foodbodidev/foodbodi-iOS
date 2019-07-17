@@ -47,9 +47,11 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate {
         self.clvFodi.dataSource = self;
         self.googleMapView.delegate = self;
     }
+    
     func initData(){
         self.getDataRestaurant()
     }
+    
     func getDataRestaurant() -> Void {
         listRestaurant.removeAll()
         FoodbodyUtils.shared.showLoadingHub(viewController: self);
@@ -67,6 +69,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate {
             FoodbodyUtils.shared.hideLoadingHub(viewController: self);
         }
     }
+    
     func addListenerOnRestaurantd(db:Firestore) -> Void {
         db.collection("restaurants")
             .addSnapshotListener { querySnapshot, error in
@@ -164,26 +167,21 @@ extension FodiMapVC:UICollectionViewDelegate, UICollectionViewDataSource{
         return listRestaurant.count;
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FodiMapCell", for: indexPath) as! FodiMapCell;
-        let object:QueryDocumentSnapshot = listRestaurant[indexPath.row];
-        let dict:NSDictionary = object.data() as NSDictionary;
-        cell.lblName.text = FoodbodyUtils.shared.checkDataString(dict: dict, key: "name");
-        cell.lblCategory.text = FoodbodyUtils.shared.checkDataString(dict: dict, key: "category");
-        cell.lblKcal.text = "300kcal";
-        cell.lblTime.text = FoodbodyUtils.shared.checkDataString(dict: dict, key: "open_hour") + "~" + FoodbodyUtils.shared.checkDataString(dict: dict, key: "close_hour");
-       
-        if let imageUrl = URL(string: FoodbodyUtils.shared.checkDataString(dict: dict, key: "photo")) {
-             cell.imvRestaurant.kf.setImage(with: imageUrl, placeholder: nil)
-        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FodiMapCell", for: indexPath) as! FodiMapCell
         
+        let object: QueryDocumentSnapshot = listRestaurant[indexPath.row]
+        let dict: [String: Any] = object.data()
+        cell.bindData(dic: dict)
         return cell;
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height:CGFloat = 150;
         let width:CGFloat = self.clvFodi.frame.size.width/3.0;
         let size:CGSize = CGSize.init(width: width, height: height);
         return size;
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let object:QueryDocumentSnapshot = listRestaurant[indexPath.row];
         let vc:RestaurantInfoMenuVC = getViewController(className: RestaurantInfoMenuVC.className, storyboard: FbConstants.FodiMapSB) as! RestaurantInfoMenuVC
