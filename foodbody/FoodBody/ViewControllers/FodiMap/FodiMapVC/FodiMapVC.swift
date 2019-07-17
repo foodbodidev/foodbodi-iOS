@@ -10,6 +10,7 @@ import UIKit
 import GoogleMaps
 import Firebase
 import GooglePlaces
+import Kingfisher
 
 class FodiMapVC: BaseVC,CLLocationManagerDelegate {
     //MARK: IBOutlet.
@@ -26,8 +27,14 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate {
         super.viewDidLoad()
         self.initUI()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
+    }
     //MARK:init.
     func initUI(){
+        
         locationManager = CLLocationManager();
         self.locationManager?.requestAlwaysAuthorization()
         self.locationManager?.requestWhenInUseAuthorization()
@@ -163,7 +170,11 @@ extension FodiMapVC:UICollectionViewDelegate, UICollectionViewDataSource{
         cell.lblName.text = FoodbodyUtils.shared.checkDataString(dict: dict, key: "name");
         cell.lblCategory.text = FoodbodyUtils.shared.checkDataString(dict: dict, key: "category");
         cell.lblKcal.text = "300kcal";
-        cell.lblTime.text = FoodbodyUtils.shared.checkDataString(dict: dict, key: "open_hour") + "-" + FoodbodyUtils.shared.checkDataString(dict: dict, key: "close_hour");
+        cell.lblTime.text = FoodbodyUtils.shared.checkDataString(dict: dict, key: "open_hour") + "~" + FoodbodyUtils.shared.checkDataString(dict: dict, key: "close_hour");
+       
+        if let imageUrl = URL(string: FoodbodyUtils.shared.checkDataString(dict: dict, key: "photo")) {
+             cell.imvRestaurant.kf.setImage(with: imageUrl, placeholder: nil)
+        }
         
         return cell;
     }

@@ -34,6 +34,8 @@ class BaseVC: UIViewController {
 		backButton.addTarget(self, action: #selector(actionBack), for: .touchUpInside)
 		backButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
 		navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
+        
+        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")// hide line of nav
 	}
 	
 	@objc func actionBack() {

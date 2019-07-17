@@ -34,6 +34,11 @@ class RestaurantInfoMenuVC: BaseVC {
         self.initUI();
         self.initVar();
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = false
+    }
     //MARK: init.
     func initUI(){
         self.viButton.layer.cornerRadius = 8;
