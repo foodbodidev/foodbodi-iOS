@@ -52,22 +52,25 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate {
         self.getDataRestaurant()
     }
     
-    func getDataRestaurant() -> Void {
+    func getDataRestaurant() {
         listRestaurant.removeAll()
-        FoodbodyUtils.shared.showLoadingHub(viewController: self);
+        FoodbodyUtils.shared.showLoadingHub(viewController: self)
     
-        let geohashCenter:String = Geohash.encode(latitude: self.currentLocation.latitude, longitude: self.currentLocation.longitude, 5);
-        let listNeighbors:NSArray = Geohash.neighbors(geohashCenter)! as NSArray;
-        self.queryLocation(geoHash: geohashCenter, db: db);
-        if listNeighbors.count == 8 {
-            self.queryLocation(geoHash: listNeighbors[0] as! String, db: db);
-            self.queryLocation(geoHash: listNeighbors[2] as! String, db: db);
-            self.queryLocation(geoHash: listNeighbors[4] as! String, db: db);
-            self.queryLocation(geoHash: listNeighbors[6] as! String, db: db);
-            FoodbodyUtils.shared.hideLoadingHub(viewController: self);
-        }else{
-            FoodbodyUtils.shared.hideLoadingHub(viewController: self);
+        let geohashCenter:String = Geohash.encode(latitude: self.currentLocation.latitude, longitude: self.currentLocation.longitude, 5)
+        
+        guard let listNeighbors: [String] = Geohash.neighbors(geohashCenter) else {
+            return
         }
+        
+        self.queryLocation(geoHash: geohashCenter, db: db)
+        if listNeighbors.count == 8 {
+            self.queryLocation(geoHash: listNeighbors[0], db: db)
+            self.queryLocation(geoHash: listNeighbors[2], db: db)
+            self.queryLocation(geoHash: listNeighbors[4], db: db)
+            self.queryLocation(geoHash: listNeighbors[6], db: db)
+           
+        }
+        FoodbodyUtils.shared.hideLoadingHub(viewController: self)
     }
     
     func addListenerOnRestaurantd(db:Firestore) -> Void {
