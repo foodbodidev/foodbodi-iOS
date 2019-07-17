@@ -24,4 +24,17 @@ extension UIColor {
             blue: rgb & 0xFF
         )
     }
+    
+    class func backgroundGray() -> UIColor {
+        return #colorLiteral(red: 0.9647058824, green: 0.968627451, blue: 0.9725490196, alpha: 1)
+    }
+    
+    class func lightGray() -> UIColor {
+        return #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)
+        
+    }
+    
+    class func darkGray() -> UIColor {
+        return #colorLiteral(red: 0.8666666667, green: 0.8666666667, blue: 0.8666666667, alpha: 1)
+    }
 }

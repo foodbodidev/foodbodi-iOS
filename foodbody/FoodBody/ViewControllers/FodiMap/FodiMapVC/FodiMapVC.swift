@@ -22,6 +22,8 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate {
     var currentLocation:CLLocationCoordinate2D = CLLocationCoordinate2D.init()
     var listRestaurant: [QueryDocumentSnapshot] = []
     let db = Firestore.firestore()
+    
+    let numberCellDefault = 3 // user in case loading view
     // MARK: cycle view.
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +33,21 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
+        startLoading()
     }
+    
+    private func startLoading() {
+        clvFodi.visibleCells.forEach({
+            $0.contentView.startAnimationLoading()
+        })
+    }
+    
+    private func stopLoading() {
+        clvFodi.visibleCells.forEach({
+            $0.contentView.stopAnimationLoading()
+        })
+    }
+    
     //MARK:init.
     func initUI(){
         
@@ -71,6 +87,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate {
            
         }
         FoodbodyUtils.shared.hideLoadingHub(viewController: self)
+
     }
     
     func addListenerOnRestaurantd(db:Firestore) -> Void {
@@ -167,15 +184,25 @@ extension FodiMapVC:UICollectionViewDelegate, UICollectionViewDataSource{
         return 1;
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if listRestaurant.count == 0 {
+            return numberCellDefault
+        }
         return listRestaurant.count;
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FodiMapCell", for: indexPath) as! FodiMapCell
         
-        let object: QueryDocumentSnapshot = listRestaurant[indexPath.row]
-        let dict: [String: Any] = object.data()
-        cell.bindData(dic: dict)
-        return cell;
+        if listRestaurant.count == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FodiMapCell", for: indexPath) as! FodiMapCell
+            return cell;
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FodiMapCell", for: indexPath) as! FodiMapCell
+            
+            let object: QueryDocumentSnapshot = listRestaurant[indexPath.row]
+            let dict: [String: Any] = object.data()
+            cell.bindData(dic: dict)
+            return cell;
+        }
+       
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
