@@ -16,10 +16,6 @@
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
-	<key>NSCameraUsageDescription</key>
-	<string>$(PRODUCT_NAME) want to use the camera to upload food photo</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>$(PRODUCT_NAME) want to use the gallery to upload food photo</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -52,8 +48,12 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>$(PRODUCT_NAME) want to use the camera to upload food photo</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>App</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>$(PRODUCT_NAME) want to use the gallery to upload food photo</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>SFProText-Regular.otf</string>

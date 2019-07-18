@@ -16,14 +16,11 @@ class WelComeVC: BaseVC {
     //MARK: cycle view.
     override func viewDidLoad() {
         super.viewDidLoad()
-		self.navigationController?.isNavigationBarHidden = true 
     }
     
     
     //MARK: action.
     @IBAction func actionStart(sender:UIButton){
-//        let selectGenderVC = getViewController(className: SelectGenderVC.className, storyboard:FbConstants.AuthenticationSB)
-//        self.navigationController?.pushViewController(selectGenderVC, animated: true)
         FBAppDelegate.gotoMainTab()
     }
 
