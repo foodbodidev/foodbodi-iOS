@@ -46,6 +46,12 @@ class AddRestaurantVC: BaseVC {
         registerNib()
         getCategory()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.visibleCells.forEach({
+            $0.contentView.startAnimationLoading()
+        })
+    }
 	
     //MARK: === ACTION  ===
 	

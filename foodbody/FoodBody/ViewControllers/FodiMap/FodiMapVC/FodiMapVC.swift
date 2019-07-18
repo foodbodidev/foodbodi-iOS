@@ -17,35 +17,51 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate {
     @IBOutlet weak var btnAdd: FoodBodyButton!
     @IBOutlet weak var googleMapView:GMSMapView!
     @IBOutlet weak var clvFodi:UICollectionView!
+    @IBOutlet weak var loadingCellView: UIView?
+    
+    
     //MARK: variable.
     var locationManager:CLLocationManager? = nil;
     var currentLocation:CLLocationCoordinate2D = CLLocationCoordinate2D.init()
     var listRestaurant: [QueryDocumentSnapshot] = []
     let db = Firestore.firestore()
     
-    let numberCellDefault = 3 // user in case loading view
     // MARK: cycle view.
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initUI()
+        
+        DispatchQueue.main.async {
+            self.startAnimationLoading()
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
-        startLoading()
+        
     }
     
-    private func startLoading() {
-        clvFodi.visibleCells.forEach({
-            $0.contentView.startAnimationLoading()
+    
+    private func startAnimationLoading() {
+        loadingCellView?.subviews.forEach({
+            $0.subviews.forEach({
+                $0.startAnimationLoading()
+            })
         })
+       
     }
     
-    private func stopLoading() {
-        clvFodi.visibleCells.forEach({
-            $0.contentView.stopAnimationLoading()
+    private func stopAnimationLoading() {
+        loadingCellView?.subviews.forEach({
+            $0.subviews.forEach({
+                $0.stopAnimationLoading()
+            })
         })
+        
+       self.loadingCellView?.isHidden = true
+        
     }
     
     //MARK:init.
@@ -102,6 +118,8 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate {
                 self.replaceDocument(documents: documents)
                 self.clvFodi.reloadData()
                 self.showDataOnMapWithCurrentLocation(curentLocation: self.currentLocation)
+                
+                
         }
     }
     
@@ -132,6 +150,8 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate {
                 }
                 self.showDataOnMapWithCurrentLocation(curentLocation: self.currentLocation)
                 self.clvFodi.reloadData();
+                self.stopAnimationLoading()
+               
             }
         }
     }
@@ -184,24 +204,17 @@ extension FodiMapVC:UICollectionViewDelegate, UICollectionViewDataSource{
         return 1;
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if listRestaurant.count == 0 {
-            return numberCellDefault
-        }
         return listRestaurant.count;
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if listRestaurant.count == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FodiMapCell", for: indexPath) as! FodiMapCell
-            return cell;
-        } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FodiMapCell", for: indexPath) as! FodiMapCell
-            
-            let object: QueryDocumentSnapshot = listRestaurant[indexPath.row]
-            let dict: [String: Any] = object.data()
-            cell.bindData(dic: dict)
-            return cell;
-        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FodiMapCell", for: indexPath) as! FodiMapCell
+        
+        
+        let object: QueryDocumentSnapshot = listRestaurant[indexPath.row]
+        let dict: [String: Any] = object.data()
+        cell.bindData(dic: dict)
+        return cell;
        
     }
     
