@@ -65,14 +65,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let reservationVC = getViewController(className: ReservationVC.className, storyboard: FbConstants.mainSB);
         let profileVC = getViewController(className: ProfileVC.className, storyboard: FbConstants.mainSB);
         mainTabbar.viewControllers = [fodiMapVC, reservationVC, profileVC];
-        let navMain = UINavigationController.init(rootViewController: mainTabbar);
-        
+        let navMain = UINavigationController.init(rootViewController: mainTabbar) ;
+        navMain.navigationBar.isHidden = true;
         self.window?.rootViewController = navMain;
     }
     func gotoWelcome() -> Void {
         let welcomeVC = getViewController(className: WelComeVC.className, storyboard:FbConstants.AuthenticationSB);
         let navigation = UINavigationController.init(rootViewController: welcomeVC)
-        
+        navigation.navigationBar.isHidden = true;
         navigation.navigationBar.shadowImage = UIImage.init()
         navigation.navigationBar.isTranslucent = false
         self.window?.rootViewController = navigation
