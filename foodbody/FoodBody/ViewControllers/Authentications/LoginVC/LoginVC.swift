@@ -29,6 +29,7 @@ class LoginVC: BaseVC {
         
         emailTextField.textField.placeholder = "Email"
         passwordTextField.textField.placeholder = "Password"
+		passwordTextField.textField.isSecureTextEntry = true
         
     }
     

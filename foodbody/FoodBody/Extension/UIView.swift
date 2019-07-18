@@ -49,13 +49,13 @@ class OverlayView: UIView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         let context = UIGraphicsGetCurrentContext()
-        // Set màu cho context và đổ màu trắng toàn bộ view
+		// set color for context and fill white color for whole view
         context?.setFillColor(UIColor.white.cgColor)
         context?.fill(bounds)
-        // Set blend mode và màu trong suốt để chuẩn bị 'đục lỗ'
+        // Set blend mode and transparnt
         context?.setBlendMode(.clear)
         context?.setFillColor(UIColor.clear.cgColor)
-        // Tìm tất cả các subview của contentView, trừ chính overlay view và đổ màu trong suốt
+		// find all subviews of contentView, except overlay view and fill transparent collor
         superview?.subviews.forEach({
             if $0 != self {
                 context?.fill($0.frame)
@@ -80,18 +80,18 @@ extension UIView {
         gradientLayer.startPoint = CGPoint(x: -0.85, y: 0)
         gradientLayer.endPoint = CGPoint(x: 1.15, y: 0)
         gradientLayer.locations = [-0.85, -0.85, 0, 0.15, 1.15]
-        // Khởi tạo CABasicAnimation với keyPath muốn animate là `locations`
+		// initailize CABasicAnimation with keypath wanting to animate is locations
         let animation = CABasicAnimation(keyPath: "locations")
-        // Giá trị `locations` bắt đầu animate
+		// localtion value starting with animate
         animation.fromValue = gradientLayer.locations
-        // Giá trị `locations` kết thúc animate
+        // Value `locations` finish animate
         animation.toValue = [0, 1, 1, 1.05, 1.15]
-        // Lặp animation vô hạn
+        // repeat animation infinitely
         animation.repeatCount = .infinity
         animation.fillMode = CAMediaTimingFillMode.forwards
         animation.isRemovedOnCompletion = false
         animation.duration = 1
-        // Add animation cho gradient layer
+        // Add animation for gradient layer
         gradientLayer.add(animation, forKey: "what.ever.it.take")
         layer.addSublayer(gradientLayer)
         addOverlayView()
