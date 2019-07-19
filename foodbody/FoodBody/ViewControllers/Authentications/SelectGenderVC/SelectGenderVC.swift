@@ -19,6 +19,7 @@ class SelectGenderVC: BaseVC {
     }
     //MARK: init.
     func initUI() -> Void {
+		self.navigationController?.isNavigationBarHidden = true
         btnMale.layer.cornerRadius = FbConstants.crRadius
         btnMale.layer.borderWidth = 1
         btnFemale.layer.cornerRadius = FbConstants.crRadius

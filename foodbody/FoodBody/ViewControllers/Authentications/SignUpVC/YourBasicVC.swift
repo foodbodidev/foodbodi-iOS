@@ -23,6 +23,8 @@ class YourBasicVC: BaseVC {
     }
     
     fileprivate func setupLayout() {
+		self.navigationController?.isNavigationBarHidden = true
+		
         ageTextField.textField.placeholder = "Your age"
         ageTextField.textField.keyboardType = .numberPad
         
@@ -30,19 +32,14 @@ class YourBasicVC: BaseVC {
         heightTextField.textField.clearButtonMode = .never
         heightTextField.textField.keyboardType = .numberPad
         
-        
         weightTextField.textField.placeholder = "Your weight"
         weightTextField.textField.keyboardType = .numberPad
         weightTextField.textField.clearButtonMode = .never
-        
-        
+		
         goalWeightTextField.textField.placeholder = "Goal weight"
         goalWeightTextField.textField.keyboardType = .numberPad
-        
-        
     }
-    
-    
+	
     @IBAction func actionNext() {
         
         if validateTextFiled() {

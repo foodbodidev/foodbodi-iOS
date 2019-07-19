@@ -8,14 +8,14 @@
 
 import UIKit
 
-class SignUpVC: BaseVC {
+class SignUpVC: BaseLoginVC {
 
     @IBOutlet weak var firstTextField: FBTextField!
     @IBOutlet weak var lastTextField: FBTextField!
     @IBOutlet weak var emailTextField: FBTextField!
     @IBOutlet weak var passwordTextField: FBTextField!
 
-    var userInfor: UserRequest?
+    var userInfors: UserRequest = UserRequest()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,14 +33,16 @@ class SignUpVC: BaseVC {
     }
     
     @IBAction func actionSignup() {
+		
+		getDataFromField()
         
-        guard let userInfor = self.userInfor, validateTextFiled() == true else { return }
+        guard validateTextFiled() == true else { return }
         
-        userInfor.email = emailTextField.textField.text ?? ""
-        userInfor.password = passwordTextField.textField.text ?? ""
+        userInfors.email = emailTextField.textField.text ?? ""
+        userInfors.password = passwordTextField.textField.text ?? ""
         
         showLoading()
-        RequestManager.registerWithUserInfo(request: userInfor) { [weak self] (result, error) in
+		RequestManager.registerWithUserInfo(request: userInfors) { [weak self] (result, error) in
 
             guard let strongSelf = self else { return }// set weak self to avoid retain cycle
 
@@ -52,7 +54,9 @@ class SignUpVC: BaseVC {
             if let result = result {
                 
                 if result.isSuccess {
-                     FBAppDelegate.gotoMainTab()
+					strongSelf.alertMessage(message: "You've signed up successfully", completion: {
+						strongSelf.navigationController?.popViewController(animated: true)
+					})
                 } else {
                    strongSelf.alertMessage(message: result.message)
                 }
@@ -62,6 +66,13 @@ class SignUpVC: BaseVC {
        
         
     }
+	
+	private func getDataFromField() {
+		userInfors.firstName = firstTextField.textField.text
+		userInfors.lastName = lastTextField.textField.text
+		userInfors.email = emailTextField.textField.text
+		userInfors.password = passwordTextField.textField.text
+	}
     
     func validateTextFiled() -> Bool {
         if firstTextField.textField.text?.count == 0 {

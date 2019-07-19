@@ -11,7 +11,7 @@ import UIKit
 import GoogleSignIn
 import FBSDKLoginKit
 
-class RegisterAccountVC: BaseVC, GIDSignInUIDelegate{
+class RegisterAccountVC: BaseLoginVC, GIDSignInUIDelegate {
     
     @IBOutlet weak var btnGoogleSignin: UIButton!
     @IBOutlet weak var btnEmail:UIButton!
@@ -102,44 +102,14 @@ class RegisterAccountVC: BaseVC, GIDSignInUIDelegate{
             
             if let result = result {
                 if result.isSuccess {
-                    AppManager.user = result
+					 AppManager.user = result
                      self.getUserProfile()
                 } else {
                     self.alertMessage(message: result.message)
                 }
             }
         }
-    }
-    
-    private func getUserProfile() {
-        self.showLoading()
-        
-        RequestManager.getProfile() { (result, error) in
-            
-            self.hideLoading()
-            if let error = error {
-                self.alertMessage(message: error.localizedDescription)
-            }
-            
-            guard let result = result else { return }
-            
-            if result.isSuccess {
-                if self.shouldUpdateProfile(user: result) {
-                    // this means user dose not update user detail
-                    let selectGenderVC = getViewController(className: SelectGenderVC.className, storyboard: FbConstants.AuthenticationSB)
-                    self.navigationController?.pushViewController(selectGenderVC, animated: true)
-                } else {
-                    FBAppDelegate.gotoMainTab()
-                }
-            } else {
-                self.alertMessage(message: result.message)
-            }
-        }
-    }
-    
-    private func shouldUpdateProfile(user: User) -> Bool {
-        return user.height == 0
-    }
+	}
     
 }
 extension RegisterAccountVC:GIDSignInDelegate{
@@ -162,7 +132,7 @@ extension RegisterAccountVC:GIDSignInDelegate{
                 
                 if let result = result {
                     if result.isSuccess {
-                        AppManager.user = result
+						AppManager.user = result
                         self?.getUserProfile()
                     } else {
                         self?.alertMessage(message: result.message)

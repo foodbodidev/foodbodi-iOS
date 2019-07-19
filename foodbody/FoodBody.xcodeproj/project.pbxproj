@@ -53,6 +53,8 @@
 		98F772CA22D9AF560027F4BE /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F772C922D9AF560027F4BE /* CategoryModel.swift */; };
 		98F772CC22DCBD500027F4BE /* FoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F772CB22DCBD500027F4BE /* FoodModel.swift */; };
 		BA782CAC22DDD71100E25985 /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA782CAB22DDD71100E25985 /* PhotoModel.swift */; };
+		BA8C18ED22E1BA23007531FE /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C0FDA422B8EE2A00411488 /* SignUpVC.swift */; };
+		BA8C18EF22E1BD58007531FE /* BaseLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8C18EE22E1BD58007531FE /* BaseLoginVC.swift */; };
 		BAB2CF7B22DEFA24003D4233 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB2CF7A22DEFA24003D4233 /* UIImageView.swift */; };
 		D587C45822DC27A100C119BA /* TabMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D587C45722DC27A100C119BA /* TabMenuVC.swift */; };
 		D587C45B22DC27BC00C119BA /* TabChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D587C45A22DC27BC00C119BA /* TabChatVC.swift */; };
@@ -152,6 +154,7 @@
 		A4CBD0B2CE4DD14D72EBFA0E /* Pods-FoodBody.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodBody.debug.xcconfig"; path = "Target Support Files/Pods-FoodBody/Pods-FoodBody.debug.xcconfig"; sourceTree = "<group>"; };
 		B3548A6FF739A87EFE718D5D /* Pods_FoodBodyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodBodyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA782CAB22DDD71100E25985 /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
+		BA8C18EE22E1BD58007531FE /* BaseLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLoginVC.swift; sourceTree = "<group>"; };
 		BAB2CF7A22DEFA24003D4233 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		D587C45722DC27A100C119BA /* TabMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMenuVC.swift; sourceTree = "<group>"; };
 		D587C45A22DC27BC00C119BA /* TabChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabChatVC.swift; sourceTree = "<group>"; };
@@ -311,6 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				98CEA21322B94A9E00E82063 /* BaseVC.swift */,
+				BA8C18EE22E1BD58007531FE /* BaseLoginVC.swift */,
 			);
 			path = BaseVC;
 			sourceTree = "<group>";
@@ -999,6 +1003,7 @@
 				D5ACD6E622CD9A5000F8F1E2 /* AddRestaurantVC.swift in Sources */,
 				98F772CA22D9AF560027F4BE /* CategoryModel.swift in Sources */,
 				BA782CAC22DDD71100E25985 /* PhotoModel.swift in Sources */,
+				BA8C18EF22E1BD58007531FE /* BaseLoginVC.swift in Sources */,
 				98CEA1FE22B9431200E82063 /* UIView.swift in Sources */,
 				D5B24B3522B73FB600DA16C4 /* MainTabBarVC.swift in Sources */,
 				D5C0FDA522B8EE2A00411488 /* SignUpVC.swift in Sources */,
@@ -1030,6 +1035,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA8C18ED22E1BA23007531FE /* SignUpVC.swift in Sources */,
 				D5B24AF622B737B800DA16C4 /* FoodBodyUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1191,17 +1197,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RJW2Z623E3;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = Y44Y72D55P;
 				INFOPLIST_FILE = FoodBody/Resource/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = KPT.FoodBody;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nail.us;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Nail Development";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1212,18 +1218,18 @@
 			baseConfigurationReference = 8F33D3FCBBFCAA354D9F53D9 /* Pods-FoodBody.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RJW2Z623E3;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = Y44Y72D55P;
 				INFOPLIST_FILE = FoodBody/Resource/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = KPT.FoodBody;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nail.us;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Nail Distribution";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

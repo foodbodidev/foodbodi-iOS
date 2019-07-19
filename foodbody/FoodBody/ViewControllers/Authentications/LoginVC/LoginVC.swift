@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginVC: BaseVC {
+class LoginVC: BaseLoginVC {
     
     @IBOutlet weak var emailTextField: FBTextField!
     @IBOutlet weak var passwordTextField: FBTextField!
@@ -72,8 +72,8 @@ class LoginVC: BaseVC {
             guard let result = result else { return }
                 
             if result.isSuccess {
-                AppManager.user = result
-                FBAppDelegate.gotoMainTab()
+				AppManager.user = result
+				strongSelf.getUserProfile()
             } else {
                 strongSelf.alertMessage(message: result.message)
             }
