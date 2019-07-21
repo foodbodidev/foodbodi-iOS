@@ -12,13 +12,12 @@ import Firebase
 import GooglePlaces
 import Kingfisher
 
-class FodiMapVC: BaseVC,CLLocationManagerDelegate {
+class FodiMapVC: BaseVC,CLLocationManagerDelegate{
     //MARK: IBOutlet.
     @IBOutlet weak var btnAdd: FoodBodyButton!
     @IBOutlet weak var googleMapView:GMSMapView!
     @IBOutlet weak var clvFodi:UICollectionView!
     @IBOutlet weak var loadingCellView: UIView?
-    
     
     //MARK: variable.
     var locationManager:CLLocationManager? = nil;
@@ -192,7 +191,8 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate {
             self.present(nav, animated: true, completion: nil)
             
         } else {
-            let addRestaurantVC = getViewController(className: AddRestaurantVC.className, storyboard: FbConstants.FodiMapSB)
+            let addRestaurantVC = getViewController(className: AddRestaurantVC.className, storyboard: FbConstants.FodiMapSB) as! AddRestaurantVC;
+            addRestaurantVC.delegate = self;
             self.navigationController?.pushViewController(addRestaurantVC, animated: true)
             
         }
@@ -233,6 +233,11 @@ extension FodiMapVC:UICollectionViewDelegate, UICollectionViewDataSource{
     }
 }
 
+extension FodiMapVC:AddRestaurantVCDelegate{
+    func handleSuccessAddRestaurant() {
+        self.getDataRestaurant();
+    }
+}
 
 extension FodiMapVC:GMSMapViewDelegate{
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
