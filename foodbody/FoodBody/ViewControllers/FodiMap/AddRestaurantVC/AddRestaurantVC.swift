@@ -9,7 +9,7 @@
 import UIKit
 import GooglePlaces
 protocol AddRestaurantVCDelegate {
-    func handleSuccessAddRestaurant()
+    func addRestaurantSuccessful(sender:AddRestaurantVC)
 }
 class AddRestaurantVC: BaseVC {
     
@@ -69,7 +69,7 @@ class AddRestaurantVC: BaseVC {
 //                            strongSelf.actionBack()
 //                        })
                         if let delegate = self!.delegate {
-                            delegate.handleSuccessAddRestaurant();
+                            delegate.addRestaurantSuccessful(sender: self!);
                         }
                         self?.actionBacks()
 

@@ -15,6 +15,9 @@ struct FbConstants {
     static let AuthenticationSB = "Authentication"
     static let FodiMapSB = "FodiMap"
     static let crRadius:CGFloat = 20
+    //key
     static let MAP_API_KEY = "AIzaSyCVwGyeMks43wzuCObn-BUs-6ZpMWpebYo"
     static let REVERSED_CLIENT_ID = "513844011252-2qlodmja1av20n55vro79uv0jc5vj3ck.apps.googleusercontent.com"
+    //logs.
+    static let FoodbodiLog = "FoodbodiLog";
 }

@@ -113,7 +113,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
                     print("Error fetching documents: \(error!)")
                     return
                 }
-                
+                print(FbConstants.FoodbodiLog, "Listener On Restauran")
                 self.replaceDocument(documents: documents)
                 self.clvFodi.reloadData()
                 self.showDataOnMapWithCurrentLocation(curentLocation: self.currentLocation)
@@ -142,7 +142,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
                FoodbodyUtils.shared.hideLoadingHub(viewController: self);
                 self.alertMessage(message: "Error getting documents \(err.localizedDescription)")
             } else {
-                print("Toan12520447",  querySnapshot!.documents.count);
+                print(  querySnapshot!.documents.count);
                 for document in querySnapshot!.documents {
                     print("\(document.documentID) => \(document.data())")
                     self.listRestaurant.append(document)
@@ -174,7 +174,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let locationValue: CLLocationCoordinate2D = manager.location?.coordinate {
             self.currentLocation = locationValue;
-            print("Toan12520447 call, \(currentLocation)")
+            print(FbConstants.FoodbodiLog, (currentLocation))
             self.getDataRestaurant();
             self.addListenerOnRestaurantd(db: self.db)
             locationManager?.stopUpdatingLocation();
@@ -233,12 +233,6 @@ extension FodiMapVC:UICollectionViewDelegate, UICollectionViewDataSource{
     }
 }
 
-extension FodiMapVC:AddRestaurantVCDelegate{
-    func handleSuccessAddRestaurant() {
-        self.getDataRestaurant();
-    }
-}
-
 extension FodiMapVC:GMSMapViewDelegate{
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
         return nil;
@@ -258,3 +252,10 @@ extension FodiMapVC:GMSMapViewDelegate{
     }
     
 }
+
+extension FodiMapVC:AddRestaurantVCDelegate{
+    func addRestaurantSuccessful(sender: AddRestaurantVC) {
+        self.getDataRestaurant();
+    }
+}
+
