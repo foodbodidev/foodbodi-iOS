@@ -8,13 +8,15 @@
 
 import UIKit
 import GooglePlaces
-
-
+protocol AddRestaurantVCDelegate {
+    func addRestaurantSuccessful(sender:AddRestaurantVC)
+}
 class AddRestaurantVC: BaseVC {
     
     //MARK: ==== OUTLET ====
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerImageView: UIImageView!
+    var delegate : AddRestaurantVCDelegate?
     
     //MARK: Properties
 	var restaurant: RestaurantRequest = RestaurantRequest()
@@ -63,9 +65,14 @@ class AddRestaurantVC: BaseVC {
 
                 if let result = result {
                     if result.isSuccess {
-                        strongSelf.alertMessage(message: "Create restaurant successfully", completion: {
-                            strongSelf.actionBack()
-                        })
+//                        strongSelf.alertMessage(message: "Create restaurant successfully", completion: {
+//                            strongSelf.actionBack()
+//                        })
+                        if let delegate = self!.delegate {
+                            delegate.addRestaurantSuccessful(sender: self!);
+                        }
+                        self?.actionBacks()
+
                     } else {
                         strongSelf.alertMessage(message: result.message)
                     }

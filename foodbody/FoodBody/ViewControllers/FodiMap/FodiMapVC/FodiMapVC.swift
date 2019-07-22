@@ -12,13 +12,12 @@ import Firebase
 import GooglePlaces
 import Kingfisher
 
-class FodiMapVC: BaseVC,CLLocationManagerDelegate {
+class FodiMapVC: BaseVC,CLLocationManagerDelegate{
     //MARK: IBOutlet.
     @IBOutlet weak var btnAdd: FoodBodyButton!
     @IBOutlet weak var googleMapView:GMSMapView!
     @IBOutlet weak var clvFodi:UICollectionView!
     @IBOutlet weak var loadingCellView: UIView?
-    
     
     //MARK: variable.
     var locationManager:CLLocationManager? = nil;
@@ -114,7 +113,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate {
                     print("Error fetching documents: \(error!)")
                     return
                 }
-                
+                print(FbConstants.FoodbodiLog, "Listener On Restauran")
                 self.replaceDocument(documents: documents)
                 self.clvFodi.reloadData()
                 self.showDataOnMapWithCurrentLocation(curentLocation: self.currentLocation)
@@ -143,7 +142,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate {
                FoodbodyUtils.shared.hideLoadingHub(viewController: self);
                 self.alertMessage(message: "Error getting documents \(err.localizedDescription)")
             } else {
-                print("Toan12520447",  querySnapshot!.documents.count);
+                print(  querySnapshot!.documents.count);
                 for document in querySnapshot!.documents {
                     print("\(document.documentID) => \(document.data())")
                     self.listRestaurant.append(document)
@@ -175,7 +174,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let locationValue: CLLocationCoordinate2D = manager.location?.coordinate {
             self.currentLocation = locationValue;
-            print("Toan12520447 call, \(currentLocation)")
+            print(FbConstants.FoodbodiLog, (currentLocation))
             self.getDataRestaurant();
             self.addListenerOnRestaurantd(db: self.db)
             locationManager?.stopUpdatingLocation();
@@ -192,7 +191,8 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate {
             self.present(nav, animated: true, completion: nil)
             
         } else {
-            let addRestaurantVC = getViewController(className: AddRestaurantVC.className, storyboard: FbConstants.FodiMapSB)
+            let addRestaurantVC = getViewController(className: AddRestaurantVC.className, storyboard: FbConstants.FodiMapSB) as! AddRestaurantVC;
+            addRestaurantVC.delegate = self;
             self.navigationController?.pushViewController(addRestaurantVC, animated: true)
             
         }
@@ -233,7 +233,6 @@ extension FodiMapVC:UICollectionViewDelegate, UICollectionViewDataSource{
     }
 }
 
-
 extension FodiMapVC:GMSMapViewDelegate{
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
         return nil;
@@ -253,3 +252,10 @@ extension FodiMapVC:GMSMapViewDelegate{
     }
     
 }
+
+extension FodiMapVC:AddRestaurantVCDelegate{
+    func addRestaurantSuccessful(sender: AddRestaurantVC) {
+        self.getDataRestaurant();
+    }
+}
+
