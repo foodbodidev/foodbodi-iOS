@@ -166,7 +166,12 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
             marker.position = CLLocationCoordinate2D(latitude: FoodbodyUtils.shared.checkDataFloat(dict: dict, key: "lat"), longitude: FoodbodyUtils.shared.checkDataFloat(dict: dict, key: "lng"));
             marker.title = FoodbodyUtils.shared.checkDataString(dict: dict, key: "name");
             marker.snippet = FoodbodyUtils.shared.checkDataString(dict: dict, key: "address");
-            marker.icon = UIImage.init(named: "ic_restaurant_caloHigh")
+            let type = FoodbodyUtils.shared.checkDataString(dict: dict, key: "type")
+            if type == "FOOD_TRUCK" {
+                marker.icon = UIImage.init(named: "ic_truck_low")
+            }else{
+                marker.icon = UIImage.init(named: "ic_restaurant_caloHigh")
+            }
             marker.map = googleMapView
         }
     
