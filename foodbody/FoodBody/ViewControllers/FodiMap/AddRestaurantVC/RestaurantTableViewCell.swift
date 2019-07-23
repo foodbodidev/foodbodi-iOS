@@ -15,6 +15,7 @@ struct Restaurant {
     var openHours: String = ""
     var closeHours: String = ""
     var type: String = "RESTAURANT" // by default
+	var isValidTime: Bool = false
 }
 
 protocol RestaurantTableViewCellDelegate: class {
@@ -35,11 +36,12 @@ class RestaurantTableViewCell: UITableViewCell {
     @IBOutlet weak var foodTruckButton: UIButton!
     
     
-    var  categoryList: [CategoryModel] = []
+    var categoryList: [CategoryModel] = []
 	
-    
-    
-    
+	var closeTime: Time?// use to compare closetime > opentime
+	var openTime: Time?
+	
+
     //MARK: Properties
     weak var delegate: RestaurantTableViewCellDelegate?
     var model: Restaurant = Restaurant()
@@ -48,6 +50,34 @@ class RestaurantTableViewCell: UITableViewCell {
         case restaurant = "RESTAURANT"
         case foodTruck = "FOOD_TRUCK"
     }
+	
+	struct Time: Comparable {
+
+		var hours: Int = 0
+		var minutes: Int = 0
+		
+		init() {
+			
+		}
+		
+		init(hours: Int, minutes: Int) {
+			self.hours = hours
+			self.minutes = minutes
+		}
+		
+		static func < (lhs: RestaurantTableViewCell.Time, rhs: RestaurantTableViewCell.Time) -> Bool {
+			if lhs.hours < rhs.hours {
+				return true
+			}
+			
+			if lhs.hours == rhs.hours {
+				if lhs.minutes < rhs.minutes {
+					return true
+				}
+			}
+			return false
+		}
+	}
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -117,34 +147,52 @@ class RestaurantTableViewCell: UITableViewCell {
        
         let calendar = Calendar.current
         let comp = calendar.dateComponents([.hour, .minute], from: _sender.date)
+		
+		guard let hour = comp.hour, let minute = comp.minute else {
+			return
+		}
+		
+		openTime = Time(hours: hour, minutes: minute)
+		model.isValidTime = validateTime()
         
-        if let hour = comp.hour, let minute = comp.minute {
-            if minute < 10 {
-                openHoursTextField.text = "\(hour):0\(minute)"
-            } else {
-                openHoursTextField.text = "\(hour):\(minute)"
-            }
-        }
+		if minute < 10 {
+			openHoursTextField.text = "\(hour):0\(minute)"
+		} else {
+			openHoursTextField.text = "\(hour):\(minute)"
+		}
         
     }
     
     @objc func setTimeClose(_sender : UIDatePicker){
         let calendar = Calendar.current
         let comp = calendar.dateComponents([.hour, .minute], from: _sender.date)
-        
-        if let hour = comp.hour, let minute = comp.minute {
-            if minute < 10 {
-                closeHoursTextField.text = "\(hour):0\(minute)"
-            } else {
-                closeHoursTextField.text = "\(hour):\(minute)"
-            }
-            
-        }
+		
+		guard let hour = comp.hour, let minute = comp.minute else {
+			return
+		}
+		
+		closeTime = Time(hours: hour, minutes: minute)
+		model.isValidTime = validateTime()
+	
+		if minute < 10 {
+			closeHoursTextField.text = "\(hour):0\(minute)"
+		} else {
+			closeHoursTextField.text = "\(hour):\(minute)"
+		}
     }
+	
+	func validateTime() -> Bool {
+		if let openTime = openTime, let closeTime = closeTime {
+			if openTime >= closeTime {
+				return false
+			}
+		}
+		return true
+	}
     
     func bindData(restaurant: RestaurantRequest) {
         titleTextField.text = restaurant.name
-        categoryTextField.text = restaurant.category
+        categoryTextField.text = categoryList.filter({$0.key == restaurant.category}).first?.name
         openHoursTextField.text = restaurant.open_hour
         closeHoursTextField.text = restaurant.close_hour
         addressTextField.text = restaurant.address
@@ -163,8 +211,9 @@ extension RestaurantTableViewCell: UITextFieldDelegate {
 		// set default value for text field category
 		if textField == categoryTextField && textField.text!.isEmpty {
 			categoryTextField.text = categoryList.first?.name
+			model.category = categoryList[0].key// default value first
 		}
-        
+		
         if let delegate = self.delegate {
             delegate.restaurantTableViewCellEndEditing(restaurantModel: model)
         }

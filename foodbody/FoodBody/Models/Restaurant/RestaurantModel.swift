@@ -96,6 +96,8 @@ class RestaurantRequest: Mappable  {
     var open_hour: String = ""
     var close_hour: String = ""
 	var foodRequest: [FoodRequest] = []
+	
+	var isValidTime: Bool = false 
     
     required init?(map: Map) {
         

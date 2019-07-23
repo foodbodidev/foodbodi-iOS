@@ -41,6 +41,16 @@ extension UIView {
     static var className: String {
         return NSStringFromClass(self.classForCoder()).components(separatedBy: ".").last!
     }
+	
+	func findViewController() -> UIViewController? {
+		if let nextResponder = self.next as? UIViewController {
+			return nextResponder
+		} else if let nextResponder = self.next as? UIView {
+			return nextResponder.findViewController()
+		} else {
+			return nil
+		}
+	}
     
 }
 

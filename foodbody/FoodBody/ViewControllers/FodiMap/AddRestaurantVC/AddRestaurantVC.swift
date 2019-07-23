@@ -155,6 +155,11 @@ class AddRestaurantVC: BaseVC {
 			return false
 		}
 		
+		if !restaurant.isValidTime {
+			self.alertMessage(message: "Open hours should be less than close hours")
+			return false
+		}
+		
 		return true
 	}
 	
@@ -280,6 +285,7 @@ extension AddRestaurantVC: RestaurantTableViewCellDelegate, MenuTableViewCellDel
 		restaurant.close_hour = restaurantModel.closeHours
 		restaurant.open_hour = restaurantModel.openHours
 		restaurant.type = restaurantModel.type
+		restaurant.isValidTime = restaurantModel.isValidTime
     }
     
     func restaurantTableViewCellDidBeginSearchAddress() {
