@@ -36,7 +36,7 @@ class RestaurantTableViewCell: UITableViewCell {
     
     
     var  categoryList: [CategoryModel] = []
-    
+	
     
     
     
@@ -53,7 +53,7 @@ class RestaurantTableViewCell: UITableViewCell {
         super.awakeFromNib()
         self.setupDatePiker()
         self.setupCategoryPicker()
-        
+		
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -159,9 +159,11 @@ extension RestaurantTableViewCell: UITextFieldDelegate {
         model.title = titleTextField.text!
         model.openHours = openHoursTextField.text!
         model.closeHours = closeHoursTextField.text!
-        
-        print(model)
-        
+		
+		// set default value for text field category
+		if textField == categoryTextField && textField.text!.isEmpty {
+			categoryTextField.text = categoryList.first?.name
+		}
         
         if let delegate = self.delegate {
             delegate.restaurantTableViewCellEndEditing(restaurantModel: model)
@@ -199,7 +201,10 @@ extension RestaurantTableViewCell: UIPickerViewDelegate, UIPickerViewDataSource 
     }
     
     func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        categoryTextField.text = categoryList[row].name
-        model.category = categoryList[row].key
+		if !categoryList.isEmpty {
+			categoryTextField.text = categoryList[row].name
+			model.category = categoryList[row].key
+		}
+		
     }
 }

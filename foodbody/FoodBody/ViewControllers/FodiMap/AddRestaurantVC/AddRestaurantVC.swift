@@ -65,13 +65,12 @@ class AddRestaurantVC: BaseVC {
 
                 if let result = result {
                     if result.isSuccess {
-//                        strongSelf.alertMessage(message: "Create restaurant successfully", completion: {
-//                            strongSelf.actionBack()
-//                        })
-                        if let delegate = self!.delegate {
-                            delegate.addRestaurantSuccessful(sender: self!);
-                        }
-                        self?.actionBacks()
+                        strongSelf.alertMessage(message: "Create restaurant successfully", completion: {
+							if let delegate = strongSelf.delegate {
+								delegate.addRestaurantSuccessful(sender: strongSelf)
+							}
+                            strongSelf.actionBack()
+                        })
 
                     } else {
                         strongSelf.alertMessage(message: result.message)
