@@ -13,6 +13,7 @@ class MainTabBarVC: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTabbarAppearance()
+        setupNavigationBar()
 
         // Do any additional setup after loading the view.
     }
@@ -31,6 +32,13 @@ class MainTabBarVC: UITabBarController {
                                                           NSAttributedString.Key.font: Style.FontStyle.regular.font(with: 12)],
                                                          for: .normal)
         
+    }
+    
+    
+    private func setupNavigationBar() {
+        UINavigationBar.appearance().barTintColor = UIColor.white
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.09803921569, green: 0.2431372549, blue: 0.3215686275, alpha: 1)]
     }
     
 

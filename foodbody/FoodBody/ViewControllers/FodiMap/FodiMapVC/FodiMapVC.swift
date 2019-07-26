@@ -196,9 +196,12 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
             self.present(nav, animated: true, completion: nil)
             
         } else {
-            let addRestaurantVC = getViewController(className: AddRestaurantVC.className, storyboard: FbConstants.FodiMapSB) as! AddRestaurantVC;
-            addRestaurantVC.delegate = self;
-            self.navigationController?.pushViewController(addRestaurantVC, animated: true)
+//            let addRestaurantVC = getViewController(className: AddRestaurantVC.className, storyboard: FbConstants.FodiMapSB) as! AddRestaurantVC;
+//            addRestaurantVC.delegate = self;
+//            self.navigationController?.pushViewController(addRestaurantVC, animated: true)
+            
+            let companyInfoVC = CompanyInfoVC.init(nibName: "CompanyInfoVC", bundle: nil)
+            self.navigationController?.pushViewController(companyInfoVC, animated: true)
             
         }
     }
