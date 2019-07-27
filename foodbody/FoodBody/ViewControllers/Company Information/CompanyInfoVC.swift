@@ -9,6 +9,8 @@
 import UIKit
 
 class CompanyInfoVC: BaseVC {
+    
+    @IBOutlet weak var contentView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,10 +21,10 @@ class CompanyInfoVC: BaseVC {
     
     private func setupLayout() {
          self.navigationController?.navigationBar.isHidden = false
+         contentView.addShadowforview(color: Style.Color.showDowColor)
          self.title = "Information"
     }
-    
-   
+
 
 
     /*

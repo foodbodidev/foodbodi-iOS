@@ -8,7 +8,6 @@
 
 import UIKit
 
-@IBDesignable
 class FoodBodyButton: UIButton {
     
     override func awakeFromNib() {
@@ -23,17 +22,6 @@ class FoodBodyButton: UIButton {
         self.layer.shadowOpacity = 1
         self.layer.shadowOffset = CGSize.zero
         self.layer.shadowRadius = 3
-    }
-    
-    @IBInspectable var radius: CGFloat {
-        set {
-            self.layer.cornerRadius = newValue
-        }
-        
-        get {
-            return self.layer.cornerRadius
-        }
-        
     }
     
 }

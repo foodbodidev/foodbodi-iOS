@@ -14,8 +14,8 @@ var overlayViewKey = "overlayView"
 
 extension UIView {
     
-    func addShadowforview() {
-        self.layer.shadowColor = UIColor.gray.cgColor
+    func addShadowforview(color: UIColor) {
+        self.layer.shadowColor = color.cgColor
         self.layer.shadowOpacity = 1
         self.layer.shadowOffset = CGSize.zero
         self.layer.shadowRadius = 8
@@ -124,3 +124,24 @@ extension UIView {
     }
     
 }
+
+@IBDesignable
+extension UIView {
+    
+    override open func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
+    @IBInspectable var radius: CGFloat {
+        set {
+            self.layer.cornerRadius = newValue
+        }
+        
+        get {
+            return self.layer.cornerRadius
+        }
+        
+    }
+    
+}
+

@@ -8,7 +8,6 @@
 
 import UIKit
 
-@IBDesignable
 class InforTextField: UITextField {
     
     override func awakeFromNib() {
@@ -27,17 +26,5 @@ class InforTextField: UITextField {
         self.font = Style.FontStyle.regular.font(with: 14)
     
     }
-    
-    @IBInspectable var radius: CGFloat {
-        set {
-            self.layer.cornerRadius = newValue
-        }
-        
-        get {
-            return self.layer.cornerRadius
-        }
-        
-    }
-    
 }
 
