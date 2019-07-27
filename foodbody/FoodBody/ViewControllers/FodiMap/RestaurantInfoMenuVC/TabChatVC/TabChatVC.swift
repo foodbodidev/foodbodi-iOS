@@ -9,22 +9,39 @@
 import UIKit
 
 class TabChatVC: BaseVC {
-
+    @IBOutlet weak var tvChat: UITextView!
+    @IBOutlet weak var tbvChat: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.initUI();
+    }
+    //MARK: init
+    func initUI(){
+        self.tbvChat.delegate = self;
+        self.tbvChat.dataSource = self;
+        self.tbvChat.estimatedRowHeight = 60;
+        self.tbvChat.rowHeight = UITableView.automaticDimension;
+        tvChat.layer.cornerRadius = 10;
+    }
 
-        // Do any additional setup after loading the view.
+}
+
+extension TabChatVC:UITableViewDelegate, UITableViewDataSource{
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1;
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10;
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let chatCell:ChatTbvCell = tableView.dequeueReusableCell(withIdentifier: "ChatTbvCell", for: indexPath) as! ChatTbvCell;
+        
+        return chatCell;
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension;
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }
