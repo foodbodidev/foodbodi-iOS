@@ -17,6 +17,7 @@ class BaseVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		setupNavigationBarItem()
+        self.edgesForExtendedLayout = UIRectEdge.init()
 		
 
     }
