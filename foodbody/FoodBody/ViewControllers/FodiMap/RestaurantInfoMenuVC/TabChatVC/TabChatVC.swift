@@ -28,7 +28,7 @@ class TabChatVC: BaseVC {
     func initUI(){
         self.tbvChat.delegate = self;
         self.tbvChat.dataSource = self;
-        self.tbvChat.estimatedRowHeight = 60;
+        self.tbvChat.estimatedRowHeight = 0;
         self.tbvChat.rowHeight = UITableView.automaticDimension;
         self.tvChat.layer.cornerRadius = 10;
         self.tvChat.delegate = self;

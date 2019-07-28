@@ -546,7 +546,7 @@
                                         <rect key="frame" x="0.0" y="50" width="375" height="487"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatTbvCell" rowHeight="65" id="F9H-dx-J6Q" customClass="ChatTbvCell" customModule="FoodBody" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ChatTbvCell" rowHeight="65" id="F9H-dx-J6Q" customClass="ChatTbvCell" customModule="FoodBody" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="65"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="F9H-dx-J6Q" id="HXb-8l-WjV">
@@ -558,9 +558,19 @@
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9XH-qY-cJO" userLabel="vIcon">
                                                                     <rect key="frame" x="10" y="17.5" width="30" height="30"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="B" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8d9-Ga-KNd">
+                                                                            <rect key="frame" x="10" y="6" width="10" height="18"/>
+                                                                            <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="15"/>
+                                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
                                                                     <color key="backgroundColor" red="0.72549019607843135" green="0.76078431372549016" blue="0.76862745098039209" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <constraints>
+                                                                        <constraint firstItem="8d9-Ga-KNd" firstAttribute="centerY" secondItem="9XH-qY-cJO" secondAttribute="centerY" id="8xK-JQ-7Wx"/>
                                                                         <constraint firstAttribute="width" constant="30" id="HCm-Wt-pWZ"/>
+                                                                        <constraint firstItem="8d9-Ga-KNd" firstAttribute="centerX" secondItem="9XH-qY-cJO" secondAttribute="centerX" id="T0G-w6-jGl"/>
                                                                         <constraint firstAttribute="height" constant="30" id="Zw6-Zl-DnG"/>
                                                                     </constraints>
                                                                 </view>
@@ -626,12 +636,9 @@ Also, in the story board don't set the height of the label that contains a large
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZU-fO-MIT">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZU-fO-MIT">
                                                                             <rect key="frame" x="0.0" y="0.0" width="325" height="34.5"/>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                            <string key="text">and don't use: heightForRowAtIndexPath delegate function
-
-Also, in the story board don't set the height of the label that contains a large amount of data. Give it top, bottom, leading, trailing constraints.</string>
                                                                             <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -650,10 +657,20 @@ Also, in the story board don't set the height of the label that contains a large
                                                                 </view>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0JM-Py-y2y" userLabel="vIcon">
                                                                     <rect key="frame" x="335" y="17.5" width="30" height="30"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S5x-TD-bTT">
+                                                                            <rect key="frame" x="9.5" y="6" width="11" height="18"/>
+                                                                            <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="15"/>
+                                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
                                                                     <color key="backgroundColor" red="0.72549019609999998" green="0.76078431369999999" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="30" id="CKr-qy-sIj"/>
+                                                                        <constraint firstItem="S5x-TD-bTT" firstAttribute="centerX" secondItem="0JM-Py-y2y" secondAttribute="centerX" id="GIN-l7-DTx"/>
                                                                         <constraint firstAttribute="width" constant="30" id="L0H-qZ-xmK"/>
+                                                                        <constraint firstItem="S5x-TD-bTT" firstAttribute="centerY" secondItem="0JM-Py-y2y" secondAttribute="centerY" id="PqI-rd-chs"/>
                                                                     </constraints>
                                                                 </view>
                                                             </subviews>
@@ -687,6 +704,8 @@ Also, in the story board don't set the height of the label that contains a large
                                                     <outlet property="lblTimeCustomer" destination="3TB-jY-mua" id="TO8-EI-Cfc"/>
                                                     <outlet property="vBoss" destination="fHu-8l-h0k" id="bTW-F0-ixe"/>
                                                     <outlet property="vCustomer" destination="4CS-Rx-Agz" id="j0r-gq-GvE"/>
+                                                    <outlet property="vIConBoss" destination="9XH-qY-cJO" id="yx8-tp-lhd"/>
+                                                    <outlet property="vIConCustomer" destination="0JM-Py-y2y" id="O7h-La-GOA"/>
                                                     <outlet property="viDataBoss" destination="KuX-FT-3tl" id="8Pa-UC-Xqf"/>
                                                     <outlet property="viDataCustomer" destination="GKk-Ri-EHK" id="Rp7-BS-rCn"/>
                                                 </connections>
