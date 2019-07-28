@@ -7,10 +7,15 @@
 //
 
 import UIKit
+import Firebase
 
 class TabChatVC: BaseVC {
     @IBOutlet weak var tvChat: UITextView!
     @IBOutlet weak var tbvChat: UITableView!
+    
+    var listRestaurant: [QueryDocumentSnapshot] = [];
+    let db = Firestore.firestore();
+    var restaurantId:String = "";
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +28,29 @@ class TabChatVC: BaseVC {
         self.tbvChat.estimatedRowHeight = 60;
         self.tbvChat.rowHeight = UITableView.automaticDimension;
         tvChat.layer.cornerRadius = 10;
+    }
+    func initData(){
+        FoodbodyUtils.shared.showLoadingHub(viewController:self);
+        
+        db.collection("comments").whereField("restaurant_id", isEqualTo: restaurantId).getDocuments { (result, error) in
+            FoodbodyUtils.shared.hideLoadingHub(viewController: self);
+            
+            if let err = error {
+                FoodbodyUtils.shared.hideLoadingHub(viewController: self);
+                self.alertMessage(message: "Error getting documents \(err.localizedDescription)")
+            } else {
+                
+//                print(  querySnapshot!.documents.count);
+//                for document in querySnapshot!.documents {
+//                    print("\(document.documentID) => \(document.data())")
+//                    self.listRestaurant.append(document)
+//                }
+//                self.showDataOnMapWithCurrentLocation(curentLocation: self.currentLocation)
+//                self.clvFodi.reloadData();
+//                self.stopAnimationLoading()
+                
+            }
+        }
     }
 
 }

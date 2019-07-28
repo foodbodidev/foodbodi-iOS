@@ -17,7 +17,6 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
     @IBOutlet weak var btnAdd: FoodBodyButton!
     @IBOutlet weak var googleMapView:GMSMapView!
     @IBOutlet weak var clvFodi:UICollectionView!
-    @IBOutlet weak var loadingCellView: UIView?
     
     //MARK: variable.
     var locationManager:CLLocationManager? = nil;
@@ -29,37 +28,11 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initUI()
-        
-        DispatchQueue.main.async {
-            self.startAnimationLoading()
-        }
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
-        
-    }
-    
-    
-    private func startAnimationLoading() {
-        loadingCellView?.subviews.forEach({
-            $0.subviews.forEach({
-                $0.startAnimationLoading()
-            })
-        })
-       
-    }
-    
-    private func stopAnimationLoading() {
-        loadingCellView?.subviews.forEach({
-            $0.subviews.forEach({
-                $0.stopAnimationLoading()
-            })
-        })
-        
-       self.loadingCellView?.isHidden = true
         
     }
     
@@ -149,7 +122,6 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
                 }
                 self.showDataOnMapWithCurrentLocation(curentLocation: self.currentLocation)
                 self.clvFodi.reloadData();
-                self.stopAnimationLoading()
                
             }
         }
@@ -227,7 +199,7 @@ extension FodiMapVC:UICollectionViewDelegate, UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height:CGFloat = 150;
+        let height:CGFloat = 200;
         let width:CGFloat = self.clvFodi.frame.size.width/3.0;
         let size:CGSize = CGSize.init(width: width, height: height);
         return size;
