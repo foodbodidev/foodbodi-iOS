@@ -17,7 +17,8 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
     @IBOutlet weak var btnAdd: FoodBodyButton!
     @IBOutlet weak var googleMapView:GMSMapView!
     @IBOutlet weak var clvFodi:UICollectionView!
-    @IBOutlet weak var loadingCellView: UIView?
+    @IBOutlet weak var viEdit:UIView!
+    @IBOutlet weak var btnEdit: UIButton!
     
     //MARK: variable.
     var locationManager:CLLocationManager? = nil;
@@ -29,37 +30,11 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initUI()
-        
-        DispatchQueue.main.async {
-            self.startAnimationLoading()
-        }
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
-        
-    }
-    
-    
-    private func startAnimationLoading() {
-        loadingCellView?.subviews.forEach({
-            $0.subviews.forEach({
-                $0.startAnimationLoading()
-            })
-        })
-       
-    }
-    
-    private func stopAnimationLoading() {
-        loadingCellView?.subviews.forEach({
-            $0.subviews.forEach({
-                $0.stopAnimationLoading()
-            })
-        })
-        
-       self.loadingCellView?.isHidden = true
         
     }
     
@@ -77,6 +52,9 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
         self.clvFodi.delegate = self;
         self.clvFodi.dataSource = self;
         self.googleMapView.delegate = self;
+        self.viEdit.layer.cornerRadius = 22;
+        self.viEdit.layer.masksToBounds = true;
+        
     }
     
     func initData(){
@@ -149,7 +127,6 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
                 }
                 self.showDataOnMapWithCurrentLocation(curentLocation: self.currentLocation)
                 self.clvFodi.reloadData();
-                self.stopAnimationLoading()
                
             }
         }
@@ -196,14 +173,28 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
             self.present(nav, animated: true, completion: nil)
             
         } else {
-//            let addRestaurantVC = getViewController(className: AddRestaurantVC.className, storyboard: FbConstants.FodiMapSB) as! AddRestaurantVC;
-//            addRestaurantVC.delegate = self;
-//            self.navigationController?.pushViewController(addRestaurantVC, animated: true)
-            
-            let companyInfoVC = CompanyInfoVC.init(nibName: "CompanyInfoVC", bundle: nil)
+            let addRestaurantVC = getViewController(className: AddRestaurantVC.className, storyboard: FbConstants.FodiMapSB) as! AddRestaurantVC;
+            addRestaurantVC.delegate = self;
+            self.navigationController?.pushViewController(addRestaurantVC, animated: true)
+        }
+    }
+    @IBAction func editAction(sender:UIButton){
+        let alert = UIAlertController(title:nil, message: "음식점을 등록할려면 사업자 정보가 필요합니다.", preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) {
+            UIAlertAction in
+            // It will dismiss action sheet
+        }
+        let action = UIAlertAction(title: "Input", style: .default) {
+            UIAlertAction in
+            //go to company information.
+            let companyInfoVC = getViewController(className: CompanyInfoVC.className, storyboard: FbConstants.FodiMapSB)
             self.navigationController?.pushViewController(companyInfoVC, animated: true)
             
         }
+        alert.addAction(action)
+         alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -227,7 +218,7 @@ extension FodiMapVC:UICollectionViewDelegate, UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height:CGFloat = 150;
+        let height:CGFloat = 200;
         let width:CGFloat = self.clvFodi.frame.size.width/3.0;
         let size:CGSize = CGSize.init(width: width, height: height);
         return size;

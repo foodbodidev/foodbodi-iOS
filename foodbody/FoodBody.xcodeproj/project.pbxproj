@@ -12,6 +12,7 @@
 		2F427B9922BD1E6000099B0F /* SFProText-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F427B9322BD1E6000099B0F /* SFProText-Regular.otf */; };
 		2F427B9A22BD1E6000099B0F /* SFProText-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F427B9422BD1E6000099B0F /* SFProText-Light.otf */; };
 		2F427B9B22BD1E6000099B0F /* SFProText-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F427B9522BD1E6000099B0F /* SFProText-Semibold.otf */; };
+		2F49414F22EC285D004437BD /* ChatTbvCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F49414E22EC285D004437BD /* ChatTbvCell.swift */; };
 		2FCA49B922D63F2D00E3497D /* GeohashBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCA49B722D63F2D00E3497D /* GeohashBox.swift */; };
 		2FCA49BC22D63F5400E3497D /* Geohash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCA49BB22D63F5300E3497D /* Geohash.swift */; };
 		2FCB77FC22D377F300F6966B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2FCB77FB22D377F300F6966B /* GoogleService-Info.plist */; };
@@ -30,7 +31,6 @@
 		98282BE522C26E64003ED8BC /* YourBasicVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98282BE322C26E64003ED8BC /* YourBasicVC.swift */; };
 		98282BE622C26E64003ED8BC /* YourBasicVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98282BE422C26E64003ED8BC /* YourBasicVC.xib */; };
 		98650B2222EB40AC00CAA384 /* CompanyInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98650B2022EB40AC00CAA384 /* CompanyInfoVC.swift */; };
-		98650B2322EB40AC00CAA384 /* CompanyInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98650B2122EB40AC00CAA384 /* CompanyInfoVC.xib */; };
 		98C34F5322CE4FE100A933DE /* InforTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C34F5222CE4FE100A933DE /* InforTextField.swift */; };
 		98C34F5622CE57C100A933DE /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C34F5422CE57C100A933DE /* MenuTableViewCell.swift */; };
 		98C34F5722CE57C100A933DE /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98C34F5522CE57C100A933DE /* MenuTableViewCell.xib */; };
@@ -108,6 +108,7 @@
 		2F427B9322BD1E6000099B0F /* SFProText-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Regular.otf"; sourceTree = "<group>"; };
 		2F427B9422BD1E6000099B0F /* SFProText-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Light.otf"; sourceTree = "<group>"; };
 		2F427B9522BD1E6000099B0F /* SFProText-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Semibold.otf"; sourceTree = "<group>"; };
+		2F49414E22EC285D004437BD /* ChatTbvCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTbvCell.swift; sourceTree = "<group>"; };
 		2FCA49B722D63F2D00E3497D /* GeohashBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeohashBox.swift; sourceTree = "<group>"; };
 		2FCA49BB22D63F5300E3497D /* Geohash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geohash.swift; sourceTree = "<group>"; };
 		2FCB77FB22D377F300F6966B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -129,7 +130,6 @@
 		98282BE322C26E64003ED8BC /* YourBasicVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourBasicVC.swift; sourceTree = "<group>"; };
 		98282BE422C26E64003ED8BC /* YourBasicVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YourBasicVC.xib; sourceTree = "<group>"; };
 		98650B2022EB40AC00CAA384 /* CompanyInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyInfoVC.swift; sourceTree = "<group>"; };
-		98650B2122EB40AC00CAA384 /* CompanyInfoVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompanyInfoVC.xib; sourceTree = "<group>"; };
 		98C34F5222CE4FE100A933DE /* InforTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InforTextField.swift; sourceTree = "<group>"; };
 		98C34F5422CE57C100A933DE /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		98C34F5522CE57C100A933DE /* MenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
@@ -300,7 +300,6 @@
 			isa = PBXGroup;
 			children = (
 				98650B2022EB40AC00CAA384 /* CompanyInfoVC.swift */,
-				98650B2122EB40AC00CAA384 /* CompanyInfoVC.xib */,
 			);
 			path = "Company Information";
 			sourceTree = "<group>";
@@ -365,6 +364,7 @@
 			isa = PBXGroup;
 			children = (
 				D587C45A22DC27BC00C119BA /* TabChatVC.swift */,
+				2F49414E22EC285D004437BD /* ChatTbvCell.swift */,
 			);
 			path = TabChatVC;
 			sourceTree = "<group>";
@@ -460,7 +460,6 @@
 		D5B24B0322B7399500DA16C4 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				98650B1F22EB406C00CAA384 /* Company Information */,
 				98CEA21122B94A9E00E82063 /* Base */,
 				D5B24B0622B73A3600DA16C4 /* Authentications */,
 				D5B24B0722B73A3600DA16C4 /* FodiMap */,
@@ -502,6 +501,7 @@
 		D5B24B0722B73A3600DA16C4 /* FodiMap */ = {
 			isa = PBXGroup;
 			children = (
+				98650B1F22EB406C00CAA384 /* Company Information */,
 				2F03660322DB8369001C15FE /* RestaurantInfoMenuVC */,
 				D5ACD6E422CD9A3800F8F1E2 /* AddRestaurantVC */,
 				D5B24B2A22B73EB000DA16C4 /* FodiMapVC */,
@@ -804,7 +804,6 @@
 				2FCB77FC22D377F300F6966B /* GoogleService-Info.plist in Resources */,
 				98282BE622C26E64003ED8BC /* YourBasicVC.xib in Resources */,
 				98C34F5722CE57C100A933DE /* MenuTableViewCell.xib in Resources */,
-				98650B2322EB40AC00CAA384 /* CompanyInfoVC.xib in Resources */,
 				98282BCD22BE8607003ED8BC /* FBTextField.xib in Resources */,
 				D5ACD6E822CD9A7600F8F1E2 /* FodiMap.storyboard in Resources */,
 				2F427B9922BD1E6000099B0F /* SFProText-Regular.otf in Resources */,
@@ -1021,6 +1020,7 @@
 				BA782CAC22DDD71100E25985 /* PhotoModel.swift in Sources */,
 				BA8C18EF22E1BD58007531FE /* BaseLoginVC.swift in Sources */,
 				98CEA1FE22B9431200E82063 /* UIView.swift in Sources */,
+				2F49414F22EC285D004437BD /* ChatTbvCell.swift in Sources */,
 				D5B24B3522B73FB600DA16C4 /* MainTabBarVC.swift in Sources */,
 				D5C0FDA522B8EE2A00411488 /* SignUpVC.swift in Sources */,
 				98CEA1FF22B9431200E82063 /* String.swift in Sources */,
