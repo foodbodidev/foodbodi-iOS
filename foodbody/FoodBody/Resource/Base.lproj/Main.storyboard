@@ -28,7 +28,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HFr-cC-qfp" userLabel="map" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="418"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6hH-sA-BDy" userLabel="clvView">
                                 <rect key="frame" x="0.0" y="418" width="375" height="200"/>
@@ -136,8 +136,8 @@
                                 <rect key="frame" x="299" y="60" width="46" height="46"/>
                                 <color key="backgroundColor" red="0.070588235289999995" green="0.74117647060000003" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="Cow-i8-sVQ" secondAttribute="height" multiplier="1:1" id="gZu-7l-fzN"/>
-                                    <constraint firstAttribute="width" constant="46" id="rdf-MH-gvW"/>
+                                    <constraint firstAttribute="height" constant="45" id="00y-PL-SVG"/>
+                                    <constraint firstAttribute="width" constant="45" id="rdf-MH-gvW"/>
                                 </constraints>
                                 <state key="normal" image="ic_add"/>
                                 <userDefinedRuntimeAttributes>
@@ -149,18 +149,49 @@
                                     <action selector="addActionWithSender:" destination="JPT-Hk-ugd" eventType="touchUpInside" id="T7A-oK-yD1"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ytw-Rm-O8o">
+                                <rect key="frame" x="307" y="269" width="29" height="128"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eQF-D0-qKc">
+                                        <rect key="frame" x="-9" y="49" width="46" height="30"/>
+                                        <connections>
+                                            <action selector="editActionWithSender:" destination="JPT-Hk-ugd" eventType="touchUpInside" id="OOb-H1-gId"/>
+                                        </connections>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_edit" translatesAutoresizingMaskIntoConstraints="NO" id="zXG-8a-oYm">
+                                        <rect key="frame" x="-106" y="0.0" width="240" height="128"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="9W2-Xa-5p3"/>
+                                            <constraint firstAttribute="height" constant="20" id="OBH-vS-CBT"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="zXG-8a-oYm" firstAttribute="centerX" secondItem="ytw-Rm-O8o" secondAttribute="centerX" id="4sj-Bg-ZuF"/>
+                                    <constraint firstItem="eQF-D0-qKc" firstAttribute="leading" secondItem="ytw-Rm-O8o" secondAttribute="leading" id="L55-d4-j3l"/>
+                                    <constraint firstAttribute="bottom" secondItem="eQF-D0-qKc" secondAttribute="bottom" id="c78-PJ-6jp"/>
+                                    <constraint firstAttribute="trailing" secondItem="eQF-D0-qKc" secondAttribute="trailing" id="iB0-m0-tIs"/>
+                                    <constraint firstAttribute="height" constant="45" id="wAU-eJ-Kku"/>
+                                    <constraint firstAttribute="width" constant="45" id="wGu-t1-92v"/>
+                                    <constraint firstItem="zXG-8a-oYm" firstAttribute="centerY" secondItem="ytw-Rm-O8o" secondAttribute="centerY" id="xHv-iv-58r"/>
+                                    <constraint firstItem="eQF-D0-qKc" firstAttribute="top" secondItem="ytw-Rm-O8o" secondAttribute="top" id="zgE-Az-xRg"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="HFr-cC-qfp" firstAttribute="leading" secondItem="SW7-SL-K4s" secondAttribute="leading" id="2cx-aD-Er0"/>
                             <constraint firstItem="SW7-SL-K4s" firstAttribute="trailing" secondItem="HFr-cC-qfp" secondAttribute="trailing" id="7ul-Bq-pI5"/>
                             <constraint firstItem="SW7-SL-K4s" firstAttribute="bottom" secondItem="6hH-sA-BDy" secondAttribute="bottom" id="F76-Tx-5aP"/>
+                            <constraint firstItem="SW7-SL-K4s" firstAttribute="trailing" secondItem="ytw-Rm-O8o" secondAttribute="trailing" constant="30" id="GTA-Gh-DH0"/>
                             <constraint firstItem="6hH-sA-BDy" firstAttribute="top" secondItem="HFr-cC-qfp" secondAttribute="bottom" id="S79-ec-UBt"/>
                             <constraint firstItem="SW7-SL-K4s" firstAttribute="trailing" secondItem="6hH-sA-BDy" secondAttribute="trailing" id="SRA-Nv-fHQ"/>
                             <constraint firstItem="Cow-i8-sVQ" firstAttribute="top" secondItem="SW7-SL-K4s" secondAttribute="top" constant="40" id="Ykk-Ws-9TF"/>
                             <constraint firstItem="6hH-sA-BDy" firstAttribute="leading" secondItem="SW7-SL-K4s" secondAttribute="leading" id="edx-M2-I1v"/>
                             <constraint firstItem="SW7-SL-K4s" firstAttribute="trailing" secondItem="Cow-i8-sVQ" secondAttribute="trailing" constant="30" id="oc6-mB-hDa"/>
                             <constraint firstItem="HFr-cC-qfp" firstAttribute="top" secondItem="Dwn-8d-7rA" secondAttribute="top" id="sSL-br-feM"/>
+                            <constraint firstItem="ytw-Rm-O8o" firstAttribute="top" secondItem="Cow-i8-sVQ" secondAttribute="bottom" constant="20" id="vGz-Tr-LVT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SW7-SL-K4s"/>
                     </view>
@@ -171,8 +202,10 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="btnAdd" destination="Cow-i8-sVQ" id="p66-a8-Jh8"/>
+                        <outlet property="btnEdit" destination="eQF-D0-qKc" id="8vG-dt-oKN"/>
                         <outlet property="clvFodi" destination="V4N-G1-fev" id="Ax7-Qi-gyl"/>
                         <outlet property="googleMapView" destination="HFr-cC-qfp" id="ccB-RX-PXc"/>
+                        <outlet property="viEdit" destination="ytw-Rm-O8o" id="a6s-NW-nXh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fxi-IG-DzE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -252,6 +285,7 @@
     </scenes>
     <resources>
         <image name="ic_add" width="22" height="22"/>
+        <image name="ic_edit" width="24" height="24"/>
         <image name="ic_fodimap" width="23" height="24"/>
         <image name="ic_profile" width="24" height="24"/>
         <image name="ic_reservations" width="26" height="24"/>

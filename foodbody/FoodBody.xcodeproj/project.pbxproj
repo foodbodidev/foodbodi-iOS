@@ -463,7 +463,6 @@
 		D5B24B0322B7399500DA16C4 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				98650B1F22EB406C00CAA384 /* Company Information */,
 				98CEA21122B94A9E00E82063 /* Base */,
 				D5B24B0622B73A3600DA16C4 /* Authentications */,
 				D5B24B0722B73A3600DA16C4 /* FodiMap */,
@@ -505,6 +504,7 @@
 		D5B24B0722B73A3600DA16C4 /* FodiMap */ = {
 			isa = PBXGroup;
 			children = (
+				98650B1F22EB406C00CAA384 /* Company Information */,
 				2F03660322DB8369001C15FE /* RestaurantInfoMenuVC */,
 				D5ACD6E422CD9A3800F8F1E2 /* AddRestaurantVC */,
 				D5B24B2A22B73EB000DA16C4 /* FodiMapVC */,

@@ -17,6 +17,8 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
     @IBOutlet weak var btnAdd: FoodBodyButton!
     @IBOutlet weak var googleMapView:GMSMapView!
     @IBOutlet weak var clvFodi:UICollectionView!
+    @IBOutlet weak var viEdit:UIView!
+    @IBOutlet weak var btnEdit: UIButton!
     
     //MARK: variable.
     var locationManager:CLLocationManager? = nil;
@@ -50,6 +52,9 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
         self.clvFodi.delegate = self;
         self.clvFodi.dataSource = self;
         self.googleMapView.delegate = self;
+        self.viEdit.layer.cornerRadius = 22;
+        self.viEdit.layer.masksToBounds = true;
+        
     }
     
     func initData(){
@@ -168,14 +173,28 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
             self.present(nav, animated: true, completion: nil)
             
         } else {
-//            let addRestaurantVC = getViewController(className: AddRestaurantVC.className, storyboard: FbConstants.FodiMapSB) as! AddRestaurantVC;
-//            addRestaurantVC.delegate = self;
-//            self.navigationController?.pushViewController(addRestaurantVC, animated: true)
-            
+            let addRestaurantVC = getViewController(className: AddRestaurantVC.className, storyboard: FbConstants.FodiMapSB) as! AddRestaurantVC;
+            addRestaurantVC.delegate = self;
+            self.navigationController?.pushViewController(addRestaurantVC, animated: true)
+        }
+    }
+    @IBAction func editAction(sender:UIButton){
+        let alert = UIAlertController(title:nil, message: "음식점을 등록할려면 사업자 정보가 필요합니다.", preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) {
+            UIAlertAction in
+            // It will dismiss action sheet
+        }
+        let action = UIAlertAction(title: "Input", style: .default) {
+            UIAlertAction in
+            //go to company information.
             let companyInfoVC = CompanyInfoVC.init(nibName: "CompanyInfoVC", bundle: nil)
             self.navigationController?.pushViewController(companyInfoVC, animated: true)
             
         }
+        alert.addAction(action)
+         alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
