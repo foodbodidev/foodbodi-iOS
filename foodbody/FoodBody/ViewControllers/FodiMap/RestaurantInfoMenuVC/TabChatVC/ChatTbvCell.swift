@@ -9,16 +9,23 @@
 import UIKit
 
 class ChatTbvCell: UITableViewCell {
-
+    
+    @IBOutlet weak var lblChatBoss:UILabel!
+    @IBOutlet weak var lblTimeBoss:UILabel!
+    @IBOutlet weak var viDataBoss:UIView!
+    @IBOutlet weak var vBoss:UIView!;
+    
+    //left.
+    @IBOutlet weak var lblChatCustomer:UILabel!
+    @IBOutlet weak var lblTimeCustomer:UILabel!
+    @IBOutlet weak var viDataCustomer:UIView!
+    @IBOutlet weak var vCustomer:UIView!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.viDataBoss.roundCorners(corners: [.topRight,.bottomLeft, .bottomRight], radius: 15);
+        self.viDataCustomer.roundCorners(corners: [.topRight,.bottomLeft, .bottomRight], radius: 15);
+        
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

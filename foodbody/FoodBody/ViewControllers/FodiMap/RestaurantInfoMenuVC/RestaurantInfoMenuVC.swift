@@ -75,6 +75,9 @@ class RestaurantInfoMenuVC: BaseVC {
         self.navInfoMenu.setViewControllers([self.tabMenuVC!], animated: false)
     }
     @IBAction func chatAction(sender:UIButton){
+         if let document = document {
+            self.tabChatVC!.restaurantId = document.documentID;
+        }
         self.navInfoMenu.setViewControllers([self.tabChatVC!], animated: false);
     }
 
