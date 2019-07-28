@@ -188,7 +188,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
         let action = UIAlertAction(title: "Input", style: .default) {
             UIAlertAction in
             //go to company information.
-            let companyInfoVC = CompanyInfoVC.init(nibName: "CompanyInfoVC", bundle: nil)
+            let companyInfoVC = getViewController(className: CompanyInfoVC.className, storyboard: FbConstants.FodiMapSB)
             self.navigationController?.pushViewController(companyInfoVC, animated: true)
             
         }

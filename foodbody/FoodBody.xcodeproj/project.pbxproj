@@ -31,7 +31,6 @@
 		98282BE522C26E64003ED8BC /* YourBasicVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98282BE322C26E64003ED8BC /* YourBasicVC.swift */; };
 		98282BE622C26E64003ED8BC /* YourBasicVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98282BE422C26E64003ED8BC /* YourBasicVC.xib */; };
 		98650B2222EB40AC00CAA384 /* CompanyInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98650B2022EB40AC00CAA384 /* CompanyInfoVC.swift */; };
-		98650B2322EB40AC00CAA384 /* CompanyInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98650B2122EB40AC00CAA384 /* CompanyInfoVC.xib */; };
 		98C34F5322CE4FE100A933DE /* InforTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C34F5222CE4FE100A933DE /* InforTextField.swift */; };
 		98C34F5622CE57C100A933DE /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C34F5422CE57C100A933DE /* MenuTableViewCell.swift */; };
 		98C34F5722CE57C100A933DE /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98C34F5522CE57C100A933DE /* MenuTableViewCell.xib */; };
@@ -131,7 +130,6 @@
 		98282BE322C26E64003ED8BC /* YourBasicVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourBasicVC.swift; sourceTree = "<group>"; };
 		98282BE422C26E64003ED8BC /* YourBasicVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YourBasicVC.xib; sourceTree = "<group>"; };
 		98650B2022EB40AC00CAA384 /* CompanyInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyInfoVC.swift; sourceTree = "<group>"; };
-		98650B2122EB40AC00CAA384 /* CompanyInfoVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompanyInfoVC.xib; sourceTree = "<group>"; };
 		98C34F5222CE4FE100A933DE /* InforTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InforTextField.swift; sourceTree = "<group>"; };
 		98C34F5422CE57C100A933DE /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		98C34F5522CE57C100A933DE /* MenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
@@ -302,7 +300,6 @@
 			isa = PBXGroup;
 			children = (
 				98650B2022EB40AC00CAA384 /* CompanyInfoVC.swift */,
-				98650B2122EB40AC00CAA384 /* CompanyInfoVC.xib */,
 			);
 			path = "Company Information";
 			sourceTree = "<group>";
@@ -807,7 +804,6 @@
 				2FCB77FC22D377F300F6966B /* GoogleService-Info.plist in Resources */,
 				98282BE622C26E64003ED8BC /* YourBasicVC.xib in Resources */,
 				98C34F5722CE57C100A933DE /* MenuTableViewCell.xib in Resources */,
-				98650B2322EB40AC00CAA384 /* CompanyInfoVC.xib in Resources */,
 				98282BCD22BE8607003ED8BC /* FBTextField.xib in Resources */,
 				D5ACD6E822CD9A7600F8F1E2 /* FodiMap.storyboard in Resources */,
 				2F427B9922BD1E6000099B0F /* SFProText-Regular.otf in Resources */,
