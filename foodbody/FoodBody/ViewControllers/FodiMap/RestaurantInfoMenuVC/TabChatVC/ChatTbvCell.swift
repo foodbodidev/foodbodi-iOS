@@ -28,7 +28,8 @@ class ChatTbvCell: UITableViewCell {
         super.awakeFromNib()
         self.viDataBoss.roundCorners(corners: [.topRight,.bottomLeft, .bottomRight], radius: 15);
         self.viDataCustomer.roundCorners(corners: [.topRight,.bottomLeft, .bottomRight], radius: 15);
-        self.vCustomer.layer.cornerRadius = 5;
+        self.vIConCustomer.layer.cornerRadius = 5;
+        
         self.vIConBoss.layer.cornerRadius = 5;
         
     }
