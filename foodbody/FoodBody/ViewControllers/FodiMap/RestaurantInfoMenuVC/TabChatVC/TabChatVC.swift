@@ -18,6 +18,7 @@ class TabChatVC: BaseVC {
     var listChat: [CommentRestaurantModel] = [];
     let db = Firestore.firestore();
     var restaurantId:String = "";
+    var creatorRestaurant:String = "";
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,9 +56,13 @@ class TabChatVC: BaseVC {
                     let dict:NSDictionary = document.data() as NSDictionary;
                     obj.creator = FoodbodyUtils.shared.checkDataString(dict: dict as NSDictionary, key: "creator")
                     obj.message = FoodbodyUtils.shared.checkDataString(dict: dict as NSDictionary, key: "message")
-                    obj.created_date = FoodbodyUtils.shared.checkDataString(dict: dict as NSDictionary, key: "created_date")
+                    obj.created_date = NSInteger(FoodbodyUtils.shared.checkDataFloat(dict: dict as NSDictionary, key: "created_date"))
                     obj.restaurant_id = FoodbodyUtils.shared.checkDataString(dict: dict as NSDictionary, key: "restaurant_id")
                     self.listChat.append(obj)
+                    self.listChat = self.listChat.sorted(by: { obj1, obj2 in
+                        return obj1.created_date > obj2.created_date
+                    })
+                    
                 }
                 self.tbvChat.reloadData();
             }
@@ -67,6 +72,7 @@ class TabChatVC: BaseVC {
     @IBAction func sendAction(sender:UIButton){
         print(tvChat.text as Any);
         //send data
+        self.tvChat.text = "";
         let commentInfo: CommentRequest = CommentRequest()
         commentInfo.restaurant_id = self.restaurantId;
         commentInfo.message = tvChat.text;
@@ -117,17 +123,19 @@ extension TabChatVC:UITableViewDelegate, UITableViewDataSource{
         let cell:ChatTbvCell = tableView.dequeueReusableCell(withIdentifier: "ChatTbvCell", for: indexPath) as! ChatTbvCell;
         let obj:CommentRestaurantModel = listChat[indexPath.row]
         if obj.creator.count > 0 {
-            if obj.creator == AppManager.user?.email {
+            if obj.creator == self.creatorRestaurant {
                 //boss.
                 cell.vCustomer.isHidden = true;
                 cell.vBoss.isHidden = false;
                 cell.lblChatBoss.text = obj.message;
-                cell.lblTimeBoss.text = obj.created_date
+                let timeInterval:NSInteger = obj.created_date
+                cell.lblTimeBoss.text = FoodbodyUtils.shared.dateFromTimeInterval(timeInterval: timeInterval);
             }else{
                 cell.vCustomer.isHidden = false;
                 cell.vBoss.isHidden = true;
                 cell.lblChatCustomer.text = obj.message;
-                cell.lblTimeBoss.text = obj.created_date;
+                let timeInterval:NSInteger = obj.created_date
+                cell.lblTimeCustomer.text = FoodbodyUtils.shared.dateFromTimeInterval(timeInterval: timeInterval);
             }
             
         }
@@ -135,7 +143,7 @@ extension TabChatVC:UITableViewDelegate, UITableViewDataSource{
         return cell;
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension;
+        return 80;
     }
 }
 

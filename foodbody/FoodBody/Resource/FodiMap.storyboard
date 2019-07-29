@@ -507,84 +507,17 @@
                                                 <rect key="frame" x="0.0" y="28" width="375" height="65"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="F9H-dx-J6Q" id="HXb-8l-WjV">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="64.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fHu-8l-h0k" userLabel="vBoss">
-                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="64.5"/>
-                                                            <subviews>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9XH-qY-cJO" userLabel="vIcon">
-                                                                    <rect key="frame" x="10" y="17.5" width="30" height="30"/>
-                                                                    <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="B" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8d9-Ga-KNd">
-                                                                            <rect key="frame" x="10" y="6" width="10" height="18"/>
-                                                                            <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="15"/>
-                                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
-                                                                    </subviews>
-                                                                    <color key="backgroundColor" red="0.72549019607843135" green="0.76078431372549016" blue="0.76862745098039209" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <constraints>
-                                                                        <constraint firstItem="8d9-Ga-KNd" firstAttribute="centerY" secondItem="9XH-qY-cJO" secondAttribute="centerY" id="8xK-JQ-7Wx"/>
-                                                                        <constraint firstAttribute="width" constant="30" id="HCm-Wt-pWZ"/>
-                                                                        <constraint firstItem="8d9-Ga-KNd" firstAttribute="centerX" secondItem="9XH-qY-cJO" secondAttribute="centerX" id="T0G-w6-jGl"/>
-                                                                        <constraint firstAttribute="height" constant="30" id="Zw6-Zl-DnG"/>
-                                                                    </constraints>
-                                                                </view>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KuX-FT-3tl" userLabel="vChatDataBoss">
-                                                                    <rect key="frame" x="45" y="5" width="325" height="54.5"/>
-                                                                    <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mIM-co-nfZ">
-                                                                            <rect key="frame" x="5" y="34.5" width="315" height="20"/>
-                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="height" constant="20" id="Och-qU-eWk"/>
-                                                                            </constraints>
-                                                                            <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="10"/>
-                                                                            <nil key="textColor"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pQ2-Jy-GW4">
-                                                                            <rect key="frame" x="5" y="0.0" width="315" height="34.5"/>
-                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                            <string key="text">and don't use: heightForRowAtIndexPath delegate function
-
-Also, in the story board don't set the height of the label that contains a large amount of data. Give it top, bottom, leading, trailing constraints.</string>
-                                                                            <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
-                                                                            <nil key="textColor"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
-                                                                    </subviews>
-                                                                    <color key="backgroundColor" red="0.89803921568627454" green="0.92941176470588238" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <constraints>
-                                                                        <constraint firstItem="pQ2-Jy-GW4" firstAttribute="top" secondItem="KuX-FT-3tl" secondAttribute="top" id="0zJ-On-Byy"/>
-                                                                        <constraint firstItem="mIM-co-nfZ" firstAttribute="leading" secondItem="KuX-FT-3tl" secondAttribute="leading" constant="5" id="B7G-Vt-ub3"/>
-                                                                        <constraint firstAttribute="bottom" secondItem="mIM-co-nfZ" secondAttribute="bottom" id="Y9G-7x-Iy1"/>
-                                                                        <constraint firstAttribute="trailing" secondItem="mIM-co-nfZ" secondAttribute="trailing" constant="5" id="aZO-Sr-vvF"/>
-                                                                        <constraint firstItem="mIM-co-nfZ" firstAttribute="top" secondItem="pQ2-Jy-GW4" secondAttribute="bottom" id="cgC-jY-QKP"/>
-                                                                        <constraint firstItem="pQ2-Jy-GW4" firstAttribute="leading" secondItem="KuX-FT-3tl" secondAttribute="leading" constant="5" id="ic4-a0-Q2X"/>
-                                                                        <constraint firstAttribute="trailing" secondItem="pQ2-Jy-GW4" secondAttribute="trailing" constant="5" id="xlG-Ww-UPn"/>
-                                                                    </constraints>
-                                                                </view>
-                                                            </subviews>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="bottom" secondItem="KuX-FT-3tl" secondAttribute="bottom" constant="5" id="9S2-tP-jzd"/>
-                                                                <constraint firstAttribute="trailing" secondItem="KuX-FT-3tl" secondAttribute="trailing" constant="5" id="M1t-eH-NRO"/>
-                                                                <constraint firstItem="9XH-qY-cJO" firstAttribute="leading" secondItem="fHu-8l-h0k" secondAttribute="leading" constant="10" id="c06-bR-Wn6"/>
-                                                                <constraint firstItem="9XH-qY-cJO" firstAttribute="centerY" secondItem="fHu-8l-h0k" secondAttribute="centerY" id="fO0-CO-fZC"/>
-                                                                <constraint firstItem="KuX-FT-3tl" firstAttribute="leading" secondItem="9XH-qY-cJO" secondAttribute="trailing" constant="5" id="sq2-pT-fDB"/>
-                                                                <constraint firstItem="KuX-FT-3tl" firstAttribute="top" secondItem="fHu-8l-h0k" secondAttribute="top" constant="5" id="wei-Ih-1Xd"/>
-                                                            </constraints>
-                                                        </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4CS-Rx-Agz" userLabel="vCustomer">
-                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="64.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GKk-Ri-EHK" userLabel="vChatCustomer">
-                                                                    <rect key="frame" x="5" y="5" width="325" height="54.5"/>
+                                                                    <rect key="frame" x="40" y="5" width="287" height="55"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3TB-jY-mua">
-                                                                            <rect key="frame" x="5" y="34.5" width="315" height="20"/>
+                                                                            <rect key="frame" x="5" y="35" width="277" height="20"/>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="20" id="orI-iU-2qw"/>
@@ -594,7 +527,7 @@ Also, in the story board don't set the height of the label that contains a large
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZU-fO-MIT">
-                                                                            <rect key="frame" x="5" y="0.0" width="315" height="34.5"/>
+                                                                            <rect key="frame" x="5" y="0.0" width="277" height="35"/>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
                                                                             <nil key="textColor"/>
@@ -604,12 +537,12 @@ Also, in the story board don't set the height of the label that contains a large
                                                                     <color key="backgroundColor" red="0.8980392157" green="0.92941176469999998" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <constraints>
                                                                         <constraint firstItem="3TB-jY-mua" firstAttribute="top" secondItem="tZU-fO-MIT" secondAttribute="bottom" id="Bz2-kQ-hdR"/>
-                                                                        <constraint firstItem="3TB-jY-mua" firstAttribute="leading" secondItem="GKk-Ri-EHK" secondAttribute="leading" constant="5" id="HRI-Pg-QQn"/>
-                                                                        <constraint firstAttribute="bottom" secondItem="3TB-jY-mua" secondAttribute="bottom" id="JSK-Dt-oJi"/>
+                                                                        <constraint firstItem="3TB-jY-mua" firstAttribute="leading" secondItem="GKk-Ri-EHK" secondAttribute="leading" constant="20" id="HRI-Pg-QQn"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="3TB-jY-mua" secondAttribute="bottom" constant="15" id="JSK-Dt-oJi"/>
                                                                         <constraint firstItem="tZU-fO-MIT" firstAttribute="leading" secondItem="GKk-Ri-EHK" secondAttribute="leading" constant="5" id="LG7-QO-lnT"/>
                                                                         <constraint firstItem="tZU-fO-MIT" firstAttribute="top" secondItem="GKk-Ri-EHK" secondAttribute="top" id="Ngb-s9-hsd"/>
                                                                         <constraint firstAttribute="trailing" secondItem="tZU-fO-MIT" secondAttribute="trailing" constant="5" id="Xtj-BJ-K6u"/>
-                                                                        <constraint firstAttribute="trailing" secondItem="3TB-jY-mua" secondAttribute="trailing" constant="5" id="lVT-5r-eVv"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="3TB-jY-mua" secondAttribute="trailing" constant="20" id="lVT-5r-eVv"/>
                                                                     </constraints>
                                                                 </view>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0JM-Py-y2y" userLabel="vIcon">
@@ -633,12 +566,79 @@ Also, in the story board don't set the height of the label that contains a large
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstItem="0JM-Py-y2y" firstAttribute="leading" secondItem="GKk-Ri-EHK" secondAttribute="trailing" constant="5" id="3gd-qP-fgY"/>
+                                                                <constraint firstItem="0JM-Py-y2y" firstAttribute="leading" secondItem="GKk-Ri-EHK" secondAttribute="trailing" constant="8" symbolic="YES" id="3gd-qP-fgY"/>
                                                                 <constraint firstAttribute="trailing" secondItem="0JM-Py-y2y" secondAttribute="trailing" constant="10" id="5uD-Q9-3jv"/>
-                                                                <constraint firstItem="GKk-Ri-EHK" firstAttribute="leading" secondItem="4CS-Rx-Agz" secondAttribute="leading" constant="5" id="AWm-wF-BuY"/>
+                                                                <constraint firstItem="GKk-Ri-EHK" firstAttribute="leading" secondItem="4CS-Rx-Agz" secondAttribute="leading" constant="40" id="AWm-wF-BuY"/>
                                                                 <constraint firstAttribute="bottom" secondItem="GKk-Ri-EHK" secondAttribute="bottom" constant="5" id="ZOR-lr-vBb"/>
                                                                 <constraint firstItem="GKk-Ri-EHK" firstAttribute="top" secondItem="4CS-Rx-Agz" secondAttribute="top" constant="5" id="eAf-KS-Dce"/>
                                                                 <constraint firstItem="0JM-Py-y2y" firstAttribute="centerY" secondItem="4CS-Rx-Agz" secondAttribute="centerY" id="r3G-j0-YQe"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fHu-8l-h0k" userLabel="vBoss">
+                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+                                                            <subviews>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9XH-qY-cJO" userLabel="vIcon">
+                                                                    <rect key="frame" x="10" y="17.5" width="30" height="30"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="B" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8d9-Ga-KNd">
+                                                                            <rect key="frame" x="10" y="6" width="10" height="18"/>
+                                                                            <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="15"/>
+                                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                    <color key="backgroundColor" red="0.72549019607843135" green="0.76078431372549016" blue="0.76862745098039209" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <constraints>
+                                                                        <constraint firstItem="8d9-Ga-KNd" firstAttribute="centerY" secondItem="9XH-qY-cJO" secondAttribute="centerY" id="8xK-JQ-7Wx"/>
+                                                                        <constraint firstAttribute="width" constant="30" id="HCm-Wt-pWZ"/>
+                                                                        <constraint firstItem="8d9-Ga-KNd" firstAttribute="centerX" secondItem="9XH-qY-cJO" secondAttribute="centerX" id="T0G-w6-jGl"/>
+                                                                        <constraint firstAttribute="height" constant="30" id="Zw6-Zl-DnG"/>
+                                                                    </constraints>
+                                                                </view>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KuX-FT-3tl" userLabel="vChatDataBoss">
+                                                                    <rect key="frame" x="45" y="5" width="290" height="55"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mIM-co-nfZ">
+                                                                            <rect key="frame" x="5" y="35" width="280" height="20"/>
+                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="20" id="Och-qU-eWk"/>
+                                                                            </constraints>
+                                                                            <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="10"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pQ2-Jy-GW4">
+                                                                            <rect key="frame" x="5" y="0.0" width="280" height="35"/>
+                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <string key="text">and don't use: heightForRowAtIndexPath delegate function
+
+Also, in the story board don't set the height of the label that contains a large amount of data. Give it top, bottom, leading, trailing constraints.</string>
+                                                                            <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                    <color key="backgroundColor" red="0.92549019610000005" green="0.92549019610000005" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <constraints>
+                                                                        <constraint firstItem="pQ2-Jy-GW4" firstAttribute="top" secondItem="KuX-FT-3tl" secondAttribute="top" id="0zJ-On-Byy"/>
+                                                                        <constraint firstItem="mIM-co-nfZ" firstAttribute="leading" secondItem="KuX-FT-3tl" secondAttribute="leading" constant="20" id="B7G-Vt-ub3"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="mIM-co-nfZ" secondAttribute="bottom" constant="15" id="Y9G-7x-Iy1"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="mIM-co-nfZ" secondAttribute="trailing" constant="20" id="aZO-Sr-vvF"/>
+                                                                        <constraint firstItem="mIM-co-nfZ" firstAttribute="top" secondItem="pQ2-Jy-GW4" secondAttribute="bottom" id="cgC-jY-QKP"/>
+                                                                        <constraint firstItem="pQ2-Jy-GW4" firstAttribute="leading" secondItem="KuX-FT-3tl" secondAttribute="leading" constant="5" id="ic4-a0-Q2X"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="pQ2-Jy-GW4" secondAttribute="trailing" constant="5" id="xlG-Ww-UPn"/>
+                                                                    </constraints>
+                                                                </view>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="bottom" secondItem="KuX-FT-3tl" secondAttribute="bottom" constant="5" id="9S2-tP-jzd"/>
+                                                                <constraint firstAttribute="trailing" secondItem="KuX-FT-3tl" secondAttribute="trailing" constant="40" id="M1t-eH-NRO"/>
+                                                                <constraint firstItem="9XH-qY-cJO" firstAttribute="leading" secondItem="fHu-8l-h0k" secondAttribute="leading" constant="10" id="c06-bR-Wn6"/>
+                                                                <constraint firstItem="9XH-qY-cJO" firstAttribute="centerY" secondItem="fHu-8l-h0k" secondAttribute="centerY" id="fO0-CO-fZC"/>
+                                                                <constraint firstItem="KuX-FT-3tl" firstAttribute="leading" secondItem="9XH-qY-cJO" secondAttribute="trailing" constant="5" id="sq2-pT-fDB"/>
+                                                                <constraint firstItem="KuX-FT-3tl" firstAttribute="top" secondItem="fHu-8l-h0k" secondAttribute="top" constant="5" id="wei-Ih-1Xd"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>

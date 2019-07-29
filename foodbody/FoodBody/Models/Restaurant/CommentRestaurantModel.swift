@@ -13,7 +13,7 @@ class CommentRestaurantModel: NSObject,Mappable {
     var restaurant_id: String = ""
     var message: String = ""
     var creator: String = ""
-    var created_date: String = ""
+    var created_date: NSInteger = 0
     var isSuccess: Bool = false
     var status_code: Int = -1
     init(restaurant_id: String, message: String) {
@@ -33,7 +33,7 @@ class CommentRestaurantModel: NSObject,Mappable {
         creator <- map["data.creator"]
         created_date <- map["data.created_date"]
         message <- map["message"]
-         status_code <- map["status_code"]
+        status_code <- map["status_code"]
         isSuccess = (status_code == 0) ? true : false
     }
     
