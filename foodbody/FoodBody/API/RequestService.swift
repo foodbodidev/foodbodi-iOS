@@ -57,6 +57,7 @@ extension RequestService: TargetType {
         case .addComment:
             return APIConstant.addComment
         
+        }
     }
     
     var method: Moya.Method {
@@ -109,8 +110,8 @@ extension RequestService: TargetType {
             return .requestParameters(parameters: dic, encoding: JSONEncoding.default)
 		case .uploadPhoto(let mutipartForm):
 			return .uploadMultipart([mutipartForm])
-        case .addComment(parameters: dic, encoding: JSONEncoding.default):
-            return .addCommentRestaurant(parameters:dic, encoding: JSONEncoding.default);
+        case .addComment(let dic):
+            return .requestParameters(parameters: dic, encoding: JSONEncoding.default)
         default:
             return .requestPlain
         }

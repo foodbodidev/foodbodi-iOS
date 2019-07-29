@@ -12,7 +12,7 @@ import ObjectMapper
 class CommentRestaurantModel: NSObject,Mappable {
     var restaurant_id: String = ""
     var message: String = ""
-    var author: String = ""
+    var creator: String = ""
     var created_date: String = ""
     init(restaurant_id: String, message: String) {
         self.restaurant_id = restaurant_id
@@ -28,6 +28,8 @@ class CommentRestaurantModel: NSObject,Mappable {
     func mapping(map: Map) {
         restaurant_id <- map["data.restaurant_id"]
         message <- map["data.message"]
+        creator <- map["data.creator"]
+        created_date <- map["data.created_date"]
     }
     
 }

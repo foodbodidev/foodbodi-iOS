@@ -15,7 +15,7 @@ class TabChatVC: BaseVC {
     @IBOutlet weak var btnSend: UIButton!
     @IBOutlet weak var btnTypeChat: UIButton!
     
-    var listChat: [QueryDocumentSnapshot] = [];
+    var listChat: [CommentRestaurantModel] = [];
     let db = Firestore.firestore();
     var restaurantId:String = "";
     
@@ -51,7 +51,13 @@ class TabChatVC: BaseVC {
                 print(  querySnapshot!.documents.count);
                 for document in querySnapshot!.documents {
                     print("\(document.documentID) => \(document.data())")
-                    self.listChat.append(document)
+                    let obj:CommentRestaurantModel = CommentRestaurantModel();
+                    let dict:NSDictionary = document.data() as NSDictionary;
+                    obj.creator = FoodbodyUtils.shared.checkDataString(dict: dict as NSDictionary, key: "creator")
+                    obj.message = FoodbodyUtils.shared.checkDataString(dict: dict as NSDictionary, key: "message")
+                    obj.created_date = FoodbodyUtils.shared.checkDataString(dict: dict as NSDictionary, key: "created_date")
+                    obj.restaurant_id = FoodbodyUtils.shared.checkDataString(dict: dict as NSDictionary, key: "restaurant_id")
+                    self.listChat.append(obj)
                 }
                 self.tbvChat.reloadData();
             }
@@ -60,7 +66,25 @@ class TabChatVC: BaseVC {
     //MARK: UIAction.
     @IBAction func sendAction(sender:UIButton){
         print(tvChat.text as Any);
-        //write document.
+        //send data
+        let commentInfo: CommentRequest = CommentRequest()
+        commentInfo.restaurant_id = self.restaurantId;
+        commentInfo.message = tvChat.text;
+        FoodbodyUtils.shared.showLoadingHub(viewController: self);
+        RequestManager.addCommentRestaurant(request: commentInfo) { (result, error) in
+            FoodbodyUtils.shared.hideLoadingHub(viewController: self);
+            if let error = error {
+                self.alertMessage(message: error.localizedDescription)
+            }
+            if let result = result {
+                
+                if result.isSuccess {
+                    
+                } else {
+                    self.alertMessage(message: result.message)
+                }
+            }
+        }
         
     }
     func enableBtnSend(){
@@ -85,22 +109,20 @@ extension TabChatVC:UITableViewDelegate, UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:ChatTbvCell = tableView.dequeueReusableCell(withIdentifier: "ChatTbvCell", for: indexPath) as! ChatTbvCell;
-        let object: QueryDocumentSnapshot = listChat[indexPath.row]
-        let dict:NSDictionary = object.data() as NSDictionary;
-        let creator:String = FoodbodyUtils.shared.checkDataString(dict: dict as NSDictionary, key: "creator");
-        if creator.count > 0 {
-            if creator == AppManager.user?.email {
+        let obj:CommentRestaurantModel = listChat[indexPath.row]
+        if obj.creator.count > 0 {
+            if obj.creator == AppManager.user?.email {
                 //boss.
                 cell.vCustomer.isHidden = true;
                 cell.vBoss.isHidden = false;
-                cell.lblChatBoss.text = FoodbodyUtils.shared.checkDataString(dict: dict as NSDictionary, key: "message");
-                cell.lblTimeBoss.text = FoodbodyUtils.shared.checkDataString(dict: dict as NSDictionary, key: "created_date")
+                cell.lblChatBoss.text = obj.message;
+                cell.lblTimeBoss.text = obj.created_date
             }else{
                 cell.vCustomer.isHidden = false;
                 cell.vBoss.isHidden = true;
                 
-                cell.lblChatCustomer.text = FoodbodyUtils.shared.checkDataString(dict: dict as NSDictionary, key: "message");
-                cell.lblTimeBoss.text = FoodbodyUtils.shared.checkDataString(dict: dict as NSDictionary, key: "created_date")
+                cell.lblChatCustomer.text = obj.message;
+                cell.lblTimeBoss.text = obj.created_date;
             }
             
         }
