@@ -21,6 +21,7 @@ enum RequestService {
     case getCagegory
 	case uploadPhoto(dic: Moya.MultipartFormData)
     case getFoodWithRestaurantId(id: String)
+    case addComment(dic: [String: Any])
 }
 
 extension RequestService: TargetType {
@@ -53,9 +54,9 @@ extension RequestService: TargetType {
 			return APIConstant.uploadPhoto
         case .getFoodWithRestaurantId(let id):
             return APIConstant.getFoodWithRestaurantId + "/\(id)" + "/foods"
-        default:
-            return ""
-        }
+        case .addComment:
+            return APIConstant.addComment
+        
     }
     
     var method: Moya.Method {
@@ -66,7 +67,8 @@ extension RequestService: TargetType {
              .facbookSignIn,
              .updateUserProfile,
              .createRestaurant,
-			 .uploadPhoto:
+			 .uploadPhoto,
+             .addComment:
             return .post
         default:
             return .get
@@ -107,6 +109,8 @@ extension RequestService: TargetType {
             return .requestParameters(parameters: dic, encoding: JSONEncoding.default)
 		case .uploadPhoto(let mutipartForm):
 			return .uploadMultipart([mutipartForm])
+        case .addComment(parameters: dic, encoding: JSONEncoding.default):
+            return .addCommentRestaurant(parameters:dic, encoding: JSONEncoding.default);
         default:
             return .requestPlain
         }

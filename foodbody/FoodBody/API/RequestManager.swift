@@ -279,6 +279,28 @@ struct RequestManager {
             }
         }
     }
+    //Add new by Tran Toan 29/07/2019.
+    static func addCommentRestaurant(request: CommentRequest,  completion: @escaping (_ result: ResonseModel?, _ error: Error?) -> ()){
+         print(request.toJSON())
+        provider.request(.addComment(dic: request.toJSON())) { result in
+            do {
+                switch result {
+                case .success(let response):
+                    let json = try response.mapJSON()
+                    print(String(describing: response.request))
+                    print(String(describing: json))
+                    let response = Mapper<ResonseModel>().map(JSONObject:json)
+                    completion(response, nil)
+                case .failure(let error):
+                    completion(nil, error)
+                    print(error)
+                }
+            } catch let error {
+                completion(nil, error)
+                print(error)
+            }
+        }
+    }
 }
 
 

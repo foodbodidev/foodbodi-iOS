@@ -58,6 +58,7 @@
 		BA8C18ED22E1BA23007531FE /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C0FDA422B8EE2A00411488 /* SignUpVC.swift */; };
 		BA8C18EF22E1BD58007531FE /* BaseLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8C18EE22E1BD58007531FE /* BaseLoginVC.swift */; };
 		BAB2CF7B22DEFA24003D4233 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB2CF7A22DEFA24003D4233 /* UIImageView.swift */; };
+		D57CDECA22EE98DE00909DBF /* CommentRestaurantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57CDEC922EE98DE00909DBF /* CommentRestaurantModel.swift */; };
 		D587C45822DC27A100C119BA /* TabMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D587C45722DC27A100C119BA /* TabMenuVC.swift */; };
 		D587C45B22DC27BC00C119BA /* TabChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D587C45A22DC27BC00C119BA /* TabChatVC.swift */; };
 		D590B99822D439FB00CC7EE8 /* FodiMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D590B99722D439FB00CC7EE8 /* FodiMapCell.swift */; };
@@ -160,6 +161,7 @@
 		BA782CAB22DDD71100E25985 /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
 		BA8C18EE22E1BD58007531FE /* BaseLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLoginVC.swift; sourceTree = "<group>"; };
 		BAB2CF7A22DEFA24003D4233 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		D57CDEC922EE98DE00909DBF /* CommentRestaurantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentRestaurantModel.swift; sourceTree = "<group>"; };
 		D587C45722DC27A100C119BA /* TabMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMenuVC.swift; sourceTree = "<group>"; };
 		D587C45A22DC27BC00C119BA /* TabChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabChatVC.swift; sourceTree = "<group>"; };
 		D590B99722D439FB00CC7EE8 /* FodiMapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FodiMapCell.swift; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 				98F772C922D9AF560027F4BE /* CategoryModel.swift */,
 				98F772CB22DCBD500027F4BE /* FoodModel.swift */,
 				BA782CAB22DDD71100E25985 /* PhotoModel.swift */,
+				D57CDEC922EE98DE00909DBF /* CommentRestaurantModel.swift */,
 			);
 			path = Restaurant;
 			sourceTree = "<group>";
@@ -1031,6 +1034,7 @@
 				98CEA20422B9431200E82063 /* Button.swift in Sources */,
 				2F1774B622D1EF2200778D05 /* RestaurantModel.swift in Sources */,
 				D587C45B22DC27BC00C119BA /* TabChatVC.swift in Sources */,
+				D57CDECA22EE98DE00909DBF /* CommentRestaurantModel.swift in Sources */,
 				98CEA21422B94A9E00E82063 /* BaseVC.swift in Sources */,
 				98CEA20322B9431200E82063 /* UIImage.swift in Sources */,
 				98CEA20122B9431200E82063 /* UITextField.swift in Sources */,
