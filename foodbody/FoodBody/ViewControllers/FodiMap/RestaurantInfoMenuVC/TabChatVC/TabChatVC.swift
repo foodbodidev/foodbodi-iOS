@@ -72,7 +72,6 @@ class TabChatVC: BaseVC {
     @IBAction func sendAction(sender:UIButton){
         print(tvChat.text as Any);
         //send data
-        self.tvChat.text = "";
         let commentInfo: CommentRequest = CommentRequest()
         commentInfo.restaurant_id = self.restaurantId;
         commentInfo.message = tvChat.text;
@@ -85,6 +84,8 @@ class TabChatVC: BaseVC {
             if let result = result {
                 
                 if result.isSuccess {
+                    self.tvChat.text = "";
+                    self.disableBtnSend();
                     let obj:CommentRestaurantModel = CommentRestaurantModel();
                     obj.message = result.message;
                     obj.created_date = result.created_date;

@@ -46,7 +46,7 @@ class FoodbodyUtils: NSObject {
         let dateFormartor = DateFormatter.init();
         dateFormartor.dateFormat = "EE,dd - h:mm a";
         let date = NSDate.init(timeIntervalSince1970: TimeInterval(timeInterval))
-        dateFormartor.timeZone =  TimeZone.current
+        
         let time:String = dateFormartor.string(from: date as Date);
         return time;
     }
