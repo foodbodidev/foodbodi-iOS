@@ -126,7 +126,6 @@ extension TabChatVC:UITableViewDelegate, UITableViewDataSource{
             }else{
                 cell.vCustomer.isHidden = false;
                 cell.vBoss.isHidden = true;
-                
                 cell.lblChatCustomer.text = obj.message;
                 cell.lblTimeBoss.text = obj.created_date;
             }

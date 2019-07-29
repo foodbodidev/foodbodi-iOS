@@ -511,7 +511,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fHu-8l-h0k" userLabel="vBoss">
-                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="64.5"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9XH-qY-cJO" userLabel="vIcon">
                                                                     <rect key="frame" x="10" y="17.5" width="30" height="30"/>
@@ -532,10 +532,10 @@
                                                                     </constraints>
                                                                 </view>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KuX-FT-3tl" userLabel="vChatDataBoss">
-                                                                    <rect key="frame" x="45" y="5" width="325" height="55"/>
+                                                                    <rect key="frame" x="45" y="5" width="325" height="54.5"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mIM-co-nfZ">
-                                                                            <rect key="frame" x="0.0" y="35" width="325" height="20"/>
+                                                                            <rect key="frame" x="20" y="34.5" width="285" height="20"/>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="20" id="Och-qU-eWk"/>
@@ -545,7 +545,7 @@
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pQ2-Jy-GW4">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="325" height="35"/>
+                                                                            <rect key="frame" x="20" y="0.0" width="285" height="34.5"/>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <string key="text">and don't use: heightForRowAtIndexPath delegate function
 
@@ -558,12 +558,12 @@ Also, in the story board don't set the height of the label that contains a large
                                                                     <color key="backgroundColor" red="0.89803921568627454" green="0.92941176470588238" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <constraints>
                                                                         <constraint firstItem="pQ2-Jy-GW4" firstAttribute="top" secondItem="KuX-FT-3tl" secondAttribute="top" id="0zJ-On-Byy"/>
-                                                                        <constraint firstItem="mIM-co-nfZ" firstAttribute="leading" secondItem="KuX-FT-3tl" secondAttribute="leading" id="B7G-Vt-ub3"/>
+                                                                        <constraint firstItem="mIM-co-nfZ" firstAttribute="leading" secondItem="KuX-FT-3tl" secondAttribute="leading" constant="20" id="B7G-Vt-ub3"/>
                                                                         <constraint firstAttribute="bottom" secondItem="mIM-co-nfZ" secondAttribute="bottom" id="Y9G-7x-Iy1"/>
-                                                                        <constraint firstAttribute="trailing" secondItem="mIM-co-nfZ" secondAttribute="trailing" id="aZO-Sr-vvF"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="mIM-co-nfZ" secondAttribute="trailing" constant="20" id="aZO-Sr-vvF"/>
                                                                         <constraint firstItem="mIM-co-nfZ" firstAttribute="top" secondItem="pQ2-Jy-GW4" secondAttribute="bottom" id="cgC-jY-QKP"/>
-                                                                        <constraint firstItem="pQ2-Jy-GW4" firstAttribute="leading" secondItem="KuX-FT-3tl" secondAttribute="leading" id="ic4-a0-Q2X"/>
-                                                                        <constraint firstAttribute="trailing" secondItem="pQ2-Jy-GW4" secondAttribute="trailing" id="xlG-Ww-UPn"/>
+                                                                        <constraint firstItem="pQ2-Jy-GW4" firstAttribute="leading" secondItem="KuX-FT-3tl" secondAttribute="leading" constant="20" id="ic4-a0-Q2X"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="pQ2-Jy-GW4" secondAttribute="trailing" constant="20" id="xlG-Ww-UPn"/>
                                                                     </constraints>
                                                                 </view>
                                                             </subviews>
@@ -578,13 +578,13 @@ Also, in the story board don't set the height of the label that contains a large
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4CS-Rx-Agz" userLabel="vCustomer">
-                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="64.5"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GKk-Ri-EHK" userLabel="vChatCustomer">
-                                                                    <rect key="frame" x="5" y="5" width="325" height="55"/>
+                                                                    <rect key="frame" x="5" y="5" width="325" height="54.5"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3TB-jY-mua">
-                                                                            <rect key="frame" x="0.0" y="35" width="325" height="20"/>
+                                                                            <rect key="frame" x="20" y="34.5" width="285" height="20"/>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="20" id="orI-iU-2qw"/>
@@ -594,7 +594,7 @@ Also, in the story board don't set the height of the label that contains a large
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZU-fO-MIT">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="325" height="35"/>
+                                                                            <rect key="frame" x="20" y="0.0" width="285" height="34.5"/>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
                                                                             <nil key="textColor"/>
@@ -604,12 +604,12 @@ Also, in the story board don't set the height of the label that contains a large
                                                                     <color key="backgroundColor" red="0.8980392157" green="0.92941176469999998" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <constraints>
                                                                         <constraint firstItem="3TB-jY-mua" firstAttribute="top" secondItem="tZU-fO-MIT" secondAttribute="bottom" id="Bz2-kQ-hdR"/>
-                                                                        <constraint firstItem="3TB-jY-mua" firstAttribute="leading" secondItem="GKk-Ri-EHK" secondAttribute="leading" id="HRI-Pg-QQn"/>
+                                                                        <constraint firstItem="3TB-jY-mua" firstAttribute="leading" secondItem="GKk-Ri-EHK" secondAttribute="leading" constant="20" id="HRI-Pg-QQn"/>
                                                                         <constraint firstAttribute="bottom" secondItem="3TB-jY-mua" secondAttribute="bottom" id="JSK-Dt-oJi"/>
-                                                                        <constraint firstItem="tZU-fO-MIT" firstAttribute="leading" secondItem="GKk-Ri-EHK" secondAttribute="leading" id="LG7-QO-lnT"/>
+                                                                        <constraint firstItem="tZU-fO-MIT" firstAttribute="leading" secondItem="GKk-Ri-EHK" secondAttribute="leading" constant="20" id="LG7-QO-lnT"/>
                                                                         <constraint firstItem="tZU-fO-MIT" firstAttribute="top" secondItem="GKk-Ri-EHK" secondAttribute="top" id="Ngb-s9-hsd"/>
-                                                                        <constraint firstAttribute="trailing" secondItem="tZU-fO-MIT" secondAttribute="trailing" id="Xtj-BJ-K6u"/>
-                                                                        <constraint firstAttribute="trailing" secondItem="3TB-jY-mua" secondAttribute="trailing" id="lVT-5r-eVv"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="tZU-fO-MIT" secondAttribute="trailing" constant="20" id="Xtj-BJ-K6u"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="3TB-jY-mua" secondAttribute="trailing" constant="20" id="lVT-5r-eVv"/>
                                                                     </constraints>
                                                                 </view>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0JM-Py-y2y" userLabel="vIcon">
