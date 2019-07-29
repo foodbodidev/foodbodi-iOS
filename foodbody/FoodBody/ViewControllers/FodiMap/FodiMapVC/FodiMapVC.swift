@@ -115,7 +115,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
     
     func queryLocation(geoHash:String, db:Firestore) -> Void {
         
-        db.collection("restaurants").whereField("geohash", isEqualTo: geoHash).getDocuments() { (querySnapshot, err) in
+        db.collection("restaurants").getDocuments() { (querySnapshot, err) in
             if let err = err {
                FoodbodyUtils.shared.hideLoadingHub(viewController: self);
                 self.alertMessage(message: "Error getting documents \(err.localizedDescription)")

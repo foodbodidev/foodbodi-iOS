@@ -79,7 +79,13 @@ class TabChatVC: BaseVC {
             if let result = result {
                 
                 if result.isSuccess {
-                    
+                    let obj:CommentRestaurantModel = CommentRestaurantModel();
+                    obj.message = result.message;
+                    obj.created_date = result.created_date;
+                    obj.restaurant_id = result.restaurant_id;
+                    obj.creator = result.creator;
+                    self.listChat.insert(obj, at:0);
+                    self.tbvChat.reloadData();
                 } else {
                     self.alertMessage(message: result.message)
                 }
