@@ -465,16 +465,16 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="X9k-Ub-ko3">
-                                                <rect key="frame" x="10" y="5" width="280" height="40"/>
+                                                <rect key="frame" x="10" y="5" width="275" height="40"/>
                                                 <color key="backgroundColor" red="0.89803921568627454" green="0.92941176470588238" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vfG-DX-R3M">
-                                                <rect key="frame" x="300" y="10" width="65" height="30"/>
+                                                <rect key="frame" x="295" y="8" width="70" height="34"/>
                                                 <color key="backgroundColor" red="0.070588235289999995" green="0.74117647060000003" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="65" id="s7e-ag-bU5"/>
+                                                    <constraint firstAttribute="width" constant="70" id="s7e-ag-bU5"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
                                                 <state key="normal" title="Send">
@@ -488,100 +488,36 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="X9k-Ub-ko3" firstAttribute="leading" secondItem="BmA-s0-RnG" secondAttribute="leading" constant="10" id="E7i-xk-BRo"/>
-                                            <constraint firstItem="vfG-DX-R3M" firstAttribute="top" secondItem="BmA-s0-RnG" secondAttribute="top" constant="10" id="LnS-GK-qtc"/>
+                                            <constraint firstItem="vfG-DX-R3M" firstAttribute="top" secondItem="BmA-s0-RnG" secondAttribute="top" constant="8" id="LnS-GK-qtc"/>
                                             <constraint firstAttribute="trailing" secondItem="vfG-DX-R3M" secondAttribute="trailing" constant="10" id="Q11-fE-i2r"/>
                                             <constraint firstItem="X9k-Ub-ko3" firstAttribute="top" secondItem="BmA-s0-RnG" secondAttribute="top" constant="5" id="UaX-gD-81V"/>
                                             <constraint firstItem="X9k-Ub-ko3" firstAttribute="centerY" secondItem="BmA-s0-RnG" secondAttribute="centerY" id="cGo-Ph-WwF"/>
                                             <constraint firstAttribute="height" constant="50" id="hvf-XE-UDe"/>
                                             <constraint firstItem="vfG-DX-R3M" firstAttribute="centerY" secondItem="BmA-s0-RnG" secondAttribute="centerY" id="jlg-U6-oUR"/>
                                             <constraint firstItem="vfG-DX-R3M" firstAttribute="leading" secondItem="X9k-Ub-ko3" secondAttribute="trailing" constant="10" id="psU-hw-rUE"/>
-                                            <constraint firstAttribute="bottom" secondItem="vfG-DX-R3M" secondAttribute="bottom" constant="10" id="v1G-OG-yXi"/>
+                                            <constraint firstAttribute="bottom" secondItem="vfG-DX-R3M" secondAttribute="bottom" constant="8" id="v1G-OG-yXi"/>
                                             <constraint firstAttribute="bottom" secondItem="X9k-Ub-ko3" secondAttribute="bottom" constant="5" id="zfA-mN-hLp"/>
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fsj-ha-rFd">
-                                        <rect key="frame" x="0.0" y="50" width="375" height="562"/>
+                                        <rect key="frame" x="0.0" y="50" width="375" height="617"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ChatTbvCell" rowHeight="65" id="F9H-dx-J6Q" customClass="ChatTbvCell" customModule="FoodBody" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="65"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="F9H-dx-J6Q" id="HXb-8l-WjV">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="64.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4CS-Rx-Agz" userLabel="vCustomer">
-                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
-                                                            <subviews>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GKk-Ri-EHK" userLabel="vChatCustomer">
-                                                                    <rect key="frame" x="40" y="5" width="287" height="55"/>
-                                                                    <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3TB-jY-mua">
-                                                                            <rect key="frame" x="5" y="35" width="277" height="20"/>
-                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="height" constant="20" id="orI-iU-2qw"/>
-                                                                            </constraints>
-                                                                            <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="10"/>
-                                                                            <nil key="textColor"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZU-fO-MIT">
-                                                                            <rect key="frame" x="5" y="0.0" width="277" height="35"/>
-                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                            <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
-                                                                            <nil key="textColor"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
-                                                                    </subviews>
-                                                                    <color key="backgroundColor" red="0.8980392157" green="0.92941176469999998" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <constraints>
-                                                                        <constraint firstItem="3TB-jY-mua" firstAttribute="top" secondItem="tZU-fO-MIT" secondAttribute="bottom" id="Bz2-kQ-hdR"/>
-                                                                        <constraint firstItem="3TB-jY-mua" firstAttribute="leading" secondItem="GKk-Ri-EHK" secondAttribute="leading" constant="20" id="HRI-Pg-QQn"/>
-                                                                        <constraint firstAttribute="bottom" secondItem="3TB-jY-mua" secondAttribute="bottom" constant="15" id="JSK-Dt-oJi"/>
-                                                                        <constraint firstItem="tZU-fO-MIT" firstAttribute="leading" secondItem="GKk-Ri-EHK" secondAttribute="leading" constant="5" id="LG7-QO-lnT"/>
-                                                                        <constraint firstItem="tZU-fO-MIT" firstAttribute="top" secondItem="GKk-Ri-EHK" secondAttribute="top" id="Ngb-s9-hsd"/>
-                                                                        <constraint firstAttribute="trailing" secondItem="tZU-fO-MIT" secondAttribute="trailing" constant="5" id="Xtj-BJ-K6u"/>
-                                                                        <constraint firstAttribute="trailing" secondItem="3TB-jY-mua" secondAttribute="trailing" constant="20" id="lVT-5r-eVv"/>
-                                                                    </constraints>
-                                                                </view>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0JM-Py-y2y" userLabel="vIcon">
-                                                                    <rect key="frame" x="335" y="17.5" width="30" height="30"/>
-                                                                    <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S5x-TD-bTT">
-                                                                            <rect key="frame" x="9.5" y="6" width="11" height="18"/>
-                                                                            <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="15"/>
-                                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
-                                                                    </subviews>
-                                                                    <color key="backgroundColor" red="0.72549019609999998" green="0.76078431369999999" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="30" id="CKr-qy-sIj"/>
-                                                                        <constraint firstItem="S5x-TD-bTT" firstAttribute="centerX" secondItem="0JM-Py-y2y" secondAttribute="centerX" id="GIN-l7-DTx"/>
-                                                                        <constraint firstAttribute="width" constant="30" id="L0H-qZ-xmK"/>
-                                                                        <constraint firstItem="S5x-TD-bTT" firstAttribute="centerY" secondItem="0JM-Py-y2y" secondAttribute="centerY" id="PqI-rd-chs"/>
-                                                                    </constraints>
-                                                                </view>
-                                                            </subviews>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <constraints>
-                                                                <constraint firstItem="0JM-Py-y2y" firstAttribute="leading" secondItem="GKk-Ri-EHK" secondAttribute="trailing" constant="8" symbolic="YES" id="3gd-qP-fgY"/>
-                                                                <constraint firstAttribute="trailing" secondItem="0JM-Py-y2y" secondAttribute="trailing" constant="10" id="5uD-Q9-3jv"/>
-                                                                <constraint firstItem="GKk-Ri-EHK" firstAttribute="leading" secondItem="4CS-Rx-Agz" secondAttribute="leading" constant="40" id="AWm-wF-BuY"/>
-                                                                <constraint firstAttribute="bottom" secondItem="GKk-Ri-EHK" secondAttribute="bottom" constant="5" id="ZOR-lr-vBb"/>
-                                                                <constraint firstItem="GKk-Ri-EHK" firstAttribute="top" secondItem="4CS-Rx-Agz" secondAttribute="top" constant="5" id="eAf-KS-Dce"/>
-                                                                <constraint firstItem="0JM-Py-y2y" firstAttribute="centerY" secondItem="4CS-Rx-Agz" secondAttribute="centerY" id="r3G-j0-YQe"/>
-                                                            </constraints>
-                                                        </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fHu-8l-h0k" userLabel="vBoss">
                                                             <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9XH-qY-cJO" userLabel="vIcon">
                                                                     <rect key="frame" x="10" y="17.5" width="30" height="30"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="B" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8d9-Ga-KNd">
-                                                                            <rect key="frame" x="10" y="6" width="10" height="18"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8d9-Ga-KNd">
+                                                                            <rect key="frame" x="15" y="15" width="0.0" height="0.0"/>
                                                                             <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="15"/>
                                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
@@ -596,20 +532,10 @@
                                                                     </constraints>
                                                                 </view>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KuX-FT-3tl" userLabel="vChatDataBoss">
-                                                                    <rect key="frame" x="45" y="5" width="290" height="55"/>
+                                                                    <rect key="frame" x="45" y="5" width="320" height="55"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mIM-co-nfZ">
-                                                                            <rect key="frame" x="5" y="35" width="280" height="20"/>
-                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="height" constant="20" id="Och-qU-eWk"/>
-                                                                            </constraints>
-                                                                            <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="10"/>
-                                                                            <nil key="textColor"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pQ2-Jy-GW4">
-                                                                            <rect key="frame" x="5" y="0.0" width="280" height="35"/>
+                                                                            <rect key="frame" x="5" y="10" width="310" height="35"/>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <string key="text">and don't use: heightForRowAtIndexPath delegate function
 
@@ -621,11 +547,8 @@ Also, in the story board don't set the height of the label that contains a large
                                                                     </subviews>
                                                                     <color key="backgroundColor" red="0.92549019610000005" green="0.92549019610000005" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <constraints>
-                                                                        <constraint firstItem="pQ2-Jy-GW4" firstAttribute="top" secondItem="KuX-FT-3tl" secondAttribute="top" id="0zJ-On-Byy"/>
-                                                                        <constraint firstItem="mIM-co-nfZ" firstAttribute="leading" secondItem="KuX-FT-3tl" secondAttribute="leading" constant="20" id="B7G-Vt-ub3"/>
-                                                                        <constraint firstAttribute="bottom" secondItem="mIM-co-nfZ" secondAttribute="bottom" constant="15" id="Y9G-7x-Iy1"/>
-                                                                        <constraint firstAttribute="trailing" secondItem="mIM-co-nfZ" secondAttribute="trailing" constant="20" id="aZO-Sr-vvF"/>
-                                                                        <constraint firstItem="mIM-co-nfZ" firstAttribute="top" secondItem="pQ2-Jy-GW4" secondAttribute="bottom" id="cgC-jY-QKP"/>
+                                                                        <constraint firstItem="pQ2-Jy-GW4" firstAttribute="top" secondItem="KuX-FT-3tl" secondAttribute="top" constant="10" id="0zJ-On-Byy"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="pQ2-Jy-GW4" secondAttribute="bottom" constant="10" id="8sW-TX-FTe"/>
                                                                         <constraint firstItem="pQ2-Jy-GW4" firstAttribute="leading" secondItem="KuX-FT-3tl" secondAttribute="leading" constant="5" id="ic4-a0-Q2X"/>
                                                                         <constraint firstAttribute="trailing" secondItem="pQ2-Jy-GW4" secondAttribute="trailing" constant="5" id="xlG-Ww-UPn"/>
                                                                     </constraints>
@@ -634,7 +557,7 @@ Also, in the story board don't set the height of the label that contains a large
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="bottom" secondItem="KuX-FT-3tl" secondAttribute="bottom" constant="5" id="9S2-tP-jzd"/>
-                                                                <constraint firstAttribute="trailing" secondItem="KuX-FT-3tl" secondAttribute="trailing" constant="40" id="M1t-eH-NRO"/>
+                                                                <constraint firstAttribute="trailing" secondItem="KuX-FT-3tl" secondAttribute="trailing" constant="10" id="M1t-eH-NRO"/>
                                                                 <constraint firstItem="9XH-qY-cJO" firstAttribute="leading" secondItem="fHu-8l-h0k" secondAttribute="leading" constant="10" id="c06-bR-Wn6"/>
                                                                 <constraint firstItem="9XH-qY-cJO" firstAttribute="centerY" secondItem="fHu-8l-h0k" secondAttribute="centerY" id="fO0-CO-fZC"/>
                                                                 <constraint firstItem="KuX-FT-3tl" firstAttribute="leading" secondItem="9XH-qY-cJO" secondAttribute="trailing" constant="5" id="sq2-pT-fDB"/>
@@ -645,56 +568,30 @@ Also, in the story board don't set the height of the label that contains a large
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="fHu-8l-h0k" firstAttribute="leading" secondItem="HXb-8l-WjV" secondAttribute="leading" id="4oB-kk-aRd"/>
-                                                        <constraint firstItem="4CS-Rx-Agz" firstAttribute="top" secondItem="HXb-8l-WjV" secondAttribute="top" id="6xA-1w-kDf"/>
-                                                        <constraint firstAttribute="bottom" secondItem="4CS-Rx-Agz" secondAttribute="bottom" id="HeZ-r4-AvG"/>
-                                                        <constraint firstItem="4CS-Rx-Agz" firstAttribute="leading" secondItem="HXb-8l-WjV" secondAttribute="leading" id="Mxe-kS-j70"/>
-                                                        <constraint firstItem="4CS-Rx-Agz" firstAttribute="width" secondItem="fHu-8l-h0k" secondAttribute="width" id="N4M-HJ-ZN0"/>
                                                         <constraint firstAttribute="trailing" secondItem="fHu-8l-h0k" secondAttribute="trailing" id="S62-GN-Vl7"/>
-                                                        <constraint firstAttribute="trailing" secondItem="4CS-Rx-Agz" secondAttribute="trailing" id="cOE-oQ-0gr"/>
-                                                        <constraint firstItem="4CS-Rx-Agz" firstAttribute="height" secondItem="fHu-8l-h0k" secondAttribute="height" id="fVx-TK-WKB"/>
                                                         <constraint firstAttribute="bottom" secondItem="fHu-8l-h0k" secondAttribute="bottom" id="q5E-eq-ikS"/>
                                                         <constraint firstItem="fHu-8l-h0k" firstAttribute="top" secondItem="HXb-8l-WjV" secondAttribute="top" id="y2u-Rp-NsT"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <outlet property="lblChatBoss" destination="pQ2-Jy-GW4" id="GKa-Cr-IGV"/>
-                                                    <outlet property="lblChatCustomer" destination="tZU-fO-MIT" id="PBk-cy-MkW"/>
-                                                    <outlet property="lblTimeBoss" destination="mIM-co-nfZ" id="yOW-pm-zCb"/>
-                                                    <outlet property="lblTimeCustomer" destination="3TB-jY-mua" id="TO8-EI-Cfc"/>
-                                                    <outlet property="vBoss" destination="fHu-8l-h0k" id="bTW-F0-ixe"/>
-                                                    <outlet property="vCustomer" destination="4CS-Rx-Agz" id="j0r-gq-GvE"/>
-                                                    <outlet property="vIConBoss" destination="9XH-qY-cJO" id="yx8-tp-lhd"/>
-                                                    <outlet property="vIConCustomer" destination="0JM-Py-y2y" id="O7h-La-GOA"/>
-                                                    <outlet property="viDataBoss" destination="KuX-FT-3tl" id="8Pa-UC-Xqf"/>
-                                                    <outlet property="viDataCustomer" destination="GKk-Ri-EHK" id="Rp7-BS-rCn"/>
+                                                    <outlet property="lblChat" destination="pQ2-Jy-GW4" id="AP9-bY-V8y"/>
+                                                    <outlet property="vContent" destination="fHu-8l-h0k" id="sbJ-u1-lK4"/>
+                                                    <outlet property="vICon" destination="9XH-qY-cJO" id="Yzw-H6-VDO"/>
+                                                    <outlet property="viData" destination="KuX-FT-3tl" id="zRH-Nc-VqI"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Kb-ow-gFS">
-                                        <rect key="frame" x="10" y="612" width="355" height="50"/>
-                                        <color key="backgroundColor" red="0.070588235289999995" green="0.74117647060000003" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="fiv-R6-0Ux"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="17"/>
-                                        <state key="normal" title="Boss">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="fsj-ha-rFd" secondAttribute="trailing" id="0mM-FW-WQZ"/>
-                                    <constraint firstAttribute="trailing" secondItem="6Kb-ow-gFS" secondAttribute="trailing" constant="10" id="68Y-9c-KuW"/>
-                                    <constraint firstItem="6Kb-ow-gFS" firstAttribute="top" secondItem="fsj-ha-rFd" secondAttribute="bottom" id="KcA-dd-afs"/>
                                     <constraint firstItem="fsj-ha-rFd" firstAttribute="leading" secondItem="MpS-rg-gUt" secondAttribute="leading" id="TdW-gR-tql"/>
                                     <constraint firstItem="fsj-ha-rFd" firstAttribute="top" secondItem="BmA-s0-RnG" secondAttribute="bottom" id="V1Q-Mw-NgN"/>
-                                    <constraint firstItem="6Kb-ow-gFS" firstAttribute="leading" secondItem="MpS-rg-gUt" secondAttribute="leading" constant="10" id="WgF-PA-95y"/>
                                     <constraint firstItem="BmA-s0-RnG" firstAttribute="leading" secondItem="MpS-rg-gUt" secondAttribute="leading" id="jHZ-cn-DVq"/>
                                     <constraint firstAttribute="trailing" secondItem="BmA-s0-RnG" secondAttribute="trailing" id="kK1-Qe-3Ij"/>
                                     <constraint firstItem="BmA-s0-RnG" firstAttribute="top" secondItem="MpS-rg-gUt" secondAttribute="top" id="oAw-qT-c09"/>
-                                    <constraint firstAttribute="bottom" secondItem="6Kb-ow-gFS" secondAttribute="bottom" constant="5" id="v8Q-uO-NqX"/>
+                                    <constraint firstAttribute="bottom" secondItem="fsj-ha-rFd" secondAttribute="bottom" id="wbv-5T-dOJ"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -709,7 +606,6 @@ Also, in the story board don't set the height of the label that contains a large
                     </view>
                     <connections>
                         <outlet property="btnSend" destination="vfG-DX-R3M" id="hMu-am-Fdi"/>
-                        <outlet property="btnTypeChat" destination="6Kb-ow-gFS" id="jZS-p0-QhK"/>
                         <outlet property="tbvChat" destination="fsj-ha-rFd" id="j6g-0w-dHg"/>
                         <outlet property="tvChat" destination="X9k-Ub-ko3" id="pOJ-ye-SbF"/>
                     </connections>

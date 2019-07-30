@@ -13,7 +13,6 @@ class TabChatVC: BaseVC {
     @IBOutlet weak var tvChat: UITextView!
     @IBOutlet weak var tbvChat: UITableView!
     @IBOutlet weak var btnSend: UIButton!
-    @IBOutlet weak var btnTypeChat: UIButton!
     
     var listChat: [CommentRestaurantModel] = [];
     let db = Firestore.firestore();
@@ -29,7 +28,8 @@ class TabChatVC: BaseVC {
     func initUI(){
         self.tbvChat.delegate = self;
         self.tbvChat.dataSource = self;
-        self.tbvChat.estimatedRowHeight = 0;
+        self.tbvChat.estimatedRowHeight = 44;
+        
         self.tbvChat.rowHeight = UITableView.automaticDimension;
         self.tvChat.layer.cornerRadius = 10;
         self.tvChat.delegate = self;
@@ -37,7 +37,6 @@ class TabChatVC: BaseVC {
         self.btnSend.layer.cornerRadius = 10;
         self.btnSend.layer.masksToBounds = true;
         disableBtnSend()
-        btnTypeChat.roundCorners(corners: [.topLeft,.bottomLeft, .bottomRight], radius: 15);
     }
     func initData(){
         FoodbodyUtils.shared.showLoadingHub(viewController:self);
@@ -59,11 +58,10 @@ class TabChatVC: BaseVC {
                     obj.created_date = NSInteger(FoodbodyUtils.shared.checkDataFloat(dict: dict as NSDictionary, key: "created_date"))
                     obj.restaurant_id = FoodbodyUtils.shared.checkDataString(dict: dict as NSDictionary, key: "restaurant_id")
                     self.listChat.append(obj)
-                    self.listChat = self.listChat.sorted(by: { obj1, obj2 in
-                        return obj1.created_date > obj2.created_date
-                    })
-                    
                 }
+                self.listChat = self.listChat.sorted(by: { obj1, obj2 in
+                    return obj1.created_date > obj2.created_date
+                })
                 self.tbvChat.reloadData();
             }
         }
@@ -124,27 +122,15 @@ extension TabChatVC:UITableViewDelegate, UITableViewDataSource{
         let cell:ChatTbvCell = tableView.dequeueReusableCell(withIdentifier: "ChatTbvCell", for: indexPath) as! ChatTbvCell;
         let obj:CommentRestaurantModel = listChat[indexPath.row]
         if obj.creator.count > 0 {
-            if obj.creator == self.creatorRestaurant {
-                //boss.
-                cell.vCustomer.isHidden = true;
-                cell.vBoss.isHidden = false;
-                cell.lblChatBoss.text = obj.message;
-                let timeInterval:NSInteger = obj.created_date
-                cell.lblTimeBoss.text = FoodbodyUtils.shared.dateFromTimeInterval(timeInterval: timeInterval);
-            }else{
-                cell.vCustomer.isHidden = false;
-                cell.vBoss.isHidden = true;
-                cell.lblChatCustomer.text = obj.message;
-                let timeInterval:NSInteger = obj.created_date
-                cell.lblTimeCustomer.text = FoodbodyUtils.shared.dateFromTimeInterval(timeInterval: timeInterval);
-            }
-            
+            cell.lblChat.text = obj.message;
+//            let timeInterval:NSInteger = obj.created_date
+//            cell.lblTime.text = FoodbodyUtils.shared.dateFromTimeInterval(timeInterval: timeInterval);
         }
         
         return cell;
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80;
+        return UITableView.automaticDimension;
     }
 }
 
@@ -152,7 +138,7 @@ extension TabChatVC:UITableViewDelegate, UITableViewDataSource{
 extension TabChatVC:UITextViewDelegate{
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool{
         //write document.
-        if textView.text.count > 0{
+        if textView.text.count > 0 {
             enableBtnSend()
         }else{
             disableBtnSend()
