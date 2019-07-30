@@ -115,7 +115,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
     
     func queryLocation(geoHash:String, db:Firestore) -> Void {
         
-        db.collection("restaurants").getDocuments() { (querySnapshot, err) in
+        db.collection("restaurants").whereField("geohash", isEqualTo: geoHash).getDocuments() { (querySnapshot, err) in
             if let err = err {
                FoodbodyUtils.shared.hideLoadingHub(viewController: self);
                 self.alertMessage(message: "Error getting documents \(err.localizedDescription)")
@@ -237,7 +237,6 @@ extension FodiMapVC:GMSMapViewDelegate{
         return nil;
     }
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
-        print("test")
         for object in self.listRestaurant{
             let dict:NSDictionary = object.data() as NSDictionary;
             let lat = FoodbodyUtils.shared.checkDataFloat(dict: dict, key: "lat")
@@ -246,6 +245,7 @@ extension FodiMapVC:GMSMapViewDelegate{
                 let vc:RestaurantInfoMenuVC = getViewController(className: RestaurantInfoMenuVC.className, storyboard: FbConstants.FodiMapSB) as! RestaurantInfoMenuVC
                 vc.document = object;
                 self.navigationController?.pushViewController(vc, animated: true)
+                return;
             }
         }
     }
