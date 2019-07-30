@@ -218,7 +218,7 @@ extension FodiMapVC:UICollectionViewDelegate, UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height:CGFloat = 180;
+        let height:CGFloat = 150;
         let width:CGFloat = self.clvFodi.frame.size.width/3.0;
         let size:CGSize = CGSize.init(width: width, height: height);
         return size;
