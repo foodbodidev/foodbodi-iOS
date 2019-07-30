@@ -83,7 +83,7 @@ class RestaurantModel: NSObject,Mappable {
 }
 class RestaurantRequest: Mappable  {
     
-    
+    var id: String = ""
     var type: String = ""
     var category: String = ""
 	var photo: String = ""

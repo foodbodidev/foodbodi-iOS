@@ -29,5 +29,68 @@ class CompanyInfoVC: BaseVC {
         presentationTextField.textField.placeholder = "Name of representative"
         addressTextField.textField.placeholder = "Address"
     }
+    
+    @IBAction func actionSubmit() {
+        
+        guard validateTextFiled() else {
+            return
+        }
+        
+        let licenseRequest = LicenseModel()
+        
+        licenseRequest.company_name = nameTextField.textField.text ?? ""
+        licenseRequest.registration_number = registerTextField.textField.text ?? ""
+        licenseRequest.representative_name = presentationTextField.textField.text ?? ""
+        licenseRequest.address = addressTextField.textField.text ?? ""
+        
+        self.showLoading()
+        
+        RequestManager.createRestaurant(request: licenseRequest) { (result, error) in
+            self.hideLoading()
+            if  let result = result{
+                if result.isSuccess {
+                    let addRestaurantVC = getViewController(className: AddRestaurantVC.className, storyboard: FbConstants.FodiMapSB)
+                    self.navigationController?.pushViewController(addRestaurantVC, animated: true)
+                } else {
+                    self.alertMessage(message: result.message)
+                }
+                
+            }
+            
+            if let error = error {
+                self.alertMessage(message: error.localizedDescription)
+            }
+            
+        }
+    }
+    
+    
+    func validateTextFiled() -> Bool {
+        if nameTextField.textField.text!.isEmpty {
+            nameTextField.errorLabel.text = "Invalid Name of company"
+            nameTextField.showInvalidStatus()
+            return false
+        }
+        
+        if registerTextField.textField.text!.isEmpty {
+            registerTextField.errorLabel.text = "Registration No."
+            registerTextField.showInvalidStatus()
+            return false
+        }
+        
+        if presentationTextField.textField.text!.isEmpty  {
+            presentationTextField.showInvalidStatus()
+            presentationTextField.errorLabel.text = "Invalid Name of representative"
+            return false
+        }
+        
+        if addressTextField.textField.text!.isEmpty {
+            addressTextField.showInvalidStatus()
+            addressTextField.errorLabel.text = "Invalid Address"
+            return false
+        }
+        
+        return true
+    }
 
 }

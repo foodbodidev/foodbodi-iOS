@@ -22,6 +22,7 @@ enum RequestService {
 	case uploadPhoto(dic: Moya.MultipartFormData)
     case getFoodWithRestaurantId(id: String)
     case addComment(dic: [String: Any])
+    case updateRestaurant(model: RestaurantRequest)
 }
 
 extension RequestService: TargetType {
@@ -54,6 +55,8 @@ extension RequestService: TargetType {
 			return APIConstant.uploadPhoto
         case .getFoodWithRestaurantId(let id):
             return APIConstant.getFoodWithRestaurantId + "/\(id)" + "/foods"
+        case .updateRestaurant(let model):
+            return APIConstant.getFoodWithRestaurantId + "/\(model.id)"
         case .addComment:
             return APIConstant.addComment
         
@@ -71,6 +74,8 @@ extension RequestService: TargetType {
 			 .uploadPhoto,
              .addComment:
             return .post
+        case .updateRestaurant:
+            return .put
         default:
             return .get
         }
@@ -112,6 +117,8 @@ extension RequestService: TargetType {
 			return .uploadMultipart([mutipartForm])
         case .addComment(let dic):
             return .requestParameters(parameters: dic, encoding: JSONEncoding.default)
+        case .updateRestaurant(let model):
+            return .requestParameters(parameters: model.toJSON(), encoding: JSONEncoding.default)
         default:
             return .requestPlain
         }

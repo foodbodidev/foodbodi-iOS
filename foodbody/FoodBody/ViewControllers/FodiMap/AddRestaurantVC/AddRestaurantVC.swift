@@ -58,7 +58,7 @@ class AddRestaurantVC: BaseVC {
 	@IBAction func actionSubmit() {
         if validateData() {
             self.showLoading()
-            RequestManager.createRestaurant(request: restaurant) { [weak self] (result, error) in
+            RequestManager.updateRestaurant(request: restaurant) { [weak self] (result, error) in
 
                 guard let strongSelf = self else { return }
                 strongSelf.hideLoading()
