@@ -42,5 +42,13 @@ class FoodbodyUtils: NSObject {
     func hideLoadingHub(viewController:UIViewController) {
         MBProgressHUD.hide(for: viewController.view, animated: true)
     }
+    func dateFromTimeInterval(timeInterval:NSInteger) -> String {
+        let dateFormartor = DateFormatter.init();
+        dateFormartor.dateFormat = "EE,dd - h:mm a";
+        let date = NSDate.init(timeIntervalSince1970: TimeInterval(timeInterval))
+        
+        let time:String = dateFormartor.string(from: date as Date);
+        return time;
+    }
     
 }

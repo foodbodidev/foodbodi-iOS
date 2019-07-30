@@ -102,7 +102,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
     
     // find replace document in listRestaurant
     func replaceDocument(documents: [QueryDocumentSnapshot]) {
-        if self.listRestaurant.count > 0 {
+        if self.listRestaurant.count > 0 && documents.count > 0 {
             for i in 0...self.listRestaurant.count - 1 {
                 for j in 0...documents.count - 1 {
                     if documents[j].documentID == self.listRestaurant[i].documentID {
@@ -218,7 +218,7 @@ extension FodiMapVC:UICollectionViewDelegate, UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height:CGFloat = 200;
+        let height:CGFloat = 150;
         let width:CGFloat = self.clvFodi.frame.size.width/3.0;
         let size:CGSize = CGSize.init(width: width, height: height);
         return size;
@@ -237,7 +237,6 @@ extension FodiMapVC:GMSMapViewDelegate{
         return nil;
     }
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
-        print("test")
         for object in self.listRestaurant{
             let dict:NSDictionary = object.data() as NSDictionary;
             let lat = FoodbodyUtils.shared.checkDataFloat(dict: dict, key: "lat")
@@ -246,6 +245,7 @@ extension FodiMapVC:GMSMapViewDelegate{
                 let vc:RestaurantInfoMenuVC = getViewController(className: RestaurantInfoMenuVC.className, storyboard: FbConstants.FodiMapSB) as! RestaurantInfoMenuVC
                 vc.document = object;
                 self.navigationController?.pushViewController(vc, animated: true)
+                return;
             }
         }
     }

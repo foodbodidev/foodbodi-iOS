@@ -50,6 +50,8 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>$(PRODUCT_NAME) want to use the camera to upload food photo</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>update</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>App</string>
 	<key>NSPhotoLibraryUsageDescription</key>
