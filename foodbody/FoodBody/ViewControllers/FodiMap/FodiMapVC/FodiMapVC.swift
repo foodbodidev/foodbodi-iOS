@@ -144,15 +144,40 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
             marker.title = FoodbodyUtils.shared.checkDataString(dict: dict, key: "name");
             marker.snippet = FoodbodyUtils.shared.checkDataString(dict: dict, key: "address");
             let type = FoodbodyUtils.shared.checkDataString(dict: dict, key: "type")
+            let listCalos:NSMutableArray? = NSMutableArray.init();
+            let calos:NSArray = dict.object(forKey: "calo_values") as! NSArray;
+            if calos.count > 0 {
+                calos.enumerateObjects({ object, index, stop in
+                    listCalos?.add(object);
+                })
+            }
+            let averageCalo:Double = self.averageCalo(listCalosData: listCalos!);
             if type == "FOOD_TRUCK" {
-                marker.icon = UIImage.init(named: "ic_truck_low")
+                if averageCalo < 300 {
+                    marker.icon = UIImage.init(named: "ic_truck_low")
+                }
+                if averageCalo >= 300 && averageCalo < 500 {
+                    marker.icon = UIImage.init(named: "ic_truck_medium")
+                }
+                if averageCalo >= 500 {
+                    marker.icon = UIImage.init(named: "ic_truck_high")
+                }
             }else{
-                marker.icon = UIImage.init(named: "ic_restaurant_caloHigh")
+                if averageCalo < 300 {
+                    marker.icon = UIImage.init(named: "ic_restaurant_caloLow")
+                }
+                if averageCalo >= 300 && averageCalo < 500 {
+                    marker.icon = UIImage.init(named: "ic_restaurant_caloMedium")
+                }
+                if averageCalo >= 500 {
+                    marker.icon = UIImage.init(named: "ic_restaurant_caloHigh")
+                }
             }
             marker.map = googleMapView
         }
     
     }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let locationValue: CLLocationCoordinate2D = manager.location?.coordinate {
             self.currentLocation = locationValue;
@@ -195,6 +220,20 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
         alert.addAction(action)
          alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
+    }
+    //MARK: others method.
+    func averageCalo(listCalosData:NSArray) -> Double {
+        if (listCalosData.count) > 0 {
+            var sum:Double = 0.0;
+            for i in 0...listCalosData.count - 1 {
+                let value:Double = listCalosData[i] as! Double;
+                sum = sum + value;
+            }
+            let averageCalo:Double = sum/Double(listCalosData.count);
+            return averageCalo;
+        }else{
+            return 0;
+        }
     }
 }
 

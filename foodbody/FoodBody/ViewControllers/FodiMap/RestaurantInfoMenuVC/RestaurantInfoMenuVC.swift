@@ -16,6 +16,7 @@ class RestaurantInfoMenuVC: BaseVC {
     var tabMenuVC:TabMenuVC?
     var tabChatVC:TabChatVC?
     weak var navInfoMenu:UINavigationController!
+    var listCalos:NSMutableArray? = NSMutableArray.init();
     // MARK: IBOutlet.
     @IBOutlet weak var viContainer: UIView!
     @IBOutlet weak var btnMenu: UIButton!
@@ -56,22 +57,46 @@ class RestaurantInfoMenuVC: BaseVC {
             let dict:NSDictionary = document.data() as NSDictionary;
             self.lblName.text = FoodbodyUtils.shared.checkDataString(dict: dict, key: "name");
             self.lblCategory.text = FoodbodyUtils.shared.checkDataString(dict: dict, key: "category");
-            self.lblKcal.text = "300kcal";
+            let calos:NSArray = dict.object(forKey: "calo_values") as! NSArray;
+            if calos.count > 0 {
+                calos.enumerateObjects({ object, index, stop in
+                    listCalos?.add(object);
+                })
+            }
             self.lblTime.text = FoodbodyUtils.shared.checkDataString(dict: dict, key: "open_hour") + "-" + FoodbodyUtils.shared.checkDataString(dict: dict, key: "close_hour");
             self.tabMenuVC!.idRestaurant = document.documentID;
             self.navInfoMenu.setViewControllers([self.tabMenuVC!], animated: false);
         }
+        if (listCalos?.count)! > 0 {
+            let averageCalo:Double = self.averageCalo(listCalosData: listCalos!);
+             self.lblKcal.text = String(format: "%.2f",averageCalo);
+        }
     }
+    func averageCalo(listCalosData:NSArray) -> Double {
+        if (listCalosData.count) > 0 {
+            var sum:Double = 0.0;
+            for i in 0...listCalosData.count - 1 {
+                let value:Double = listCalosData[i] as! Double;
+                sum = sum + value;
+            }
+            let averageCalo:Double = sum/Double(listCalosData.count);
+            return averageCalo;
+        }else{
+            return 0;
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "nav_info_menu" {
             self.navInfoMenu = (segue.destination as! UINavigationController)
             self.navInfoMenu.navigationBar.isHidden = true;
             self.tabMenuVC = getViewController(className: TabMenuVC.className, storyboard: FbConstants.FodiMapSB) as? TabMenuVC
-             self.tabChatVC = getViewController(className: TabChatVC.className, storyboard: FbConstants.FodiMapSB) as? TabChatVC
+            self.tabChatVC = getViewController(className: TabChatVC.className, storyboard: FbConstants.FodiMapSB) as? TabChatVC
         }
     }
     //MARK: action
     @IBAction func menuAction(sender:UIButton){
+        
         self.navInfoMenu.setViewControllers([self.tabMenuVC!], animated: false)
     }
     @IBAction func chatAction(sender:UIButton){
