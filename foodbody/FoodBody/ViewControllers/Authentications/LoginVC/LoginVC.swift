@@ -74,6 +74,7 @@ class LoginVC: BaseLoginVC {
             if result.isSuccess {
 				AppManager.user = result
 				strongSelf.getUserProfile()
+                strongSelf.getRestaurantWithProfile()
             } else {
                 strongSelf.alertMessage(message: result.message)
             }

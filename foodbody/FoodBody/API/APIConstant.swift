@@ -22,9 +22,12 @@ struct APIConstant {
 	static let uploadPhoto = "/api/upload/photo"
     static let getFoodWithRestaurantId = "/api/restaurant"
     static let updateRestaurant = "/api/restaurant"
+    static let getRestaurantWithProfile = "/api/profile"
+    static let getMyRestaurant = "/api/restaurant/mine"
     //API comment.
     static let addComment = "/api/comment"
-	
-    
-    
+
 }
+
+
+

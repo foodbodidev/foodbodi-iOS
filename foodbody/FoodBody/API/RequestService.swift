@@ -23,6 +23,8 @@ enum RequestService {
     case getFoodWithRestaurantId(id: String)
     case addComment(dic: [String: Any])
     case updateRestaurant(model: RestaurantRequest)
+    case getRestaurantWithProfile
+    case getMyRestaurant
 }
 
 extension RequestService: TargetType {
@@ -33,6 +35,7 @@ extension RequestService: TargetType {
         }
     }
     
+
     var path: String {
         switch self {
         case .signup:
@@ -55,10 +58,14 @@ extension RequestService: TargetType {
 			return APIConstant.uploadPhoto
         case .getFoodWithRestaurantId(let id):
             return APIConstant.getFoodWithRestaurantId + "/\(id)" + "/foods"
-        case .updateRestaurant(let model):
-            return APIConstant.getFoodWithRestaurantId + "/\(model.id)"
+        case .updateRestaurant:
+            return APIConstant.getFoodWithRestaurantId + "/\(AppManager.user?.restaurantId ?? "")"
         case .addComment:
             return APIConstant.addComment
+        case .getRestaurantWithProfile:
+            return APIConstant.getRestaurantWithProfile
+        case .getMyRestaurant:
+            return APIConstant.getMyRestaurant
         
         }
     }
@@ -99,6 +106,7 @@ extension RequestService: TargetType {
         }
     }
     
+    
     var task: Task {
         switch self {
         case .signup(let dic):
@@ -119,11 +127,16 @@ extension RequestService: TargetType {
             return .requestParameters(parameters: dic, encoding: JSONEncoding.default)
         case .updateRestaurant(let model):
             return .requestParameters(parameters: model.toJSON(), encoding: JSONEncoding.default)
+        case .getRestaurantWithProfile:
+            return .requestParameters(parameters: ["include_restaurant" : "true"], encoding: URLEncoding.queryString)
         default:
             return .requestPlain
         }
     }
 }
+
+
+
 
 
 

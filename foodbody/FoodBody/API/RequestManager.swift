@@ -206,7 +206,7 @@ struct RequestManager {
         
         print(request.toJSON())
         
-        provider.request(.createRestaurant(dic: request.toJSON())) { result in
+        provider.request(.updateRestaurant(model: request)) { result in
             do {
                 switch result {
                 case .success(let response):
@@ -322,6 +322,27 @@ struct RequestManager {
                 }
             } catch let error {
                 completion(nil, error)
+                print(error)
+            }
+        }
+    }
+    
+    static func getRestaurantWithProfile(completion: @escaping (_ result: UserProfile?) -> ()){
+        provider.request(.getRestaurantWithProfile) { result in
+            do {
+                switch result {
+                case .success(let response):
+                    let json = try response.mapJSON()
+                    print(String(describing: response.request))
+                    print(String(describing: json))
+                    let response = Mapper<UserProfile>().map(JSONObject:json)
+                    completion(response)
+                case .failure(let error):
+                    completion(nil)
+                    print(error)
+                }
+            } catch let error {
+                completion(nil)
                 print(error)
             }
         }

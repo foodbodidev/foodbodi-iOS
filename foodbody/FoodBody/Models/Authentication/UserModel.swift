@@ -24,11 +24,13 @@ class User: NSObject, Mappable, NSCoding {
     var isSuccess: Bool = false
     var status_code: Int = -1
     var message: String = ""
+    var restaurantId: String = ""
   
     
     init(token: String, email: String, sex: String,
          height: Int, weight: Int, target_weight: Int,
-         first_name: String, last_name: String, age: Int) {
+         first_name: String, last_name: String, age: Int,
+         restaurantId: String) {
         self.token = token
         self.email = email
         self.sex = sex
@@ -38,6 +40,7 @@ class User: NSObject, Mappable, NSCoding {
         self.first_name = first_name
         self.last_name = last_name
         self.age = age
+        self.restaurantId = restaurantId
     }
     
     override init() {
@@ -60,7 +63,10 @@ class User: NSObject, Mappable, NSCoding {
         let weight = aDecoder.decodeInteger(forKey: "weight")
         let target_weight = aDecoder.decodeInteger(forKey: "target_weight")
         
-        self.init(token: token, email: email, sex: sex, height: height, weight: weight, target_weight: target_weight, first_name: first_name, last_name: last_name, age: age)
+        let restaurantId = aDecoder.decodeObject(forKey: "restaurantId") as! String
+        
+        self.init(token: token, email: email, sex: sex, height: height, weight: weight, target_weight: target_weight, first_name: first_name, last_name: last_name, age: age,
+                  restaurantId: restaurantId)
     }
     
     func encode(with aCoder: NSCoder) {
@@ -73,6 +79,7 @@ class User: NSObject, Mappable, NSCoding {
         aCoder.encode(height, forKey: "height")
         aCoder.encode(weight, forKey: "weight")
         aCoder.encode(target_weight, forKey: "target_weight")
+        aCoder.encode(restaurantId, forKey: "restaurantId")
     }
     
     func mapping(map: Map) {
@@ -93,6 +100,8 @@ class User: NSObject, Mappable, NSCoding {
 }
 
 class UserProfile: User { // user to map user when get user profile
+    var myRestaurant: [MyRestaurant] = []
+    
 	override func mapping(map: Map) {
 		token <- map["data.token"]
 		email <- map["data.email"]
@@ -105,9 +114,11 @@ class UserProfile: User { // user to map user when get user profile
 		last_name <- map["data.last_name"]
 		status_code <- map["status_code"]
 		message <- map["message"]
+        myRestaurant <- map["data.restaurants"]
 		isSuccess = (status_code == 0) ? true : false
 	}
 }
+
 
 
 class UserRequest: Mappable  {
@@ -154,5 +165,27 @@ class UserRequest: Mappable  {
         userId <- map["user_id"]
         google_id_token <- map["google_id_token"]
     }
+    
+}
+
+
+class MyRestaurant: Mappable {
+
+    var creator: String?
+    var id: String?
+    var priority: Int?
+    var created_date: String?
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        creator <- map["creator"]
+        id <- map["id"]
+        priority <- map["priority"]
+        created_date <- map["created_date"]
+    }
+    
     
 }

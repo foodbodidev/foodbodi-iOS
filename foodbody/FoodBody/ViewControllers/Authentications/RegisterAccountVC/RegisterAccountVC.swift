@@ -104,6 +104,7 @@ class RegisterAccountVC: BaseLoginVC, GIDSignInUIDelegate {
                 if result.isSuccess {
 					 AppManager.user = result
                      self.getUserProfile()
+                     self.getRestaurantWithProfile()
                 } else {
                     self.alertMessage(message: result.message)
                 }
@@ -134,6 +135,7 @@ extension RegisterAccountVC:GIDSignInDelegate{
                     if result.isSuccess {
 						AppManager.user = result
                         self?.getUserProfile()
+                        self?.getRestaurantWithProfile()
                     } else {
                         self?.alertMessage(message: result.message)
                     }
