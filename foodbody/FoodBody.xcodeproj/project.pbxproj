@@ -84,6 +84,9 @@
 		D5B9AE4D22B9D32D0015DEB2 /* SelectGenderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B9AE4C22B9D32D0015DEB2 /* SelectGenderVC.swift */; };
 		D5C0FDA222B8EE1900411488 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C0FDA122B8EE1900411488 /* LoginVC.swift */; };
 		D5C0FDA522B8EE2A00411488 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C0FDA422B8EE2A00411488 /* SignUpVC.swift */; };
+		D5CCB16422F4217200C77414 /* CartInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CCB16322F4217200C77414 /* CartInfoCell.swift */; };
+		D5CCB16622F4219600C77414 /* TotalKcalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CCB16522F4219600C77414 /* TotalKcalCell.swift */; };
+		D5CCB16E22F4390800C77414 /* CartRestaurantVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CCB16D22F4390800C77414 /* CartRestaurantVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -194,6 +197,9 @@
 		D5B9AE4C22B9D32D0015DEB2 /* SelectGenderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGenderVC.swift; sourceTree = "<group>"; };
 		D5C0FDA122B8EE1900411488 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		D5C0FDA422B8EE2A00411488 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		D5CCB16322F4217200C77414 /* CartInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartInfoCell.swift; sourceTree = "<group>"; };
+		D5CCB16522F4219600C77414 /* TotalKcalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalKcalCell.swift; sourceTree = "<group>"; };
+		D5CCB16D22F4390800C77414 /* CartRestaurantVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartRestaurantVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -507,6 +513,7 @@
 		D5B24B0722B73A3600DA16C4 /* FodiMap */ = {
 			isa = PBXGroup;
 			children = (
+				D5CCB16022F41E8300C77414 /* CartVC */,
 				98650B1F22EB406C00CAA384 /* Company Information */,
 				2F03660322DB8369001C15FE /* RestaurantInfoMenuVC */,
 				D5ACD6E422CD9A3800F8F1E2 /* AddRestaurantVC */,
@@ -679,6 +686,16 @@
 				98282BE422C26E64003ED8BC /* YourBasicVC.xib */,
 			);
 			path = SignUpVC;
+			sourceTree = "<group>";
+		};
+		D5CCB16022F41E8300C77414 /* CartVC */ = {
+			isa = PBXGroup;
+			children = (
+				D5CCB16322F4217200C77414 /* CartInfoCell.swift */,
+				D5CCB16522F4219600C77414 /* TotalKcalCell.swift */,
+				D5CCB16D22F4390800C77414 /* CartRestaurantVC.swift */,
+			);
+			path = CartVC;
 			sourceTree = "<group>";
 		};
 		D5E5245922D584B70075E827 /* ThirdParty */ = {
@@ -1033,11 +1050,14 @@
 				98CEA1FF22B9431200E82063 /* String.swift in Sources */,
 				2FCA49B922D63F2D00E3497D /* GeohashBox.swift in Sources */,
 				98282BE522C26E64003ED8BC /* YourBasicVC.swift in Sources */,
+				D5CCB16E22F4390800C77414 /* CartRestaurantVC.swift in Sources */,
 				98C34F5622CE57C100A933DE /* MenuTableViewCell.swift in Sources */,
 				D587C45822DC27A100C119BA /* TabMenuVC.swift in Sources */,
 				98CEA20422B9431200E82063 /* Button.swift in Sources */,
+				D5CCB16422F4217200C77414 /* CartInfoCell.swift in Sources */,
 				2F1774B622D1EF2200778D05 /* RestaurantModel.swift in Sources */,
 				D587C45B22DC27BC00C119BA /* TabChatVC.swift in Sources */,
+				D5CCB16622F4219600C77414 /* TotalKcalCell.swift in Sources */,
 				D57CDECA22EE98DE00909DBF /* CommentRestaurantModel.swift in Sources */,
 				98CEA21422B94A9E00E82063 /* BaseVC.swift in Sources */,
 				98CEA20322B9431200E82063 /* UIImage.swift in Sources */,
