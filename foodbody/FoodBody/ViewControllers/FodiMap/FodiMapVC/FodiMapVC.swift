@@ -150,14 +150,12 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
             marker.snippet = FoodbodyUtils.shared.checkDataString(dict: dict, key: "address");
             let type = FoodbodyUtils.shared.checkDataString(dict: dict, key: "type")
             let listCalos:NSMutableArray? = NSMutableArray.init();
-			
-			guard let calos: NSArray = dict.object(forKey: "calo_values") as? NSArray else {
-				return
-			}
-            if calos.count > 0 {
-                calos.enumerateObjects({ object, index, stop in
-                    listCalos?.add(object);
-                })
+            if let kcals = dict.object(forKey: "calo_values") {
+                if (kcals as AnyObject).count > 0 {
+                    (kcals as AnyObject).enumerateObjects({ object, index, stop in
+                        listCalos?.add(object);
+                    })
+                }
             }
             let averageCalo:Double = self.averageCalo(listCalosData: listCalos!);
             if type == "FOOD_TRUCK" {

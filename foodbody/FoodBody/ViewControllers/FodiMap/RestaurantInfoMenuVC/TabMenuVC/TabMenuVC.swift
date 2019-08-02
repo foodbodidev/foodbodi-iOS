@@ -79,5 +79,13 @@ extension TabMenuVC: UITableViewDelegate, UITableViewDataSource{
         return 80;
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let row = indexPath.row
+//        let data:FoodModel = self.listMenu[row]
+        let vc:CartRestaurantVC = getViewController(className: CartRestaurantVC.className, storyboard: FbConstants.FodiMapSB) as! CartRestaurantVC;
+        
+        self.parent?.navigationController?.pushViewController(vc, animated: true);
+    }
+    
     
 }

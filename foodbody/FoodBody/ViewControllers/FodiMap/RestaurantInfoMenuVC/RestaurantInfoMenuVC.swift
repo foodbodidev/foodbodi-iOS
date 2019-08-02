@@ -57,11 +57,12 @@ class RestaurantInfoMenuVC: BaseVC {
             let dict:NSDictionary = document.data() as NSDictionary;
             self.lblName.text = FoodbodyUtils.shared.checkDataString(dict: dict, key: "name");
             self.lblCategory.text = FoodbodyUtils.shared.checkDataString(dict: dict, key: "category");
-            let calos:NSArray = dict.object(forKey: "calo_values") as! NSArray;
-            if calos.count > 0 {
-                calos.enumerateObjects({ object, index, stop in
-                    listCalos?.add(object);
-                })
+            if let kcals = dict.object(forKey: "calo_values") {
+                if (kcals as AnyObject).count > 0 {
+                    (kcals as AnyObject).enumerateObjects({ object, index, stop in
+                        listCalos?.add(object);
+                    })
+                }
             }
             self.lblTime.text = FoodbodyUtils.shared.checkDataString(dict: dict, key: "open_hour") + "-" + FoodbodyUtils.shared.checkDataString(dict: dict, key: "close_hour");
             self.tabMenuVC!.idRestaurant = document.documentID;
