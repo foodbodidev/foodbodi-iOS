@@ -49,6 +49,12 @@ class CompanyInfoVC: BaseVC {
             self.hideLoading()
             if  let result = result{
                 if result.isSuccess {
+					
+					if let user = AppManager.user {
+						user.restaurantId = result.id
+						AppManager.user = user
+					}
+	
                     let addRestaurantVC = getViewController(className: AddRestaurantVC.className, storyboard: FbConstants.FodiMapSB)
                     self.navigationController?.pushViewController(addRestaurantVC, animated: true)
                 } else {

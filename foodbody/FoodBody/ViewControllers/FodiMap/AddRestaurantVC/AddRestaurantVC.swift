@@ -69,7 +69,7 @@ class AddRestaurantVC: BaseVC {
 							if let delegate = strongSelf.delegate {
 								delegate.addRestaurantSuccessful(sender: strongSelf)
 							}
-                            strongSelf.actionBack()
+                            strongSelf.navigationController?.popToRootViewController(animated: true)
                         })
 
                     } else {

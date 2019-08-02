@@ -14,11 +14,11 @@ import Kingfisher
 
 class FodiMapVC: BaseVC,CLLocationManagerDelegate{
     //MARK: IBOutlet.
-    @IBOutlet weak var btnAdd: FoodBodyButton!
+    @IBOutlet weak var btnAdd: UIButton!
     @IBOutlet weak var googleMapView:GMSMapView!
     @IBOutlet weak var clvFodi:UICollectionView!
-    @IBOutlet weak var viEdit:UIView!
-    @IBOutlet weak var btnEdit: UIButton!
+	
+   
     
     //MARK: variable.
     var locationManager:CLLocationManager? = nil;
@@ -52,9 +52,14 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
         self.clvFodi.delegate = self;
         self.clvFodi.dataSource = self;
         self.googleMapView.delegate = self;
-        self.viEdit.layer.cornerRadius = 22;
-        self.viEdit.layer.masksToBounds = true;
-        
+
+		if let user = AppManager.user, !user.restaurantId.isEmpty {
+			btnAdd.isSelected = true
+			btnAdd.backgroundColor = .white
+		} else {
+			btnAdd.isSelected = false
+			btnAdd.backgroundColor = Style.Color.mainGreen
+		}
     }
     
     func initData(){
@@ -145,7 +150,10 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
             marker.snippet = FoodbodyUtils.shared.checkDataString(dict: dict, key: "address");
             let type = FoodbodyUtils.shared.checkDataString(dict: dict, key: "type")
             let listCalos:NSMutableArray? = NSMutableArray.init();
-            let calos:NSArray = dict.object(forKey: "calo_values") as! NSArray;
+			
+			guard let calos: NSArray = dict.object(forKey: "calo_values") as? NSArray else {
+				return
+			}
             if calos.count > 0 {
                 calos.enumerateObjects({ object, index, stop in
                     listCalos?.add(object);
@@ -191,19 +199,24 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
     //MARK: action.
     
     @IBAction func addAction(sender:UIButton){
-        
-        if AppManager.user?.token == nil { // not login yet
-            let registerAccountVC = getViewController(className: RegisterAccountVC.className, storyboard: FbConstants.AuthenticationSB) as! RegisterAccountVC
-            let nav = UINavigationController.init(rootViewController: registerAccountVC);
-            self.present(nav, animated: true, completion: nil)
-            
-        } else {
-            let addRestaurantVC = getViewController(className: AddRestaurantVC.className, storyboard: FbConstants.FodiMapSB) as! AddRestaurantVC;
-            addRestaurantVC.delegate = self;
-            self.navigationController?.pushViewController(addRestaurantVC, animated: true)
-        }
+		
+		if let user = AppManager.user {
+			if user.restaurantId.isEmpty { // need to input company infor
+				popupNotifyInputInfo()
+			} else {
+				let addRestaurantVC = getViewController(className: AddRestaurantVC.className, storyboard: FbConstants.FodiMapSB) as! AddRestaurantVC;
+				addRestaurantVC.delegate = self;
+				self.navigationController?.pushViewController(addRestaurantVC, animated: true)
+			}
+			
+		} else {
+			let registerAccountVC = getViewController(className: RegisterAccountVC.className, storyboard: FbConstants.AuthenticationSB) as! RegisterAccountVC
+			let nav = UINavigationController.init(rootViewController: registerAccountVC);
+			self.present(nav, animated: true, completion: nil)
+		}
     }
-    @IBAction func editAction(sender:UIButton){
+	
+    private func popupNotifyInputInfo(){
         let alert = UIAlertController(title:nil, message: "음식점을 등록할려면 사업자 정보가 필요합니다.", preferredStyle: .alert)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) {
@@ -218,7 +231,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
             
         }
         alert.addAction(action)
-         alert.addAction(cancelAction)
+		alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
     }
     //MARK: others method.

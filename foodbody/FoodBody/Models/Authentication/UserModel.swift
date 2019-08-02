@@ -171,21 +171,37 @@ class UserRequest: Mappable  {
 
 class MyRestaurant: Mappable {
 
+    var name: String?
     var creator: String?
-    var id: String?
     var priority: Int?
     var created_date: String?
+	var address: String?
+	var lat: Float?
+	var lng: Float?
+	var id: String?
+	var type: String?
+	var category: String?
+	var open_hour: String?
+	var close_hour: String?
+	
     
     required init?(map: Map) {
         
     }
     
     func mapping(map: Map) {
+        name <- map["name"]
         creator <- map["creator"]
-        id <- map["id"]
         priority <- map["priority"]
         created_date <- map["created_date"]
+		address <- map["address"]
+		lat <- map["lat"]
+		lng <- map["lng"]
+		type <- map["type"]
+		category <- map["category"]
+		open_hour <- map["open_hour"]
+		close_hour <- map["close_hour"]
+		id <- map["id"]
+		created_date <- map["created_date"]
     }
-    
-    
 }

@@ -31,7 +31,6 @@ class LicenseModel: Mappable  {
         registration_number <- map["license.registration_number"]
         representative_name <- map["license.representative_name"]
         address <- map["license.address"]
-        
     }
     
 }

@@ -59,7 +59,12 @@ extension RequestService: TargetType {
         case .getFoodWithRestaurantId(let id):
             return APIConstant.getFoodWithRestaurantId + "/\(id)" + "/foods"
         case .updateRestaurant:
-            return APIConstant.getFoodWithRestaurantId + "/\(AppManager.user?.restaurantId ?? "")"
+			if let resID = AppManager.user?.restaurantId, !resID.isEmpty {
+				return APIConstant.updateRestaurant + "/\(resID)"
+			} else {
+				return APIConstant.updateRestaurant
+			}
+			
         case .addComment:
             return APIConstant.addComment
         case .getRestaurantWithProfile:

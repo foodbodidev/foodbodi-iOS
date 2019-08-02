@@ -16,9 +16,9 @@ class FoodBodyButton: UIButton {
     }
     
     private func configureLayout() {
-        self.backgroundColor = UIColor(red: 18, green: 189, blue: 118)
+        self.backgroundColor = Style.Color.mainGreen
         self.setTitleColor(.white, for: .normal)
-        self.layer.shadowColor =  UIColor(red: 18, green: 189, blue: 118).cgColor
+        self.layer.shadowColor =  Style.Color.mainGreen.cgColor
         self.layer.shadowOpacity = 1
         self.layer.shadowOffset = CGSize.zero
         self.layer.shadowRadius = 3
