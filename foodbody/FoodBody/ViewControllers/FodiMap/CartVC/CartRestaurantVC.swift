@@ -25,7 +25,7 @@ extension CartRestaurantVC:UITableViewDataSource, UITableViewDelegate{
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-           return self.listCart.count;
+           return 10;
         }else if section == 1 {
             return 1;
         }
@@ -40,6 +40,15 @@ extension CartRestaurantVC:UITableViewDataSource, UITableViewDelegate{
             let cell:TotalKcalCell = tableView.dequeueReusableCell(withIdentifier: "TotalKcalCell", for: indexPath) as! TotalKcalCell;
             return cell;
         }
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let section = indexPath.section;
+        if section == 0 {
+            return 150;
+        }else if section == 1 {
+            return 90;
+        }
+        return 0;
     }
 
 }
