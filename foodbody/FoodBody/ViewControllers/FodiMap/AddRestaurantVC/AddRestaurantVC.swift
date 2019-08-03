@@ -20,6 +20,7 @@ class AddRestaurantVC: BaseVC {
     
     //MARK: Properties
 	var restaurant: RestaurantRequest = RestaurantRequest()
+    var foodModel: [FoodModel] = []
 	var photoFoodURL: String = ""
     var categoryList: [CategoryModel] = []
     var imagePicker = UIImagePickerController()
@@ -48,6 +49,7 @@ class AddRestaurantVC: BaseVC {
         registerNib()
         getCategory()
         bindDataFromMyRestaurant()
+        getFoodByResId()
     }
 	
     //MARK: === ACTION  ===
@@ -156,7 +158,7 @@ class AddRestaurantVC: BaseVC {
 			return false
 		}
 		
-		if restaurant.foodRequest.count == 0 {
+		if foodModel.count == 0 {
 			self.alertMessage(message: "Please add at least one kind of food")
 			return false
 		}
@@ -188,7 +190,15 @@ class AddRestaurantVC: BaseVC {
             }
         }
     }
-
+    
+    private func getFoodByResId() {
+        self.showLoading()
+        
+        RequestManager.getFoodWithRestaurantId(id: AppManager.user?.restaurantId ?? "") { (result, error) in
+            self.foodModel = result?.data ?? []
+            self.tableView.reloadData()
+        }
+    }
 }
 
 
@@ -200,7 +210,7 @@ extension AddRestaurantVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == AddResEnum.foodDisplay.rawValue {
-            return restaurant.foodRequest.count
+            return self.foodModel.count
         }
         return 1
     }
@@ -224,7 +234,7 @@ extension AddRestaurantVC: UITableViewDataSource {
             
         case AddResEnum.foodDisplay.rawValue:
             let foodCell = tableView.dequeueReusableCell(withIdentifier: FoodTableViewCell.className, for: indexPath) as! FoodTableViewCell
-            foodCell.bindData(data: restaurant.foodRequest[indexPath.row])
+            foodCell.bindData(data: self.foodModel[indexPath.row])
             return foodCell
         default:
             return UITableViewCell()
@@ -256,7 +266,7 @@ extension AddRestaurantVC: UITableViewDelegate {
 extension AddRestaurantVC: RestaurantTableViewCellDelegate, MenuTableViewCellDelegate {
 	
 	func didClickOnAddButton(food: Food, cell: MenuTableViewCell) {
-		let foodRequest = FoodRequest(name: food.name, price: food.price, calor: food.calor)
+        let foodRequest = FoodModel(name: food.name, price: food.price, calo: food.calor)
 		foodRequest.photo = photoFoodURL
 		foodRequest.image = imageFood
         
@@ -268,7 +278,7 @@ extension AddRestaurantVC: RestaurantTableViewCellDelegate, MenuTableViewCellDel
             }
         }
         
-		restaurant.foodRequest.append(foodRequest)
+		self.foodModel.append(foodRequest)
 		tableView.reloadData()
 		
 		photoFoodURL = "" // reset photo url
@@ -276,19 +286,6 @@ extension AddRestaurantVC: RestaurantTableViewCellDelegate, MenuTableViewCellDel
 		cell.resetData()
 	}
 	
-    func didClickOnAddButton(food: Food) {
-		let foodRequest = FoodRequest(name: food.name, price: food.price, calor: food.calor)
-		foodRequest.photo = photoFoodURL
-        foodRequest.image = imageFood
-        
-		
-        restaurant.foodRequest.append(foodRequest)
-        tableView.reloadData()
-		photoFoodURL = "" // reset photo url
-        imageFood = nil// reset image
-    }
-    
-    
     
     func restaurantTableViewCellEndEditing(restaurantModel: Restaurant) {
         restaurant.name = restaurantModel.title

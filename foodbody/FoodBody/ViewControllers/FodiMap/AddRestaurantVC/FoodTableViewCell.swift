@@ -30,11 +30,17 @@ class FoodTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func bindData(data: FoodRequest) {
+    func bindData(data: FoodModel) {
         nameLabel.text = data.name
         priceLabel.text = "\(data.price)" + "$"
-        calorLabel.text = "\(data.calor)" + " Kcal"
-        foodImageView.image = data.image
+        calorLabel.text = "\(data.calo)" + " Kcal"
+        if let image = data.image {
+            foodImageView.image = image
+        }
+        
+        if let url = URL.init(string: data.photo) {
+            foodImageView.kf.setImage(with: url)
+        }
         
     }
     

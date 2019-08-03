@@ -348,7 +348,7 @@ struct RequestManager {
         }
     }
     
-    static func addFood(foodRequest: FoodRequest, completion: @escaping (_ result: ResonseModel?) -> ()){
+    static func addFood(foodRequest: FoodModel, completion: @escaping (_ result: ResonseModel?) -> ()){
         provider.request(.addFood(dic: foodRequest.toJSON())) { result in
             do {
                 switch result {

@@ -36,7 +36,7 @@ class FoodResponse: Mappable  {
 
 class FoodModel: Mappable  {
     var name: String = ""
-    var restaurant_id: String = ""
+    var restaurant_id: String = AppManager.user?.restaurantId ?? ""
     var creator: String = ""
     var calo: Int = 0
     var price: Int = 0
@@ -46,9 +46,21 @@ class FoodModel: Mappable  {
     var id: String = ""
     
     
+    var image: UIImage?  // use for displaying layout
+
+    
+    
+    
     required init?(map: Map) {
         
     }
+    
+    init(name: String, price: Int, calo: Int) {
+        self.name = name
+        self.price = price
+        self.calo = calo
+    }
+
     
     
     func mapping(map: Map) {

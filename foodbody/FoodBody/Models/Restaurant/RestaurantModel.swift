@@ -95,7 +95,7 @@ class RestaurantRequest: Mappable  {
     var geohash: String = ""
     var open_hour: String = ""
     var close_hour: String = ""
-	var foodRequest: [FoodRequest] = []
+	
 	
 	var isValidTime: Bool = false 
     
@@ -131,34 +131,6 @@ class RestaurantRequest: Mappable  {
 		photo <- map["photo"]
     }
     
-}
-
-class FoodRequest: Mappable  {
-	var name: String = ""
-	var price: Int = 0
-	var calor: Int = 0
-	var photo: String = ""
-    var restaurant_id = AppManager.user?.restaurantId
-    
-    var image: UIImage?  // use for displaying layout
-	
-	required init?(map: Map) {
-		
-	}
-	
-	init(name: String, price: Int, calor: Int) {
-		self.name = name
-		self.price = price
-		self.calor = calor
-	}
-	
-	func mapping(map: Map) {
-		name <- map["name"]
-		price <- map["price"]
-		calor <- map["calo"]
-		photo <- map["photo"]
-        restaurant_id <- map["restaurant_id"]
-	}
 }
 
 
