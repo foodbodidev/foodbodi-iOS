@@ -116,6 +116,11 @@ class RestaurantTableViewCell: UITableViewCell {
     
     @IBAction func actionRestaurant() {
         model.type = RestaurantType.restaurant.rawValue
+        model.title = titleTextField.text!
+        model.openHours = openHoursTextField.text!
+        model.closeHours = closeHoursTextField.text!
+        model.category = categoryList.filter({$0.name == categoryTextField.text!}).first?.key ?? ""
+        model.isValidTime = validateTime()
         
         restaurantButton.setTitleColor(Style.Color.mainGreen, for: .normal)
         foodTruckButton.setTitleColor(Style.Color.mainGray, for: .normal)
@@ -127,6 +132,11 @@ class RestaurantTableViewCell: UITableViewCell {
     
     @IBAction func actionFoodTruck() {
         model.type = RestaurantType.foodTruck.rawValue
+        model.title = titleTextField.text!
+        model.openHours = openHoursTextField.text!
+        model.closeHours = closeHoursTextField.text!
+        model.category = categoryList.filter({$0.name == categoryTextField.text!}).first?.key ?? ""
+        model.isValidTime = validateTime()
         
         foodTruckButton.setTitleColor(Style.Color.mainGreen, for: .normal)
         restaurantButton.setTitleColor(Style.Color.mainGray, for: .normal)
@@ -196,8 +206,15 @@ class RestaurantTableViewCell: UITableViewCell {
         openHoursTextField.text = restaurant.open_hour
         closeHoursTextField.text = restaurant.close_hour
         addressTextField.text = restaurant.address
+        
+        if restaurant.type == RestaurantType.restaurant.rawValue {
+            restaurantButton.setTitleColor(Style.Color.mainGreen, for: .normal)
+            foodTruckButton.setTitleColor(Style.Color.mainGray, for: .normal)
+        } else {
+            foodTruckButton.setTitleColor(Style.Color.mainGreen, for: .normal)
+            restaurantButton.setTitleColor(Style.Color.mainGray, for: .normal)
+        }
     }
-    
 }
 
 extension RestaurantTableViewCell: UITextFieldDelegate {

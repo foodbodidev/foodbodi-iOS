@@ -39,28 +39,7 @@ class BaseLoginVC: BaseVC {
 	}
     
     
-    func getRestaurantWithProfile() {
-        
-        self.showLoading()
-        
-        RequestManager.getRestaurantWithProfile() { (result) in
-            
-            self.hideLoading()
-            
-            guard let result = result else { return }
-            
-            if result.isSuccess {
-                
-                if let user = AppManager.user {
-                    user.restaurantId = result.myRestaurant.first?.id ?? ""
-                    AppManager.user = user
-                }
-                
-                AppManager.restaurant = result.myRestaurant.first
-            }
-        }
-        
-    }
+    
 	
 	private func shouldUpdateProfile(user: User) -> Bool {
 		return user.height == 0

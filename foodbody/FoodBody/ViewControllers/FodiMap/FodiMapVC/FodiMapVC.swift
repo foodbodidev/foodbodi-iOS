@@ -323,7 +323,9 @@ extension FodiMapVC:GMSMapViewDelegate{
 
 extension FodiMapVC:AddRestaurantVCDelegate{
     func addRestaurantSuccessful(sender: AddRestaurantVC) {
-        self.getDataRestaurant();
+        self.getDataRestaurant()
+        self.getRestaurantWithProfile()
+        
     }
 }
 

@@ -115,6 +115,7 @@ class RestaurantRequest: Mappable  {
         self.open_hour = myRestaurant.open_hour ?? ""
         self.close_hour = myRestaurant.close_hour ?? ""
         self.type = myRestaurant.type ?? ""
+        self.isValidTime = true // because this time has been validated 
     }
     
     func mapping(map: Map) {
