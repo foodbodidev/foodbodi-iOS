@@ -52,6 +52,7 @@ class MenuTableViewCell: UITableViewCell {
     
     @IBAction func actionAddMenu() {
 		guard validateData() else {
+            self.findViewController()?.alertMessage(message: "Please input full infomation ")
 			return
 		}
 		

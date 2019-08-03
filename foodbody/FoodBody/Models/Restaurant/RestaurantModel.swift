@@ -107,6 +107,16 @@ class RestaurantRequest: Mappable  {
         
     }
     
+    func mapDataFromMyRestaurant(myRestaurant: MyRestaurant) {
+        self.category = myRestaurant.category ?? ""
+        self.photo = myRestaurant.photo ?? ""
+        self.name = myRestaurant.name ?? ""
+        self.address = myRestaurant.address ?? ""
+        self.open_hour = myRestaurant.open_hour ?? ""
+        self.close_hour = myRestaurant.close_hour ?? ""
+        self.type = myRestaurant.type ?? ""
+    }
+    
     func mapping(map: Map) {
         type <- map["type"]
         category <- map["category"]

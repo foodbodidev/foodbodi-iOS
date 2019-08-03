@@ -47,6 +47,7 @@ class AddRestaurantVC: BaseVC {
         self.navigationController?.navigationBar.isHidden = true
         registerNib()
         getCategory()
+        bindDataFromMyRestaurant()
     }
 	
     //MARK: === ACTION  ===
@@ -92,6 +93,11 @@ class AddRestaurantVC: BaseVC {
     }
 	
 	//MARK: OTHER METHOD
+    
+    private func bindDataFromMyRestaurant() {
+        guard let myRestaurant = AppManager.restaurant else { return  }
+        restaurant.mapDataFromMyRestaurant(myRestaurant: myRestaurant)
+    }
     
     private func openActionSheet() {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
