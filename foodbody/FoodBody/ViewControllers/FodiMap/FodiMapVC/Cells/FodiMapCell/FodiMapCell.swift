@@ -15,18 +15,4 @@ class FodiMapCell: UICollectionViewCell {
     @IBOutlet weak var lblKcal:UILabel!
     @IBOutlet weak var lblTime:UILabel!
     
-    
-    func bindData(dic: [String: Any]) {
-        self.lblName.text = dic["name"] as? String
-        self.lblCategory.text = dic["category"] as? String
-        self.lblKcal.text = "300kcal"
-        if let openTime = dic["open_hour"] as? String,
-            let closeTime = dic["open_hour"] as? String{
-            self.lblTime.text =   openTime + "~" + closeTime
-        }
-        
-        if let imageUrl = URL(string: dic["photo"] as? String ?? "") {
-            self.imvRestaurant.kf.setImage(with: imageUrl, placeholder: nil)
-        }
-    }
 }

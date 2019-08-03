@@ -262,7 +262,26 @@ extension FodiMapVC:UICollectionViewDelegate, UICollectionViewDataSource{
         
         let object: QueryDocumentSnapshot = listRestaurant[indexPath.row]
         let dict: [String: Any] = object.data()
-        cell.bindData(dic: dict)
+        cell.lblName.text = dict["name"] as? String
+        cell.lblCategory.text = dict["category"] as? String
+        let listCalos:NSMutableArray? = NSMutableArray.init();
+        if let kcals = dict["calo_values"] {
+            if (kcals as AnyObject).count > 0 {
+                (kcals as AnyObject).enumerateObjects({ object, index, stop in
+                    listCalos?.add(object);
+                })
+            }
+        }
+        let averageCalo:Double = self.averageCalo(listCalosData: listCalos!);
+        cell.lblKcal.text = String(format: "%.f", averageCalo);
+        if let openTime = dict["open_hour"] as? String,
+            let closeTime = dict["open_hour"] as? String{
+            cell.lblTime.text =   openTime + "~" + closeTime
+        }
+        
+        if let imageUrl = URL(string: dict["photo"] as? String ?? "") {
+            cell.imvRestaurant.kf.setImage(with: imageUrl, placeholder: nil)
+        }
         return cell;
        
     }
