@@ -13,6 +13,7 @@ import UIKit
 let FBAppDelegate = UIApplication.shared.delegate as! AppDelegate
 struct defaultsKeys {
     static let kUserlogin = "kUserlogin"
+    static let kRestaurant = "kRestaurant"
 }
 func Log(_ s: CustomStringConvertible, file: String = #file, line: Int = #line) {
     #if DEBUG

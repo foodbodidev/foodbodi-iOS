@@ -55,6 +55,8 @@ class BaseLoginVC: BaseVC {
                     user.restaurantId = result.myRestaurant.first?.id ?? ""
                     AppManager.user = user
                 }
+                
+                AppManager.restaurant = result.myRestaurant.first
             }
         }
         

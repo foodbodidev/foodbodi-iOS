@@ -43,10 +43,6 @@ class User: NSObject, Mappable, NSCoding {
         self.restaurantId = restaurantId
     }
     
-    override init() {
-    }
-    
-    
     required init?(map: Map) {
         
     }
@@ -169,7 +165,7 @@ class UserRequest: Mappable  {
 }
 
 
-class MyRestaurant: Mappable {
+class MyRestaurant: NSObject, NSCoding, Mappable {
 
     var name: String?
     var creator: String?
@@ -183,6 +179,7 @@ class MyRestaurant: Mappable {
 	var category: String?
 	var open_hour: String?
 	var close_hour: String?
+    var photo: String? 
 	
     
     required init?(map: Map) {
@@ -203,5 +200,39 @@ class MyRestaurant: Mappable {
 		close_hour <- map["close_hour"]
 		id <- map["id"]
 		created_date <- map["created_date"]
+        photo <- map["photo"]
+    }
+    
+    init(category: String?,type: String?,photo: String?, name: String?, address: String?, open_hour: String?, close_hour: String?) {
+        self.category = category
+        self.photo = photo
+        self.name = name
+        self.address = address
+        self.open_hour = open_hour
+        self.close_hour = close_hour
+        self.type = type
+    }
+    
+    required convenience init?(coder aDecoder: NSCoder) {
+        let category = aDecoder.decodeObject(forKey: "category") as? String
+        let photo = aDecoder.decodeObject(forKey: "photo") as? String
+        let name = aDecoder.decodeObject(forKey: "name") as? String
+        let address = aDecoder.decodeObject(forKey: "address") as? String
+        let open_hour = aDecoder.decodeObject(forKey: "open_hour") as? String
+        let close_hour = aDecoder.decodeObject(forKey: "close_hour") as? String
+        let type = aDecoder.decodeObject(forKey: "type") as? String
+        
+        
+        self.init(category: category, type: type, photo: photo,name: name, address: address, open_hour: open_hour, close_hour: close_hour)
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(category, forKey: "category")
+        aCoder.encode(photo, forKey: "photo")
+        aCoder.encode(name, forKey: "name")
+        aCoder.encode(address, forKey: "address")
+        aCoder.encode(open_hour, forKey: "open_hour")
+        aCoder.encode(close_hour, forKey: "close_hour")
+        aCoder.encode(type, forKey: "type")
     }
 }
