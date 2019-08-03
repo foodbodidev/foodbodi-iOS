@@ -118,7 +118,6 @@ class RestaurantRequest: Mappable  {
         geohash <- map["geohash"]
         open_hour <- map["open_hour"]
         close_hour <- map["close_hour"]
-		foodRequest <- map["foods"]
 		photo <- map["photo"]
     }
     
@@ -129,6 +128,7 @@ class FoodRequest: Mappable  {
 	var price: Int = 0
 	var calor: Int = 0
 	var photo: String = ""
+    var restaurant_id = AppManager.user?.restaurantId
     
     var image: UIImage?  // use for displaying layout
 	
@@ -147,6 +147,7 @@ class FoodRequest: Mappable  {
 		price <- map["price"]
 		calor <- map["calo"]
 		photo <- map["photo"]
+        restaurant_id <- map["restaurant_id"]
 	}
 }
 

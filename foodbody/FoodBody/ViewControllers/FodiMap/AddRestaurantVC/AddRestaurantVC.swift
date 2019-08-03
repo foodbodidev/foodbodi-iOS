@@ -249,14 +249,19 @@ extension AddRestaurantVC: UITableViewDelegate {
 
 extension AddRestaurantVC: RestaurantTableViewCellDelegate, MenuTableViewCellDelegate {
 	
-	
-	
 	func didClickOnAddButton(food: Food, cell: MenuTableViewCell) {
 		let foodRequest = FoodRequest(name: food.name, price: food.price, calor: food.calor)
 		foodRequest.photo = photoFoodURL
 		foodRequest.image = imageFood
-		
-		
+        
+        self.showLoading()
+        RequestManager.addFood(foodRequest: foodRequest) { (result) in
+            self.hideLoading()
+            if let result = result, !result.isSuccess {
+                self.alertMessage(message: result.message)
+            }
+        }
+        
 		restaurant.foodRequest.append(foodRequest)
 		tableView.reloadData()
 		

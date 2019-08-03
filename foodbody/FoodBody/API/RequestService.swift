@@ -25,6 +25,7 @@ enum RequestService {
     case updateRestaurant(model: RestaurantRequest)
     case getRestaurantWithProfile
     case getMyRestaurant
+    case addFood(dic: [String: Any])
 }
 
 extension RequestService: TargetType {
@@ -71,6 +72,8 @@ extension RequestService: TargetType {
             return APIConstant.getRestaurantWithProfile
         case .getMyRestaurant:
             return APIConstant.getMyRestaurant
+        case .addFood:
+            return APIConstant.addFood
         
         }
     }
@@ -84,6 +87,7 @@ extension RequestService: TargetType {
              .updateUserProfile,
              .createRestaurant,
 			 .uploadPhoto,
+             .addFood,
              .addComment:
             return .post
         case .updateRestaurant:
@@ -129,6 +133,8 @@ extension RequestService: TargetType {
 		case .uploadPhoto(let mutipartForm):
 			return .uploadMultipart([mutipartForm])
         case .addComment(let dic):
+            return .requestParameters(parameters: dic, encoding: JSONEncoding.default)
+        case .addFood(let dic):
             return .requestParameters(parameters: dic, encoding: JSONEncoding.default)
         case .updateRestaurant(let model):
             return .requestParameters(parameters: model.toJSON(), encoding: JSONEncoding.default)
