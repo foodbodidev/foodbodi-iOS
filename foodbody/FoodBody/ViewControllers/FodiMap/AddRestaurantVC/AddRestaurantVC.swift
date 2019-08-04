@@ -249,10 +249,8 @@ extension AddRestaurantVC: UITableViewDataSource {
             
             RequestManager.deleteFood(foodRequest: food) { (result) in
                 self.hideLoading()
-                if result?.isSuccess ?? false {
-                    self.foodModel.remove(at: indexPath.row)
-                    self.tableView.reloadData()
-                }
+                self.foodModel.remove(at: indexPath.row)
+                self.tableView.reloadData()
             }
         }
     }
@@ -282,24 +280,24 @@ extension AddRestaurantVC: UITableViewDelegate {
 extension AddRestaurantVC: RestaurantTableViewCellDelegate, MenuTableViewCellDelegate {
 	
 	func didClickOnAddButton(food: Food, cell: MenuTableViewCell) {
-        let foodRequest = FoodModel(name: food.name, price: food.price, calo: food.calor)
+        var foodRequest = FoodModel(name: food.name, price: food.price, calo: food.calor)
 		foodRequest.photo = photoFoodURL
 		foodRequest.image = imageFood
+		
         
         self.showLoading()
         RequestManager.addFood(foodRequest: foodRequest) { (result) in
             self.hideLoading()
-            if let result = result, !result.isSuccess {
-                self.alertMessage(message: result.message)
+            if let result = result {
+                foodRequest = result
+                
+                self.foodModel.append(foodRequest)
+                self.tableView.reloadData()
+                self.photoFoodURL = "" // reset photo url
+                self.imageFood = nil// reset image
+                cell.resetData()
             }
         }
-        
-		self.foodModel.append(foodRequest)
-		tableView.reloadData()
-		
-		photoFoodURL = "" // reset photo url
-		imageFood = nil// reset image
-		cell.resetData()
 	}
 	
     

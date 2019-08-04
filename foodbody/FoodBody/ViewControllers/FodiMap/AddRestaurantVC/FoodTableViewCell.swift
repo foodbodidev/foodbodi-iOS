@@ -34,12 +34,11 @@ class FoodTableViewCell: UITableViewCell {
         nameLabel.text = data.name
         priceLabel.text = "\(data.price)" + "$"
         calorLabel.text = "\(data.calo)" + " Kcal"
-        if let image = data.image {
-            foodImageView.image = image
-        }
-        
+        foodImageView.image = data.image
         if let url = URL.init(string: data.photo) {
             foodImageView.kf.setImage(with: url)
+        } else {
+            foodImageView.image = nil
         }
         
     }

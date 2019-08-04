@@ -348,7 +348,7 @@ struct RequestManager {
         }
     }
     
-    static func addFood(foodRequest: FoodModel, completion: @escaping (_ result: ResonseModel?) -> ()){
+    static func addFood(foodRequest: FoodModel, completion: @escaping (_ result: FoodModel?) -> ()){
         provider.request(.addFood(dic: foodRequest.toJSON())) { result in
             do {
                 switch result {
@@ -356,8 +356,12 @@ struct RequestManager {
                     let json = try response.mapJSON()
                     print(String(describing: response.request))
                     print(String(describing: json))
-                    let response = Mapper<ResonseModel>().map(JSONObject:json)
-                    completion(response)
+                    if let jsonDic = json as? [String : Any] {
+                        let response = Mapper<FoodModel>().map(JSONObject: jsonDic["data"])
+                        completion(response)
+                    } else {
+                        completion(nil)
+                    }
                 case .failure(let error):
                     completion(nil)
                     print(error)
