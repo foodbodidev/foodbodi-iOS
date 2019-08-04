@@ -368,6 +368,28 @@ struct RequestManager {
             }
         }
     }
+    
+    static func deleteFood(foodRequest: FoodModel, completion: @escaping (_ result: ResonseModel?) -> ()){
+        
+        provider.request(.deleteFood(model: foodRequest)) { result in
+            do {
+                switch result {
+                case .success(let response):
+                    let json = try response.mapJSON()
+                    print(String(describing: response.request))
+                    print(String(describing: json))
+                    let response = Mapper<ResonseModel>().map(JSONObject:json)
+                    completion(response)
+                case .failure(let error):
+                    completion(nil)
+                    print(error)
+                }
+            } catch let error {
+                completion(nil)
+                print(error)
+            }
+        }
+    }
 }
 
 

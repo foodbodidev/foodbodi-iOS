@@ -26,6 +26,7 @@ enum RequestService {
     case getRestaurantWithProfile
     case getMyRestaurant
     case addFood(dic: [String: Any])
+    case deleteFood(model: FoodModel)
 }
 
 extension RequestService: TargetType {
@@ -74,6 +75,8 @@ extension RequestService: TargetType {
             return APIConstant.getMyRestaurant
         case .addFood:
             return APIConstant.addFood
+        case .deleteFood(let foodModel):
+            return APIConstant.deleteFood + "/" + foodModel.id
         
         }
     }
@@ -92,6 +95,8 @@ extension RequestService: TargetType {
             return .post
         case .updateRestaurant:
             return .put
+        case .deleteFood:
+            return .delete
         default:
             return .get
         }
@@ -140,6 +145,8 @@ extension RequestService: TargetType {
             return .requestParameters(parameters: model.toJSON(), encoding: JSONEncoding.default)
         case .getRestaurantWithProfile:
             return .requestParameters(parameters: ["include_restaurant" : "true"], encoding: URLEncoding.queryString)
+        case .deleteFood(let foodModel):
+            return .requestParameters(parameters: ["restaurant_id": foodModel.restaurant_id], encoding: URLEncoding.queryString)
         default:
             return .requestPlain
         }

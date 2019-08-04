@@ -24,6 +24,8 @@ struct APIConstant {
     static let updateRestaurant = "/api/restaurant"
     static let getRestaurantWithProfile = "/api/profile"
     static let getMyRestaurant = "/api/restaurant/mine"
+    //API Food
+    static let deleteFood = "/api/food"
     //API comment.
     static let addComment = "/api/comment"
     static let addFood = "api/food"

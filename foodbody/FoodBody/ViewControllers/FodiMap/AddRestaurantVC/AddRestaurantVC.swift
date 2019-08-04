@@ -241,6 +241,21 @@ extension AddRestaurantVC: UITableViewDataSource {
             return UITableViewCell()
         }
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            self.showLoading()
+            let food = foodModel[indexPath.row]
+            
+            RequestManager.deleteFood(foodRequest: food) { (result) in
+                self.hideLoading()
+                if result?.isSuccess ?? false {
+                    self.foodModel.remove(at: indexPath.row)
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
 }
 
 extension AddRestaurantVC: UITableViewDelegate {
@@ -302,6 +317,8 @@ extension AddRestaurantVC: RestaurantTableViewCellDelegate, MenuTableViewCellDel
 		photoType = .food
 		openActionSheet()
 	}
+    
+    
 
 }
 
