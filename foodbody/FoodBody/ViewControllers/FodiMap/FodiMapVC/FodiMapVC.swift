@@ -35,6 +35,15 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
+        if let user = AppManager.user, !user.restaurantId.isEmpty {
+            btnAdd.setImage(UIImage.init(named: "ic_edit"), for: .normal)
+            btnAdd.setImage(UIImage.init(named: "ic_edit"), for: .highlighted)
+            btnAdd.backgroundColor = .white
+        } else {
+            btnAdd.setImage(UIImage.init(named: "ic_add"), for: .normal)
+            btnAdd.setImage(UIImage.init(named: "ic_add"), for: .highlighted)
+            btnAdd.backgroundColor = Style.Color.mainGreen
+        }
         
     }
     
@@ -53,13 +62,6 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
         self.clvFodi.dataSource = self;
         self.googleMapView.delegate = self;
 
-		if let user = AppManager.user, !user.restaurantId.isEmpty {
-			btnAdd.isSelected = true
-			btnAdd.backgroundColor = .white
-		} else {
-			btnAdd.isSelected = false
-			btnAdd.backgroundColor = Style.Color.mainGreen
-		}
     }
     
     func initData(){
