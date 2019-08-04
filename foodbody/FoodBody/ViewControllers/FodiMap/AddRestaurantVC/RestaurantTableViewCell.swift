@@ -9,17 +9,8 @@
 import UIKit
 import GooglePlaces
 
-struct Restaurant {
-    var title: String = ""
-    var category: String = ""
-    var openHours: String = ""
-    var closeHours: String = ""
-    var type: String = "RESTAURANT" // by default
-	var isValidTime: Bool = false
-}
-
 protocol RestaurantTableViewCellDelegate: class {
-    func restaurantTableViewCellEndEditing(restaurantModel: Restaurant)
+    func restaurantTableViewCellEndEditing(restaurantModel: RestaurantRequest)
     func restaurantTableViewCellDidBeginSearchAddress()
 }
 
@@ -44,7 +35,16 @@ class RestaurantTableViewCell: UITableViewCell {
 
     //MARK: Properties
     weak var delegate: RestaurantTableViewCellDelegate?
-    var model: Restaurant = Restaurant()
+    var model: RestaurantRequest = RestaurantRequest() {
+        didSet {
+            titleTextField.text = model.name
+            categoryTextField.text = categoryList.filter({$0.key == model.category}).first?.name
+            openHoursTextField.text = model.open_hour
+            closeHoursTextField.text = model.close_hour
+            addressTextField.text = model.address
+            model.isValidTime = validateTime()
+        }
+    }
     
     enum RestaurantType: String {
         case restaurant = "RESTAURANT"
@@ -116,11 +116,6 @@ class RestaurantTableViewCell: UITableViewCell {
     
     @IBAction func actionRestaurant() {
         model.type = RestaurantType.restaurant.rawValue
-        model.title = titleTextField.text!
-        model.openHours = openHoursTextField.text!
-        model.closeHours = closeHoursTextField.text!
-        model.category = categoryList.filter({$0.name == categoryTextField.text!}).first?.key ?? ""
-        model.isValidTime = validateTime()
         
         restaurantButton.setTitleColor(Style.Color.mainGreen, for: .normal)
         foodTruckButton.setTitleColor(Style.Color.mainGray, for: .normal)
@@ -132,11 +127,6 @@ class RestaurantTableViewCell: UITableViewCell {
     
     @IBAction func actionFoodTruck() {
         model.type = RestaurantType.foodTruck.rawValue
-        model.title = titleTextField.text!
-        model.openHours = openHoursTextField.text!
-        model.closeHours = closeHoursTextField.text!
-        model.category = categoryList.filter({$0.name == categoryTextField.text!}).first?.key ?? ""
-        model.isValidTime = validateTime()
         
         foodTruckButton.setTitleColor(Style.Color.mainGreen, for: .normal)
         restaurantButton.setTitleColor(Style.Color.mainGray, for: .normal)
@@ -201,11 +191,9 @@ class RestaurantTableViewCell: UITableViewCell {
 	}
     
     func bindData(restaurant: RestaurantRequest) {
-        titleTextField.text = restaurant.name
-        categoryTextField.text = categoryList.filter({$0.key == restaurant.category}).first?.name
-        openHoursTextField.text = restaurant.open_hour
-        closeHoursTextField.text = restaurant.close_hour
-        addressTextField.text = restaurant.address
+      
+        
+        model = restaurant
         
         if restaurant.type == RestaurantType.restaurant.rawValue {
             restaurantButton.setTitleColor(Style.Color.mainGreen, for: .normal)
@@ -220,16 +208,14 @@ class RestaurantTableViewCell: UITableViewCell {
 extension RestaurantTableViewCell: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        
-        model.title = titleTextField.text!
-        model.openHours = openHoursTextField.text!
-        model.closeHours = closeHoursTextField.text!
 		
 		// set default value for text field category
 		if textField == categoryTextField && textField.text!.isEmpty {
 			categoryTextField.text = categoryList.first?.name
 			model.category = categoryList[0].key// default value first
 		}
+        
+        saveDataToModel()
 		
         if let delegate = self.delegate {
             delegate.restaurantTableViewCellEndEditing(restaurantModel: model)
@@ -248,6 +234,14 @@ extension RestaurantTableViewCell: UITextFieldDelegate {
         default:
             return true
         }
+    }
+    
+    func saveDataToModel() {
+        model.name = titleTextField.text!
+        model.category = categoryList.filter({$0.name == categoryTextField.text!}).first?.key ?? ""
+        model.open_hour = openHoursTextField.text!
+        model.close_hour = closeHoursTextField.text!
+        model.address = addressTextField.text!
     }
 }
 

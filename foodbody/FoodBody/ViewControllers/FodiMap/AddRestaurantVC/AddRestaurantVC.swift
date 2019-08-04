@@ -59,6 +59,8 @@ class AddRestaurantVC: BaseVC {
     }
 	
 	@IBAction func actionSubmit() {
+        print(restaurant.toJSON())
+
         if validateData() {
             self.showLoading()
             RequestManager.updateRestaurant(request: restaurant) { [weak self] (result, error) in
@@ -286,13 +288,8 @@ extension AddRestaurantVC: RestaurantTableViewCellDelegate, MenuTableViewCellDel
 	}
 	
     
-    func restaurantTableViewCellEndEditing(restaurantModel: Restaurant) {
-        restaurant.name = restaurantModel.title
-		restaurant.category = restaurantModel.category
-		restaurant.close_hour = restaurantModel.closeHours
-		restaurant.open_hour = restaurantModel.openHours
-		restaurant.type = restaurantModel.type
-		restaurant.isValidTime = restaurantModel.isValidTime
+    func restaurantTableViewCellEndEditing(restaurantModel: RestaurantRequest) {
+        restaurant = restaurantModel
     }
     
     func restaurantTableViewCellDidBeginSearchAddress() {
