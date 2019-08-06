@@ -29,6 +29,8 @@ struct APIConstant {
     //API comment.
     static let addComment = "/api/comment"
     static let addFood = "api/food"
+    //API Reservation.
+    static let addReservation = "/api/reservation"
 }
 
 

@@ -59,6 +59,7 @@
 		BA8C18ED22E1BA23007531FE /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C0FDA422B8EE2A00411488 /* SignUpVC.swift */; };
 		BA8C18EF22E1BD58007531FE /* BaseLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8C18EE22E1BD58007531FE /* BaseLoginVC.swift */; };
 		BAB2CF7B22DEFA24003D4233 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB2CF7A22DEFA24003D4233 /* UIImageView.swift */; };
+		D506954722F92A3B00F3A1FE /* ReservationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D506954622F92A3B00F3A1FE /* ReservationModel.swift */; };
 		D57CDECA22EE98DE00909DBF /* CommentRestaurantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57CDEC922EE98DE00909DBF /* CommentRestaurantModel.swift */; };
 		D587C45822DC27A100C119BA /* TabMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D587C45722DC27A100C119BA /* TabMenuVC.swift */; };
 		D587C45B22DC27BC00C119BA /* TabChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D587C45A22DC27BC00C119BA /* TabChatVC.swift */; };
@@ -167,6 +168,7 @@
 		BA782CAB22DDD71100E25985 /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
 		BA8C18EE22E1BD58007531FE /* BaseLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLoginVC.swift; sourceTree = "<group>"; };
 		BAB2CF7A22DEFA24003D4233 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		D506954622F92A3B00F3A1FE /* ReservationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationModel.swift; sourceTree = "<group>"; };
 		D57CDEC922EE98DE00909DBF /* CommentRestaurantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentRestaurantModel.swift; sourceTree = "<group>"; };
 		D587C45722DC27A100C119BA /* TabMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMenuVC.swift; sourceTree = "<group>"; };
 		D587C45A22DC27BC00C119BA /* TabChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabChatVC.swift; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 				BA782CAB22DDD71100E25985 /* PhotoModel.swift */,
 				D57CDEC922EE98DE00909DBF /* CommentRestaurantModel.swift */,
 				9842859A22F08C1300F558A4 /* LicenseModel.swift */,
+				D506954622F92A3B00F3A1FE /* ReservationModel.swift */,
 			);
 			path = Restaurant;
 			sourceTree = "<group>";
@@ -1027,6 +1030,7 @@
 				98CEA20022B9431200E82063 /* Array.swift in Sources */,
 				2FCA49BC22D63F5400E3497D /* Geohash.swift in Sources */,
 				98CEA20922B946D700E82063 /* APIConstant.swift in Sources */,
+				D506954722F92A3B00F3A1FE /* ReservationModel.swift in Sources */,
 				98282BD422BE9205003ED8BC /* UIFont.swift in Sources */,
 				D5B24B2C22B73EC800DA16C4 /* FodiMapVC.swift in Sources */,
 				98D9AEC522C85E5600C5DD56 /* Style.swift in Sources */,

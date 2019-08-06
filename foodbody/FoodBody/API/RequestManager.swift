@@ -58,7 +58,7 @@ struct RequestManager {
             }
         }
     }
-    //Login.
+    //MARK: API Login.
     static func loginWithUserInfo(request: UserRequest, completion: @escaping (_ result: User?, _ error: Error?) -> ()) {
         
         provider.request(.login(dic: request.toJSON())) { result in
@@ -394,6 +394,8 @@ struct RequestManager {
             }
         }
     }
+    //MARK: API reservation.
+    
 }
 
 

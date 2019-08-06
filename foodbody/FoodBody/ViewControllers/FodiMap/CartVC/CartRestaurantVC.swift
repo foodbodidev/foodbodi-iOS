@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CartRestaurantVC: UIViewController {
+class CartRestaurantVC: UIViewController, CartInfoCellDelegate {
 //    let foodCart:FoodModel = FoodModel();
     @IBOutlet weak var tbvCart: UITableView!
     var listCart:NSMutableArray = NSMutableArray.init();
@@ -16,6 +16,17 @@ class CartRestaurantVC: UIViewController {
         super.viewDidLoad()
         self.tbvCart.delegate = self;
         self.tbvCart.dataSource = self;
+    }
+    //MARK: IBAction.
+    @IBAction func backAction(sender:UIButton){
+        self.navigationController?.popViewController(animated: true);
+    }
+    //MARK: CartInfoCellDelegate
+    func CartInfoCellDelegate(cell: CartInfoCell, actionAdd: UIButton) {
+        
+    }
+    func CartInfoCellDelegate(cell: CartInfoCell, actionSub: UIButton) {
+        
     }
 }
 
@@ -35,6 +46,7 @@ extension CartRestaurantVC:UITableViewDataSource, UITableViewDelegate{
         let section = indexPath.section;
         if section == 0 {
             let cell:CartInfoCell = tableView.dequeueReusableCell(withIdentifier: "CartInfoCell", for: indexPath) as! CartInfoCell
+            cell.delegate = self;
             return cell;
         }else{
             let cell:TotalKcalCell = tableView.dequeueReusableCell(withIdentifier: "TotalKcalCell", for: indexPath) as! TotalKcalCell;
