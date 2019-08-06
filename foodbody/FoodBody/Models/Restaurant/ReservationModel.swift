@@ -48,7 +48,7 @@ class ReservationRequest: Mappable  {
     
     
     var restaurant_id: String = ""
-    var foods: NSMutableArray = NSMutableArray.init();
+    var foods: [FoodReservationModel] = []
     
     required init?(map: Map) {
         

@@ -17,8 +17,7 @@ class CartInfoCell: UITableViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var calorLabel: UILabel!
     @IBOutlet weak var foodImageView: UIImageView!
-    @IBOutlet weak var lblAdd: UILabel!
-    @IBOutlet weak var lblSub: UILabel!
+    @IBOutlet weak var lblAmount: UILabel!
     @IBOutlet weak var btnAdd: UIButton!
     @IBOutlet weak var btnSub: UIButton!
     //MARK: Properties

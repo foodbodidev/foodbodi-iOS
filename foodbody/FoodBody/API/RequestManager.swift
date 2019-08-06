@@ -395,7 +395,9 @@ struct RequestManager {
         }
     }
     //MARK: API reservation.
-    static func addReservation(foodRequest: ReservationRequest, completion: @escaping (_ result: ReservationResponse?) -> ()){
+    static func addReservation(foodRequest: ReservationRequest, completion: @escaping (_ result: ReservationResponse?, _ error: Error?) -> ()){
+        
+        print(foodRequest.toJSON())
         provider.request(.addReservation(dic: foodRequest.toJSON())) { result in
             do {
                 switch result {
@@ -404,17 +406,17 @@ struct RequestManager {
                     print(String(describing: response.request))
                     print(String(describing: json))
                     if let jsonDic = json as? [String : Any] {
-                        let response = Mapper<ReservationResponse>().map(JSONObject: jsonDic["data"])
-                        completion(response)
+                        let response = Mapper<ReservationResponse>().map(JSONObject: jsonDic)
+                        completion(response, nil)
                     } else {
-                        completion(nil)
+                        completion(nil, nil)
                     }
                 case .failure(let error):
-                    completion(nil)
+                    completion(nil, error)
                     print(error)
                 }
             } catch let error {
-                completion(nil)
+                completion(nil, error)
                 print(error)
             }
         }

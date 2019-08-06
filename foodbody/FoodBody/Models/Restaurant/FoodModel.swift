@@ -44,7 +44,7 @@ class FoodModel: Mappable  {
     var created_date: String = ""
     var photo: String = ""
     var id: String = ""
-    
+    var amount:Int = 0;
     
     var image: UIImage?  // use for displaying layout
 
@@ -73,6 +73,7 @@ class FoodModel: Mappable  {
         created_date <- map["created_date"]
         photo <- map["photo"]
         id <- map["id"]
+        amount <- map["amount"]
     }
 }
 

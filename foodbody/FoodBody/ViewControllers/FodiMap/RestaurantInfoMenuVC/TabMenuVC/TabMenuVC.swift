@@ -47,7 +47,7 @@ class TabMenuVC: BaseVC {
                     let price:Int = Int(FoodbodyUtils.shared.checkDataFloat(dict: dict as NSDictionary, key: "price"))
                     let calo:Int = Int(FoodbodyUtils.shared.checkDataFloat(dict: dict as NSDictionary, key: "calo"))
                     let obj:FoodModel = FoodModel.init(name: name, price: price, calo: calo);
-                    obj.id = FoodbodyUtils.shared.checkDataString(dict: dict as NSDictionary, key: "id")
+                    obj.id = document.documentID /// documentId  = foodId
                     obj.creator = FoodbodyUtils.shared.checkDataString(dict: dict as NSDictionary, key: "creator")
                     obj.restaurant_id = FoodbodyUtils.shared.checkDataString(dict: dict as NSDictionary, key: "restaurant_id")
                     obj.photo = FoodbodyUtils.shared.checkDataString(dict: dict as NSDictionary, key: "photo")

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,7 @@
 		2F427B9A22BD1E6000099B0F /* SFProText-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F427B9422BD1E6000099B0F /* SFProText-Light.otf */; };
 		2F427B9B22BD1E6000099B0F /* SFProText-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F427B9522BD1E6000099B0F /* SFProText-Semibold.otf */; };
 		2F49414F22EC285D004437BD /* ChatTbvCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F49414E22EC285D004437BD /* ChatTbvCell.swift */; };
+		2FC0053322F9CAEE004C5A98 /* FoodReservationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC0053222F9CAEE004C5A98 /* FoodReservationModel.swift */; };
 		2FCA49B922D63F2D00E3497D /* GeohashBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCA49B722D63F2D00E3497D /* GeohashBox.swift */; };
 		2FCA49BC22D63F5400E3497D /* Geohash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCA49BB22D63F5300E3497D /* Geohash.swift */; };
 		2FCB77FC22D377F300F6966B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2FCB77FB22D377F300F6966B /* GoogleService-Info.plist */; };
@@ -116,6 +117,7 @@
 		2F427B9422BD1E6000099B0F /* SFProText-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Light.otf"; sourceTree = "<group>"; };
 		2F427B9522BD1E6000099B0F /* SFProText-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Semibold.otf"; sourceTree = "<group>"; };
 		2F49414E22EC285D004437BD /* ChatTbvCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTbvCell.swift; sourceTree = "<group>"; };
+		2FC0053222F9CAEE004C5A98 /* FoodReservationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodReservationModel.swift; sourceTree = "<group>"; };
 		2FCA49B722D63F2D00E3497D /* GeohashBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeohashBox.swift; sourceTree = "<group>"; };
 		2FCA49BB22D63F5300E3497D /* Geohash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geohash.swift; sourceTree = "<group>"; };
 		2FCB77FB22D377F300F6966B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 				D57CDEC922EE98DE00909DBF /* CommentRestaurantModel.swift */,
 				9842859A22F08C1300F558A4 /* LicenseModel.swift */,
 				D506954622F92A3B00F3A1FE /* ReservationModel.swift */,
+				2FC0053222F9CAEE004C5A98 /* FoodReservationModel.swift */,
 			);
 			path = Restaurant;
 			sourceTree = "<group>";
@@ -973,6 +976,7 @@
 				98C34F5322CE4FE100A933DE /* InforTextField.swift in Sources */,
 				BAB2CF7B22DEFA24003D4233 /* UIImageView.swift in Sources */,
 				D5C0FDA222B8EE1900411488 /* LoginVC.swift in Sources */,
+				2FC0053322F9CAEE004C5A98 /* FoodReservationModel.swift in Sources */,
 				98CEA20D22B946FF00E82063 /* RequestService.swift in Sources */,
 				98282BDA22BFE727003ED8BC /* LoadingView.swift in Sources */,
 				2F03660522DB837B001C15FE /* RestaurantInfoMenuVC.swift in Sources */,
