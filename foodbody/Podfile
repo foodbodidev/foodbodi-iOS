@@ -17,6 +17,7 @@ target 'FoodBody' do
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
   pod 'MBProgressHUD'
+  pod 'Charts'
   
   target 'FoodBodyTests' do
     inherit! :search_paths

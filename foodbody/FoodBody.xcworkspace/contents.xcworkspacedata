@@ -4,6 +4,406 @@
    <FileRef
       location = "group:FoodBody.xcodeproj">
    </FileRef>
+   <Group
+      location = "group:FoodBody"
+      name = "FoodBody">
+      <FileRef
+         location = "group:FoodBody/Constant.swift">
+      </FileRef>
+      <FileRef
+         location = "group:FoodBody/AppDelegate.swift">
+      </FileRef>
+      <Group
+         location = "group:FoodBody/ThirdParty"
+         name = "ThirdParty">
+         <Group
+            location = "group:FoodBody/ThirdParty/Geohash"
+            name = "Geohash">
+            <FileRef
+               location = "group:FoodBody/ThirdParty/Geohash/Geohash.swift">
+            </FileRef>
+            <FileRef
+               location = "group:FoodBody/ThirdParty/Geohash/GeohashBox.swift">
+            </FileRef>
+         </Group>
+      </Group>
+      <Group
+         location = "group:FoodBody/API"
+         name = "API">
+         <FileRef
+            location = "group:FoodBody/API/APIConstant.swift">
+         </FileRef>
+         <FileRef
+            location = "group:FoodBody/API/RequestManager.swift">
+         </FileRef>
+         <FileRef
+            location = "group:FoodBody/API/RequestService.swift">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:FoodBody/Extension"
+         name = "Extension">
+         <FileRef
+            location = "group:FoodBody/Extension/Array.swift">
+         </FileRef>
+         <FileRef
+            location = "group:FoodBody/Extension/Button.swift">
+         </FileRef>
+         <FileRef
+            location = "group:FoodBody/Extension/Date.swift">
+         </FileRef>
+         <FileRef
+            location = "group:FoodBody/Extension/String.swift">
+         </FileRef>
+         <FileRef
+            location = "group:FoodBody/Extension/UIColor.swift">
+         </FileRef>
+         <FileRef
+            location = "group:FoodBody/Extension/UIImage.swift">
+         </FileRef>
+         <FileRef
+            location = "group:FoodBody/Extension/UITextField.swift">
+         </FileRef>
+         <FileRef
+            location = "group:FoodBody/Extension/UIView.swift">
+         </FileRef>
+         <FileRef
+            location = "group:FoodBody/Extension/UIViewController.swift">
+         </FileRef>
+         <FileRef
+            location = "group:FoodBody/Extension/UIFont.swift">
+         </FileRef>
+         <FileRef
+            location = "group:FoodBody/Extension/UIImageView.swift">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:FoodBody/Utils"
+         name = "Utils">
+         <FileRef
+            location = "group:FoodBody/Utils/GlobalFunc.swift">
+         </FileRef>
+         <FileRef
+            location = "group:FoodBody/Utils/FoodbodyUtils.swift">
+         </FileRef>
+         <FileRef
+            location = "group:FoodBody/Utils/Style.swift">
+         </FileRef>
+         <FileRef
+            location = "group:FoodBody/Utils/AppManager.swift">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:FoodBody/Views"
+         name = "Views">
+         <Group
+            location = "group:FoodBody/Views/LoadingView"
+            name = "LoadingView">
+            <FileRef
+               location = "group:FoodBody/Views/LoadingView/LoadingView.swift">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:FoodBody/Views/Button"
+            name = "Button">
+            <FileRef
+               location = "group:FoodBody/Views/Button/FoodBodyButton.swift">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:FoodBody/Views/TextField"
+            name = "TextField">
+            <FileRef
+               location = "group:FoodBody/Views/TextField/FBTextField.swift">
+            </FileRef>
+            <FileRef
+               location = "group:FoodBody/Views/TextField/FBTextField.xib">
+            </FileRef>
+            <FileRef
+               location = "group:FoodBody/Views/TextField/InforTextField.swift">
+            </FileRef>
+         </Group>
+      </Group>
+      <Group
+         location = "group:FoodBody/Models"
+         name = "Models">
+         <Group
+            location = "group:FoodBody/Models/Restaurant"
+            name = "Restaurant">
+            <FileRef
+               location = "group:FoodBody/Models/Restaurant/RestaurantModel.swift">
+            </FileRef>
+            <FileRef
+               location = "group:FoodBody/Models/Restaurant/CategoryModel.swift">
+            </FileRef>
+            <FileRef
+               location = "group:FoodBody/Models/Restaurant/FoodModel.swift">
+            </FileRef>
+            <FileRef
+               location = "group:FoodBody/Models/Restaurant/PhotoModel.swift">
+            </FileRef>
+            <FileRef
+               location = "group:FoodBody/Models/Restaurant/CommentRestaurantModel.swift">
+            </FileRef>
+            <FileRef
+               location = "group:FoodBody/Models/Restaurant/LicenseModel.swift">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:FoodBody/Models/Authentication"
+            name = "Authentication">
+            <FileRef
+               location = "group:FoodBody/Models/Authentication/UserModel.swift">
+            </FileRef>
+         </Group>
+      </Group>
+      <Group
+         location = "group:FoodBody/ViewControllers"
+         name = "ViewControllers">
+         <Group
+            location = "group:FoodBody/ViewControllers/Base"
+            name = "Base">
+            <Group
+               location = "group:FoodBody/ViewControllers/Base/BaseVC"
+               name = "BaseVC">
+               <FileRef
+                  location = "group:FoodBody/ViewControllers/Base/BaseVC/BaseVC.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:FoodBody/ViewControllers/Base/BaseVC/BaseLoginVC.swift">
+               </FileRef>
+            </Group>
+         </Group>
+         <Group
+            location = "group:FoodBody/ViewControllers/Authentications"
+            name = "Authentications">
+            <Group
+               location = "group:FoodBody/ViewControllers/Authentications/RegisterAccountVC"
+               name = "RegisterAccountVC">
+               <FileRef
+                  location = "group:FoodBody/ViewControllers/Authentications/RegisterAccountVC/RegisterAccountVC.swift">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:FoodBody/ViewControllers/Authentications/SignUpVC"
+               name = "SignUpVC">
+               <FileRef
+                  location = "group:FoodBody/ViewControllers/Authentications/SignUpVC/SignUpVC.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:FoodBody/ViewControllers/Authentications/SignUpVC/SignUpVC.xib">
+               </FileRef>
+               <FileRef
+                  location = "group:FoodBody/ViewControllers/Authentications/SignUpVC/YourBasicVC.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:FoodBody/ViewControllers/Authentications/SignUpVC/YourBasicVC.xib">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:FoodBody/ViewControllers/Authentications/LoginVC"
+               name = "LoginVC">
+               <FileRef
+                  location = "group:FoodBody/ViewControllers/Authentications/LoginVC/LoginVC.swift">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:FoodBody/ViewControllers/Authentications/WelComeVC"
+               name = "WelComeVC">
+               <FileRef
+                  location = "group:FoodBody/ViewControllers/Authentications/WelComeVC/WelComeVC.swift">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:FoodBody/ViewControllers/Authentications/SelectGenderVC"
+               name = "SelectGenderVC">
+               <FileRef
+                  location = "group:FoodBody/ViewControllers/Authentications/SelectGenderVC/SelectGenderVC.swift">
+               </FileRef>
+            </Group>
+         </Group>
+         <Group
+            location = "group:FoodBody/ViewControllers/FodiMap"
+            name = "FodiMap">
+            <Group
+               location = "group:FoodBody/ViewControllers/FodiMap/CartVC"
+               name = "CartVC">
+               <FileRef
+                  location = "group:FoodBody/ViewControllers/FodiMap/CartVC/CartInfoCell.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:FoodBody/ViewControllers/FodiMap/CartVC/TotalKcalCell.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:FoodBody/ViewControllers/FodiMap/CartVC/CartRestaurantVC.swift">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:FoodBody/ViewControllers/FodiMap/Company Information"
+               name = "Company Information">
+               <FileRef
+                  location = "group:FoodBody/ViewControllers/FodiMap/Company Information/CompanyInfoVC.swift">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:FoodBody/ViewControllers/FodiMap/RestaurantInfoMenuVC"
+               name = "RestaurantInfoMenuVC">
+               <Group
+                  location = "group:FoodBody/ViewControllers/FodiMap/RestaurantInfoMenuVC/TabChatVC"
+                  name = "TabChatVC">
+                  <FileRef
+                     location = "group:FoodBody/ViewControllers/FodiMap/RestaurantInfoMenuVC/TabChatVC/TabChatVC.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:FoodBody/ViewControllers/FodiMap/RestaurantInfoMenuVC/TabChatVC/ChatTbvCell.swift">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:FoodBody/ViewControllers/FodiMap/RestaurantInfoMenuVC/TabMenuVC"
+                  name = "TabMenuVC">
+                  <FileRef
+                     location = "group:FoodBody/ViewControllers/FodiMap/RestaurantInfoMenuVC/TabMenuVC/TabMenuVC.swift">
+                  </FileRef>
+               </Group>
+               <FileRef
+                  location = "group:FoodBody/ViewControllers/FodiMap/RestaurantInfoMenuVC/RestaurantInfoMenuVC.swift">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:FoodBody/ViewControllers/FodiMap/AddRestaurantVC"
+               name = "AddRestaurantVC">
+               <FileRef
+                  location = "group:FoodBody/ViewControllers/FodiMap/AddRestaurantVC/AddRestaurantVC.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:FoodBody/ViewControllers/FodiMap/AddRestaurantVC/MenuTableViewCell.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:FoodBody/ViewControllers/FodiMap/AddRestaurantVC/MenuTableViewCell.xib">
+               </FileRef>
+               <FileRef
+                  location = "group:FoodBody/ViewControllers/FodiMap/AddRestaurantVC/FoodTableViewCell.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:FoodBody/ViewControllers/FodiMap/AddRestaurantVC/FoodTableViewCell.xib">
+               </FileRef>
+               <FileRef
+                  location = "group:FoodBody/ViewControllers/FodiMap/AddRestaurantVC/RestaurantTableViewCell.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:FoodBody/ViewControllers/FodiMap/AddRestaurantVC/RestaurantTableViewCell.xib">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:FoodBody/ViewControllers/FodiMap/FodiMapVC"
+               name = "FodiMapVC">
+               <Group
+                  location = "group:FoodBody/ViewControllers/FodiMap/FodiMapVC/Cells"
+                  name = "Cells">
+                  <Group
+                     location = "group:FoodBody/ViewControllers/FodiMap/FodiMapVC/Cells/FodiMapCell"
+                     name = "FodiMapCell">
+                     <FileRef
+                        location = "group:FoodBody/ViewControllers/FodiMap/FodiMapVC/Cells/FodiMapCell/FodiMapCell.swift">
+                     </FileRef>
+                  </Group>
+               </Group>
+               <FileRef
+                  location = "group:FoodBody/ViewControllers/FodiMap/FodiMapVC/FodiMapVC.swift">
+               </FileRef>
+            </Group>
+         </Group>
+         <Group
+            location = "group:FoodBody/ViewControllers/Profile"
+            name = "Profile">
+            <Group
+               location = "group:FoodBody/ViewControllers/Profile/ProfileVC"
+               name = "ProfileVC">
+               <FileRef
+                  location = "group:FoodBody/ViewControllers/Profile/ProfileVC/ProfileVC.swift">
+               </FileRef>
+            </Group>
+         </Group>
+         <Group
+            location = "group:FoodBody/ViewControllers/Reservation"
+            name = "Reservation">
+            <Group
+               location = "group:FoodBody/ViewControllers/Reservation/ReservationVC"
+               name = "ReservationVC">
+               <FileRef
+                  location = "group:FoodBody/ViewControllers/Reservation/ReservationVC/ReservationVC.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:FoodBody/ViewControllers/Reservation/ReservationVC/ReservationCell.swift">
+               </FileRef>
+            </Group>
+         </Group>
+         <Group
+            location = "group:FoodBody/ViewControllers/Main"
+            name = "Main">
+            <Group
+               location = "group:FoodBody/ViewControllers/Main/MainTabBarVC"
+               name = "MainTabBarVC">
+               <FileRef
+                  location = "group:FoodBody/ViewControllers/Main/MainTabBarVC/MainTabBarVC.swift">
+               </FileRef>
+            </Group>
+         </Group>
+      </Group>
+      <Group
+         location = "group:FoodBody/Resource"
+         name = "Resource">
+         <FileRef
+            location = "group:FoodBody/Resource/GoogleService-Info.plist">
+         </FileRef>
+         <Group
+            location = "group:FoodBody/Resource/Fonts"
+            name = "Fonts">
+            <FileRef
+               location = "group:FoodBody/Resource/Fonts/SFProText-Regular.otf">
+            </FileRef>
+            <FileRef
+               location = "group:FoodBody/Resource/Fonts/SFProText-Light.otf">
+            </FileRef>
+            <FileRef
+               location = "group:FoodBody/Resource/Fonts/SFProText-Semibold.otf">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:FoodBody/Resource/Info.plist">
+         </FileRef>
+         <FileRef
+            location = "group:FoodBody/Resource/client_513844011252-2qlodmja1av20n55vro79uv0jc5vj3ck.apps.googleusercontent.com.plist">
+         </FileRef>
+         <Group
+            location = "group:FoodBody/image"
+            name = "image">
+            <FileRef
+               location = "group:FoodBody/image/Assets.xcassets">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:FoodBody/Resource"
+            name = "Main.storyboard">
+            <FileRef
+               location = "group:FoodBody/Resource/Base.lproj/Main.storyboard">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:FoodBody/Resource"
+            name = "LaunchScreen.storyboard">
+            <FileRef
+               location = "group:FoodBody/Resource/Base.lproj/LaunchScreen.storyboard">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:FoodBody/Resource/Authentication.storyboard">
+         </FileRef>
+         <FileRef
+            location = "group:FoodBody/Resource/FodiMap.storyboard">
+         </FileRef>
+      </Group>
+   </Group>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
