@@ -11,7 +11,7 @@ import UIKit
 class CartRestaurantVC: UIViewController, CartInfoCellDelegate {
 //    let foodCart:FoodModel = FoodModel();
     @IBOutlet weak var tbvCart: UITableView!
-    var listCart:NSMutableArray = NSMutableArray.init();
+    var listMenu: [FoodModel] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tbvCart.delegate = self;
@@ -36,7 +36,7 @@ extension CartRestaurantVC:UITableViewDataSource, UITableViewDelegate{
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-           return 10;
+           return listMenu.count;
         }else if section == 1 {
             return 1;
         }
@@ -46,6 +46,16 @@ extension CartRestaurantVC:UITableViewDataSource, UITableViewDelegate{
         let section = indexPath.section;
         if section == 0 {
             let cell:CartInfoCell = tableView.dequeueReusableCell(withIdentifier: "CartInfoCell", for: indexPath) as! CartInfoCell
+            let row = indexPath.row
+            let data:FoodModel = self.listMenu[row]
+            cell.nameLabel.text = data.name
+            cell.priceLabel.text = "\(data.price)" + "$"
+            cell.calorLabel.text = "\(data.calo)" + " Kcal"
+            if let url = URL.init(string: data.photo) {
+                cell.foodImageView.kf.setImage(with: url)
+            } else {
+                cell.foodImageView.image = nil
+            }
             cell.delegate = self;
             return cell;
         }else{

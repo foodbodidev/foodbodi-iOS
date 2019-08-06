@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class TabMenuVC: BaseVC {
     // MARK: IBOutlet
@@ -14,6 +15,7 @@ class TabMenuVC: BaseVC {
     //MARK: variable.
     var idRestaurant: String = ""
     var listMenu: [FoodModel] = []
+    let db = Firestore.firestore();
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,24 +31,30 @@ class TabMenuVC: BaseVC {
     }
     
     func getDataFromServer() {
-        
-        listMenu.removeAll()
-        FoodbodyUtils.shared.showLoadingHub(viewController: self);
-        RequestManager.getFoodWithRestaurantId(id: self.idRestaurant) { (result, error) in
+        FoodbodyUtils.shared.showLoadingHub(viewController:self);
+        db.collection("foods").whereField("restaurant_id", isEqualTo: idRestaurant).getDocuments { (querySnapshot, error) in
             FoodbodyUtils.shared.hideLoadingHub(viewController: self);
-            if let error = error {
-                self.alertMessage(message: "Get Data fail \(error.localizedDescription)");
-            }
-            if let result = result {
+            if let err = error {
+                FoodbodyUtils.shared.hideLoadingHub(viewController: self);
+                self.alertMessage(message: "Error getting documents \(err.localizedDescription)")
+            } else {
                 
-                if result.isSuccess {
-                    for object in result.data{
-                        self.listMenu.append(object)
-                    }
-                    self.tbvMenu.reloadData();
-                } else {
-                    self.alertMessage(message: result.message)
+                print(  querySnapshot!.documents.count);
+                for document in querySnapshot!.documents {
+                    print("\(document.documentID) => \(document.data())")
+                    let dict:NSDictionary = document.data() as NSDictionary;
+                    let name:String = FoodbodyUtils.shared.checkDataString(dict: dict as NSDictionary, key: "name")
+                    let price:Int = Int(FoodbodyUtils.shared.checkDataFloat(dict: dict as NSDictionary, key: "price"))
+                    let calo:Int = Int(FoodbodyUtils.shared.checkDataFloat(dict: dict as NSDictionary, key: "calo"))
+                    let obj:FoodModel = FoodModel.init(name: name, price: price, calo: calo);
+                    obj.id = FoodbodyUtils.shared.checkDataString(dict: dict as NSDictionary, key: "id")
+                    obj.creator = FoodbodyUtils.shared.checkDataString(dict: dict as NSDictionary, key: "creator")
+                    obj.restaurant_id = FoodbodyUtils.shared.checkDataString(dict: dict as NSDictionary, key: "restaurant_id")
+                    obj.photo = FoodbodyUtils.shared.checkDataString(dict: dict as NSDictionary, key: "photo")
+                    self.listMenu.append(obj);
                 }
+                
+                self.tbvMenu.reloadData();
             }
         }
     }
@@ -72,6 +80,11 @@ extension TabMenuVC: UITableViewDelegate, UITableViewDataSource{
         foodCell.nameLabel.text = data.name
         foodCell.priceLabel.text = "\(data.price)" + "$"
         foodCell.calorLabel.text = "\(data.calo)" + " Kcal"
+        if let url = URL.init(string: data.photo) {
+            foodCell.foodImageView.kf.setImage(with: url)
+        } else {
+            foodCell.foodImageView.image = nil
+        }
         return foodCell;
         
     }
@@ -83,7 +96,7 @@ extension TabMenuVC: UITableViewDelegate, UITableViewDataSource{
 //        let row = indexPath.row
 //        let data:FoodModel = self.listMenu[row]
         let vc:CartRestaurantVC = getViewController(className: CartRestaurantVC.className, storyboard: FbConstants.FodiMapSB) as! CartRestaurantVC;
-        
+        vc.listMenu = listMenu
         self.parent?.navigationController?.pushViewController(vc, animated: true);
     }
     
