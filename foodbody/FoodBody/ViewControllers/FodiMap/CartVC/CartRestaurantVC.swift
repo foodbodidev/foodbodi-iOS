@@ -34,7 +34,6 @@ class CartRestaurantVC: UIViewController, CartInfoCellDelegate {
         let row = indexPath.row
         let data:FoodModel = self.listMenu[row]
         data.amount = data.amount + 1;
-        totalCalo = totalCalo + CGFloat(data.amount + data.calo);
         self.tbvCart.reloadData();
     }
     func CartInfoCellDelegate(cell: CartInfoCell, actionSub: UIButton) {
@@ -43,7 +42,6 @@ class CartRestaurantVC: UIViewController, CartInfoCellDelegate {
         let data:FoodModel = self.listMenu[row]
         if data.amount > 0 {
             data.amount = data.amount - 1;
-            totalCalo = totalCalo + CGFloat(data.amount + data.calo);
             self.tbvCart.reloadData();
         }
     }
@@ -55,7 +53,7 @@ class CartRestaurantVC: UIViewController, CartInfoCellDelegate {
             return FoodReservationModel(food_id: $0.id, amount: $0.amount)
         })
         
-        // === 
+        // ===
         request.foods = foodReservation
         FoodbodyUtils.shared.showLoadingHub(viewController: self);
         RequestManager.addReservation(foodRequest: request) { (result,error) in
@@ -66,13 +64,35 @@ class CartRestaurantVC: UIViewController, CartInfoCellDelegate {
             if let result = result {
                 
                 if result.isSuccess {
-                   self.alertMessage(message: "add reservation success")
+                    let alert = UIAlertController(title:nil, message: "Add reservation success", preferredStyle: .alert)
+                    
+                    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) {
+                        UIAlertAction in
+                        // It will dismiss action sheet
+                    }
+                    let action = UIAlertAction(title: "Ok", style: .default) {
+                        UIAlertAction in
+                        //go to company information.
+                        self.navigationController?.popToRootViewController(animated: true);
+                        
+                    }
+                    alert.addAction(action)
+                    alert.addAction(cancelAction)
+                    self.present(alert, animated: true, completion: nil)
                     
                 } else {
                     self.alertMessage(message: result.message)
                 }
             }
         }
+    }
+    func getTotalCalo()->CGFloat{
+        var totalData:CGFloat = 0;
+        for food in listMenu {
+            let totalCaloOneFood = food.amount * food.calo;
+            totalData = totalData + CGFloat(totalCaloOneFood);
+        }
+        return CGFloat(totalData);
     }
 }
 
@@ -103,10 +123,13 @@ extension CartRestaurantVC:UITableViewDataSource, UITableViewDelegate{
                 cell.foodImageView.image = nil
             }
             cell.lblAmount.text = String(format: "%d", data.amount);
+            totalCalo = totalCalo + CGFloat(data.amount * data.calo);
             cell.delegate = self;
             return cell;
         }else{
             let cell:TotalKcalCell = tableView.dequeueReusableCell(withIdentifier: "TotalKcalCell", for: indexPath) as! TotalKcalCell;
+            totalCalo = 0;
+            totalCalo = self.getTotalCalo();
             cell.lblTotal.text = String(format: "%.f", totalCalo);
             return cell;
         }
