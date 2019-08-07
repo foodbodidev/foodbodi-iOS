@@ -10,9 +10,18 @@ import UIKit
 
 
 class ProfileVC: UIViewController {
+    
+    @IBOutlet weak var stepView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupLayout()
+    }
+    
+    
+    private func setupLayout() {
+       stepView.layer.borderColor = Style.Color.showDowColor.cgColor
+       stepView.layer.borderWidth = 1
     }
     
 
@@ -22,4 +31,5 @@ class ProfileVC: UIViewController {
     }
 
 }
+
 
