@@ -12,10 +12,10 @@ import ObjectMapper
 class ReservationResponse: Mappable {
     var restaurant_id: String = ""
     var owner: String = ""
-    var created_date: String = ""
-    var restaurant_name: NSInteger = 0
+    var created_date: NSInteger = 0
+    var restaurant_name: String = ""
     var total: NSInteger = 0
-    var foods:NSMutableArray = NSMutableArray.init();
+    var foods: [FoodReservationModel] = []
     var id: String = ""
     var isSuccess: Bool = false
     var status_code: Int = -1
@@ -31,13 +31,13 @@ class ReservationResponse: Mappable {
     }
     
     func mapping(map: Map) {
-        restaurant_id <- map["data.restaurant_id"]
-        owner <- map["data.owner"]
-        created_date <- map["data.created_date"]
-        restaurant_name <- map["data.restaurant_name"]
-        total <- map["data.total"]
-        foods <- map["data.foods"]
-        id <- map["data.id"]
+        restaurant_id <- map["restaurant_id"]
+        owner <- map["owner"]
+        created_date <- map["created_date"]
+        restaurant_name <- map["restaurant_name"]
+        total <- map["total"]
+        foods <- map["foods"]
+        id <- map["id"]
         message <- map["message"]
         status_code <- map["status_code"]
         isSuccess = (status_code == 0) ? true : false

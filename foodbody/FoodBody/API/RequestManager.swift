@@ -421,6 +421,31 @@ struct RequestManager {
             }
         }
     }
+    static func getListReservation(completion: @escaping (_ result: ListReservationResponse?, _ error: Error?) -> ()){
+        
+        provider.request(.getListReservation) { result in
+            do {
+                switch result {
+                case .success(let response):
+                    let json = try response.mapJSON()
+                    print(String(describing: response.request))
+                    print(String(describing: json))
+                    if let jsonDic = json as? [String : Any] {
+                        let response = Mapper<ListReservationResponse>().map(JSONObject: jsonDic)
+                        completion(response, nil)
+                    } else {
+                        completion(nil, nil)
+                    }
+                case .failure(let error):
+                    completion(nil, error)
+                    print(error)
+                }
+            } catch let error {
+                completion(nil, error)
+                print(error)
+            }
+        }
+    }
 }
 
 

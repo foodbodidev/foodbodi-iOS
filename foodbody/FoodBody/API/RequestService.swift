@@ -28,6 +28,7 @@ enum RequestService {
     case addFood(dic: [String: Any])
     case deleteFood(model: FoodModel)
     case addReservation(dic: [String: Any])
+    case getListReservation
 }
 
 extension RequestService: TargetType {
@@ -80,6 +81,8 @@ extension RequestService: TargetType {
             return APIConstant.deleteFood + "/" + foodModel.id
         case .addReservation:
             return APIConstant.addReservation;
+        case .getListReservation:
+            return APIConstant.getListReservation;
         }
     }
     
@@ -100,6 +103,8 @@ extension RequestService: TargetType {
             return .put
         case .deleteFood:
             return .delete
+        case .getListReservation:
+            return .get;
         default:
             return .get
         }
