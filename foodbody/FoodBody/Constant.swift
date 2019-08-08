@@ -14,6 +14,7 @@ struct FbConstants {
     static let mainSB = "Main"
     static let AuthenticationSB = "Authentication"
     static let FodiMapSB = "FodiMap"
+    static let ReservationSB = "Reservation"
     static let crRadius:CGFloat = 20
     //key
     static let MAP_API_KEY = "AIzaSyCVwGyeMks43wzuCObn-BUs-6ZpMWpebYo"

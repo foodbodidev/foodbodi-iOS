@@ -32,6 +32,7 @@ struct APIConstant {
     //API Reservation.
     static let addReservation = "/api/reservation"
     static let getListReservation = "/api/reservation/mine"
+    static let getOneReservation = "/api/reservation"
 }
 
 

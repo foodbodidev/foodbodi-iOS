@@ -29,6 +29,7 @@ enum RequestService {
     case deleteFood(model: FoodModel)
     case addReservation(dic: [String: Any])
     case getListReservation
+    case getOneReservationWithId(id:String)
 }
 
 extension RequestService: TargetType {
@@ -83,7 +84,10 @@ extension RequestService: TargetType {
             return APIConstant.addReservation;
         case .getListReservation:
             return APIConstant.getListReservation;
+        case .getOneReservationWithId(let id):
+            return APIConstant.getOneReservation + "/\(id)";
         }
+        
     }
     
     var method: Moya.Method {

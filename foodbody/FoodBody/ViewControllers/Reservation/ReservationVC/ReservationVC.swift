@@ -65,6 +65,12 @@ extension ReservationVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150;
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc:ReservationUpdateVC = getViewController(className: ReservationUpdateVC.className, storyboard:FbConstants.ReservationSB) as! ReservationUpdateVC;
+        let obj:ReservationResponse = listReservation[indexPath.row];
+        vc.reservationId = obj.id;
+        self.navigationController?.pushViewController(vc, animated: true);
+    }
 }
 
 
