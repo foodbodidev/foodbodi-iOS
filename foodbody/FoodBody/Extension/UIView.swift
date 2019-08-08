@@ -82,6 +82,23 @@ class OverlayView: UIView {
     
 }
 
+class CurvedView: UIView {
+	override func draw(_ rect: CGRect) {
+		let y:CGFloat = 0.35*rect.height
+		let curveTo:CGFloat = -0.35*rect.height
+		
+		let myBezier = UIBezierPath()
+		myBezier.move(to: CGPoint(x: 0, y: y))
+		myBezier.addQuadCurve(to: CGPoint(x: rect.width, y: y), controlPoint: CGPoint(x: rect.width / 2, y: curveTo))
+		myBezier.addLine(to: CGPoint(x: rect.width, y: rect.height))
+		myBezier.addLine(to: CGPoint(x: 0, y: rect.height))
+		myBezier.close()
+		Style.Color.mainGreen.setFill()
+		myBezier.fill()
+	}
+}
+
+
 extension UIView {
     
     func startAnimationLoading() {

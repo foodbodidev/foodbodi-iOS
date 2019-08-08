@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -66,6 +66,7 @@
 		D587C45B22DC27BC00C119BA /* TabChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D587C45A22DC27BC00C119BA /* TabChatVC.swift */; };
 		D590B99822D439FB00CC7EE8 /* FodiMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D590B99722D439FB00CC7EE8 /* FodiMapCell.swift */; };
 		D591D7CC22FA72B400DE1BDA /* ListReservationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D591D7CB22FA72B400DE1BDA /* ListReservationResponse.swift */; };
+		D591D7D322FA7E7300DE1BDA /* ReservationUpdateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D591D7D222FA7E7300DE1BDA /* ReservationUpdateVC.swift */; };
 		D5ACD6E622CD9A5000F8F1E2 /* AddRestaurantVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ACD6E522CD9A5000F8F1E2 /* AddRestaurantVC.swift */; };
 		D5ACD6E822CD9A7600F8F1E2 /* FodiMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5ACD6E722CD9A7600F8F1E2 /* FodiMap.storyboard */; };
 		D5B24AD622B737B500DA16C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B24AD522B737B500DA16C4 /* AppDelegate.swift */; };
@@ -83,6 +84,8 @@
 		D5B24B3522B73FB600DA16C4 /* MainTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B24B3422B73FB600DA16C4 /* MainTabBarVC.swift */; };
 		D5B4241822BC81DB00141818 /* RegisterAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4241722BC81DB00141818 /* RegisterAccountVC.swift */; };
 		D5B424D722BCD42100141818 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5B424D622BCD42100141818 /* Assets.xcassets */; };
+		D5B987DE22FBC2F8005D0733 /* Reservation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5B987DD22FBC2F7005D0733 /* Reservation.storyboard */; };
+		D5B987E022FBC7DA005D0733 /* OneReservationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B987DF22FBC7DA005D0733 /* OneReservationModel.swift */; };
 		D5B9AE4422B9D0680015DEB2 /* WelComeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B9AE4322B9D0680015DEB2 /* WelComeVC.swift */; };
 		D5B9AE4D22B9D32D0015DEB2 /* SelectGenderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B9AE4C22B9D32D0015DEB2 /* SelectGenderVC.swift */; };
 		D5BE8EAF22F44DF60011D64B /* ReservationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BE8EAE22F44DF60011D64B /* ReservationCell.swift */; };
@@ -179,6 +182,7 @@
 		D587C45A22DC27BC00C119BA /* TabChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabChatVC.swift; sourceTree = "<group>"; };
 		D590B99722D439FB00CC7EE8 /* FodiMapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FodiMapCell.swift; sourceTree = "<group>"; };
 		D591D7CB22FA72B400DE1BDA /* ListReservationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListReservationResponse.swift; sourceTree = "<group>"; };
+		D591D7D222FA7E7300DE1BDA /* ReservationUpdateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationUpdateVC.swift; sourceTree = "<group>"; };
 		D5ACD6E522CD9A5000F8F1E2 /* AddRestaurantVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRestaurantVC.swift; sourceTree = "<group>"; };
 		D5ACD6E722CD9A7600F8F1E2 /* FodiMap.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FodiMap.storyboard; sourceTree = "<group>"; };
 		D5B24AD222B737B500DA16C4 /* FoodBody.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodBody.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,6 +206,8 @@
 		D5B4241722BC81DB00141818 /* RegisterAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAccountVC.swift; sourceTree = "<group>"; };
 		D5B424D622BCD42100141818 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D5B424DD22BCD5D900141818 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D5B987DD22FBC2F7005D0733 /* Reservation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Reservation.storyboard; sourceTree = "<group>"; };
+		D5B987DF22FBC7DA005D0733 /* OneReservationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneReservationModel.swift; sourceTree = "<group>"; };
 		D5B9AE4322B9D0680015DEB2 /* WelComeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelComeVC.swift; sourceTree = "<group>"; };
 		D5B9AE4C22B9D32D0015DEB2 /* SelectGenderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGenderVC.swift; sourceTree = "<group>"; };
 		D5BE8EAE22F44DF60011D64B /* ReservationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationCell.swift; sourceTree = "<group>"; };
@@ -365,6 +371,7 @@
 				D506954622F92A3B00F3A1FE /* ReservationModel.swift */,
 				2FC0053222F9CAEE004C5A98 /* FoodReservationModel.swift */,
 				D591D7CB22FA72B400DE1BDA /* ListReservationResponse.swift */,
+				D5B987DF22FBC7DA005D0733 /* OneReservationModel.swift */,
 			);
 			path = Restaurant;
 			sourceTree = "<group>";
@@ -411,6 +418,21 @@
 				D590B99722D439FB00CC7EE8 /* FodiMapCell.swift */,
 			);
 			path = FodiMapCell;
+			sourceTree = "<group>";
+		};
+		D591D7D022FA7E3100DE1BDA /* CommondCells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CommondCells;
+			sourceTree = "<group>";
+		};
+		D591D7D122FA7E6000DE1BDA /* ReservationUpdateVC */ = {
+			isa = PBXGroup;
+			children = (
+				D591D7D222FA7E7300DE1BDA /* ReservationUpdateVC.swift */,
+			);
+			path = ReservationUpdateVC;
 			sourceTree = "<group>";
 		};
 		D5ACD6E422CD9A3800F8F1E2 /* AddRestaurantVC */ = {
@@ -542,6 +564,7 @@
 		D5B24B0822B73A3600DA16C4 /* Reservation */ = {
 			isa = PBXGroup;
 			children = (
+				D591D7D122FA7E6000DE1BDA /* ReservationUpdateVC */,
 				D5B24B3022B73EF900DA16C4 /* ReservationVC */,
 			);
 			path = Reservation;
@@ -559,6 +582,7 @@
 		D5B24B1422B73C1800DA16C4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D591D7D022FA7E3100DE1BDA /* CommondCells */,
 				98282BD822BFE6EE003ED8BC /* LoadingView */,
 				98282BD022BE8BBD003ED8BC /* Button */,
 				98282BC922BE85C3003ED8BC /* TextField */,
@@ -607,6 +631,7 @@
 				D5B24B2322B73DBB00DA16C4 /* LaunchScreen.storyboard */,
 				D5B24B1F22B73D9700DA16C4 /* Authentication.storyboard */,
 				D5ACD6E722CD9A7600F8F1E2 /* FodiMap.storyboard */,
+				D5B987DD22FBC2F7005D0733 /* Reservation.storyboard */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -844,6 +869,7 @@
 				D5B24B2022B73D9700DA16C4 /* Authentication.storyboard in Resources */,
 				2FD1CF3622BBDED7002D4AF6 /* client_513844011252-2qlodmja1av20n55vro79uv0jc5vj3ck.apps.googleusercontent.com.plist in Resources */,
 				98C34F5B22CE57D800A933DE /* FoodTableViewCell.xib in Resources */,
+				D5B987DE22FBC2F8005D0733 /* Reservation.storyboard in Resources */,
 				D5B24B2622B73DBB00DA16C4 /* LaunchScreen.storyboard in Resources */,
 				98C34F5F22CFAE3400A933DE /* RestaurantTableViewCell.xib in Resources */,
 				D5B424D722BCD42100141818 /* Assets.xcassets in Resources */,
@@ -1050,11 +1076,13 @@
 				98CEA20922B946D700E82063 /* APIConstant.swift in Sources */,
 				D506954722F92A3B00F3A1FE /* ReservationModel.swift in Sources */,
 				98282BD422BE9205003ED8BC /* UIFont.swift in Sources */,
+				D591D7D322FA7E7300DE1BDA /* ReservationUpdateVC.swift in Sources */,
 				D5B24B2C22B73EC800DA16C4 /* FodiMapVC.swift in Sources */,
 				98D9AEC522C85E5600C5DD56 /* Style.swift in Sources */,
 				9805630C22CA60DE00A71566 /* AppManager.swift in Sources */,
 				98CEA20B22B946EE00E82063 /* RequestManager.swift in Sources */,
 				D5B9AE4D22B9D32D0015DEB2 /* SelectGenderVC.swift in Sources */,
+				D5B987E022FBC7DA005D0733 /* OneReservationModel.swift in Sources */,
 				98CEA20222B9431200E82063 /* Date.swift in Sources */,
 				D5B24B1B22B73CB800DA16C4 /* UIViewController.swift in Sources */,
 				D5B4241822BC81DB00141818 /* RegisterAccountVC.swift in Sources */,

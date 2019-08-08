@@ -446,6 +446,29 @@ struct RequestManager {
             }
         }
     }
+    static func getOneReservationWithId(id: String, completion: @escaping (_ result: OneReservationModel?, _ error: Error?) -> ()){
+        
+        
+        provider.request(.getFoodWithRestaurantId(id: id)) { result in
+            do {
+                switch result {
+                case .success(let response):
+                    let json = try response.mapJSON()
+                    print(String(describing: response.request))
+                    print(String(describing: json))
+                    let response = Mapper<OneReservationModel>().map(JSONObject:json)
+                    completion(response, nil)
+                case .failure(let error):
+                    completion(nil, error)
+                    print(error)
+                }
+            } catch let error {
+                completion(nil, error)
+                print(error)
+            }
+        }
+    }
+    
 }
 
 
