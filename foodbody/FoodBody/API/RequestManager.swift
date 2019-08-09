@@ -449,7 +449,7 @@ struct RequestManager {
     static func getOneReservationWithId(id: String, completion: @escaping (_ result: OneReservationModel?, _ error: Error?) -> ()){
         
         
-        provider.request(.getFoodWithRestaurantId(id: id)) { result in
+        provider.request(.getOneReservationWithId(id: id)) { result in
             do {
                 switch result {
                 case .success(let response):

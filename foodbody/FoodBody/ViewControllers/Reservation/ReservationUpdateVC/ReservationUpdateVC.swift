@@ -38,6 +38,11 @@ class ReservationUpdateVC: BaseVC, CartInfoCellDelegate{
                 
                 if result.isSuccess {
                     self.reservationModel = result;
+                    for obj in self.reservationModel.reservation.foods{
+                        let food: FoodModel = self.reservationModel.foods[obj.food_id]!;
+                        food.amount = obj.amount;
+                        self.listMenu.append(food)
+                    }
                     self.tbvCart.reloadData();
                 } else {
                     self.alertMessage(message: result.message)

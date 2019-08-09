@@ -12,8 +12,8 @@ import ObjectMapper
 class OneReservationModel: Mappable {
     var restaurant: RestaurantRequest = RestaurantRequest()
     
-    var foods: [FoodModel] = []
     
+    var foods: [String: FoodModel] = [:]
     var reservation: ReservationRequest = ReservationRequest()
     var isSuccess: Bool = false
     var status_code: Int = -1
