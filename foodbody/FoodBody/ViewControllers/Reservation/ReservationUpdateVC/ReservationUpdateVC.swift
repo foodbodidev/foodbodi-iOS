@@ -11,7 +11,7 @@ import UIKit
 class ReservationUpdateVC: BaseVC, CartInfoCellDelegate{
     var reservationId:String = "";
     @IBOutlet weak var tbvCart: UITableView!
-    @IBOutlet weak var btnReservation:UIButton!
+    @IBOutlet weak var btnUpdateReservation:UIButton!
     var totalCalo:CGFloat = 0;
     
     var listMenu: [FoodModel] = []
@@ -78,6 +78,38 @@ class ReservationUpdateVC: BaseVC, CartInfoCellDelegate{
             totalData = totalData + CGFloat(totalCaloOneFood);
         }
         return CGFloat(totalData);
+    }
+    @IBAction func actionUpdateReservation(sender:UIButton){
+        let request = ReservationRequest()
+        request.restaurant_id = (listMenu.first?.restaurant_id)!;
+        let foodReservation = listMenu.map({
+            return FoodReservationModel(food_id: $0.id, amount: $0.amount)
+        })
+        
+        // ===
+        request.foods = foodReservation
+        FoodbodyUtils.shared.showLoadingHub(viewController: self);
+        RequestManager.updateReservation(foodRequest: request) { (result, error) in
+            FoodbodyUtils.shared.hideLoadingHub(viewController: self);
+            if let error = error {
+                self.alertMessage(message: error.localizedDescription)
+            }
+            if let result = result {
+                if result.isSuccess {
+                    let alert = UIAlertController(title:nil, message: "Add reservation success", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "Ok", style: .default) {
+                        UIAlertAction in
+                        //go to company information.
+                        self.navigationController?.popToRootViewController(animated: true);
+                    }
+                    alert.addAction(action)
+                    self.present(alert, animated: true, completion: nil)
+                    
+                } else {
+                    self.alertMessage(message: result.message)
+                }
+            }
+        }
     }
 }
 extension ReservationUpdateVC:UITableViewDataSource, UITableViewDelegate{

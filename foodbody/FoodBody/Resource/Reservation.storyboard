@@ -219,24 +219,24 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ftW-1g-qh8">
-                                                    <rect key="frame" x="10" y="10" width="355" height="80"/>
+                                                    <rect key="frame" x="10" y="10" width="394" height="80"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total kcal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6LB-e6-fDh">
-                                                            <rect key="frame" x="0.0" y="0.0" width="355" height="39.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="394" height="39.5"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AXr-yB-9C6">
-                                                            <rect key="frame" x="10" y="39.5" width="335" height="1"/>
+                                                            <rect key="frame" x="10" y="39.5" width="374" height="1"/>
                                                             <color key="backgroundColor" red="0.8980392157" green="0.92941176469999998" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="wg3-LI-Rdc"/>
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200 kcal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iwu-eV-DeP">
-                                                            <rect key="frame" x="0.0" y="40.5" width="355" height="39.5"/>
+                                                            <rect key="frame" x="0.0" y="40.5" width="394" height="39.5"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="15"/>
                                                             <color key="textColor" red="0.070588235289999995" green="0.74117647060000003" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -285,7 +285,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="btnReservationWithSender:" destination="lyY-2A-CCg" eventType="touchUpInside" id="n4u-4N-FUL"/>
+                                    <action selector="actionUpdateReservationWithSender:" destination="lyY-2A-CCg" eventType="touchUpInside" id="TV4-aK-hvv"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -305,7 +305,7 @@
                         <viewLayoutGuide key="safeArea" id="GfR-jg-JDQ"/>
                     </view>
                     <connections>
-                        <outlet property="btnReservation" destination="oMw-4i-nyc" id="n0b-Pr-FDV"/>
+                        <outlet property="btnUpdateReservation" destination="oMw-4i-nyc" id="oee-28-h9u"/>
                         <outlet property="tbvCart" destination="e2P-9D-cCi" id="3eE-hl-dSu"/>
                     </connections>
                 </viewController>

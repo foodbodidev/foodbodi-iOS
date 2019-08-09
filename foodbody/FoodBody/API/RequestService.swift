@@ -30,6 +30,7 @@ enum RequestService {
     case addReservation(dic: [String: Any])
     case getListReservation
     case getOneReservationWithId(id:String)
+    case updateReservationWithId(dic: [String: Any])
 }
 
 extension RequestService: TargetType {
@@ -86,12 +87,15 @@ extension RequestService: TargetType {
             return APIConstant.getListReservation;
         case .getOneReservationWithId(let id):
             return APIConstant.getOneReservation + "/\(id)";
+        case .updateReservationWithId(let id):
+            return APIConstant.updateReservation + "/rsv_re85SM1j9LxmUkPgo01b_12520447@gm.uit.edu.vn_1565235055991";
         }
-        
     }
     
     var method: Moya.Method {
         switch self {
+        case .updateReservationWithId:
+            return .put
         case .signup,
              .login,
              .googleSignIn,
@@ -109,6 +113,7 @@ extension RequestService: TargetType {
             return .delete
         case .getListReservation:
             return .get;
+        
         default:
             return .get
         }
@@ -160,8 +165,10 @@ extension RequestService: TargetType {
         case .deleteFood(let foodModel):
             return .requestParameters(parameters: ["restaurant_id": foodModel.restaurant_id], encoding: URLEncoding.queryString)
         case .addReservation(let dic):
-        
              return .requestParameters(parameters: dic, encoding: JSONEncoding.default)
+        case .updateReservationWithId(let dic):
+            return .requestParameters(parameters: dic, encoding: JSONEncoding.default)
+            
         
         default:
             return .requestPlain
