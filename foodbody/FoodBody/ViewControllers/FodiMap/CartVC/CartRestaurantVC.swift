@@ -19,6 +19,8 @@ class CartRestaurantVC: UIViewController, CartInfoCellDelegate {
         super.viewDidLoad()
         self.tbvCart.delegate = self;
         self.tbvCart.dataSource = self;
+        self.tbvCart.register(UINib.init(nibName: "CartInfoCell", bundle: nil), forCellReuseIdentifier: "CartInfoCell")
+        self.tbvCart.register(UINib.init(nibName: "TotalKcalCell", bundle: nil), forCellReuseIdentifier: "TotalKcalCell")
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);

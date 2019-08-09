@@ -11,10 +11,12 @@
 		2F03660522DB837B001C15FE /* RestaurantInfoMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F03660422DB837B001C15FE /* RestaurantInfoMenuVC.swift */; };
 		2F1774B622D1EF2200778D05 /* RestaurantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1774B522D1EF2200778D05 /* RestaurantModel.swift */; };
 		2F3750DB22FDBBC0008B150D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F3750DA22FDBBC0008B150D /* GoogleService-Info.plist */; };
+		2F3750E422FDC838008B150D /* CartInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F3750E222FDC838008B150D /* CartInfoCell.xib */; };
 		2F427B9922BD1E6000099B0F /* SFProText-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F427B9322BD1E6000099B0F /* SFProText-Regular.otf */; };
 		2F427B9A22BD1E6000099B0F /* SFProText-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F427B9422BD1E6000099B0F /* SFProText-Light.otf */; };
 		2F427B9B22BD1E6000099B0F /* SFProText-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F427B9522BD1E6000099B0F /* SFProText-Semibold.otf */; };
 		2F49414F22EC285D004437BD /* ChatTbvCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F49414E22EC285D004437BD /* ChatTbvCell.swift */; };
+		2F9DD27E22FDCD33007E3D59 /* TotalKcalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F9DD27D22FDCD33007E3D59 /* TotalKcalCell.xib */; };
 		2FC0053322F9CAEE004C5A98 /* FoodReservationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC0053222F9CAEE004C5A98 /* FoodReservationModel.swift */; };
 		2FC0053622F9DAE5004C5A98 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FC0053522F9DAE5004C5A98 /* HealthKit.framework */; };
 		2FCA49B922D63F2D00E3497D /* GeohashBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCA49B722D63F2D00E3497D /* GeohashBox.swift */; };
@@ -118,10 +120,12 @@
 		2F03660422DB837B001C15FE /* RestaurantInfoMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantInfoMenuVC.swift; sourceTree = "<group>"; };
 		2F1774B522D1EF2200778D05 /* RestaurantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantModel.swift; sourceTree = "<group>"; };
 		2F3750DA22FDBBC0008B150D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2F3750E222FDC838008B150D /* CartInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartInfoCell.xib; sourceTree = "<group>"; };
 		2F427B9322BD1E6000099B0F /* SFProText-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Regular.otf"; sourceTree = "<group>"; };
 		2F427B9422BD1E6000099B0F /* SFProText-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Light.otf"; sourceTree = "<group>"; };
 		2F427B9522BD1E6000099B0F /* SFProText-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Semibold.otf"; sourceTree = "<group>"; };
 		2F49414E22EC285D004437BD /* ChatTbvCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTbvCell.swift; sourceTree = "<group>"; };
+		2F9DD27D22FDCD33007E3D59 /* TotalKcalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TotalKcalCell.xib; sourceTree = "<group>"; };
 		2FC0053222F9CAEE004C5A98 /* FoodReservationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodReservationModel.swift; sourceTree = "<group>"; };
 		2FC0053422F9DAE5004C5A98 /* FoodBody.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FoodBody.entitlements; sourceTree = "<group>"; };
 		2FC0053522F9DAE5004C5A98 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
@@ -256,6 +260,17 @@
 				2F03660422DB837B001C15FE /* RestaurantInfoMenuVC.swift */,
 			);
 			path = RestaurantInfoMenuVC;
+			sourceTree = "<group>";
+		};
+		2F3750E022FDC828008B150D /* CommondCells */ = {
+			isa = PBXGroup;
+			children = (
+				D5CCB16522F4219600C77414 /* TotalKcalCell.swift */,
+				2F9DD27D22FDCD33007E3D59 /* TotalKcalCell.xib */,
+				D5CCB16322F4217200C77414 /* CartInfoCell.swift */,
+				2F3750E222FDC838008B150D /* CartInfoCell.xib */,
+			);
+			path = CommondCells;
 			sourceTree = "<group>";
 		};
 		2F427B9222BD1E6000099B0F /* Fonts */ = {
@@ -420,13 +435,6 @@
 			path = FodiMapCell;
 			sourceTree = "<group>";
 		};
-		D591D7D022FA7E3100DE1BDA /* CommondCells */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CommondCells;
-			sourceTree = "<group>";
-		};
 		D591D7D122FA7E6000DE1BDA /* ReservationUpdateVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -582,7 +590,7 @@
 		D5B24B1422B73C1800DA16C4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D591D7D022FA7E3100DE1BDA /* CommondCells */,
+				2F3750E022FDC828008B150D /* CommondCells */,
 				98282BD822BFE6EE003ED8BC /* LoadingView */,
 				98282BD022BE8BBD003ED8BC /* Button */,
 				98282BC922BE85C3003ED8BC /* TextField */,
@@ -734,8 +742,6 @@
 		D5CCB16022F41E8300C77414 /* CartVC */ = {
 			isa = PBXGroup;
 			children = (
-				D5CCB16322F4217200C77414 /* CartInfoCell.swift */,
-				D5CCB16522F4219600C77414 /* TotalKcalCell.swift */,
 				D5CCB16D22F4390800C77414 /* CartRestaurantVC.swift */,
 			);
 			path = CartVC;
@@ -866,12 +872,14 @@
 				2F427B9B22BD1E6000099B0F /* SFProText-Semibold.otf in Resources */,
 				2F3750DB22FDBBC0008B150D /* GoogleService-Info.plist in Resources */,
 				2F427B9A22BD1E6000099B0F /* SFProText-Light.otf in Resources */,
+				2F3750E422FDC838008B150D /* CartInfoCell.xib in Resources */,
 				98282BCF22BE89D3003ED8BC /* SignUpVC.xib in Resources */,
 				D5B24B2022B73D9700DA16C4 /* Authentication.storyboard in Resources */,
 				2FD1CF3622BBDED7002D4AF6 /* client_513844011252-2qlodmja1av20n55vro79uv0jc5vj3ck.apps.googleusercontent.com.plist in Resources */,
 				98C34F5B22CE57D800A933DE /* FoodTableViewCell.xib in Resources */,
 				D5B987DE22FBC2F8005D0733 /* Reservation.storyboard in Resources */,
 				D5B24B2622B73DBB00DA16C4 /* LaunchScreen.storyboard in Resources */,
+				2F9DD27E22FDCD33007E3D59 /* TotalKcalCell.xib in Resources */,
 				98C34F5F22CFAE3400A933DE /* RestaurantTableViewCell.xib in Resources */,
 				D5B424D722BCD42100141818 /* Assets.xcassets in Resources */,
 				98282BE622C26E64003ED8BC /* YourBasicVC.xib in Resources */,

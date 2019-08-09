@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SFProText-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TotalKcalCell" rowHeight="98" id="Km8-pf-XLY" customClass="TotalKcalCell" customModule="FoodBody" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="450" height="98"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Km8-pf-XLY" id="fdr-3L-9eY">
+                <rect key="frame" x="0.0" y="0.0" width="450" height="97.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TBG-nP-YFO">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="97.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total kcal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uNX-tg-kvS">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="48.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kkr-u7-Gwm">
+                                <rect key="frame" x="10" y="48.5" width="430" height="1"/>
+                                <color key="backgroundColor" red="0.8980392157" green="0.92941176469999998" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="iOb-Fl-RM2"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200 kcal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VKr-YS-Ah4">
+                                <rect key="frame" x="0.0" y="49.5" width="450" height="48"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="15"/>
+                                <color key="textColor" red="0.070588235289999995" green="0.74117647060000003" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="kkr-u7-Gwm" secondAttribute="trailing" constant="10" id="0Nd-JU-yKM"/>
+                            <constraint firstItem="kkr-u7-Gwm" firstAttribute="top" secondItem="uNX-tg-kvS" secondAttribute="bottom" id="21Q-62-F9H"/>
+                            <constraint firstItem="kkr-u7-Gwm" firstAttribute="leading" secondItem="TBG-nP-YFO" secondAttribute="leading" constant="10" id="5iX-cn-Vee"/>
+                            <constraint firstItem="uNX-tg-kvS" firstAttribute="top" secondItem="TBG-nP-YFO" secondAttribute="top" id="BOD-ee-4a0"/>
+                            <constraint firstAttribute="trailing" secondItem="uNX-tg-kvS" secondAttribute="trailing" id="EGF-L1-0ke"/>
+                            <constraint firstItem="uNX-tg-kvS" firstAttribute="leading" secondItem="TBG-nP-YFO" secondAttribute="leading" id="F8a-TL-1wB"/>
+                            <constraint firstItem="kkr-u7-Gwm" firstAttribute="centerY" secondItem="TBG-nP-YFO" secondAttribute="centerY" id="M8W-Om-izv"/>
+                            <constraint firstItem="VKr-YS-Ah4" firstAttribute="leading" secondItem="TBG-nP-YFO" secondAttribute="leading" id="Mp2-0V-uuo"/>
+                            <constraint firstAttribute="bottom" secondItem="VKr-YS-Ah4" secondAttribute="bottom" id="a1U-VT-pIM"/>
+                            <constraint firstItem="VKr-YS-Ah4" firstAttribute="top" secondItem="kkr-u7-Gwm" secondAttribute="bottom" id="dW4-X5-WFf"/>
+                            <constraint firstAttribute="trailing" secondItem="VKr-YS-Ah4" secondAttribute="trailing" id="hDq-PW-i5R"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="TBG-nP-YFO" firstAttribute="top" secondItem="fdr-3L-9eY" secondAttribute="top" id="7ck-Y4-5fd"/>
+                    <constraint firstAttribute="trailing" secondItem="TBG-nP-YFO" secondAttribute="trailing" constant="10" id="DAx-qv-Pi0"/>
+                    <constraint firstItem="TBG-nP-YFO" firstAttribute="leading" secondItem="fdr-3L-9eY" secondAttribute="leading" constant="10" id="djk-RY-mBv"/>
+                    <constraint firstAttribute="bottom" secondItem="TBG-nP-YFO" secondAttribute="bottom" id="r8b-39-gB4"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="lblTotal" destination="VKr-YS-Ah4" id="3YZ-ov-j0v"/>
+            </connections>
+            <point key="canvasLocation" x="108.69565217391305" y="156.02678571428569"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -41,7 +41,6 @@ extension RequestService: TargetType {
         }
     }
     
-
     var path: String {
         switch self {
         case .signup:

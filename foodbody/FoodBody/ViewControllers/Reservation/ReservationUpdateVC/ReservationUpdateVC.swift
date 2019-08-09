@@ -29,6 +29,8 @@ class ReservationUpdateVC: BaseVC, CartInfoCellDelegate{
     func initUI(){
         self.tbvCart.delegate = self;
         self.tbvCart.dataSource = self;
+        self.tbvCart.register(UINib.init(nibName: "CartInfoCell", bundle: nil), forCellReuseIdentifier: "CartInfoCell")
+        self.tbvCart.register(UINib.init(nibName: "TotalKcalCell", bundle: nil), forCellReuseIdentifier: "TotalKcalCell")
     }
     func initVar() {
         FoodbodyUtils.shared.showLoadingHub(viewController: self);
