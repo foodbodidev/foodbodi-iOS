@@ -30,7 +30,7 @@ enum RequestService {
     case addReservation(dic: [String: Any])
     case getListReservation
     case getOneReservationWithId(id:String)
-    case updateReservationWithId(dic: [String: Any])
+    case updateReservationWithId(dic: ReservationRequest)
 }
 
 extension RequestService: TargetType {
@@ -87,8 +87,8 @@ extension RequestService: TargetType {
             return APIConstant.getListReservation;
         case .getOneReservationWithId(let id):
             return APIConstant.getOneReservation + "/\(id)";
-        case .updateReservationWithId(let id):
-            return APIConstant.updateReservation + "/rsv_re85SM1j9LxmUkPgo01b_12520447@gm.uit.edu.vn_1565235055991";
+        case .updateReservationWithId(let dic):
+            return APIConstant.updateReservation + "/\(dic.reservationId)";
         }
     }
     
@@ -167,7 +167,7 @@ extension RequestService: TargetType {
         case .addReservation(let dic):
              return .requestParameters(parameters: dic, encoding: JSONEncoding.default)
         case .updateReservationWithId(let dic):
-            return .requestParameters(parameters: dic, encoding: JSONEncoding.default)
+            return .requestParameters(parameters: dic.toJSON(), encoding: JSONEncoding.default)
             
         
         default:

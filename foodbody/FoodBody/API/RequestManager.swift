@@ -498,7 +498,7 @@ struct RequestManager {
         
         print(foodRequest.toJSON())
         
-        provider.request(.updateReservationWithId(dic: foodRequest.toJSON())) { result in
+        provider.request(.updateReservationWithId(dic: foodRequest)) { result in
             do {
                 switch result {
                 case .success(let response):

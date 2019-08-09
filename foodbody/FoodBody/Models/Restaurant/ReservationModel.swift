@@ -49,6 +49,7 @@ class ReservationRequest: Mappable  {
     
     var restaurant_id: String = ""
     var foods: [FoodReservationModel] = []
+    var reservationId: String = "" // use to pass to url 
     
     required init?(map: Map) {
         
