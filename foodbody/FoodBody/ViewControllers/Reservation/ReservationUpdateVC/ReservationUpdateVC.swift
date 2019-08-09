@@ -9,13 +9,17 @@
 import UIKit
 
 class ReservationUpdateVC: BaseVC, CartInfoCellDelegate{
-    var reservationId:String = "";
-    @IBOutlet weak var tbvCart: UITableView!
-    @IBOutlet weak var btnUpdateReservation:UIButton!
+    //MARK: variable.
+    var reservationId:String = ""
+    var restaurantId:String = ""
     var totalCalo:CGFloat = 0;
-    
     var listMenu: [FoodModel] = []
     var reservationModel:OneReservationModel = OneReservationModel()
+    
+    @IBOutlet weak var tbvCart: UITableView!
+    @IBOutlet weak var btnUpdateReservation:UIButton!
+    
+    //MARK: cycle view.
     override func viewDidLoad() {
         super.viewDidLoad();
         self.initUI();
@@ -50,10 +54,6 @@ class ReservationUpdateVC: BaseVC, CartInfoCellDelegate{
             }
         }
     }
-    //MARK: IBAction.
-    @IBAction func backAction(sender:UIButton){
-        self.navigationController?.popViewController(animated: true);
-    }
     //MARK: CartInfoCellDelegate
     func CartInfoCellDelegate(cell: CartInfoCell, actionAdd: UIButton) {
         let indexPath:IndexPath = self.tbvCart.indexPath(for: cell)!;
@@ -79,9 +79,13 @@ class ReservationUpdateVC: BaseVC, CartInfoCellDelegate{
         }
         return CGFloat(totalData);
     }
+    //MARK: IBAction.
+    @IBAction func backAction(sender:UIButton){
+        self.navigationController?.popViewController(animated: true);
+    }
     @IBAction func actionUpdateReservation(sender:UIButton){
         let request = ReservationRequest()
-        request.restaurant_id = listMenu.first?.restaurant_id ?? ""
+        request.restaurant_id = self.restaurantId
         request.reservationId = self.reservationId
         let foodReservation = listMenu.map({
             return FoodReservationModel(food_id: $0.id, amount: $0.amount)

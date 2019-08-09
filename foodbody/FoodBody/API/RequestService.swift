@@ -94,8 +94,7 @@ extension RequestService: TargetType {
     
     var method: Moya.Method {
         switch self {
-        case .updateReservationWithId:
-            return .put
+       
         case .signup,
              .login,
              .googleSignIn,
@@ -107,7 +106,8 @@ extension RequestService: TargetType {
              .addComment,
              .addReservation:
             return .post
-        case .updateRestaurant:
+        case .updateRestaurant,
+             .updateReservationWithId:
             return .put
         case .deleteFood:
             return .delete

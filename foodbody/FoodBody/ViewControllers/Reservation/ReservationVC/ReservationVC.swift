@@ -69,6 +69,7 @@ extension ReservationVC: UITableViewDelegate, UITableViewDataSource{
         let vc:ReservationUpdateVC = getViewController(className: ReservationUpdateVC.className, storyboard:FbConstants.ReservationSB) as! ReservationUpdateVC;
         let obj:ReservationResponse = listReservation[indexPath.row];
         vc.reservationId = obj.id;
+        vc.restaurantId = obj.restaurant_id;
         self.navigationController?.pushViewController(vc, animated: true);
     }
 }
