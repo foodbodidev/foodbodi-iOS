@@ -61,23 +61,23 @@ class ReservationUpdateVC: BaseVC, CartInfoCellDelegate{
         let indexPath:IndexPath = self.tbvCart.indexPath(for: cell)!;
         let row = indexPath.row
         let data:FoodModel = self.listMenu[row]
-        data.amount = data.amount + 1;
-        self.tbvCart.reloadData();
+        data.amount = data.amount + 1
+        self.tbvCart.reloadData()
     }
     func CartInfoCellDelegate(cell: CartInfoCell, actionSub: UIButton) {
-        let indexPath:IndexPath = self.tbvCart.indexPath(for: cell)!;
+        let indexPath:IndexPath = self.tbvCart.indexPath(for: cell)!
         let row = indexPath.row
         let data:FoodModel = self.listMenu[row]
         if data.amount > 0 {
-            data.amount = data.amount - 1;
-            self.tbvCart.reloadData();
+            data.amount = data.amount - 1
+            self.tbvCart.reloadData()
         }
     }
     func getTotalCalo()->CGFloat{
-        var totalData:CGFloat = 0;
+        var totalData:CGFloat = 0
         for food in listMenu {
             let totalCaloOneFood = food.amount * food.calo;
-            totalData = totalData + CGFloat(totalCaloOneFood);
+            totalData = totalData + CGFloat(totalCaloOneFood)
         }
         return CGFloat(totalData);
     }
@@ -145,20 +145,20 @@ extension ReservationUpdateVC:UITableViewDataSource, UITableViewDelegate{
             } else {
                 cell.foodImageView.image = nil
             }
-            cell.lblAmount.text = String(format: "%d", data.amount);
-            totalCalo = totalCalo + CGFloat(data.amount * data.calo);
-            cell.delegate = self;
-            return cell;
+            cell.lblAmount.text = String(format: "%d", data.amount)
+            totalCalo = totalCalo + CGFloat(data.amount * data.calo)
+            cell.delegate = self
+            return cell
         }else{
-            let cell:TotalKcalCell = tableView.dequeueReusableCell(withIdentifier: "TotalKcalCell", for: indexPath) as! TotalKcalCell;
-            totalCalo = 0;
+            let cell:TotalKcalCell = tableView.dequeueReusableCell(withIdentifier: "TotalKcalCell", for: indexPath) as! TotalKcalCell
+            totalCalo = 0
             totalCalo = self.getTotalCalo();
-            cell.lblTotal.text = String(format: "%.f", totalCalo);
-            return cell;
+            cell.lblTotal.text = String(format: "%.f", totalCalo)
+            return cell
         }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let section = indexPath.section;
+        let section = indexPath.section
         if section == 0 {
             return 150;
         }else if section == 1 {

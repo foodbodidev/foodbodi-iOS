@@ -23,7 +23,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CartInfoCell" rowHeight="120" id="KGk-i7-Jjw" customClass="CartInfoCell" customModule="FoodBody" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CartInfoCell" rowHeight="120" id="KGk-i7-Jjw" customClass="CartInfoCell" customModule="FoodBody" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="630" height="322"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -49,6 +49,11 @@
                                                 <state key="normal" title="Add">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="addActionWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="10S-dV-ADG"/>
                                                 </connections>
@@ -71,6 +76,11 @@
                                                 <state key="normal" title="Sub">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="subActionWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="NEh-YM-dXt"/>
                                                 </connections>
@@ -82,10 +92,10 @@
                                             <constraint firstItem="Ayo-7E-NUF" firstAttribute="centerY" secondItem="NjR-2z-m8x" secondAttribute="centerY" id="9Rs-LP-qDp"/>
                                             <constraint firstItem="qhs-aK-smt" firstAttribute="leading" secondItem="NjR-2z-m8x" secondAttribute="leading" constant="5" id="E5s-QD-MYT"/>
                                             <constraint firstAttribute="trailing" secondItem="hIu-A6-4JB" secondAttribute="trailing" constant="5" id="VIe-Hk-Ht4"/>
-                                            <constraint firstAttribute="bottom" secondItem="hIu-A6-4JB" secondAttribute="bottom" id="VSb-0m-aEf"/>
+                                            <constraint firstAttribute="bottom" secondItem="hIu-A6-4JB" secondAttribute="bottom" constant="2" id="VSb-0m-aEf"/>
                                             <constraint firstItem="qhs-aK-smt" firstAttribute="top" secondItem="NjR-2z-m8x" secondAttribute="top" id="iTM-1E-zhg"/>
                                             <constraint firstItem="Ayo-7E-NUF" firstAttribute="leading" secondItem="qhs-aK-smt" secondAttribute="trailing" constant="20" id="jsG-Av-Rnu"/>
-                                            <constraint firstAttribute="bottom" secondItem="qhs-aK-smt" secondAttribute="bottom" id="kkc-04-Px4"/>
+                                            <constraint firstAttribute="bottom" secondItem="qhs-aK-smt" secondAttribute="bottom" constant="2" id="kkc-04-Px4"/>
                                             <constraint firstItem="hIu-A6-4JB" firstAttribute="leading" secondItem="Ayo-7E-NUF" secondAttribute="trailing" constant="20" id="s4N-UO-9s4"/>
                                             <constraint firstItem="Ayo-7E-NUF" firstAttribute="centerX" secondItem="NjR-2z-m8x" secondAttribute="centerX" id="zhy-4s-4AN"/>
                                         </constraints>
