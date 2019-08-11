@@ -217,7 +217,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
     }
 	
     private func popupNotifyInputInfo(){
-        let alert = UIAlertController(title:nil, message: "음식점을 등록할려면 사업자 정보가 필요합니다.", preferredStyle: .alert)
+        let alert = UIAlertController(title:nil, message: "Business information is required to register a restaurant", preferredStyle: .alert)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) {
             UIAlertAction in

@@ -56,6 +56,11 @@
 	<string>App</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>$(PRODUCT_NAME) want to use the gallery to upload food photo</string>
+    <key>NSHealthShareUsageDescription</key>
+    <string>$(PRODUCT_NAME) want to use the healthkit to suggest food for you</string>
+    <key>NSHealthUpdateUsageDescription</key>
+    <string>$(PRODUCT_NAME) want to use the healthkit to suggest food for you</string>
+    
 	<key>UIAppFonts</key>
 	<array>
 		<string>SFProText-Regular.otf</string>
