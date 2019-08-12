@@ -57,3 +57,7 @@ func getScreenWidth() -> CGFloat{
 func getScreenHeight() -> CGFloat{
     return UIScreen.main.bounds.size.height;
 }
+extension Notification.Name {
+    static let kFb_update_restaurant = Notification.Name("kFb_update_restaurant")
+    
+}

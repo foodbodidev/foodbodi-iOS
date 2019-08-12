@@ -21,4 +21,8 @@ struct FbConstants {
     static let REVERSED_CLIENT_ID = "513844011252-2qlodmja1av20n55vro79uv0jc5vj3ck.apps.googleusercontent.com"
     //logs.
     static let FoodbodiLog = "FoodbodiLog";
+    //Calos.
+    static let highCalo:Double = 500
+    static let lowCalo:Double = 300
+    
 }

@@ -18,8 +18,6 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
     @IBOutlet weak var googleMapView:GMSMapView!
     @IBOutlet weak var clvFodi:UICollectionView!
 	
-   
-    
     //MARK: variable.
     var locationManager:CLLocationManager? = nil;
     var currentLocation:CLLocationCoordinate2D = CLLocationCoordinate2D.init()
@@ -44,7 +42,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
             btnAdd.setImage(UIImage.init(named: "ic_add"), for: .highlighted)
             btnAdd.backgroundColor = Style.Color.mainGreen
         }
-        
+        self.registerNotification();
     }
     
     //MARK:init.
@@ -67,6 +65,14 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
     func initData(){
         self.getDataRestaurant()
     }
+    func registerNotification(){
+        NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveUpdateRestaurant(_:)), name: .kFb_update_restaurant, object:nil)
+    }
+    @objc func onDidReceiveUpdateRestaurant(_ notification: Notification)
+    {
+        print(" fetching documents update ....")
+        self.getDataRestaurant();
+    }
     
     func getDataRestaurant() {
         listRestaurant.removeAll()
@@ -77,7 +83,6 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
         guard let listNeighbors: [String] = Geohash.neighbors(geohashCenter) else {
             return
         }
-        
         self.queryLocation(geoHash: geohashCenter, db: db)
         if listNeighbors.count == 8 {
             self.queryLocation(geoHash: listNeighbors[0], db: db)
@@ -90,35 +95,33 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
 
     }
     
-    func addListenerOnRestaurantd(db:Firestore) -> Void {
-        db.collection("restaurants")
-            .addSnapshotListener { querySnapshot, error in
-                
-                guard let documents = querySnapshot?.documents else {
-                    print("Error fetching documents: \(error!)")
-                    return
-                }
-                print(FbConstants.FoodbodiLog, "Listener On Restauran")
-                self.replaceDocument(documents: documents)
-                self.clvFodi.reloadData()
-                self.showDataOnMapWithCurrentLocation(curentLocation: self.currentLocation)
-                
-                
-        }
-    }
+//    func addListenerOnRestaurantd(db:Firestore) -> Void {
+//        db.collection("restaurants")
+//            .addSnapshotListener { querySnapshot, error in
+//
+//                guard let documents = querySnapshot?.documents else {
+//                    print("Error fetching documents: \(error!)")
+//                    return
+//                }
+//                print(FbConstants.FoodbodiLog, "Listener On Restauran")
+//                self.replaceDocument(documents: documents)
+//                self.clvFodi.reloadData()
+//                self.showDataOnMapWithCurrentLocation(curentLocation: self.currentLocation)
+//        }
+//    }
     
-    // find replace document in listRestaurant
-    func replaceDocument(documents: [QueryDocumentSnapshot]) {
-        if self.listRestaurant.count > 0 && documents.count > 0 {
-            for i in 0...self.listRestaurant.count - 1 {
-                for j in 0...documents.count - 1 {
-                    if documents[j].documentID == self.listRestaurant[i].documentID {
-                        self.listRestaurant[i] = documents[j]
-                    }
-                }
-            }
-        }
-    }
+//    // find replace document in listRestaurant
+//    func replaceDocument(documents: [QueryDocumentSnapshot]) {
+//        if self.listRestaurant.count > 0 && documents.count > 0 {
+//            for i in 0...self.listRestaurant.count - 1 {
+//                for j in 0...documents.count - 1 {
+//                    if documents[j].documentID == self.listRestaurant[i].documentID {
+//                        self.listRestaurant[i] = documents[j]
+//                    }
+//                }
+//            }
+//        }
+//    }
     
     func queryLocation(geoHash:String, db:Firestore) -> Void {
         
@@ -161,23 +164,23 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
             }
             let averageCalo:Double = self.averageCalo(listCalosData: listCalos!);
             if type == "FOOD_TRUCK" {
-                if averageCalo < 300 {
+                if averageCalo < FbConstants.lowCalo {
                     marker.icon = UIImage.init(named: "ic_truck_low")
                 }
-                if averageCalo >= 300 && averageCalo < 500 {
+                if averageCalo >= FbConstants.lowCalo && averageCalo < FbConstants.highCalo {
                     marker.icon = UIImage.init(named: "ic_truck_medium")
                 }
-                if averageCalo >= 500 {
+                if averageCalo >= FbConstants.highCalo {
                     marker.icon = UIImage.init(named: "ic_truck_high")
                 }
             }else{
-                if averageCalo < 300 {
+                if averageCalo < FbConstants.lowCalo {
                     marker.icon = UIImage.init(named: "ic_restaurant_caloLow")
                 }
-                if averageCalo >= 300 && averageCalo < 500 {
+                if averageCalo >= FbConstants.lowCalo && averageCalo < FbConstants.highCalo {
                     marker.icon = UIImage.init(named: "ic_restaurant_caloMedium")
                 }
-                if averageCalo >= 500 {
+                if averageCalo >= FbConstants.highCalo {
                     marker.icon = UIImage.init(named: "ic_restaurant_caloHigh")
                 }
             }
@@ -191,7 +194,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
             self.currentLocation = locationValue;
             print(FbConstants.FoodbodiLog, (currentLocation))
             self.getDataRestaurant();
-            self.addListenerOnRestaurantd(db: self.db)
+//            self.addListenerOnRestaurantd(db: self.db)
             locationManager?.stopUpdatingLocation();
             locationManager = nil;
         }

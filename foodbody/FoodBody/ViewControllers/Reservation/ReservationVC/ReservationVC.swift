@@ -58,6 +58,7 @@ extension ReservationVC: UITableViewDelegate, UITableViewDataSource{
         let obj:ReservationResponse = listReservation[indexPath.row];
         cell.lblName.text = obj.restaurant_name;
         cell.lblCalo.text = String(format:"%d",obj.total);
+        
         let timeInterval:NSInteger = obj.created_date
         cell.lblTime.text = FoodbodyUtils.shared.dateFromTimeInterval(timeInterval: timeInterval)
         return cell;

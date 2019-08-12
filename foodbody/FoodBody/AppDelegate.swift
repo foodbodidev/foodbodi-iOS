@@ -33,6 +33,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }else{
             self.gotoMainTab()
         }
+        let db = Firestore.firestore()
+        db.collection("restaurants")
+            .addSnapshotListener { querySnapshot, error in
+                
+                if  querySnapshot?.documents.count ?? 0 <= 0 {
+                    print("Error fetching documents: \(error!)")
+                    return
+                }else{
+                    NotificationCenter.default.post(name:.kFb_update_restaurant, object: self, userInfo: nil);
+                }
+        }
         return true
     }
 
