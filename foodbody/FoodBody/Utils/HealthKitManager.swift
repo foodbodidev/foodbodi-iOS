@@ -19,12 +19,17 @@ class HealthKitManager {
     
     private init () { }
     
+    
     func checkAuth() -> Bool {
         
         var success = true
         if HKHealthStore.isHealthDataAvailable() {
-            let stepCounter = NSSet(object: HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!)
-            healthStore.requestAuthorization(toShare: nil, read: stepCounter as? Set<HKObjectType>) { bool, error in
+            let allType = Set([HKObjectType.workoutType(),
+                               HKObjectType.quantityType(forIdentifier: .activeEnergyBurned)!,
+                               HKObjectType.quantityType(forIdentifier: .distanceCycling)!,
+                               HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)!,
+                               HKObjectType.quantityType(forIdentifier: .stepCount)!])
+            healthStore.requestAuthorization(toShare: nil, read: allType) { bool, error in
                 success = bool
             }
         }
@@ -48,6 +53,27 @@ class HealthKitManager {
         let predicate = HKQuery.predicateForSamples(withStart: yesterday, end: now, options: .strictStartDate)
         
         let query = HKStatisticsQuery(quantityType: stepsQuantityType, quantitySamplePredicate: predicate, options: .cumulativeSum) { _, result, _ in
+            guard let result = result, let sum = result.sumQuantity() else {
+                completion(0.0)
+                return
+            }
+            completion(sum.doubleValue(for: HKUnit.count()))
+        }
+        healthStore.execute(query)
+    }
+    
+    func getCaloriesConsumed(completion: @escaping (Double)-> ()) {
+        guard checkAuth() else {
+            return
+        }
+        
+        let caloQuantityType = HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!
+        
+        let yesterday = Date(timeInterval: -86400, since: Date())
+        let now = Date()
+        let predicate = HKQuery.predicateForSamples(withStart: yesterday, end: now, options: .strictStartDate)
+        
+        let query = HKStatisticsQuery(quantityType: caloQuantityType, quantitySamplePredicate: predicate, options: .cumulativeSum) { _, result, _ in
             guard let result = result, let sum = result.sumQuantity() else {
                 completion(0.0)
                 return

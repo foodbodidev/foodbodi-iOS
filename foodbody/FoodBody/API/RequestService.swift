@@ -31,6 +31,7 @@ enum RequestService {
     case getListReservation
     case getOneReservationWithId(id:String)
     case updateReservationWithId(dic: ReservationRequest)
+    case updateDailyLog(dic: DailyLogModel)
 }
 
 extension RequestService: TargetType {
@@ -87,8 +88,11 @@ extension RequestService: TargetType {
         case .getOneReservationWithId(let id):
             return APIConstant.getOneReservation + "/\(id)";
         case .updateReservationWithId(let dic):
-            return APIConstant.updateReservation + "/\(dic.reservationId)";
+            return APIConstant.updateReservation + "/\(dic.reservationId)"
+        case .updateDailyLog(let dic):
+            return APIConstant.updateDailyLog + "/" + "\(dic.date ?? "")"
         }
+        
     }
     
     var method: Moya.Method {
@@ -103,7 +107,8 @@ extension RequestService: TargetType {
 			 .uploadPhoto,
              .addFood,
              .addComment,
-             .addReservation:
+             .addReservation,
+             .updateDailyLog:
             return .post
         case .updateRestaurant,
              .updateReservationWithId:

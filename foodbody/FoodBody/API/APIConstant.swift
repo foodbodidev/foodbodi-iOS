@@ -34,6 +34,8 @@ struct APIConstant {
     static let getListReservation = "/api/reservation/mine"
     static let getOneReservation = "/api/reservation"
     static let updateReservation = "/api/reservation"
+    //API Profile
+    static let updateDailyLog = "/api/dailylog"
 }
 
 

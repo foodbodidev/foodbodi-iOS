@@ -36,6 +36,7 @@
 		9842859B22F08C1300F558A4 /* LicenseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9842859A22F08C1300F558A4 /* LicenseModel.swift */; };
 		98650B2222EB40AC00CAA384 /* CompanyInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98650B2022EB40AC00CAA384 /* CompanyInfoVC.swift */; };
 		98741F9C23015DE6009B0BAD /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98741F9B23015DE5009B0BAD /* HealthKitManager.swift */; };
+		98741F9F2301A297009B0BAD /* DailyLogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98741F9E2301A297009B0BAD /* DailyLogModel.swift */; };
 		98C34F5322CE4FE100A933DE /* InforTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C34F5222CE4FE100A933DE /* InforTextField.swift */; };
 		98C34F5622CE57C100A933DE /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C34F5422CE57C100A933DE /* MenuTableViewCell.swift */; };
 		98C34F5722CE57C100A933DE /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98C34F5522CE57C100A933DE /* MenuTableViewCell.xib */; };
@@ -152,6 +153,7 @@
 		9842859A22F08C1300F558A4 /* LicenseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseModel.swift; sourceTree = "<group>"; };
 		98650B2022EB40AC00CAA384 /* CompanyInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyInfoVC.swift; sourceTree = "<group>"; };
 		98741F9B23015DE5009B0BAD /* HealthKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
+		98741F9E2301A297009B0BAD /* DailyLogModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyLogModel.swift; sourceTree = "<group>"; };
 		98C34F5222CE4FE100A933DE /* InforTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InforTextField.swift; sourceTree = "<group>"; };
 		98C34F5422CE57C100A933DE /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		98C34F5522CE57C100A933DE /* MenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
@@ -347,6 +349,14 @@
 				98650B2022EB40AC00CAA384 /* CompanyInfoVC.swift */,
 			);
 			path = "Company Information";
+			sourceTree = "<group>";
+		};
+		98741F9D2301A26F009B0BAD /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				98741F9E2301A297009B0BAD /* DailyLogModel.swift */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		98CEA20722B9469000E82063 /* API */ = {
@@ -583,6 +593,7 @@
 		D5B24B1322B73C0B00DA16C4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				98741F9D2301A26F009B0BAD /* New Group */,
 				98F772C822D9AF310027F4BE /* Restaurant */,
 				98282BD522BFCF41003ED8BC /* Authentication */,
 			);
@@ -1072,6 +1083,7 @@
 				9842859B22F08C1300F558A4 /* LicenseModel.swift in Sources */,
 				98C34F5A22CE57D800A933DE /* FoodTableViewCell.swift in Sources */,
 				98282BCC22BE8607003ED8BC /* FBTextField.swift in Sources */,
+				98741F9F2301A297009B0BAD /* DailyLogModel.swift in Sources */,
 				98F772CC22DCBD500027F4BE /* FoodModel.swift in Sources */,
 				D590B99822D439FB00CC7EE8 /* FodiMapCell.swift in Sources */,
 				98C34F5322CE4FE100A933DE /* InforTextField.swift in Sources */,

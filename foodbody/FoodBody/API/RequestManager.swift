@@ -494,6 +494,29 @@ struct RequestManager {
         }
     }
     
+    static func updateDailyLog(dailyLog: DailyLogModel, completion: @escaping (_ result: DailyLogModel?, _ error: Error?) -> ()){
+        
+        
+        provider.request(.updateDailyLog(dic: dailyLog)) { result in
+            do {
+                switch result {
+                case .success(let response):
+                    let json = try response.mapJSON()
+                    print(String(describing: response.request))
+                    print(String(describing: json))
+                    let response = Mapper<DailyLogModel>().map(JSONObject:json)
+                    completion(response, nil)
+                case .failure(let error):
+                    completion(nil, error)
+                    print(error)
+                }
+            } catch let error {
+                completion(nil, error)
+                print(error)
+            }
+        }
+    }
+    
 }
 
 
