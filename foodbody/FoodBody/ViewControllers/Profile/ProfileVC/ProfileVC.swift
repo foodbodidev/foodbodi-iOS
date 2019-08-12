@@ -11,7 +11,7 @@ import Charts
 import HealthKit
 
 
-class ProfileVC: UIViewController {
+class ProfileVC: BaseVC {
     
     let healthKitStore: HKHealthStore = HKHealthStore()
     
@@ -29,6 +29,19 @@ class ProfileVC: UIViewController {
             print(step)
         })
        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+       
+    }
+    
+    
+    
+    
+    @IBAction func actionLogout() {
+        FBAppDelegate.gotoWelcome()
+        AppManager.user = nil
     }
     
     
