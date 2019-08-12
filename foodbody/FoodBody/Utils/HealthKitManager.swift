@@ -9,76 +9,53 @@
 import Foundation
 import HealthKit
 
-public enum ActivityTrackerType: Int8 {
-    case notSpecify = 0
-    case stepCount
-    case sleepAnalysis
-    case mindfulMinutes
-}
 
-
-public struct HealthKitStepCountResponse {
-    var date: Date
-    var stepCount: NSNumber
+class HealthKitManager {
     
-    init(date: Date, stepCount: NSNumber) {
-        self.date = date
-        self.stepCount = stepCount
-    }
+    static let shared: HealthKitManager = HealthKitManager()
     
-}
-
-public struct HealthKitSleepAnalysisResponse {
-    var date: Date
-    var sleepTime: Date
-    var wakeTime: Date
-    var totalMinutes: NSNumber
+    let healthStore = HKHealthStore()
     
-    init(date: Date, sleepTime: Date, wakeTime: Date, totalMinutes: NSNumber) {
-        self.date = date
-        self.sleepTime = sleepTime
-        self.wakeTime = wakeTime
-        self.totalMinutes = totalMinutes
-    }
     
-}
-
-public struct HealthKitMindfulMinutesResponse {
-    var date: Date
-    var totalMinutes: NSNumber
-    var startTime: Date
-    var endTime: Date
+    private init () { }
     
-    init(date: Date, startTime: Date, endTime: Date, totalMinutes: NSNumber) {
-        self.date = date
-        self.totalMinutes = totalMinutes
-        self.startTime = startTime
-        self.endTime = endTime
-    }
-    
-}
-
-
-public typealias StepCountDataCompletionHandler = (_ error: Error, _ data: [HealthKitStepCountResponse]) -> Void
-public typealias SleepAnalysisCompletionHandler = (_ error: Error, _ data: [HealthKitSleepAnalysisResponse]) -> Void
-public typealias MindfulMinutesCompletionHandler = (_ error: Error, _ data: [HealthKitMindfulMinutesResponse]) -> Void
-
-public class HealthKitManager {
-    public static let shared = HealthKitManager()
-    public let healthKitStore = HKHealthStore()
-    
-    public var isHealthDataAvailable: Bool {
-        return HKHealthStore.isHealthDataAvailable()
-    }
-    
-    public var isTrackingStep: Bool {
-        get {
-            if let isStepTracking = UserDefaults.standard.object(forKey: "isStepTracking") as? Bool{
-                return isStepTracking
-            }else{
-                return false
+    func checkAuth() -> Bool {
+        
+        var success = true
+        if HKHealthStore.isHealthDataAvailable() {
+            let stepCounter = NSSet(object: HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!)
+            healthStore.requestAuthorization(toShare: nil, read: stepCounter as? Set<HKObjectType>) { bool, error in
+                success = bool
             }
         }
+        else {
+            return false
+        }
+        return success
+    }
+    
+    
+    func getTodaysSteps(completion: @escaping (Double) -> Void) {
+        
+        guard checkAuth() else {
+            return 
+        }
+    
+        let stepsQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
+        
+        let yesterday = Date(timeInterval: -86400, since: Date())
+        let now = Date()
+        let predicate = HKQuery.predicateForSamples(withStart: yesterday, end: now, options: .strictStartDate)
+        
+        let query = HKStatisticsQuery(quantityType: stepsQuantityType, quantitySamplePredicate: predicate, options: .cumulativeSum) { _, result, _ in
+            guard let result = result, let sum = result.sumQuantity() else {
+                completion(0.0)
+                return
+            }
+            completion(sum.doubleValue(for: HKUnit.count()))
+        }
+        healthStore.execute(query)
     }
 
 }
+

@@ -35,6 +35,7 @@
 		98282BE622C26E64003ED8BC /* YourBasicVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98282BE422C26E64003ED8BC /* YourBasicVC.xib */; };
 		9842859B22F08C1300F558A4 /* LicenseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9842859A22F08C1300F558A4 /* LicenseModel.swift */; };
 		98650B2222EB40AC00CAA384 /* CompanyInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98650B2022EB40AC00CAA384 /* CompanyInfoVC.swift */; };
+		98741F9C23015DE6009B0BAD /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98741F9B23015DE5009B0BAD /* HealthKitManager.swift */; };
 		98C34F5322CE4FE100A933DE /* InforTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C34F5222CE4FE100A933DE /* InforTextField.swift */; };
 		98C34F5622CE57C100A933DE /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C34F5422CE57C100A933DE /* MenuTableViewCell.swift */; };
 		98C34F5722CE57C100A933DE /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98C34F5522CE57C100A933DE /* MenuTableViewCell.xib */; };
@@ -150,6 +151,7 @@
 		98282BE422C26E64003ED8BC /* YourBasicVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YourBasicVC.xib; sourceTree = "<group>"; };
 		9842859A22F08C1300F558A4 /* LicenseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseModel.swift; sourceTree = "<group>"; };
 		98650B2022EB40AC00CAA384 /* CompanyInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyInfoVC.swift; sourceTree = "<group>"; };
+		98741F9B23015DE5009B0BAD /* HealthKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		98C34F5222CE4FE100A933DE /* InforTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InforTextField.swift; sourceTree = "<group>"; };
 		98C34F5422CE57C100A933DE /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		98C34F5522CE57C100A933DE /* MenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
@@ -601,6 +603,7 @@
 		D5B24B1622B73C5200DA16C4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				98741F9B23015DE5009B0BAD /* HealthKitManager.swift */,
 				98CEA20522B943B200E82063 /* GlobalFunc.swift */,
 				D5B24B1822B73C8F00DA16C4 /* FoodbodyUtils.swift */,
 				98D9AEC422C85E5600C5DD56 /* Style.swift */,
@@ -1088,6 +1091,7 @@
 				D5B24B2C22B73EC800DA16C4 /* FodiMapVC.swift in Sources */,
 				98D9AEC522C85E5600C5DD56 /* Style.swift in Sources */,
 				9805630C22CA60DE00A71566 /* AppManager.swift in Sources */,
+				98741F9C23015DE6009B0BAD /* HealthKitManager.swift in Sources */,
 				98CEA20B22B946EE00E82063 /* RequestManager.swift in Sources */,
 				D5B9AE4D22B9D32D0015DEB2 /* SelectGenderVC.swift in Sources */,
 				D5B987E022FBC7DA005D0733 /* OneReservationModel.swift in Sources */,

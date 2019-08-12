@@ -24,7 +24,10 @@ class ProfileVC: UIViewController {
         super.viewDidLoad()
         setupLayout()
 		setupChart()
-        askPermisionHealtkKit()
+        HealthKitManager.shared.getTodaysSteps(completion: { step in
+            
+            print(step)
+        })
        
     }
     
@@ -34,28 +37,7 @@ class ProfileVC: UIViewController {
        stepView.layer.borderWidth = 1
     }
     
-    private func askPermisionHealtkKit() {
-        let healthStore = HKHealthStore()
-        
-        let allTypes = Set([HKObjectType.workoutType(),
-                            HKObjectType.quantityType(forIdentifier: .activeEnergyBurned)!,
-                            HKObjectType.quantityType(forIdentifier: .distanceCycling)!,
-                            HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)!,
-                            HKObjectType.quantityType(forIdentifier: .heartRate)!])
-        
-        healthStore.requestAuthorization(toShare: allTypes, read: allTypes) { (success, error) in
-            if success {
-                DispatchQueue.main.async {
-                    self.retrieveStepCount(completion: { step in
-                        print(step)
-                    })
-                }
-               
-            }
-            
-        }
-    }
-	
+    
 	private func setupChart() {
 	
 		let l = chartView.legend
