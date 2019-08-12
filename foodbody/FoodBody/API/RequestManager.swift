@@ -177,7 +177,7 @@ struct RequestManager {
         }
     }
     //Create restaurant.
-    static func createRestaurant(request: LicenseModel, completion: @escaping (_ result: LicenseResponse?, _ error: Error?) -> ()){
+    static func createRestaurant(request: CompanyInfoModel, completion: @escaping (_ result: LicenseResponse?, _ error: Error?) -> ()){
         
         print(request.toJSON())
         

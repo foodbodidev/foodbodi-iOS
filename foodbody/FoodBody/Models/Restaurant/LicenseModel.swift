@@ -10,11 +10,11 @@ import Foundation
 import ObjectMapper
 
 
-class LicenseModel: Mappable  {
+class CompanyInfoModel: Mappable  {
     
     var company_name: String = ""
     var registration_number: String = ""
-    var representative_name: String = ""
+    var representative_name: [String] = []
     var address: String = ""
     
     
@@ -27,10 +27,10 @@ class LicenseModel: Mappable  {
     }
     
     func mapping(map: Map) {
-        company_name <- map["license.company_name"]
+        company_name <- map["name"]
         registration_number <- map["license.registration_number"]
         representative_name <- map["license.representative_name"]
-        address <- map["license.address"]
+        address <- map["address"]
     }
     
 }

@@ -36,16 +36,16 @@ class CompanyInfoVC: BaseVC {
             return
         }
         
-        let licenseRequest = LicenseModel()
+        let companyInfoRequest = CompanyInfoModel()
         
-        licenseRequest.company_name = nameTextField.textField.text ?? ""
-        licenseRequest.registration_number = registerTextField.textField.text ?? ""
-        licenseRequest.representative_name = presentationTextField.textField.text ?? ""
-        licenseRequest.address = addressTextField.textField.text ?? ""
+        companyInfoRequest.company_name = nameTextField.textField.text ?? ""
+        companyInfoRequest.registration_number = registerTextField.textField.text ?? ""
+        companyInfoRequest.representative_name = [presentationTextField.textField.text ?? ""]
+        companyInfoRequest.address = addressTextField.textField.text ?? ""
         
         self.showLoading()
         
-        RequestManager.createRestaurant(request: licenseRequest) { (result, error) in
+        RequestManager.createRestaurant(request: companyInfoRequest) { (result, error) in
             self.hideLoading()
             if  let result = result{
                 if result.isSuccess {
