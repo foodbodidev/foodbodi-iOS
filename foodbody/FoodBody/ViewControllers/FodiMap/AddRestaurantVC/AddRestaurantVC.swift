@@ -8,15 +8,12 @@
 
 import UIKit
 import GooglePlaces
-protocol AddRestaurantVCDelegate {
-    func addRestaurantSuccessful(sender:AddRestaurantVC)
-}
+
 class AddRestaurantVC: BaseVC {
     
     //MARK: ==== OUTLET ====
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerImageView: UIImageView!
-    var delegate : AddRestaurantVCDelegate?
     
     //MARK: Properties
 	var restaurant: RestaurantRequest = RestaurantRequest()
@@ -69,9 +66,6 @@ class AddRestaurantVC: BaseVC {
                 if let result = result {
                     if result.isSuccess {
                         strongSelf.alertMessage(message: "Create restaurant successfully", completion: {
-							if let delegate = strongSelf.delegate {
-								delegate.addRestaurantSuccessful(sender: strongSelf)
-							}
                             strongSelf.navigationController?.popToRootViewController(animated: true)
                         })
 
@@ -102,6 +96,10 @@ class AddRestaurantVC: BaseVC {
 			
 		}
         restaurant.mapDataFromMyRestaurant(myRestaurant: myRestaurant)
+		if let photoURL = URL.init(string: restaurant.photo) {
+			headerImageView.kf.setImage(with: photoURL)
+		}
+		
     }
     
     private func openActionSheet() {

@@ -71,6 +71,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
     @objc func onDidReceiveUpdateRestaurant(_ notification: Notification)
     {
         print(" fetching documents update ....")
+		self.getRestaurantWithProfile()
         self.getDataRestaurant();
     }
     
@@ -208,7 +209,6 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
 				popupNotifyInputInfo()
 			} else {
 				let addRestaurantVC = getViewController(className: AddRestaurantVC.className, storyboard: FbConstants.FodiMapSB) as! AddRestaurantVC;
-				addRestaurantVC.delegate = self;
 				self.navigationController?.pushViewController(addRestaurantVC, animated: true)
 			}
 			
@@ -326,11 +326,5 @@ extension FodiMapVC:GMSMapViewDelegate{
     
 }
 
-extension FodiMapVC:AddRestaurantVCDelegate{
-    func addRestaurantSuccessful(sender: AddRestaurantVC) {
-        self.getDataRestaurant()
-        self.getRestaurantWithProfile()
-        
-    }
-}
+
 
