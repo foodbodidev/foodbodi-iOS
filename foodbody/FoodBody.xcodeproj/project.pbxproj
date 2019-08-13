@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -64,6 +64,8 @@
 		BA8C18ED22E1BA23007531FE /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C0FDA422B8EE2A00411488 /* SignUpVC.swift */; };
 		BA8C18EF22E1BD58007531FE /* BaseLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8C18EE22E1BD58007531FE /* BaseLoginVC.swift */; };
 		BAB2CF7B22DEFA24003D4233 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB2CF7A22DEFA24003D4233 /* UIImageView.swift */; };
+		BAC0B956230296540096BA6E /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC0B955230296540096BA6E /* CalendarVC.swift */; };
+		BAC0B958230296BF0096BA6E /* CalendarVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAC0B957230296BF0096BA6E /* CalendarVC.xib */; };
 		D506954722F92A3B00F3A1FE /* ReservationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D506954622F92A3B00F3A1FE /* ReservationModel.swift */; };
 		D57CDECA22EE98DE00909DBF /* CommentRestaurantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57CDEC922EE98DE00909DBF /* CommentRestaurantModel.swift */; };
 		D587C45822DC27A100C119BA /* TabMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D587C45722DC27A100C119BA /* TabMenuVC.swift */; };
@@ -182,6 +184,8 @@
 		BA782CAB22DDD71100E25985 /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
 		BA8C18EE22E1BD58007531FE /* BaseLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLoginVC.swift; sourceTree = "<group>"; };
 		BAB2CF7A22DEFA24003D4233 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		BAC0B955230296540096BA6E /* CalendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarVC.swift; sourceTree = "<group>"; };
+		BAC0B957230296BF0096BA6E /* CalendarVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarVC.xib; sourceTree = "<group>"; };
 		C854535C26738FC6E2C222D7 /* Pods-FoodBody.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodBody.debug.xcconfig"; path = "Target Support Files/Pods-FoodBody/Pods-FoodBody.debug.xcconfig"; sourceTree = "<group>"; };
 		C8AEC2197E90DAE917B2C55F /* Pods_FoodBody.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodBody.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D506954622F92A3B00F3A1FE /* ReservationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationModel.swift; sourceTree = "<group>"; };
@@ -553,6 +557,8 @@
 			isa = PBXGroup;
 			children = (
 				D5B24B2D22B73ED800DA16C4 /* ProfileVC */,
+				BAC0B955230296540096BA6E /* CalendarVC.swift */,
+				BAC0B957230296BF0096BA6E /* CalendarVC.xib */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -897,6 +903,7 @@
 				98C34F5F22CFAE3400A933DE /* RestaurantTableViewCell.xib in Resources */,
 				D5B424D722BCD42100141818 /* Assets.xcassets in Resources */,
 				98282BE622C26E64003ED8BC /* YourBasicVC.xib in Resources */,
+				BAC0B958230296BF0096BA6E /* CalendarVC.xib in Resources */,
 				98C34F5722CE57C100A933DE /* MenuTableViewCell.xib in Resources */,
 				98282BCD22BE8607003ED8BC /* FBTextField.xib in Resources */,
 				D5ACD6E822CD9A7600F8F1E2 /* FodiMap.storyboard in Resources */,
@@ -928,52 +935,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FoodBody/Pods-FoodBody-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
-				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-FoodBody/Pods-FoodBody-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-FoodBody/Pods-FoodBody-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -986,20 +952,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FoodBody/Pods-FoodBody-resources.sh",
-				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
-				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
-				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+				"${PODS_ROOT}/Target Support Files/Pods-FoodBody/Pods-FoodBody-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+				"${PODS_ROOT}/Target Support Files/Pods-FoodBody/Pods-FoodBody-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1090,6 +1047,7 @@
 				BAB2CF7B22DEFA24003D4233 /* UIImageView.swift in Sources */,
 				D5C0FDA222B8EE1900411488 /* LoginVC.swift in Sources */,
 				2FC0053322F9CAEE004C5A98 /* FoodReservationModel.swift in Sources */,
+				BAC0B956230296540096BA6E /* CalendarVC.swift in Sources */,
 				98CEA20D22B946FF00E82063 /* RequestService.swift in Sources */,
 				98282BDA22BFE727003ED8BC /* LoadingView.swift in Sources */,
 				2F03660522DB837B001C15FE /* RestaurantInfoMenuVC.swift in Sources */,
@@ -1347,7 +1305,7 @@
 				CODE_SIGN_ENTITLEMENTS = FoodBody/FoodBody.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = DRQ5UJTV54;
 				INFOPLIST_FILE = FoodBody/Resource/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1356,7 +1314,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = KPT.FoodBodi.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = Foodbodi.dev.kpt;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -42,7 +42,7 @@ extension Date {
     }
     
     func toString() -> String {
-        return toStringByFormat(format: "dd/MM/yyyy")
+        return toStringByFormat(format: "dd-MM-yyyy")
     }
     
     func toTimeStampString() -> String {

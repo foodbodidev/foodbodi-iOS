@@ -14,7 +14,9 @@ import HealthKit
 class ProfileVC: BaseVC {
     
     @IBOutlet weak var stepView: UIView!
+	@IBOutlet weak var stepLabel: UILabel!
 	@IBOutlet var chartView: PieChartView!
+	@IBOutlet weak var dateLabel: UILabel!
 	
 	var rateDataSource: [Int] =  [70, 30]
     
@@ -32,11 +34,22 @@ class ProfileVC: BaseVC {
         FBAppDelegate.gotoWelcome()
         AppManager.user = nil
     }
+	
+	@IBAction func actionCalendar() {
+		let calendarVC = CalendarVC.init(nibName: "CalendarVC", bundle: nil)
+		calendarVC.modalPresentationStyle = .overFullScreen
+		calendarVC.modalTransitionStyle = .crossDissolve
+		calendarVC.delegate = self
+		self.present(calendarVC, animated: true, completion: nil)
+	}
+	
+	
     
     
     private func setupLayout() {
        stepView.layer.borderColor = Style.Color.showDowColor.cgColor
        stepView.layer.borderWidth = 1
+	   dateLabel.text = "Today, \(Date().toString())"
     }
     
     
@@ -110,6 +123,7 @@ class ProfileVC: BaseVC {
     
     func fetchData() {
         HealthKitManager.shared.getTodaysSteps(completion: { step in
+			self.stepLabel.text = "\(step)"
             self.dailyLogModel.step = step
             self.updateDailyLog()
             print(step)
@@ -130,6 +144,14 @@ class ProfileVC: BaseVC {
             
         }
     }
+}
+
+extension ProfileVC: CalendarVCDelegate {
+	func didSelectDate(date: Date) {
+		dateLabel.text = date.toString()
+		print(date.toString())
+		self.dismiss(animated: true, completion: nil)
+	}
 }
 
 
