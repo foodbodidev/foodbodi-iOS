@@ -27,7 +27,7 @@ class RestaurantTableViewCell: UITableViewCell {
     @IBOutlet weak var foodTruckButton: UIButton!
     
     
-    var categoryList: [CategoryModel] = []
+    var categoryList: [CategoryModel] = AppManager.categoryList
 	
 	var closeTime: Time?// use to compare closetime > opentime
 	var openTime: Time?

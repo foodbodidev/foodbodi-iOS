@@ -123,11 +123,12 @@ class ProfileVC: BaseVC {
     
     func fetchData() {
         HealthKitManager.shared.getTodaysSteps(completion: { step in
-			self.stepLabel.text = "\(step)"
-            self.dailyLogModel.step = step
-            self.updateDailyLog()
-            print(step)
-            
+			DispatchQueue.main.async {
+				self.stepLabel.text = "\(step)"
+				self.dailyLogModel.step = step
+				self.updateDailyLog()
+				print(step)
+			}
         })
         
         HealthKitManager.shared.getCaloriesConsumed(completion: { calo in

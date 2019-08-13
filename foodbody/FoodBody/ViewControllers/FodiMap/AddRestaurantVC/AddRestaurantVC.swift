@@ -22,7 +22,6 @@ class AddRestaurantVC: BaseVC {
 	var restaurant: RestaurantRequest = RestaurantRequest()
     var foodModel: [FoodModel] = []
 	var photoFoodURL: String = ""
-    var categoryList: [CategoryModel] = []
     var imagePicker = UIImagePickerController()
     var imageFood: UIImage?
 	
@@ -47,7 +46,6 @@ class AddRestaurantVC: BaseVC {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         registerNib()
-        getCategory()
         bindDataFromMyRestaurant()
         getFoodByResId()
     }
@@ -99,7 +97,10 @@ class AddRestaurantVC: BaseVC {
 	//MARK: OTHER METHOD
     
     private func bindDataFromMyRestaurant() {
-        guard let myRestaurant = AppManager.restaurant else { return  }
+        guard let myRestaurant = AppManager.restaurant else {
+			return
+			
+		}
         restaurant.mapDataFromMyRestaurant(myRestaurant: myRestaurant)
     }
     
@@ -179,23 +180,11 @@ class AddRestaurantVC: BaseVC {
 		tableView.register(UINib.init(nibName: RestaurantTableViewCell.className, bundle: nil), forCellReuseIdentifier: RestaurantTableViewCell.className)
 	}
     
-    private func getCategory() {
-        self.showLoading()
-        
-        RequestManager.getCategoty { (data, error) in
-            self.hideLoading()
-            
-            if let data  = data {
-                self.categoryList = data
-                self.tableView.reloadData()
-            }
-        }
-    }
-    
     private func getFoodByResId() {
         self.showLoading()
         
         RequestManager.getFoodWithRestaurantId(id: AppManager.user?.restaurantId ?? "") { (result, error) in
+			self.hideLoading()
             self.foodModel = result?.data ?? []
             self.tableView.reloadData()
         }
@@ -224,7 +213,6 @@ extension AddRestaurantVC: UITableViewDataSource {
         case AddResEnum.restaurant.rawValue:
             let resCell = tableView.dequeueReusableCell(withIdentifier: RestaurantTableViewCell.className, for: indexPath) as! RestaurantTableViewCell
             resCell.delegate = self
-            resCell.categoryList = categoryList
             resCell.bindData(restaurant: restaurant)
             return resCell
             

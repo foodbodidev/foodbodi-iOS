@@ -9,7 +9,7 @@
 import Foundation
 
 
-enum AppManager {
+struct AppManager {
     
     static var user: User? {
         get {
@@ -56,4 +56,6 @@ enum AppManager {
             }
         }
     }
+	
+	static var categoryList: [CategoryModel] = []
 }
