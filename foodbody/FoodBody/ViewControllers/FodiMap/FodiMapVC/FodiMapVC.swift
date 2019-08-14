@@ -63,7 +63,6 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
     }
     
     func initData(){
-        self.getDataRestaurant()
     }
     func registerNotification(){
         NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveUpdateRestaurant(_:)), name: .kFb_update_restaurant, object:nil)
@@ -71,8 +70,12 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
     @objc func onDidReceiveUpdateRestaurant(_ notification: Notification)
     {
         print(" fetching documents update ....")
-		self.getRestaurantWithProfile()
-        self.getDataRestaurant();
+        let querySnapshot = notification.userInfo!["KquerySnapshot"] as! QuerySnapshot;
+        if querySnapshot.documents.count > 0 {
+            self.replaceDocument(documents: querySnapshot.documents)
+            self.clvFodi.reloadData()
+            self.showDataOnMapWithCurrentLocation(curentLocation: self.currentLocation)
+        }
     }
     
     func getDataRestaurant() {
@@ -96,33 +99,18 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
 
     }
     
-//    func addListenerOnRestaurantd(db:Firestore) -> Void {
-//        db.collection("restaurants")
-//            .addSnapshotListener { querySnapshot, error in
-//
-//                guard let documents = querySnapshot?.documents else {
-//                    print("Error fetching documents: \(error!)")
-//                    return
-//                }
-//                print(FbConstants.FoodbodiLog, "Listener On Restauran")
-//                self.replaceDocument(documents: documents)
-//                self.clvFodi.reloadData()
-//                self.showDataOnMapWithCurrentLocation(curentLocation: self.currentLocation)
-//        }
-//    }
-    
-//    // find replace document in listRestaurant
-//    func replaceDocument(documents: [QueryDocumentSnapshot]) {
-//        if self.listRestaurant.count > 0 && documents.count > 0 {
-//            for i in 0...self.listRestaurant.count - 1 {
-//                for j in 0...documents.count - 1 {
-//                    if documents[j].documentID == self.listRestaurant[i].documentID {
-//                        self.listRestaurant[i] = documents[j]
-//                    }
-//                }
-//            }
-//        }
-//    }
+    // find replace document in listRestaurant
+    func replaceDocument(documents: [QueryDocumentSnapshot]) {
+        if self.listRestaurant.count > 0 && documents.count > 0 {
+            for i in 0...self.listRestaurant.count - 1 {
+                for j in 0...documents.count - 1 {
+                    if documents[j].documentID == self.listRestaurant[i].documentID {
+                        self.listRestaurant[i] = documents[j]
+                    }
+                }
+            }
+        }
+    }
     
     func queryLocation(geoHash:String, db:Firestore) -> Void {
         

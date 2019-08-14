@@ -41,7 +41,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     print("Error fetching documents: \(error!)")
                     return
                 }else{
-                    NotificationCenter.default.post(name:.kFb_update_restaurant, object: self, userInfo: nil);
+                    let dict:Dictionary = ["KquerySnapshot":querySnapshot]
+                    NotificationCenter.default.post(name:.kFb_update_restaurant, object: nil, userInfo: dict as [AnyHashable : Any]);
                 }
         }
 		
