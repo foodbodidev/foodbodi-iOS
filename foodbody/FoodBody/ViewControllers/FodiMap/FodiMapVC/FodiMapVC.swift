@@ -241,7 +241,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
     }
 }
 
-extension FodiMapVC:UICollectionViewDelegate, UICollectionViewDataSource{
+extension FodiMapVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1;
     }
@@ -281,7 +281,7 @@ extension FodiMapVC:UICollectionViewDelegate, UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height:CGFloat = 150;
-        let width:CGFloat = self.clvFodi.frame.size.width/3.0;
+        let width:CGFloat = self.clvFodi.frame.size.width*0.4
         let size:CGSize = CGSize.init(width: width, height: height);
         return size;
     }
@@ -292,6 +292,19 @@ extension FodiMapVC:UICollectionViewDelegate, UICollectionViewDataSource{
         vc.document = object;
         self.navigationController?.pushViewController(vc, animated: true)
     }
+	
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+		return 8
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+		return 8
+	}
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+		return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+	}
+	
+	
 }
 
 extension FodiMapVC:GMSMapViewDelegate{
