@@ -122,21 +122,33 @@ class ProfileVC: BaseVC {
 	}
     
     func fetchData() {
-        HealthKitManager.shared.getTodaysSteps(completion: { step in
+		let yesterday = Date().dayBefore
+		let today = Date(timeInterval: 86400, since: yesterday)
+		getSteps(dateQuery: today) // get data of today
+		getCaloriesConsumed(dateQuery: today)
+    }
+	
+	func getSteps(dateQuery: Date) {
+		HealthKitManager.shared.getSteps(dateQuery: dateQuery, completion: { step in
 			DispatchQueue.main.async {
 				self.stepLabel.text = "\(step)"
 				self.dailyLogModel.step = step
 				self.updateDailyLog()
 				print(step)
 			}
-        })
-        
-        HealthKitManager.shared.getCaloriesConsumed(completion: { calo in
-            self.dailyLogModel.calo_threshold = calo
-            self.updateDailyLog()
-            print(calo)
-        })
-    }
+		})
+	}
+	
+	func getCaloriesConsumed(dateQuery: Date) {
+		HealthKitManager.shared.getCaloriesConsumed(dateQuery: Date(), completion: { step in
+			DispatchQueue.main.async {
+				self.stepLabel.text = "\(step)"
+				self.dailyLogModel.step = step
+				self.updateDailyLog()
+				print(step)
+			}
+		})
+	}
     
     func updateDailyLog() {
         
@@ -150,7 +162,7 @@ class ProfileVC: BaseVC {
 extension ProfileVC: CalendarVCDelegate {
 	func didSelectDate(date: Date) {
 		dateLabel.text = date.toString()
-		print(date.toString())
+		getSteps(dateQuery: date)
 		self.dismiss(animated: true, completion: nil)
 	}
 }

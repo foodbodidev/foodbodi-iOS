@@ -40,7 +40,7 @@ class HealthKitManager {
     }
     
     
-    func getTodaysSteps(completion: @escaping (Double) -> Void) {
+	func getSteps(dateQuery: Date, completion: @escaping (Double) -> Void) {
         
         guard checkAuth() else {
             return 
@@ -48,9 +48,9 @@ class HealthKitManager {
     
         let stepsQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
         
-        let yesterday = Date(timeInterval: -86400, since: Date())
-        let now = Date()
-        let predicate = HKQuery.predicateForSamples(withStart: yesterday, end: now, options: .strictStartDate)
+        let startTime = dateQuery
+        let endTime = Date(timeInterval: 86400, since: dateQuery)
+        let predicate = HKQuery.predicateForSamples(withStart: startTime, end: endTime, options: .strictStartDate)
         
         let query = HKStatisticsQuery(quantityType: stepsQuantityType, quantitySamplePredicate: predicate, options: .cumulativeSum) { _, result, _ in
             guard let result = result, let sum = result.sumQuantity() else {
@@ -62,16 +62,16 @@ class HealthKitManager {
         healthStore.execute(query)
     }
     
-    func getCaloriesConsumed(completion: @escaping (Double)-> ()) {
+    func getCaloriesConsumed(dateQuery: Date, completion: @escaping (Double)-> ()) {
         guard checkAuth() else {
             return
         }
         
         let caloQuantityType = HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!
         
-        let yesterday = Date(timeInterval: -86400, since: Date())
-        let now = Date()
-        let predicate = HKQuery.predicateForSamples(withStart: yesterday, end: now, options: .strictStartDate)
+		let startTime = dateQuery
+		let endTime = Date(timeInterval: 86400, since: dateQuery)
+        let predicate = HKQuery.predicateForSamples(withStart: startTime, end: endTime, options: .strictStartDate)
         
         let query = HKStatisticsQuery(quantityType: caloQuantityType, quantitySamplePredicate: predicate, options: .cumulativeSum) { _, result, _ in
             guard let result = result, let sum = result.sumQuantity() else {

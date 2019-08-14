@@ -129,4 +129,16 @@ extension Date {
     func isSmallerThanDate(date: Date) -> Bool {
         return compareWithDate(date: date) == -1
     }
+	
+	static var yesterday: Date { return Date().dayBefore }
+	static var tomorrow:  Date { return Date().dayAfter }
+	var dayBefore: Date {
+		return Calendar.current.date(byAdding: .day, value: -1, to: night)!
+	}
+	var dayAfter: Date {
+		return Calendar.current.date(byAdding: .day, value: 1, to: night)!
+	}
+	var night: Date {
+		return Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: self)!
+	}
 }

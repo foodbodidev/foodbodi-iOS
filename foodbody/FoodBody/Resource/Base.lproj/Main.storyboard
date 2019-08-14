@@ -407,10 +407,6 @@
                                     <constraint firstItem="nQf-qS-UAx" firstAttribute="centerY" secondItem="wQU-8W-5h7" secondAttribute="centerY" id="t3U-Mi-yKd"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Ko-GX-cm1" userLabel="chartView" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="120" width="375" height="175.5"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i1V-pi-iya" userLabel="calorView">
                                 <rect key="frame" x="0.0" y="295.5" width="375" height="50"/>
                                 <subviews>
@@ -542,7 +538,7 @@
                                     <constraint firstAttribute="bottom" secondItem="yoh-PE-w2z" secondAttribute="bottom" id="5VS-24-dRB"/>
                                     <constraint firstItem="yoh-PE-w2z" firstAttribute="top" secondItem="i1V-pi-iya" secondAttribute="top" id="IxN-Rj-ani"/>
                                     <constraint firstItem="yoh-PE-w2z" firstAttribute="leading" secondItem="i1V-pi-iya" secondAttribute="leading" id="MIQ-kG-VLt"/>
-                                    <constraint firstAttribute="height" constant="50" id="Trn-VW-uSL"/>
+                                    <constraint firstAttribute="height" id="Trn-VW-uSL"/>
                                     <constraint firstAttribute="trailing" secondItem="yoh-PE-w2z" secondAttribute="trailing" id="rG2-ZL-B9z"/>
                                 </constraints>
                             </view>
@@ -608,6 +604,10 @@
                                         <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Ko-GX-cm1" userLabel="chartView" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="112" width="375" height="175.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
