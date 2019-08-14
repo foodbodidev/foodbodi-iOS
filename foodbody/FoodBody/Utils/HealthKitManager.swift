@@ -11,7 +11,7 @@ import HealthKit
 
 
 class HealthKitManager {
-    
+    //singeton
     static let shared: HealthKitManager = HealthKitManager()
     
     let healthStore = HKHealthStore()
