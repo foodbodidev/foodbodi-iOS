@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>Foodbodi</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -50,17 +52,16 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>$(PRODUCT_NAME) want to use the camera to upload food photo</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>$(PRODUCT_NAME) want to use the healthkit to suggest food for you</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>$(PRODUCT_NAME) want to use the healthkit to suggest food for you</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>update</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>App</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>$(PRODUCT_NAME) want to use the gallery to upload food photo</string>
-    <key>NSHealthShareUsageDescription</key>
-    <string>$(PRODUCT_NAME) want to use the healthkit to suggest food for you</string>
-    <key>NSHealthUpdateUsageDescription</key>
-    <string>$(PRODUCT_NAME) want to use the healthkit to suggest food for you</string>
-    
 	<key>UIAppFonts</key>
 	<array>
 		<string>SFProText-Regular.otf</string>

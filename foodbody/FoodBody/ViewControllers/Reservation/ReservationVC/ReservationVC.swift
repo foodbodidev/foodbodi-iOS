@@ -27,19 +27,21 @@ class ReservationVC: UIViewController {
         self.tbvReservation.dataSource = self;
     }
     func initVar() {
-        FoodbodyUtils.shared.showLoadingHub(viewController: self);
-        RequestManager.getListReservation { (result, error) in
-            FoodbodyUtils.shared.hideLoadingHub(viewController: self);
-            if let error = error {
-                self.alertMessage(message: error.localizedDescription)
-            }
-            if let result = result {
-                
-                if result.isSuccess {
-                    self.listReservation = result.data;
-                    self.tbvReservation.reloadData();
-                } else {
-                    self.alertMessage(message: result.message)
+        if AppManager.user?.token.isEmpty == false {
+            FoodbodyUtils.shared.showLoadingHub(viewController: self);
+            RequestManager.getListReservation { (result, error) in
+                FoodbodyUtils.shared.hideLoadingHub(viewController: self);
+                if let error = error {
+                    self.alertMessage(message: error.localizedDescription)
+                }
+                if let result = result {
+                    
+                    if result.isSuccess {
+                        self.listReservation = result.data;
+                        self.tbvReservation.reloadData();
+                    } else {
+                        self.alertMessage(message: result.message)
+                    }
                 }
             }
         }
@@ -61,6 +63,14 @@ extension ReservationVC: UITableViewDelegate, UITableViewDataSource{
         
         let timeInterval:NSInteger = obj.created_date
         cell.lblTime.text = FoodbodyUtils.shared.dateFromTimeInterval(timeInterval: timeInterval)
+        //color
+        if obj.total < Int(FbConstants.lowCalo) {
+            cell.lblCalo.backgroundColor = UIColor.init(rgb: 0xfbd402)
+        }else if obj.total >= Int(FbConstants.lowCalo) && obj.total < Int(FbConstants.highCalo) {
+            cell.lblCalo.backgroundColor = UIColor.init(rgb: 0x7398de);
+        }else if obj.total >= Int(FbConstants.highCalo) {
+            cell.lblCalo.backgroundColor = UIColor.init(rgb: 0xeb6d4a);
+        }
         return cell;
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
