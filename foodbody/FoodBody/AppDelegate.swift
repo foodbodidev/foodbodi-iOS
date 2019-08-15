@@ -28,15 +28,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey(FbConstants.MAP_API_KEY)
         GMSPlacesClient.provideAPIKey(FbConstants.MAP_API_KEY)
         GIDSignIn.sharedInstance().signOut()
-        if AppManager.user?.token == nil{
-            self.gotoWelcome()
-        }else{
-            self.gotoMainTab()
-        }
         let db = Firestore.firestore()
         db.collection("restaurants")
             .addSnapshotListener { querySnapshot, error in
-                
+
                 if  querySnapshot?.documents.count ?? 0 <= 0 {
                     print("Error fetching documents: \(error!)")
                     return
@@ -44,6 +39,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let dict:Dictionary = ["KquerySnapshot":querySnapshot]
                     NotificationCenter.default.post(name:.kFb_update_restaurant, object: nil, userInfo: dict as [AnyHashable : Any]);
                 }
+        }
+        if AppManager.user?.token == nil{
+            self.gotoWelcome()
+        }else{
+            self.gotoMainTab()
         }
 		
 		getCategory()

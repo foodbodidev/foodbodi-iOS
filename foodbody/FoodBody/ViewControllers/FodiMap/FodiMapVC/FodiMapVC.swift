@@ -77,6 +77,9 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
     }
     
     func getDataRestaurant() {
+        if self.currentLocation.longitude == 0 && self.currentLocation.latitude == 0 {
+            return;
+        }
         let geohashCenter:String = Geohash.encode(latitude: self.currentLocation.latitude, longitude: self.currentLocation.longitude, 5)
         guard let listNeighbors: [String] = Geohash.neighbors(geohashCenter) else {
             return
@@ -129,43 +132,51 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
                                                 self.alertMessage(message: "Error getting documents \(err.localizedDescription)")
                                             } else {
                                                 FoodbodyUtils.shared.hideLoadingHub(viewController: self);
-                                                self.listRestaurant.removeAll();
+                                                var listData: [QueryDocumentSnapshot] = []
+                                               
                                                 if let querySnapshot = querySnapshot {
                                                    listSix = self.insertDataIntoListFodiMap(querySnapshot: querySnapshot)
                                                 }
                                                 if listCenter.count > 0 {
                                                     for obj in listCenter{
-                                                        self.listRestaurant.append(obj as! QueryDocumentSnapshot);
+                                                        listData.append(obj as! QueryDocumentSnapshot);
                                                     }
                                                 }
                                                 if listZero.count > 0 {
                                                     for obj in listZero{
-                                                        self.listRestaurant.append(obj as! QueryDocumentSnapshot);
+                                                        listData.append(obj as! QueryDocumentSnapshot);
                                                     }
                                                 }
                                                 if listTwo.count > 0 {
                                                     for obj in listTwo{
-                                                        self.listRestaurant.append(obj as! QueryDocumentSnapshot);
+                                                        listData.append(obj as! QueryDocumentSnapshot);
                                                     }
                                                 }
                                                 if listFour.count > 0 {
                                                     for obj in listFour{
-                                                        self.listRestaurant.append(obj as! QueryDocumentSnapshot);
+                                                        listData.append(obj as! QueryDocumentSnapshot);
                                                     }
                                                 }
                                                 if listSix.count > 0 {
                                                     for obj in listSix{
-                                                        self.listRestaurant.append(obj as! QueryDocumentSnapshot);
+                                                        listData.append(obj as! QueryDocumentSnapshot);
                                                     }
                                                 }
-                                                
-                                                self.showDataOnMapWithCurrentLocation(curentLocation: self.currentLocation)
-                                                
+                                                self.listRestaurant.removeAll();
+                                                if listData.count > 0 {
+                                                    for obj in listData{
+                                                        self.listRestaurant.append(obj);
+                                                    }
+                                                }
+                                                if self.listRestaurant.count > 0 {
+                                                    self.showDataOnMapWithCurrentLocation(curentLocation: self.currentLocation)
+                                                    self.clvFodi.reloadData()
+                                                }
+                                                print("number call: \(self.listRestaurant.count)");
                                             }
                                         }
                                     }
                                 }
-                                
                             }
                         }
                         
@@ -189,7 +200,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
         let camera = GMSCameraPosition.camera(withLatitude: curentLocation.latitude, longitude: curentLocation.longitude, zoom: 15.0)
         googleMapView.camera = camera
         // Creates a marker in the center of the map.
-        for object in listRestaurant {
+        for object in self.listRestaurant {
             let dict:NSDictionary = (object as AnyObject).data()! as NSDictionary;
             
             let marker = GMSMarker()
@@ -228,7 +239,6 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
                 }
             }
             marker.map = googleMapView
-            self.clvFodi.reloadData()
         }
     }
     
@@ -299,14 +309,14 @@ extension FodiMapVC: UICollectionViewDelegate, UICollectionViewDataSource, UICol
         return 1;
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return listRestaurant.count;
+        return self.listRestaurant.count;
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FodiMapCell", for: indexPath) as! FodiMapCell
         
         
-        let object: QueryDocumentSnapshot = listRestaurant[indexPath.row]
+        let object: QueryDocumentSnapshot = self.listRestaurant[indexPath.row]
         let dict: [String: Any] = object.data()
         cell.lblName.text = dict["name"] as? String
         cell.lblCategory.text = dict["category"] as? String
@@ -340,10 +350,12 @@ extension FodiMapVC: UICollectionViewDelegate, UICollectionViewDataSource, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let object:QueryDocumentSnapshot = listRestaurant[indexPath.row];
-        let vc:RestaurantInfoMenuVC = getViewController(className: RestaurantInfoMenuVC.className, storyboard: FbConstants.FodiMapSB) as! RestaurantInfoMenuVC
-        vc.document = object;
-        self.navigationController?.pushViewController(vc, animated: true)
+        let object:QueryDocumentSnapshot = self.listRestaurant[indexPath.row];
+        if object.documentID.count > 0{
+            let vc:RestaurantInfoMenuVC = getViewController(className: RestaurantInfoMenuVC.className, storyboard: FbConstants.FodiMapSB) as! RestaurantInfoMenuVC
+            vc.document = object;
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
