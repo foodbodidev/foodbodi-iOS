@@ -17,8 +17,11 @@ class ProfileVC: BaseVC {
 	@IBOutlet weak var stepLabel: UILabel!
 	@IBOutlet var chartView: PieChartView!
 	@IBOutlet weak var dateLabel: UILabel!
+	@IBOutlet weak var caloLabel: UILabel!
 	
 	var rateDataSource: [Int] =  [70, 30]
+	
+	var totalCalo: Double = 3000 // by fefault
     
     let dailyLogModel: DailyLogModel = DailyLogModel()
 
@@ -43,9 +46,10 @@ class ProfileVC: BaseVC {
 		self.present(calendarVC, animated: true, completion: nil)
 	}
 	
+	@IBAction func actionFillCalor() {
+		Log(#function)
+	}
 	
-    
-    
     private func setupLayout() {
        stepView.layer.borderColor = Style.Color.showDowColor.cgColor
        stepView.layer.borderWidth = 1
@@ -72,7 +76,7 @@ class ProfileVC: BaseVC {
 		chartView.chartDescription?.enabled = false
 		chartView.setExtraOffsets(left: 5, top: 10, right: 5, bottom: 5)
 		chartView.drawCenterTextEnabled = true
-		chartView.centerText = "500Kcal";
+		chartView.centerText = ""
 		chartView.drawHoleEnabled = true
 		chartView.rotationAngle = 0
 		chartView.rotationEnabled = false
@@ -107,12 +111,11 @@ class ProfileVC: BaseVC {
 		
 		let data = PieChartData(dataSet: set)
 		
-		let pFormatter = NumberFormatter()
-		pFormatter.numberStyle = .percent
-		pFormatter.maximumFractionDigits = 1
-		pFormatter.multiplier = 10
-		pFormatter.percentSymbol = " %"
-		data.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
+//		let pFormatter = NumberFormatter()
+//		pFormatter.numberStyle = .percent
+//		pFormatter.maximumFractionDigits = 0
+//		pFormatter.percentSymbol = "%"
+//		data.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
 		
 		data.setValueFont(.systemFont(ofSize: 11, weight: .light))
 		data.setValueTextColor(.black)
@@ -131,23 +134,28 @@ class ProfileVC: BaseVC {
 	func getSteps(dateQuery: Date) {
 		HealthKitManager.shared.getSteps(dateQuery: dateQuery, completion: { step in
 			DispatchQueue.main.async {
-				self.stepLabel.text = "\(step)"
-				self.dailyLogModel.step = step
-				self.updateDailyLog()
-				print(step)
+				self.bindData(steps: step)
 			}
 		})
 	}
 	
 	func getCaloriesConsumed(dateQuery: Date) {
-		HealthKitManager.shared.getCaloriesConsumed(dateQuery: Date(), completion: { step in
-			DispatchQueue.main.async {
-				self.stepLabel.text = "\(step)"
-				self.dailyLogModel.step = step
-				self.updateDailyLog()
-				print(step)
-			}
+		HealthKitManager.shared.getCaloriesConsumed(dateQuery: Date(), completion: { calors in
+			
 		})
+	}
+	
+	func bindData(steps: Int) {
+		let caloLeft = caculateCaloriesLeft(steps: steps)
+		let caloLeftRate = Double(caloLeft)!/totalCalo*100
+		
+		self.stepLabel.text = "\(Int(steps)) Steps"
+		self.caloLabel.text = caloLeft
+		self.dailyLogModel.step = steps
+		self.updateDailyLog()
+		self.rateDataSource = [Int(caloLeftRate), 100 - Int(caloLeftRate)]
+		self.updateChartData()
+		print(steps)
 	}
     
     func updateDailyLog() {
@@ -157,6 +165,12 @@ class ProfileVC: BaseVC {
             
         }
     }
+	
+	private func caculateCaloriesLeft(steps: Int) -> String {
+		let duration = Double(steps)/1.38/60 // minutes
+		let calorLeft = totalCalo - Double((AppManager.user?.weight) ?? 50)*0.088*duration // default 3000 calor in a day
+		return NSString(format:"%.0f", calorLeft) as String
+	}
 }
 
 extension ProfileVC: CalendarVCDelegate {

@@ -40,7 +40,7 @@ class HealthKitManager {
     }
     
     
-	func getSteps(dateQuery: Date, completion: @escaping (Double) -> Void) {
+	func getSteps(dateQuery: Date, completion: @escaping (Int) -> Void) {
         
         guard checkAuth() else {
             return 
@@ -54,10 +54,10 @@ class HealthKitManager {
         
         let query = HKStatisticsQuery(quantityType: stepsQuantityType, quantitySamplePredicate: predicate, options: .cumulativeSum) { _, result, _ in
             guard let result = result, let sum = result.sumQuantity() else {
-                completion(0.0)
+                completion(0)
                 return
             }
-            completion(sum.doubleValue(for: HKUnit.count()))
+            completion(Int(sum.doubleValue(for: HKUnit.count())))
         }
         healthStore.execute(query)
     }

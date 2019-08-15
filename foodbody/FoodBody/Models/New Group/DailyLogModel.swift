@@ -11,7 +11,7 @@ import ObjectMapper
 
 class DailyLogModel: Mappable  {
     
-    var step: Double?
+    var step: Int?
     var calo_threshold: Double?
     var remain_calo: Double?
     var date: String?
