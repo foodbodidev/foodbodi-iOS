@@ -72,7 +72,9 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
         print(" fetching documents update ....")
         let querySnapshot = notification.userInfo!["KquerySnapshot"] as! QuerySnapshot;
         if querySnapshot.documents.count > 0 {
-            getDataRestaurant()
+            if  self.currentLocation.latitude > 0 &&  self.currentLocation.longitude > 0{
+                getDataRestaurant()
+            }
         }
     }
     
@@ -129,38 +131,46 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
                                                 self.alertMessage(message: "Error getting documents \(err.localizedDescription)")
                                             } else {
                                                 FoodbodyUtils.shared.hideLoadingHub(viewController: self);
-                                                self.listRestaurant.removeAll();
                                                 if let querySnapshot = querySnapshot {
                                                    listSix = self.insertDataIntoListFodiMap(querySnapshot: querySnapshot)
                                                 }
+                                                let listData:NSMutableArray = NSMutableArray.init();
                                                 if listCenter.count > 0 {
-                                                    for obj in listCenter{
-                                                        self.listRestaurant.append(obj as! QueryDocumentSnapshot);
+                                                    for obj in listCenter {
+                                                        listData.add(obj);
                                                     }
                                                 }
                                                 if listZero.count > 0 {
-                                                    for obj in listZero{
-                                                        self.listRestaurant.append(obj as! QueryDocumentSnapshot);
+                                                    for obj in listZero {
+                                                        listData.add(obj);
                                                     }
                                                 }
                                                 if listTwo.count > 0 {
-                                                    for obj in listTwo{
-                                                        self.listRestaurant.append(obj as! QueryDocumentSnapshot);
+                                                    for obj in listTwo {
+                                                        listData.add(obj);
                                                     }
                                                 }
                                                 if listFour.count > 0 {
-                                                    for obj in listFour{
-                                                        self.listRestaurant.append(obj as! QueryDocumentSnapshot);
+                                                    for obj in listFour {
+                                                         listData.add(obj);
                                                     }
                                                 }
                                                 if listSix.count > 0 {
-                                                    for obj in listSix{
-                                                        self.listRestaurant.append(obj as! QueryDocumentSnapshot);
+                                                    for obj in listSix {
+                                                         listData.add(obj);
                                                     }
                                                 }
-                                                
-                                                self.showDataOnMapWithCurrentLocation(curentLocation: self.currentLocation)
-                                                
+                                                if listData.count > 0 {
+                                                    self.listRestaurant.removeAll();
+                                                    for obj in listData {
+                                                        self.listRestaurant.append(obj as! QueryDocumentSnapshot);
+                                                    }
+                                                    
+                                                    self.clvFodi.reloadData()
+                                                    self.showDataOnMapWithCurrentLocation(curentLocation: self.currentLocation)
+                                                    
+                                                }
+                                                 print(FbConstants.FoodbodiLog, "number count \(self.listRestaurant.count)")
                                             }
                                         }
                                     }
@@ -228,7 +238,6 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
                 }
             }
             marker.map = googleMapView
-            self.clvFodi.reloadData()
         }
     }
     
