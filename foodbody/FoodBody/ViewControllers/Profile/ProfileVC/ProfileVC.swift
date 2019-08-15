@@ -71,7 +71,7 @@ class ProfileVC: BaseVC {
 		chartView.entryLabelFont = .systemFont(ofSize: 12, weight: .light)
 		chartView.usePercentValuesEnabled = false
 		chartView.drawSlicesUnderHoleEnabled = false
-		chartView.holeRadiusPercent = 0.8//0.58
+		chartView.holeRadiusPercent = 0.65//0.58
 		chartView.transparentCircleRadiusPercent = 0.61
 		chartView.chartDescription?.enabled = false
 		chartView.setExtraOffsets(left: 5, top: 10, right: 5, bottom: 5)
@@ -111,11 +111,12 @@ class ProfileVC: BaseVC {
 		
 		let data = PieChartData(dataSet: set)
 		
-//		let pFormatter = NumberFormatter()
-//		pFormatter.numberStyle = .percent
-//		pFormatter.maximumFractionDigits = 0
-//		pFormatter.percentSymbol = "%"
-//		data.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
+		let pFormatter = NumberFormatter()
+		pFormatter.numberStyle = .percent
+		pFormatter.maximumFractionDigits = 0
+		pFormatter.multiplier = 1
+		pFormatter.percentSymbol = " %"
+		data.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
 		
 		data.setValueFont(.systemFont(ofSize: 11, weight: .light))
 		data.setValueTextColor(.black)
