@@ -22,6 +22,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
     var locationManager:CLLocationManager? = nil;
     var currentLocation:CLLocationCoordinate2D = CLLocationCoordinate2D.init()
     var listRestaurant: [QueryDocumentSnapshot] = []
+    
     let db = Firestore.firestore()
     
     // MARK: cycle view.
@@ -62,73 +63,126 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
 
     }
     
-    func initData(){
-    }
     func registerNotification(){
         NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveUpdateRestaurant(_:)), name: .kFb_update_restaurant, object:nil)
     }
+    
     @objc func onDidReceiveUpdateRestaurant(_ notification: Notification)
     {
         print(" fetching documents update ....")
         let querySnapshot = notification.userInfo!["KquerySnapshot"] as! QuerySnapshot;
         if querySnapshot.documents.count > 0 {
-            self.replaceDocument(documents: querySnapshot.documents)
-            self.clvFodi.reloadData()
-            self.showDataOnMapWithCurrentLocation(curentLocation: self.currentLocation)
+            getDataRestaurant()
         }
     }
     
     func getDataRestaurant() {
-        listRestaurant.removeAll()
-        FoodbodyUtils.shared.showLoadingHub(viewController: self)
-    
         let geohashCenter:String = Geohash.encode(latitude: self.currentLocation.latitude, longitude: self.currentLocation.longitude, 5)
-        
         guard let listNeighbors: [String] = Geohash.neighbors(geohashCenter) else {
             return
         }
-        self.queryLocation(geoHash: geohashCenter, db: db)
-        if listNeighbors.count == 8 {
-            self.queryLocation(geoHash: listNeighbors[0], db: db)
-            self.queryLocation(geoHash: listNeighbors[2], db: db)
-            self.queryLocation(geoHash: listNeighbors[4], db: db)
-            self.queryLocation(geoHash: listNeighbors[6], db: db)
-           
-        }
-        FoodbodyUtils.shared.hideLoadingHub(viewController: self)
-
-    }
-    
-    // find replace document in listRestaurant
-    func replaceDocument(documents: [QueryDocumentSnapshot]) {
-        if self.listRestaurant.count > 0 && documents.count > 0 {
-            for i in 0...self.listRestaurant.count - 1 {
-                for j in 0...documents.count - 1 {
-                    if documents[j].documentID == self.listRestaurant[i].documentID {
-                        self.listRestaurant[i] = documents[j]
+        var listCenter:NSArray = NSArray.init();
+        var listZero:NSArray = NSArray.init();
+        var listTwo:NSArray = NSArray.init();
+        var listFour:NSArray = NSArray.init();
+        var listSix:NSArray = NSArray.init();
+        FoodbodyUtils.shared.showLoadingHub(viewController: self)
+        db.collection("restaurants").whereField("geohash", isEqualTo: geohashCenter).getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                FoodbodyUtils.shared.hideLoadingHub(viewController: self);
+                self.alertMessage(message: "Error getting documents \(err.localizedDescription)")
+            } else {
+                if let querySnapshot = querySnapshot {
+                    listCenter = self.insertDataIntoListFodiMap(querySnapshot: querySnapshot)
+                }
+                //0
+                self.db.collection("restaurants").whereField("geohash", isEqualTo: listNeighbors[0]).getDocuments() { (querySnapshot, err) in
+                    if let err = err {
+                        FoodbodyUtils.shared.hideLoadingHub(viewController: self);
+                        self.alertMessage(message: "Error getting documents \(err.localizedDescription)")
+                    } else {
+                        if let querySnapshot = querySnapshot {
+                            listZero = self.insertDataIntoListFodiMap(querySnapshot: querySnapshot)
+                        }
+                        //2
+                        self.db.collection("restaurants").whereField("geohash", isEqualTo: listNeighbors[2]).getDocuments() { (querySnapshot, err) in
+                            if let err = err {
+                                FoodbodyUtils.shared.hideLoadingHub(viewController: self);
+                                self.alertMessage(message: "Error getting documents \(err.localizedDescription)")
+                            } else {
+                                if let querySnapshot = querySnapshot {
+                                    listTwo = self.insertDataIntoListFodiMap(querySnapshot: querySnapshot)
+                                }
+                                //4
+                                self.db.collection("restaurants").whereField("geohash", isEqualTo: listNeighbors[4]).getDocuments() { (querySnapshot, err) in
+                                    if let err = err {
+                                        FoodbodyUtils.shared.hideLoadingHub(viewController: self);
+                                        self.alertMessage(message: "Error getting documents \(err.localizedDescription)")
+                                    } else {
+                                        if let querySnapshot = querySnapshot {
+                                           listFour = self.insertDataIntoListFodiMap(querySnapshot: querySnapshot)
+                                        }
+                                        //6
+                                        self.db.collection("restaurants").whereField("geohash", isEqualTo: listNeighbors[6]).getDocuments() { (querySnapshot, err) in
+                                            if let err = err {
+                                                FoodbodyUtils.shared.hideLoadingHub(viewController: self);
+                                                self.alertMessage(message: "Error getting documents \(err.localizedDescription)")
+                                            } else {
+                                                FoodbodyUtils.shared.hideLoadingHub(viewController: self);
+                                                self.listRestaurant.removeAll();
+                                                if let querySnapshot = querySnapshot {
+                                                   listSix = self.insertDataIntoListFodiMap(querySnapshot: querySnapshot)
+                                                }
+                                                if listCenter.count > 0 {
+                                                    for obj in listCenter{
+                                                        self.listRestaurant.append(obj as! QueryDocumentSnapshot);
+                                                    }
+                                                }
+                                                if listZero.count > 0 {
+                                                    for obj in listZero{
+                                                        self.listRestaurant.append(obj as! QueryDocumentSnapshot);
+                                                    }
+                                                }
+                                                if listTwo.count > 0 {
+                                                    for obj in listTwo{
+                                                        self.listRestaurant.append(obj as! QueryDocumentSnapshot);
+                                                    }
+                                                }
+                                                if listFour.count > 0 {
+                                                    for obj in listFour{
+                                                        self.listRestaurant.append(obj as! QueryDocumentSnapshot);
+                                                    }
+                                                }
+                                                if listSix.count > 0 {
+                                                    for obj in listSix{
+                                                        self.listRestaurant.append(obj as! QueryDocumentSnapshot);
+                                                    }
+                                                }
+                                                
+                                                self.showDataOnMapWithCurrentLocation(curentLocation: self.currentLocation)
+                                                
+                                            }
+                                        }
+                                    }
+                                }
+                                
+                            }
+                        }
+                        
                     }
                 }
             }
         }
     }
     
-    func queryLocation(geoHash:String, db:Firestore) -> Void {
-        
-        db.collection("restaurants").whereField("geohash", isEqualTo: geoHash).getDocuments() { (querySnapshot, err) in
-            if let err = err {
-               FoodbodyUtils.shared.hideLoadingHub(viewController: self);
-                self.alertMessage(message: "Error getting documents \(err.localizedDescription)")
-            } else {
-                print(  querySnapshot!.documents.count);
-                for document in querySnapshot!.documents {
-                    print("\(document.documentID) => \(document.data())")
-                    self.listRestaurant.append(document)
-                }
-                self.showDataOnMapWithCurrentLocation(curentLocation: self.currentLocation)
-                self.clvFodi.reloadData();
-               
+    func insertDataIntoListFodiMap(querySnapshot:QuerySnapshot) -> NSMutableArray {
+        let listCenter:NSMutableArray = NSMutableArray.init();
+        if querySnapshot.documents.count > 0 {
+            for document in querySnapshot.documents {
+                listCenter.add(document);
             }
         }
+        return listCenter;
     }
     
     func showDataOnMapWithCurrentLocation(curentLocation:CLLocationCoordinate2D) -> Void {
@@ -136,7 +190,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
         googleMapView.camera = camera
         // Creates a marker in the center of the map.
         for object in listRestaurant {
-            let dict:NSDictionary = object.data() as NSDictionary;
+            let dict:NSDictionary = (object as AnyObject).data()! as NSDictionary;
             
             let marker = GMSMarker()
             marker.position = CLLocationCoordinate2D(latitude: FoodbodyUtils.shared.checkDataFloat(dict: dict, key: "lat"), longitude: FoodbodyUtils.shared.checkDataFloat(dict: dict, key: "lng"));
@@ -174,8 +228,8 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
                 }
             }
             marker.map = googleMapView
+            self.clvFodi.reloadData()
         }
-    
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -183,7 +237,6 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
             self.currentLocation = locationValue;
             print(FbConstants.FoodbodiLog, (currentLocation))
             self.getDataRestaurant();
-//            self.addListenerOnRestaurantd(db: self.db)
             locationManager?.stopUpdatingLocation();
             locationManager = nil;
         }
@@ -313,7 +366,7 @@ extension FodiMapVC:GMSMapViewDelegate{
     }
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
         for object in self.listRestaurant{
-            let dict:NSDictionary = object.data() as NSDictionary;
+            let dict:NSDictionary = (object as AnyObject).data()! as NSDictionary;
             let lat = FoodbodyUtils.shared.checkDataFloat(dict: dict, key: "lat")
             let lng = FoodbodyUtils.shared.checkDataFloat(dict: dict, key: "lng")
             if (marker.position.latitude == lat &&  marker.position.longitude == lng) {
