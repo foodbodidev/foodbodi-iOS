@@ -21,7 +21,7 @@
         <!--Add RestaurantVC-->
         <scene sceneID="l01-cp-Qoj">
             <objects>
-                <viewController storyboardIdentifier="AddRestaurantVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BQH-t5-pHj" customClass="AddRestaurantVC" customModule="FoodBody" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddRestaurantVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BQH-t5-pHj" customClass="AddRestaurantVC" customModule="Foodbodi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="x7c-4Y-2Na">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -76,7 +76,7 @@
                                             <constraint firstItem="aCk-Nk-pac" firstAttribute="top" secondItem="nEf-3M-LHG" secondAttribute="top" constant="53" id="vQ1-Mb-n8L"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybU-WF-HcR" customClass="FoodBodyButton" customModule="FoodBody" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybU-WF-HcR" customClass="FoodBodyButton" customModule="Foodbodi" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="600.5" width="375" height="66.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="-13" maxX="0.0" maxY="0.0"/>
@@ -152,7 +152,7 @@
         <!--Restaurant Info MenuVC-->
         <scene sceneID="MIa-EC-03c">
             <objects>
-                <viewController storyboardIdentifier="RestaurantInfoMenuVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pav-al-YxZ" customClass="RestaurantInfoMenuVC" customModule="FoodBody" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RestaurantInfoMenuVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pav-al-YxZ" customClass="RestaurantInfoMenuVC" customModule="Foodbodi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pSm-aX-XYS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -335,7 +335,7 @@
         <!--Company InfoVC-->
         <scene sceneID="LNd-JL-xbI">
             <objects>
-                <viewController storyboardIdentifier="CompanyInfoVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="85p-vO-Qu0" customClass="CompanyInfoVC" customModule="FoodBody" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CompanyInfoVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="85p-vO-Qu0" customClass="CompanyInfoVC" customModule="Foodbodi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fa6-SG-IQH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -343,16 +343,16 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="zxS-lT-RUc">
                                 <rect key="frame" x="40" y="120" width="295" height="276"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oda-nH-A5V" customClass="FBTextField" customModule="FoodBody" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oda-nH-A5V" customClass="FBTextField" customModule="Foodbodi" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="295" height="69"/>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZLm-6V-fEI" customClass="FBTextField" customModule="FoodBody" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZLm-6V-fEI" customClass="FBTextField" customModule="Foodbodi" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="69" width="295" height="69"/>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="obr-Hv-D5h" customClass="FBTextField" customModule="FoodBody" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="obr-Hv-D5h" customClass="FBTextField" customModule="Foodbodi" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="138" width="295" height="69"/>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yzb-Jd-NlH" customClass="FBTextField" customModule="FoodBody" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yzb-Jd-NlH" customClass="FBTextField" customModule="Foodbodi" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="207" width="295" height="69"/>
                                     </view>
                                 </subviews>
@@ -361,7 +361,7 @@
                                     <constraint firstAttribute="height" constant="276" id="xjl-xw-2ur"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tNG-XV-bYY" customClass="FoodBodyButton" customModule="FoodBody" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tNG-XV-bYY" customClass="FoodBodyButton" customModule="Foodbodi" customModuleProvider="target">
                                 <rect key="frame" x="40" y="416" width="295" height="44"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -413,31 +413,13 @@
         <!--Cart RestaurantVC-->
         <scene sceneID="4I4-a1-6d1">
             <objects>
-                <viewController storyboardIdentifier="CartRestaurantVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="X6o-3h-rHG" customClass="CartRestaurantVC" customModule="FoodBody" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CartRestaurantVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="X6o-3h-rHG" customClass="CartRestaurantVC" customModule="Foodbodi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vYe-7A-LpZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fKt-mq-NTL">
-                                <rect key="frame" x="0.0" y="20" width="375" height="50"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vRI-4K-RLs">
-                                        <rect key="frame" x="10" y="13" width="24" height="24"/>
-                                        <state key="normal" image="backArow"/>
-                                        <connections>
-                                            <action selector="backActionWithSender:" destination="X6o-3h-rHG" eventType="touchUpInside" id="mSQ-GN-TaP"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="vRI-4K-RLs" firstAttribute="leading" secondItem="fKt-mq-NTL" secondAttribute="leading" constant="10" id="SDV-Gi-nSy"/>
-                                    <constraint firstItem="vRI-4K-RLs" firstAttribute="centerY" secondItem="fKt-mq-NTL" secondAttribute="centerY" id="UkR-UM-NTl"/>
-                                    <constraint firstAttribute="height" constant="50" id="wT2-bw-AT1"/>
-                                </constraints>
-                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="R6s-sp-QXt">
-                                <rect key="frame" x="0.0" y="70" width="375" height="542"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="592"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h4f-di-1TI">
@@ -465,12 +447,9 @@
                             <constraint firstItem="HxY-c6-kOr" firstAttribute="bottom" secondItem="h4f-di-1TI" secondAttribute="bottom" constant="5" id="1ub-Wj-xTP"/>
                             <constraint firstItem="HxY-c6-kOr" firstAttribute="trailing" secondItem="R6s-sp-QXt" secondAttribute="trailing" id="2zT-YN-8Ec"/>
                             <constraint firstItem="HxY-c6-kOr" firstAttribute="trailing" secondItem="h4f-di-1TI" secondAttribute="trailing" constant="10" id="KC9-0k-YqX"/>
-                            <constraint firstItem="fKt-mq-NTL" firstAttribute="leading" secondItem="HxY-c6-kOr" secondAttribute="leading" id="Z2g-Om-Af3"/>
-                            <constraint firstItem="HxY-c6-kOr" firstAttribute="trailing" secondItem="fKt-mq-NTL" secondAttribute="trailing" id="f3T-60-3df"/>
                             <constraint firstItem="h4f-di-1TI" firstAttribute="leading" secondItem="HxY-c6-kOr" secondAttribute="leading" constant="10" id="hEt-2Q-AAK"/>
+                            <constraint firstItem="R6s-sp-QXt" firstAttribute="top" secondItem="HxY-c6-kOr" secondAttribute="top" id="hO2-qt-mFm"/>
                             <constraint firstItem="h4f-di-1TI" firstAttribute="top" secondItem="R6s-sp-QXt" secondAttribute="bottom" id="hfG-2I-S5o"/>
-                            <constraint firstItem="R6s-sp-QXt" firstAttribute="top" secondItem="fKt-mq-NTL" secondAttribute="bottom" id="l7W-4T-Lnd"/>
-                            <constraint firstItem="fKt-mq-NTL" firstAttribute="top" secondItem="HxY-c6-kOr" secondAttribute="top" id="rbv-Vv-e17"/>
                             <constraint firstItem="R6s-sp-QXt" firstAttribute="leading" secondItem="HxY-c6-kOr" secondAttribute="leading" id="yWQ-ss-1cT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HxY-c6-kOr"/>
@@ -500,7 +479,7 @@
         <!--Tab MenuVC-->
         <scene sceneID="op3-QE-ODx">
             <objects>
-                <viewController storyboardIdentifier="TabMenuVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="o9s-nZ-cWT" customClass="TabMenuVC" customModule="FoodBody" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TabMenuVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="o9s-nZ-cWT" customClass="TabMenuVC" customModule="Foodbodi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i0h-Fh-jmu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -530,7 +509,7 @@
         <!--Tab ChatVC-->
         <scene sceneID="1wr-gw-oxB">
             <objects>
-                <viewController storyboardIdentifier="TabChatVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LDO-zH-lwA" customClass="TabChatVC" customModule="FoodBody" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TabChatVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LDO-zH-lwA" customClass="TabChatVC" customModule="Foodbodi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wzq-ce-Dhg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -580,7 +559,7 @@
                                         <rect key="frame" x="0.0" y="50" width="375" height="617"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ChatTbvCell" rowHeight="65" id="F9H-dx-J6Q" customClass="ChatTbvCell" customModule="FoodBody" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ChatTbvCell" rowHeight="65" id="F9H-dx-J6Q" customClass="ChatTbvCell" customModule="Foodbodi" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="65"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="F9H-dx-J6Q" id="HXb-8l-WjV">

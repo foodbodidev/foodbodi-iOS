@@ -18,31 +18,13 @@
         <!--Reservation UpdateVC-->
         <scene sceneID="emS-54-b6U">
             <objects>
-                <viewController storyboardIdentifier="ReservationUpdateVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lyY-2A-CCg" customClass="ReservationUpdateVC" customModule="FoodBody" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReservationUpdateVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lyY-2A-CCg" customClass="ReservationUpdateVC" customModule="Foodbodi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Q1i-Gx-wHJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gfQ-kS-e2C">
-                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bX7-Lc-xu2">
-                                        <rect key="frame" x="10" y="13" width="24" height="24"/>
-                                        <state key="normal" image="backArow"/>
-                                        <connections>
-                                            <action selector="backActionWithSender:" destination="lyY-2A-CCg" eventType="touchUpInside" id="1tV-jn-QB5"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="bX7-Lc-xu2" firstAttribute="centerY" secondItem="gfQ-kS-e2C" secondAttribute="centerY" id="c55-Yp-iJ8"/>
-                                    <constraint firstAttribute="height" constant="50" id="iDg-FF-9pz"/>
-                                    <constraint firstItem="bX7-Lc-xu2" firstAttribute="leading" secondItem="gfQ-kS-e2C" secondAttribute="leading" constant="10" id="rsi-j1-x2m"/>
-                                </constraints>
-                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="e2P-9D-cCi">
-                                <rect key="frame" x="0.0" y="94" width="414" height="713"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="763"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oMw-4i-nyc">
@@ -67,15 +49,12 @@
                         </subviews>
                         <color key="backgroundColor" red="0.8980392157" green="0.92941176469999998" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="e2P-9D-cCi" firstAttribute="top" secondItem="gfQ-kS-e2C" secondAttribute="bottom" id="0IL-6w-P44"/>
+                            <constraint firstItem="e2P-9D-cCi" firstAttribute="top" secondItem="GfR-jg-JDQ" secondAttribute="top" id="043-N4-F0U"/>
                             <constraint firstItem="GfR-jg-JDQ" firstAttribute="bottom" secondItem="oMw-4i-nyc" secondAttribute="bottom" constant="5" id="358-DH-VeN"/>
-                            <constraint firstItem="gfQ-kS-e2C" firstAttribute="leading" secondItem="GfR-jg-JDQ" secondAttribute="leading" id="7KK-5Q-8Ba"/>
                             <constraint firstItem="GfR-jg-JDQ" firstAttribute="trailing" secondItem="e2P-9D-cCi" secondAttribute="trailing" id="DQK-Pk-Vnj"/>
                             <constraint firstItem="oMw-4i-nyc" firstAttribute="top" secondItem="e2P-9D-cCi" secondAttribute="bottom" id="FlO-We-W8J"/>
-                            <constraint firstItem="GfR-jg-JDQ" firstAttribute="trailing" secondItem="gfQ-kS-e2C" secondAttribute="trailing" id="eMX-Jq-pmM"/>
                             <constraint firstItem="oMw-4i-nyc" firstAttribute="leading" secondItem="GfR-jg-JDQ" secondAttribute="leading" constant="10" id="ekz-L8-X3F"/>
                             <constraint firstItem="GfR-jg-JDQ" firstAttribute="trailing" secondItem="oMw-4i-nyc" secondAttribute="trailing" constant="10" id="nZR-se-RcM"/>
-                            <constraint firstItem="gfQ-kS-e2C" firstAttribute="top" secondItem="GfR-jg-JDQ" secondAttribute="top" id="uit-i0-aS2"/>
                             <constraint firstItem="e2P-9D-cCi" firstAttribute="leading" secondItem="GfR-jg-JDQ" secondAttribute="leading" id="wbi-pI-Yba"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GfR-jg-JDQ"/>
@@ -90,7 +69,4 @@
             <point key="canvasLocation" x="2997.5999999999999" y="-72.413793103448285"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="backArow" width="24" height="24"/>
-    </resources>
 </document>

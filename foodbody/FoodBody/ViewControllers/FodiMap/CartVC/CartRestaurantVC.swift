@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CartRestaurantVC: UIViewController, CartInfoCellDelegate {
+class CartRestaurantVC: BaseVC, CartInfoCellDelegate {
     //MARK: variable.
     @IBOutlet weak var tbvCart: UITableView!
     @IBOutlet weak var btnReservation:UIButton!
@@ -25,7 +25,7 @@ class CartRestaurantVC: UIViewController, CartInfoCellDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
-        self.navigationController?.navigationBar.isHidden = true
+        
     }
     
     //MARK: CartInfoCellDelegate

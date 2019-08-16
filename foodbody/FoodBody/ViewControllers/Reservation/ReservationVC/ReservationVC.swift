@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ReservationVC: UIViewController {
+class ReservationVC: BaseVC {
     
     @IBOutlet var tbvReservation:UITableView!
     var listReservation:[ReservationResponse] = [];

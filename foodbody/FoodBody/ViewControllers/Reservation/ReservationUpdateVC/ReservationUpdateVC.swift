@@ -24,6 +24,7 @@ class ReservationUpdateVC: BaseVC, CartInfoCellDelegate{
         super.viewDidLoad();
         self.initUI();
         self.initVar();
+        self.navigationController?.navigationBar.isHidden = false;
     }
     //MARK: init UI.
     func initUI(){
@@ -82,9 +83,6 @@ class ReservationUpdateVC: BaseVC, CartInfoCellDelegate{
         return CGFloat(totalData);
     }
     //MARK: IBAction.
-    @IBAction func backAction(sender:UIButton){
-        self.navigationController?.popViewController(animated: true);
-    }
     @IBAction func actionUpdateReservation(sender:UIButton){
         let request = ReservationRequest()
         request.restaurant_id = self.restaurantId
