@@ -167,7 +167,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
                                                 if listData.count > 0 {
                                                     self.listRestaurant.removeAll();
                                                     for obj in listData {
-                                                        self.listRestaurant.append(obj as! QueryDocumentSnapshot);
+                                                        self.listRestaurant.append(obj);
                                                     }
                                                     self.clvFodi.reloadData()
                                                     self.showDataOnMapWithCurrentLocation(curentLocation: self.currentLocation)
@@ -200,6 +200,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
     func showDataOnMapWithCurrentLocation(curentLocation:CLLocationCoordinate2D) -> Void {
         let camera = GMSCameraPosition.camera(withLatitude: curentLocation.latitude, longitude: curentLocation.longitude, zoom: 15.0)
         googleMapView.camera = camera
+        googleMapView.clear()
         // Creates a marker in the center of the map.
         for object in self.listRestaurant {
             let dict:NSDictionary = (object as AnyObject).data()! as NSDictionary;
