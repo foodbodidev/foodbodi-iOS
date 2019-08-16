@@ -57,6 +57,8 @@ class CartRestaurantVC: UIViewController, CartInfoCellDelegate {
     @IBAction func btnReservation(sender:UIButton){
         let request = ReservationRequest()
         request.restaurant_id = (listMenu.first?.restaurant_id)!;
+        
+        request.date_string = FoodbodyUtils.shared.dateStringFromDate(date: Date() as NSDate);
         let foodReservation = listMenu.map({
             return FoodReservationModel(food_id: $0.id, amount: $0.amount)
         })

@@ -52,4 +52,10 @@ class FoodbodyUtils: NSObject {
         return time;
     }
     
+    func dateStringFromDate(date:NSDate) -> String{
+        let dateFormartor = DateFormatter.init();
+        dateFormartor.dateFormat = "yyyy-MM-dd";
+        let time:String = dateFormartor.string(from: date as Date);
+        return time;
+    }
 }

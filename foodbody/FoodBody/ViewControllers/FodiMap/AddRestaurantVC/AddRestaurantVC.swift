@@ -66,7 +66,7 @@ class AddRestaurantVC: BaseVC {
                 if let result = result {
                     if result.isSuccess {
                         strongSelf.alertMessage(message: "Create restaurant successfully", completion: {
-                            strongSelf.navigationController?.popToRootViewController(animated: true)
+                           strongSelf.getRestaurantWithProfile(); strongSelf.navigationController?.popToRootViewController(animated: true)
                         })
 
                     } else {

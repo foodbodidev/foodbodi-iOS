@@ -17,6 +17,7 @@ class ReservationResponse: Mappable {
     var total: NSInteger = 0
     var foods: [FoodReservationModel] = []
     var id: String = ""
+    var date_string: String = ""
     var isSuccess: Bool = false
     var status_code: Int = -1
     var message: String = ""
@@ -37,6 +38,7 @@ class ReservationResponse: Mappable {
         restaurant_name <- map["restaurant_name"]
         total <- map["total"]
         foods <- map["foods"]
+         date_string <- map["date_string"]
         id <- map["id"]
         message <- map["message"]
         status_code <- map["status_code"]
@@ -48,6 +50,7 @@ class ReservationRequest: Mappable  {
     
     
     var restaurant_id: String = ""
+    var date_string: String = ""
     var foods: [FoodReservationModel] = []
     var reservationId: String = "" // use to pass to url 
     
@@ -62,6 +65,6 @@ class ReservationRequest: Mappable  {
     func mapping(map: Map) {
         restaurant_id <- map["restaurant_id"]
         foods <- map["foods"]
+        date_string <- map["date_string"]
     }
-    
 }
