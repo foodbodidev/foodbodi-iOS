@@ -65,8 +65,17 @@ extension ReservationVC: UITableViewDelegate, UITableViewDataSource,UIScrollView
         cell.lblName.text = obj.restaurant_name;
         cell.lblCalo.text = String(format:"%d",obj.total);
         //convert second to mini  second.
-        obj.created_date = obj.created_date/1000;
-        cell.lblTime.text = FoodbodyUtils.shared.dateFromTimeInterval(timeInterval: obj.created_date);
+        DispatchQueue.main.async {
+            obj.created_date = obj.created_date/1000;
+            
+            let date:String = FoodbodyUtils.shared.dateFromTimeInterval(timeInterval: obj.created_date);
+            if date.count > 0 {
+                cell.lblTime.text = date;
+            }else{
+                cell.lblTime.text = "00";
+            }
+             print ("dateac \(date)");
+        }
         
         //color
         if obj.total < Int(FbConstants.lowCalo) {
@@ -105,16 +114,21 @@ extension ReservationVC: UITableViewDelegate, UITableViewDataSource,UIScrollView
                         if result.isSuccess {
                             var data: [ReservationResponse] = []
                             data = result.data;
-                            self.cursor = result.cursor;
-                            if data.count == 0{
+                            if (self.cursor == result.cursor){
                                 self.isLoadingNextPage = false;
                                 return;
-                            }
-                            if data.count > 0{
-                                for obj in data {
-                                    self.listReservation.append(obj);
+                            }else{
+                                if data.count == 0{
+                                    self.isLoadingNextPage = false;
+                                    return;
                                 }
-                                self.tbvReservation.reloadData();
+                                self.cursor = result.cursor;
+                                if data.count > 0{
+                                    for obj in data {
+                                        self.listReservation.append(obj);
+                                    }
+                                    self.tbvReservation.reloadData();
+                                }
                             }
                         } else {
                             self.alertMessage(message: result.message)
