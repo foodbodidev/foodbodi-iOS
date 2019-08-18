@@ -87,11 +87,7 @@ class RestaurantRequest: Mappable  {
     var type: String = ""
     var category: String = ""
 	var photo: String = ""
-    var name: String = ""
-    var address: String = ""
     var creator: String = ""
-    var lat: Double = -1
-    var lng: Double = -1
     var geohash: String = ""
     var open_hour: String = ""
     var close_hour: String = ""
@@ -110,8 +106,6 @@ class RestaurantRequest: Mappable  {
     func mapDataFromMyRestaurant(myRestaurant: MyRestaurant) {
         self.category = myRestaurant.category ?? ""
         self.photo = myRestaurant.photo ?? ""
-        self.name = myRestaurant.name ?? ""
-        self.address = myRestaurant.address ?? ""
         self.open_hour = myRestaurant.open_hour ?? ""
         self.close_hour = myRestaurant.close_hour ?? ""
         self.type = myRestaurant.type ?? ""
@@ -121,11 +115,7 @@ class RestaurantRequest: Mappable  {
     func mapping(map: Map) {
         type <- map["type"]
         category <- map["category"]
-        name <- map["name"]
-        address <- map["address"]
         creator <- map["creator"]
-        lat <- map["lat"]
-        lng <- map["lng"]
         geohash <- map["geohash"]
         open_hour <- map["open_hour"]
         close_hour <- map["close_hour"]

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GooglePlaces
 
 class CompanyInfoVC: BaseVC {
     @IBOutlet weak var nameTextField: FBTextField!
@@ -15,12 +16,14 @@ class CompanyInfoVC: BaseVC {
     @IBOutlet weak var addressTextField: FBTextField!
     @IBOutlet weak var btnSubmit:UIButton!
     
+    let companyInfoRequest = CompanyInfoModel()
+    
     @IBOutlet weak var contentView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        addressTextField.delegate = self
         setupLayout()
-        // Do any additional setup after loading the view.
     }
     fileprivate func setupLayout() {
         self.navigationController?.navigationBar.isHidden = false
@@ -35,8 +38,6 @@ class CompanyInfoVC: BaseVC {
         guard validateTextFiled() else {
             return
         }
-        
-        let companyInfoRequest = CompanyInfoModel()
         
         companyInfoRequest.company_name = nameTextField.textField.text ?? ""
         companyInfoRequest.registration_number = registerTextField.textField.text ?? ""
@@ -54,9 +55,8 @@ class CompanyInfoVC: BaseVC {
 						user.restaurantId = result.id
 						AppManager.user = user
 					}
-	
-                    let addRestaurantVC = getViewController(className: AddRestaurantVC.className, storyboard: FbConstants.FodiMapSB)
-                    self.navigationController?.pushViewController(addRestaurantVC, animated: true)
+                    let verifyVC = VerifyVC.init(nibName: "VerifyVC", bundle: nil)
+                    self.navigationController?.pushViewController(verifyVC, animated: true)
                 } else {
                     self.alertMessage(message: result.message)
                 }
@@ -98,5 +98,41 @@ class CompanyInfoVC: BaseVC {
         
         return true
     }
+    
+    func restaurantTableViewCellDidBeginSearchAddress() {
+        let seachAddressVC = GMSAutocompleteViewController()
+        seachAddressVC.delegate = self
+        present(seachAddressVC, animated: true, completion: nil)
+    }
 
+}
+
+extension CompanyInfoVC: GMSAutocompleteViewControllerDelegate {
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+        companyInfoRequest.address = place.formattedAddress ?? ""
+        companyInfoRequest.lat = place.coordinate.latitude
+        companyInfoRequest.lng = place.coordinate.longitude
+        addressTextField.textField.text = place.formattedAddress ?? ""
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
+        print("Error: ", error.localizedDescription)
+    }
+    
+    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
+        // Dismiss when the user canceled the action
+        dismiss(animated: true, completion: nil)
+    }
+    
+}
+
+extension CompanyInfoVC: FBTextFieldDelegate {
+    func didBeginSearchPlace() {
+        addressTextField.resignFirstResponder()
+        restaurantTableViewCellDidBeginSearchAddress()
+    }
+    
+    
 }

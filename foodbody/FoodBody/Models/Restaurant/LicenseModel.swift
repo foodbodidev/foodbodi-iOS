@@ -16,6 +16,8 @@ class CompanyInfoModel: Mappable  {
     var registration_number: String = ""
     var representative_name: [String] = []
     var address: String = ""
+    var lat: Double = -1
+    var lng: Double = -1
     
     
     required init?(map: Map) {
@@ -31,6 +33,8 @@ class CompanyInfoModel: Mappable  {
         registration_number <- map["license.registration_number"]
         representative_name <- map["license.representative_name"]
         address <- map["address"]
+        lat <- map["lat"]
+        lng <- map["lng"]
     }
     
 }

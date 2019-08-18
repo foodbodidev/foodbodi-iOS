@@ -62,26 +62,26 @@ class HealthKitManager {
         healthStore.execute(query)
     }
     
-    func getCaloriesConsumed(dateQuery: Date, completion: @escaping (Double)-> ()) {
-        guard checkAuth() else {
-            return
-        }
-        
-        let caloQuantityType = HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!
-        
-		let startTime = dateQuery
-		let endTime = Date(timeInterval: 86400, since: dateQuery)
-        let predicate = HKQuery.predicateForSamples(withStart: startTime, end: endTime, options: .strictStartDate)
-        
-        let query = HKStatisticsQuery(quantityType: caloQuantityType, quantitySamplePredicate: predicate, options: .cumulativeSum) { _, result, _ in
-            guard let result = result, let sum = result.sumQuantity() else {
-                completion(0.0)
-                return
-            }
-            completion(sum.doubleValue(for: HKUnit.count()))
-        }
-        healthStore.execute(query)
-    }
+//    func getCaloriesConsumed(dateQuery: Date, completion: @escaping (Double)-> ()) {
+//        guard checkAuth() else {
+//            return
+//        }
+//        
+//        let caloQuantityType = HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!
+//        
+//        let startTime = dateQuery
+//        let endTime = Date(timeInterval: 86400, since: dateQuery)
+//        let predicate = HKQuery.predicateForSamples(withStart: startTime, end: endTime, options: .strictStartDate)
+//        
+//        let query = HKStatisticsQuery(quantityType: caloQuantityType, quantitySamplePredicate: predicate, options: .cumulativeSum) { _, result, _ in
+//            guard let result = result, let sum = result.sumQuantity() else {
+//                completion(0.0)
+//                return
+//            }
+//            completion(sum.doubleValue(for: HKUnit.count()))
+//        }
+//        healthStore.execute(query)
+//    }
 
 }
 
