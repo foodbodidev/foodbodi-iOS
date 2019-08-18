@@ -29,7 +29,8 @@ class ReservationVC: BaseVC {
     func initVar() {
         if AppManager.user?.token.isEmpty == false {
             FoodbodyUtils.shared.showLoadingHub(viewController: self);
-            RequestManager.getListReservation { (result, error) in
+        
+            RequestManager.getListReservation(cursor: "rsv_n8PjRu3ZY8os8MG3EENp_phuoc@gmail.com_1565279530178") { (result, error) in
                 FoodbodyUtils.shared.hideLoadingHub(viewController: self);
                 if let error = error {
                     self.alertMessage(message: error.localizedDescription)
@@ -60,7 +61,10 @@ extension ReservationVC: UITableViewDelegate, UITableViewDataSource{
         let obj:ReservationResponse = listReservation[indexPath.row];
         cell.lblName.text = obj.restaurant_name;
         cell.lblCalo.text = String(format:"%d",obj.total);
-        cell.lblTime.text = obj.date_string;
+        //convert second to mini  second.
+        obj.created_date = obj.created_date/1000;
+        cell.lblTime.text = FoodbodyUtils.shared.dateFromTimeInterval(timeInterval: obj.created_date);
+        
         //color
         if obj.total < Int(FbConstants.lowCalo) {
             cell.lblCalo.backgroundColor = UIColor.init(rgb: 0xfbd402)

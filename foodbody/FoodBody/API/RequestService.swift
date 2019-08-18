@@ -28,7 +28,7 @@ enum RequestService {
     case addFood(dic: [String: Any])
     case deleteFood(model: FoodModel)
     case addReservation(dic: [String: Any])
-    case getListReservation
+    case getListReservation(cursor:String)
     case getOneReservationWithId(id:String)
     case updateReservationWithId(dic: ReservationRequest)
     case updateDailyLog(dic: DailyLogModel)
@@ -41,7 +41,7 @@ extension RequestService: TargetType {
             return URL(string: APIConstant.BASE_URL)!
         }
     }
-    
+    //MARK: path.
     var path: String {
         switch self {
         case .signup:
@@ -83,8 +83,8 @@ extension RequestService: TargetType {
             return APIConstant.deleteFood + "/" + foodModel.id
         case .addReservation:
             return APIConstant.addReservation;
-        case .getListReservation:
-            return APIConstant.getListReservation;
+        case .getListReservation(let cursor):
+            return APIConstant.getListReservation + "?" + "cursor=" + cursor;
         case .getOneReservationWithId(let id):
             return APIConstant.getOneReservation + "/\(id)";
         case .updateReservationWithId(let dic):
@@ -95,6 +95,7 @@ extension RequestService: TargetType {
         
     }
     
+    //MARK: methods.
     var method: Moya.Method {
         switch self {
        
@@ -129,7 +130,7 @@ extension RequestService: TargetType {
             return Data()
         }
     }
-    
+    //MARK: headers
     var headers: [String: String]? {
         
         switch self {
@@ -141,7 +142,7 @@ extension RequestService: TargetType {
         }
     }
     
-    
+    //MARK: body.
     var task: Task {
         switch self {
         case .signup(let dic):
@@ -168,11 +169,11 @@ extension RequestService: TargetType {
             return .requestParameters(parameters: ["include_restaurant" : "true"], encoding: URLEncoding.queryString)
         case .deleteFood(let foodModel):
             return .requestParameters(parameters: ["restaurant_id": foodModel.restaurant_id], encoding: URLEncoding.queryString)
+       //reservation.
         case .addReservation(let dic):
              return .requestParameters(parameters: dic, encoding: JSONEncoding.default)
         case .updateReservationWithId(let dic):
             return .requestParameters(parameters: dic.toJSON(), encoding: JSONEncoding.default)
-            
         
         default:
             return .requestPlain
