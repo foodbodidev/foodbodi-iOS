@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -59,6 +59,8 @@
 		98D9AEC522C85E5600C5DD56 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D9AEC422C85E5600C5DD56 /* Style.swift */; };
 		98F772CA22D9AF560027F4BE /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F772C922D9AF560027F4BE /* CategoryModel.swift */; };
 		98F772CC22DCBD500027F4BE /* FoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F772CB22DCBD500027F4BE /* FoodModel.swift */; };
+		98FF7C2A2309502C006D6063 /* VerifyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FF7C282309502C006D6063 /* VerifyVC.swift */; };
+		98FF7C2B2309502C006D6063 /* VerifyVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98FF7C292309502C006D6063 /* VerifyVC.xib */; };
 		A4028C0B7BC5647D12349DB8 /* Pods_FoodBodyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C5E9F39F28BD1B4DB070B5 /* Pods_FoodBodyUITests.framework */; };
 		BA782CAC22DDD71100E25985 /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA782CAB22DDD71100E25985 /* PhotoModel.swift */; };
 		BA8C18ED22E1BA23007531FE /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C0FDA422B8EE2A00411488 /* SignUpVC.swift */; };
@@ -178,6 +180,8 @@
 		98D9AEC422C85E5600C5DD56 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		98F772C922D9AF560027F4BE /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		98F772CB22DCBD500027F4BE /* FoodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodModel.swift; sourceTree = "<group>"; };
+		98FF7C282309502C006D6063 /* VerifyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyVC.swift; sourceTree = "<group>"; };
+		98FF7C292309502C006D6063 /* VerifyVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VerifyVC.xib; sourceTree = "<group>"; };
 		A9570CF8FC233D20588E45A6 /* Pods-FoodBodyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodBodyUITests.debug.xcconfig"; path = "Target Support Files/Pods-FoodBodyUITests/Pods-FoodBodyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BA782CAB22DDD71100E25985 /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
 		BA8C18EE22E1BD58007531FE /* BaseLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLoginVC.swift; sourceTree = "<group>"; };
@@ -355,12 +359,12 @@
 			path = "Company Information";
 			sourceTree = "<group>";
 		};
-		98741F9D2301A26F009B0BAD /* New Group */ = {
+		98741F9D2301A26F009B0BAD /* DailyLog */ = {
 			isa = PBXGroup;
 			children = (
 				98741F9E2301A297009B0BAD /* DailyLogModel.swift */,
 			);
-			path = "New Group";
+			path = DailyLog;
 			sourceTree = "<group>";
 		};
 		98CEA20722B9469000E82063 /* API */ = {
@@ -405,6 +409,15 @@
 				D5B987DF22FBC7DA005D0733 /* OneReservationModel.swift */,
 			);
 			path = Restaurant;
+			sourceTree = "<group>";
+		};
+		98FF7C2523094FC7006D6063 /* VerifyVC */ = {
+			isa = PBXGroup;
+			children = (
+				98FF7C282309502C006D6063 /* VerifyVC.swift */,
+				98FF7C292309502C006D6063 /* VerifyVC.xib */,
+			);
+			path = VerifyVC;
 			sourceTree = "<group>";
 		};
 		A280A1EBA4032609F3EDC3A2 /* Frameworks */ = {
@@ -566,6 +579,7 @@
 		D5B24B0622B73A3600DA16C4 /* Authentications */ = {
 			isa = PBXGroup;
 			children = (
+				98FF7C2523094FC7006D6063 /* VerifyVC */,
 				D5B4241622BC81C800141818 /* RegisterAccountVC */,
 				D5C0FDA322B8EE2A00411488 /* SignUpVC */,
 				D5C0FDA022B8EE1900411488 /* LoginVC */,
@@ -599,7 +613,7 @@
 		D5B24B1322B73C0B00DA16C4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				98741F9D2301A26F009B0BAD /* New Group */,
+				98741F9D2301A26F009B0BAD /* DailyLog */,
 				98F772C822D9AF310027F4BE /* Restaurant */,
 				98282BD522BFCF41003ED8BC /* Authentication */,
 			);
@@ -903,6 +917,7 @@
 				98C34F5F22CFAE3400A933DE /* RestaurantTableViewCell.xib in Resources */,
 				D5B424D722BCD42100141818 /* Assets.xcassets in Resources */,
 				98282BE622C26E64003ED8BC /* YourBasicVC.xib in Resources */,
+				98FF7C2B2309502C006D6063 /* VerifyVC.xib in Resources */,
 				BAC0B958230296BF0096BA6E /* CalendarVC.xib in Resources */,
 				98C34F5722CE57C100A933DE /* MenuTableViewCell.xib in Resources */,
 				98282BCD22BE8607003ED8BC /* FBTextField.xib in Resources */,
@@ -1052,6 +1067,7 @@
 				98282BDA22BFE727003ED8BC /* LoadingView.swift in Sources */,
 				2F03660522DB837B001C15FE /* RestaurantInfoMenuVC.swift in Sources */,
 				D5B24B2F22B73EE400DA16C4 /* ProfileVC.swift in Sources */,
+				98FF7C2A2309502C006D6063 /* VerifyVC.swift in Sources */,
 				98CEA20022B9431200E82063 /* Array.swift in Sources */,
 				2FCA49BC22D63F5400E3497D /* Geohash.swift in Sources */,
 				98CEA20922B946D700E82063 /* APIConstant.swift in Sources */,

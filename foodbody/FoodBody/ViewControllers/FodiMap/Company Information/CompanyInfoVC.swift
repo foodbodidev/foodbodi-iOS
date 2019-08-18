@@ -55,9 +55,8 @@ class CompanyInfoVC: BaseVC {
 						user.restaurantId = result.id
 						AppManager.user = user
 					}
-	
-                    let addRestaurantVC = getViewController(className: AddRestaurantVC.className, storyboard: FbConstants.FodiMapSB)
-                    self.navigationController?.pushViewController(addRestaurantVC, animated: true)
+                    let verifyVC = VerifyVC.init(nibName: "VerifyVC", bundle: nil)
+                    self.navigationController?.pushViewController(verifyVC, animated: true)
                 } else {
                     self.alertMessage(message: result.message)
                 }
