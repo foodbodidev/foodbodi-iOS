@@ -84,7 +84,11 @@ extension RequestService: TargetType {
         case .addReservation:
             return APIConstant.addReservation;
         case .getListReservation(let cursor):
-            return APIConstant.getListReservation + "?" + "cursor=" + cursor;
+            if cursor.count > 0{
+                return APIConstant.getListReservation + "?" + "cursor=" + cursor;
+            }else{
+                return APIConstant.getListReservation;
+            }
         case .getOneReservationWithId(let id):
             return APIConstant.getOneReservation + "/\(id)";
         case .updateReservationWithId(let dic):

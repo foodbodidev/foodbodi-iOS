@@ -12,6 +12,8 @@ class ReservationVC: BaseVC {
     
     @IBOutlet var tbvReservation:UITableView!
     var listReservation:[ReservationResponse] = [];
+    var cursor:String = "";
+    var isLoadingNextPage:Bool = true;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +31,8 @@ class ReservationVC: BaseVC {
     func initVar() {
         if AppManager.user?.token.isEmpty == false {
             FoodbodyUtils.shared.showLoadingHub(viewController: self);
-        
-            RequestManager.getListReservation(cursor: "rsv_n8PjRu3ZY8os8MG3EENp_phuoc@gmail.com_1565279530178") { (result, error) in
+            
+            RequestManager.getListReservation(cursor:cursor) { (result, error) in
                 FoodbodyUtils.shared.hideLoadingHub(viewController: self);
                 if let error = error {
                     self.alertMessage(message: error.localizedDescription)
@@ -39,6 +41,7 @@ class ReservationVC: BaseVC {
                     
                     if result.isSuccess {
                         self.listReservation = result.data;
+                        self.cursor = result.cursor;
                         self.tbvReservation.reloadData();
                     } else {
                         self.alertMessage(message: result.message)
@@ -49,7 +52,7 @@ class ReservationVC: BaseVC {
     }
 }
 
-extension ReservationVC: UITableViewDelegate, UITableViewDataSource{
+extension ReservationVC: UITableViewDelegate, UITableViewDataSource,UIScrollViewDelegate{
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1;
     }
@@ -84,6 +87,42 @@ extension ReservationVC: UITableViewDelegate, UITableViewDataSource{
         vc.reservationId = obj.id;
         vc.restaurantId = obj.restaurant_id;
         self.navigationController?.pushViewController(vc, animated: true);
+    }
+   func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if self.isLoadingNextPage == true {
+            let contentLarger = (scrollView.contentSize.height > scrollView.frame.size.height)
+            let viewableHeight = contentLarger ? scrollView.frame.size.height : scrollView.contentSize.height
+            let atBottom = (scrollView.contentOffset.y >= scrollView.contentSize.height - viewableHeight + 50)
+            if atBottom && !self.tbvReservation.isLoadingFooterShowing() {
+                self.tbvReservation.showLoadingFooter()
+                RequestManager.getListReservation(cursor:cursor) { (result, error) in
+                    self.tbvReservation.hideLoadingFooter();
+                    if let error = error {
+                        self.alertMessage(message: error.localizedDescription)
+                    }
+                    if let result = result {
+                        
+                        if result.isSuccess {
+                            var data: [ReservationResponse] = []
+                            data = result.data;
+                            self.cursor = result.cursor;
+                            if data.count == 0{
+                                self.isLoadingNextPage = false;
+                                return;
+                            }
+                            if data.count > 0{
+                                for obj in data {
+                                    self.listReservation.append(obj);
+                                }
+                                self.tbvReservation.reloadData();
+                            }
+                        } else {
+                            self.alertMessage(message: result.message)
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 

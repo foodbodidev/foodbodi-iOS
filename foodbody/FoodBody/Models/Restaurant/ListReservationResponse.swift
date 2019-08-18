@@ -13,6 +13,7 @@ class ListReservationResponse: Mappable {
     var isSuccess: Bool = false
     var status_code: Int = -1
     var message: String = ""
+    var cursor: String = "";
     var data: [ReservationResponse] = []
     
     required init?(map: Map) {
@@ -26,6 +27,7 @@ class ListReservationResponse: Mappable {
     func mapping(map: Map) {
         status_code <- map["status_code"]
         data <- map["data.reservations"]
+        cursor <- map["cursor"];
         message <- map["message"]
         isSuccess = (status_code == 0) ? true : false
     }
