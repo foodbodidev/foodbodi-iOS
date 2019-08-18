@@ -129,7 +129,6 @@ class ProfileVC: BaseVC {
 		let yesterday = Date().dayBefore
 		let today = Date(timeInterval: 86400, since: yesterday)
 		getSteps(dateQuery: today) // get data of today
-		getCaloriesConsumed(dateQuery: today)
     }
 	
 	func getSteps(dateQuery: Date) {
@@ -140,11 +139,6 @@ class ProfileVC: BaseVC {
 		})
 	}
 	
-	func getCaloriesConsumed(dateQuery: Date) {
-		HealthKitManager.shared.getCaloriesConsumed(dateQuery: Date(), completion: { calors in
-			
-		})
-	}
 	
 	func bindData(steps: Int) {
 		let caloLeft = caculateCaloriesLeft(steps: steps)

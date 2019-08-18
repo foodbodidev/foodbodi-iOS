@@ -11,17 +11,14 @@ import GooglePlaces
 
 protocol RestaurantTableViewCellDelegate: class {
     func restaurantTableViewCellEndEditing(restaurantModel: RestaurantRequest)
-    func restaurantTableViewCellDidBeginSearchAddress()
 }
 
 class RestaurantTableViewCell: UITableViewCell {
     
     //MARK: Outlet
-    @IBOutlet weak var titleTextField: InforTextField!
     @IBOutlet weak var categoryTextField: InforTextField!
     @IBOutlet weak var openHoursTextField: InforTextField!
     @IBOutlet weak var closeHoursTextField: InforTextField!
-    @IBOutlet weak var addressTextField: InforTextField!
     
     @IBOutlet weak var restaurantButton: UIButton!
     @IBOutlet weak var foodTruckButton: UIButton!
@@ -37,11 +34,9 @@ class RestaurantTableViewCell: UITableViewCell {
     weak var delegate: RestaurantTableViewCellDelegate?
     var model: RestaurantRequest = RestaurantRequest() {
         didSet {
-            titleTextField.text = model.name
             categoryTextField.text = categoryList.filter({$0.key == model.category}).first?.name
             openHoursTextField.text = model.open_hour
             closeHoursTextField.text = model.close_hour
-            addressTextField.text = model.address
             model.isValidTime = validateTime()
         }
     }
@@ -133,13 +128,6 @@ class RestaurantTableViewCell: UITableViewCell {
         
         if let delegate = self.delegate {
             delegate.restaurantTableViewCellEndEditing(restaurantModel: model)
-        }
-    }
-    
-    @IBAction func textFieldTapped(_ sender: Any) {
-       addressTextField.resignFirstResponder()
-        if let delegate = self.delegate {
-            delegate.restaurantTableViewCellDidBeginSearchAddress()
         }
     }
     
@@ -237,11 +225,9 @@ extension RestaurantTableViewCell: UITextFieldDelegate {
     }
     
     func saveDataToModel() {
-        model.name = titleTextField.text!
         model.category = categoryList.filter({$0.name == categoryTextField.text!}).first?.key ?? ""
         model.open_hour = openHoursTextField.text!
         model.close_hour = closeHoursTextField.text!
-        model.address = addressTextField.text!
     }
 }
 

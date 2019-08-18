@@ -139,10 +139,6 @@ class AddRestaurantVC: BaseVC {
     }
 	
 	private func validateData() -> Bool {
-		if restaurant.name.isEmpty {
-			self.alertMessage(message: "Restaurant's name can not be empty")
-			return false
-		}
 		
 		if restaurant.category.isEmpty {
 			self.alertMessage(message: "Restaurant's category can not be empty")
@@ -249,7 +245,7 @@ extension AddRestaurantVC: UITableViewDelegate {
         switch indexPath.section {
             
         case AddResEnum.restaurant.rawValue:
-           return 0.48*self.view.frame.height
+           return 0.28*self.view.frame.height
 			
         case AddResEnum.addMenu.rawValue :
             return 0.27*self.view.frame.height
@@ -264,7 +260,7 @@ extension AddRestaurantVC: UITableViewDelegate {
 }
 
 extension AddRestaurantVC: RestaurantTableViewCellDelegate, MenuTableViewCellDelegate {
-	
+   
 	func didClickOnAddButton(food: Food, cell: MenuTableViewCell) {
         var foodRequest = FoodModel(name: food.name, price: food.price, calo: food.calor)
 		foodRequest.photo = photoFoodURL
@@ -290,12 +286,6 @@ extension AddRestaurantVC: RestaurantTableViewCellDelegate, MenuTableViewCellDel
     func restaurantTableViewCellEndEditing(restaurantModel: RestaurantRequest) {
         restaurant = restaurantModel
     }
-    
-    func restaurantTableViewCellDidBeginSearchAddress() {
-        let seachAddressVC = GMSAutocompleteViewController()
-        seachAddressVC.delegate = self
-        present(seachAddressVC, animated: true, completion: nil)
-    }
 	
 	func didAddFoodPhoto() {
 		photoType = .food
@@ -306,26 +296,7 @@ extension AddRestaurantVC: RestaurantTableViewCellDelegate, MenuTableViewCellDel
 
 }
 
-extension AddRestaurantVC: GMSAutocompleteViewControllerDelegate {
-    
-    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        restaurant.address = place.formattedAddress ?? ""
-        restaurant.lat = place.coordinate.latitude
-        restaurant.lng = place.coordinate.longitude
-        tableView.reloadData()
-        dismiss(animated: true, completion: nil)
-    }
-    
-    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
-        print("Error: ", error.localizedDescription)
-    }
-    
-    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
-        // Dismiss when the user canceled the action
-        dismiss(animated: true, completion: nil)
-    }
-    
-}
+
 
 extension AddRestaurantVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     

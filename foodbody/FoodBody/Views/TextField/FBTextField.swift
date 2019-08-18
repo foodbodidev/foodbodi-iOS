@@ -8,11 +8,18 @@
 
 import UIKit
 
+
+protocol FBTextFieldDelegate: class {
+    func didBeginSearchPlace()
+}
+
 class FBTextField: UIView {
     
     @IBOutlet weak var textField: TextField!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var contentView: UIView!
+    
+    weak var delegate: FBTextFieldDelegate?
     
     
     
@@ -51,6 +58,9 @@ extension FBTextField: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.layer.borderColor = UIColor(red: 185, green: 194, blue: 196).cgColor
         self.errorLabel.isHidden = true
+        if let delegate = self.delegate {
+            delegate.didBeginSearchPlace()
+        }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
