@@ -17,6 +17,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
     @IBOutlet weak var btnAdd: UIButton!
     @IBOutlet weak var googleMapView:GMSMapView!
     @IBOutlet weak var clvFodi:UICollectionView!
+    @IBOutlet weak var tbvSearch:UITableView!
 	
     //MARK: variable.
     var locationManager:CLLocationManager? = nil;
@@ -60,6 +61,8 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
         self.clvFodi.delegate = self;
         self.clvFodi.dataSource = self;
         self.googleMapView.delegate = self;
+        self.tbvSearch.delegate = self;
+        self.tbvSearch.dataSource = self;
 
     }
     
@@ -392,6 +395,20 @@ extension FodiMapVC:GMSMapViewDelegate{
         }
     }
     
+}
+
+//MARK: UITableviewDelegate, UItableviewDatasource.
+
+extension FodiMapVC:UITableViewDelegate, UITableViewDataSource{
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1;
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5;
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell();
+    }
 }
 
 
