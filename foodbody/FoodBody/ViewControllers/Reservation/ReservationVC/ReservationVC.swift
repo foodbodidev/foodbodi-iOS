@@ -41,6 +41,11 @@ class ReservationVC: BaseVC {
                     
                     if result.isSuccess {
                         self.listReservation = result.data;
+                        for obj in result.data {
+                            obj.created_date = obj.created_date/1000;
+                            let date:String = FoodbodyUtils.shared.dateFromTimeInterval(timeInterval: obj.created_date);
+                            obj.sCreateDate = date;
+                        }
                         self.cursor = result.cursor;
                         self.tbvReservation.reloadData();
                     } else {
@@ -64,19 +69,7 @@ extension ReservationVC: UITableViewDelegate, UITableViewDataSource,UIScrollView
         let obj:ReservationResponse = listReservation[indexPath.row];
         cell.lblName.text = obj.restaurant_name;
         cell.lblCalo.text = String(format:"%d",obj.total);
-        //convert second to mini  second.
-        DispatchQueue.main.async {
-            obj.created_date = obj.created_date/1000;
-            
-            let date:String = FoodbodyUtils.shared.dateFromTimeInterval(timeInterval: obj.created_date);
-            if date.count > 0 {
-                cell.lblTime.text = date;
-            }else{
-                cell.lblTime.text = "00";
-            }
-             print ("dateac \(date)");
-        }
-        
+        cell.lblTime.text = obj.sCreateDate;
         //color
         if obj.total < Int(FbConstants.lowCalo) {
             cell.lblCalo.backgroundColor = UIColor.init(rgb: 0xfbd402)

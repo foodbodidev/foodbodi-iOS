@@ -21,6 +21,7 @@ class ReservationResponse: Mappable {
     var isSuccess: Bool = false
     var status_code: Int = -1
     var message: String = ""
+    var sCreateDate = "";
     init(restaurant_id: String, message: String) {
         self.restaurant_id = restaurant_id
         self.message = message

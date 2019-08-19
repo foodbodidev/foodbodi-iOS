@@ -11,7 +11,7 @@ import UIKit
 import GoogleSignIn
 import FBSDKLoginKit
 
-class RegisterAccountVC: BaseLoginVC, GIDSignInUIDelegate {
+class RegisterAccountVC: BaseLoginVC {
     
     @IBOutlet weak var btnGoogleSignin: UIButton!
     @IBOutlet weak var btnEmail:UIButton!
@@ -25,13 +25,11 @@ class RegisterAccountVC: BaseLoginVC, GIDSignInUIDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().delegate = self
         configureLayout()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //self.navigationController?.navigationBar.isHidden = true
     }
     
     fileprivate func configureLayout() {
@@ -60,7 +58,8 @@ class RegisterAccountVC: BaseLoginVC, GIDSignInUIDelegate {
 	}
 	
     @IBAction func actionGoogleSignin(_ sender: Any?){
-        GIDSignIn.sharedInstance()?.signIn()
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance().signIn()
     }
     
     @IBAction func actionEmail(_ sender: Any?) {
@@ -88,7 +87,6 @@ class RegisterAccountVC: BaseLoginVC, GIDSignInUIDelegate {
             
 		}
 	}
-    
     
     private func loginWithFaceBook() {
         self.showLoading()
@@ -140,7 +138,6 @@ extension RegisterAccountVC:GIDSignInDelegate{
                         self?.alertMessage(message: result.message)
                     }
                 }
-                
             }
         }
     }

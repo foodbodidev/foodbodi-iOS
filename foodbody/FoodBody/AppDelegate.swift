@@ -100,13 +100,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigation.navigationBar.isTranslucent = false
         self.window?.rootViewController = navigation
     }
-    //MARK: google sign in
-   
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return GIDSignIn.sharedInstance().handle(url as URL?,
-                                                 sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-                                                 annotation: options[UIApplication.OpenURLOptionsKey.annotation])
-    }
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask
     {
