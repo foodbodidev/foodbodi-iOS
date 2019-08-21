@@ -123,8 +123,8 @@ extension RequestService: TargetType {
             return .put
         case .deleteFood:
             return .delete
-        case .getListReservation:
-            return .get;
+        case .getListReservation: return .get
+        case .searchFodiMap: return .get;
         
         default:
             return .get
