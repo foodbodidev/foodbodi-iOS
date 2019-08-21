@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -75,6 +75,7 @@
 		D51E659F230CE6BD00743801 /* SearchTypeRestaurantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51E659E230CE6BD00743801 /* SearchTypeRestaurantCell.swift */; };
 		D51E65A5230CE9DA00743801 /* SearchFodiMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51E65A4230CE9DA00743801 /* SearchFodiMapModel.swift */; };
 		D51E65A7230CEB2000743801 /* DocumentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51E65A6230CEB2000743801 /* DocumentModel.swift */; };
+		D51E65A9230CFFD900743801 /* ListDataSearchFodiMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51E65A8230CFFD900743801 /* ListDataSearchFodiMapModel.swift */; };
 		D57CDECA22EE98DE00909DBF /* CommentRestaurantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57CDEC922EE98DE00909DBF /* CommentRestaurantModel.swift */; };
 		D587C45822DC27A100C119BA /* TabMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D587C45722DC27A100C119BA /* TabMenuVC.swift */; };
 		D587C45B22DC27BC00C119BA /* TabChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D587C45A22DC27BC00C119BA /* TabChatVC.swift */; };
@@ -204,6 +205,7 @@
 		D51E659E230CE6BD00743801 /* SearchTypeRestaurantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTypeRestaurantCell.swift; sourceTree = "<group>"; };
 		D51E65A4230CE9DA00743801 /* SearchFodiMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFodiMapModel.swift; sourceTree = "<group>"; };
 		D51E65A6230CEB2000743801 /* DocumentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentModel.swift; sourceTree = "<group>"; };
+		D51E65A8230CFFD900743801 /* ListDataSearchFodiMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDataSearchFodiMapModel.swift; sourceTree = "<group>"; };
 		D57CDEC922EE98DE00909DBF /* CommentRestaurantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentRestaurantModel.swift; sourceTree = "<group>"; };
 		D587C45722DC27A100C119BA /* TabMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMenuVC.swift; sourceTree = "<group>"; };
 		D587C45A22DC27BC00C119BA /* TabChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabChatVC.swift; sourceTree = "<group>"; };
@@ -464,6 +466,7 @@
 			children = (
 				D51E65A4230CE9DA00743801 /* SearchFodiMapModel.swift */,
 				D51E65A6230CEB2000743801 /* DocumentModel.swift */,
+				D51E65A8230CFFD900743801 /* ListDataSearchFodiMapModel.swift */,
 			);
 			path = SearchFodiMap;
 			sourceTree = "<group>";
@@ -1202,6 +1205,7 @@
 				98282BE522C26E64003ED8BC /* YourBasicVC.swift in Sources */,
 				D5CCB16E22F4390800C77414 /* CartRestaurantVC.swift in Sources */,
 				98C34F5622CE57C100A933DE /* MenuTableViewCell.swift in Sources */,
+				D51E65A9230CFFD900743801 /* ListDataSearchFodiMapModel.swift in Sources */,
 				2FCF0F04230AED340019297C /* SearchFodiMapVC.swift in Sources */,
 				D587C45822DC27A100C119BA /* TabMenuVC.swift in Sources */,
 				98CEA20422B9431200E82063 /* Button.swift in Sources */,

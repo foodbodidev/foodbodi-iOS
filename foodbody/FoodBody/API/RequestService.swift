@@ -97,7 +97,7 @@ extension RequestService: TargetType {
         case .updateDailyLog(let dic):
             return APIConstant.updateDailyLog + "/" + "\(dic.date ?? "")"
         case .searchFodiMap(let id):
-            return APIConstant.searchFodiMap + "\(id)";
+            return APIConstant.searchFodiMap;
         }
         
     }
@@ -181,7 +181,8 @@ extension RequestService: TargetType {
              return .requestParameters(parameters: dic, encoding: JSONEncoding.default)
         case .updateReservationWithId(let dic):
             return .requestParameters(parameters: dic.toJSON(), encoding: JSONEncoding.default)
-        
+        case .searchFodiMap(let search):
+            return .requestParameters(parameters: ["q": "="+search], encoding: URLEncoding.queryString)
         default:
             return .requestPlain
         }

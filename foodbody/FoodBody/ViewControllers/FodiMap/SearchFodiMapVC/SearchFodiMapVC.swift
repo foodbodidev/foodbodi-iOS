@@ -12,6 +12,7 @@ class SearchFodiMapVC: BaseVC,UITextFieldDelegate{
     //MARK: IBOutlet.
     @IBOutlet var tfSearch:UITextField!
     @IBOutlet var tbvSearch:UITableView!
+    var listDisplay: [SearchFodiMapModel] = []
     //MARK: Cycle view.
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,19 +25,7 @@ class SearchFodiMapVC: BaseVC,UITextFieldDelegate{
         tfSearch.resignFirstResponder();
         if let text = tfSearch.text {
             if text.count > 0 {
-                RequestManager.searchFodiMap(text: text) { (result, error) in
-                    if let error = error {
-                        self.alertMessage(message: error.localizedDescription)
-                    }
-                    if let result = result {
-                        
-                        if result.isSuccess {
-                            print(result);
-                        } else {
-                            self.alertMessage(message: result.message)
-                        }
-                    }
-                }
+                self.searchDataWithText(text: text);
             }
         }
         return true;
@@ -49,25 +38,33 @@ class SearchFodiMapVC: BaseVC,UITextFieldDelegate{
     @IBAction func searchAction() {
         if let text = tfSearch.text {
             if text.count > 0 {
-                RequestManager.searchFodiMap(text: text) { (result, error) in
-                    if let error = error {
-                        self.alertMessage(message: error.localizedDescription)
-                    }
-                    if let result = result {
-                        
-                        if result.isSuccess {
-                            print(result);
-                        } else {
-                            self.alertMessage(message: result.message)
-                        }
-                    }
-                }
+                self.searchDataWithText(text: text);
             }
         }
         
     }
-
+    func searchDataWithText(text:String) {
+        self.listDisplay.removeAll();
+        FoodbodyUtils.shared.showLoadingHub(viewController: self);
+        RequestManager.searchFodiMap(text: text) { (result, error) in
+            FoodbodyUtils.shared.hideLoadingHub(viewController: self);
+            if let error = error {
+                self.alertMessage(message: error.localizedDescription)
+            }
+            if let result = result {
+                
+                if result.isSuccess {
+                    
+                    self.listDisplay = result.data;
+                    self.tbvSearch.reloadData();
+                } else {
+                    self.alertMessage(message: result.message)
+                }
+            }
+        }
+    }
 }
+
 
 //MARK: UITableViewDelegate, UITableviewDatasource.
 
@@ -76,10 +73,14 @@ extension SearchFodiMapVC:UITableViewDelegate, UITableViewDataSource{
         return 1;
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5;
+        return self.listDisplay.count;
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell:SearchTypeFoodCell = tableView.dequeueReusableCell(withIdentifier: "SearchTypeFoodCell", for: indexPath) as! SearchTypeFoodCell;
+        let obj:SearchFodiMapModel = self.listDisplay[indexPath.row];
+        cell.lblName.text = obj.document.name;
+        cell.lblType.text = obj.kind;
         return cell;
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

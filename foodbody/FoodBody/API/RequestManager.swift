@@ -516,7 +516,7 @@ struct RequestManager {
             }
         }
     }
-    static func searchFodiMap(text: String, completion: @escaping (_ result: SearchFodiMapModel?, _ error: Error?) -> ()){
+    static func searchFodiMap(text: String, completion: @escaping (_ result: ListDataSearchFodiMapModel?, _ error: Error?) -> ()){
         provider.request(.searchFodiMap(id: text)){ result in
             do {
                 switch result {
@@ -524,7 +524,7 @@ struct RequestManager {
                     let json = try response.mapJSON()
                     print(String(describing: response.request?.urlRequest))
                     print(String(describing: json))
-                    let response = Mapper<SearchFodiMapModel>().map(JSONObject:json)
+                    let response = Mapper<ListDataSearchFodiMapModel>().map(JSONObject:json)
                     completion(response, nil)
                 case .failure(let error):
                     completion(nil, error)

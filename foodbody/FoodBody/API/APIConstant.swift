@@ -37,7 +37,7 @@ struct APIConstant {
     //API Profile
     static let updateDailyLog = "/api/dailylog"
     //API search.
-    static let searchFodiMap = "/api/search?q="
+    static let searchFodiMap = "/api/search"
 }
 
 
