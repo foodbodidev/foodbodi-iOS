@@ -203,6 +203,13 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate{
         let camera = GMSCameraPosition.camera(withLatitude: curentLocation.latitude, longitude: curentLocation.longitude, zoom: 15.0)
         googleMapView.camera = camera
         googleMapView.clear()
+        
+        //Add current location on mapView.
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2D.init(latitude: currentLocation.latitude, longitude: currentLocation.longitude);
+         marker.icon = UIImage.init(named: "ic_location")
+        marker.map = googleMapView;
+        
         // Creates a marker in the center of the map.
         for object in self.listRestaurant {
             let dict:NSDictionary = (object as AnyObject).data()! as NSDictionary;
@@ -272,6 +279,13 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate{
 			let nav = UINavigationController.init(rootViewController: registerAccountVC);
 			self.present(nav, animated: true, completion: nil)
 		}
+    }
+    @IBAction func currentLocaltionAction(sender:UIButton){
+        if self.currentLocation.longitude == 0 && self.currentLocation.latitude == 0 {
+            return;
+        }
+        let camera = GMSCameraPosition.camera(withLatitude: self.currentLocation.latitude, longitude: self.currentLocation.longitude, zoom: 15.0)
+        googleMapView.moveCamera(GMSCameraUpdate.setCamera(camera));
     }
 	
     private func popupNotifyInputInfo(){
