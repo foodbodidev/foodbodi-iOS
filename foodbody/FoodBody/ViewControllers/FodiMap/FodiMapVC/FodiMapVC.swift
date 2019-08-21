@@ -12,7 +12,7 @@ import Firebase
 import GooglePlaces
 import Kingfisher
 
-class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate{
+class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate,SearchFodiMapVCDelegate{
     //MARK: IBOutlet.
     @IBOutlet weak var btnAdd: UIButton!
     @IBOutlet weak var googleMapView:GMSMapView!
@@ -309,8 +309,30 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate{
     //MARK: UItextFieldDelegate.
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         let vc:SearchFodiMapVC = getViewController(className: SearchFodiMapVC.className, storyboard: FbConstants.FodiMapSB) as! SearchFodiMapVC;
+        vc.delegate = self;
         self.present(vc, animated: true, completion: nil);
         return true;
+    }
+    func CartInfoCellDelegate(cell: SearchFodiMapVC, obj: SearchFodiMapModel) {
+        FoodbodyUtils.shared.showLoadingHub(viewController: self)
+        self.db.collection("restaurants").getDocuments { (querySnapshot, error) in
+            FoodbodyUtils.shared.hideLoadingHub(viewController: self);
+            if let error = error {
+                self.alertMessage(message: "Error getting documents \(error.localizedDescription)")
+            } else {
+                if let querySnapshot = querySnapshot {
+                    for item in querySnapshot.documents {
+                        if item.documentID == obj.document.restaurant_id{
+                            let vc:RestaurantInfoMenuVC = getViewController(className: RestaurantInfoMenuVC.className, storyboard: FbConstants.FodiMapSB) as! RestaurantInfoMenuVC
+                            vc.document = item;
+                            self.navigationController?.pushViewController(vc, animated: true)
+                            break;
+                        }
+                    }
+                    
+                }
+            }
+        }
     }
     //MARK: others method.
     func averageCalo(listCalosData:NSArray) -> Double {

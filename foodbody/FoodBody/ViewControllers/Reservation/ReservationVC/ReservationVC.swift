@@ -22,12 +22,12 @@ class ReservationVC: BaseVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.initVar();
+        isLoadingNextPage = true;
     }
     //MARK: init UI.
     func initUI(){
         self.tbvReservation.delegate = self;
         self.tbvReservation.dataSource = self;
-        isLoadingNextPage = true;
     }
     func initVar() {
         if AppManager.user?.token.isEmpty == false {

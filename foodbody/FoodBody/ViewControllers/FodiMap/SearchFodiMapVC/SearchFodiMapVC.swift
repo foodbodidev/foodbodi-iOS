@@ -7,22 +7,27 @@
 //
 
 import UIKit
-
+import Firebase
+protocol SearchFodiMapVCDelegate:class {
+    func CartInfoCellDelegate(cell: SearchFodiMapVC, obj: SearchFodiMapModel)
+}
 class SearchFodiMapVC: BaseVC,UITextFieldDelegate{
     //MARK: IBOutlet.
     @IBOutlet var tfSearch:UITextField!
     @IBOutlet var tbvSearch:UITableView!
     var listDisplay: [SearchFodiMapModel] = []
+    let db = Firestore.firestore()
+     weak var delegate: SearchFodiMapVCDelegate?
     //MARK: Cycle view.
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tbvSearch.delegate = self;
         self.tbvSearch.dataSource = self;
         tfSearch.delegate = self;
+        
     }
     //MARK UItextFieldDelegate.
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        tfSearch.resignFirstResponder();
         if let text = tfSearch.text {
             if text.count > 0 {
                 self.searchDataWithText(text: text);
@@ -45,6 +50,7 @@ class SearchFodiMapVC: BaseVC,UITextFieldDelegate{
     }
     func searchDataWithText(text:String) {
         self.listDisplay.removeAll();
+        tfSearch.resignFirstResponder();
         FoodbodyUtils.shared.showLoadingHub(viewController: self);
         RequestManager.searchFodiMap(text: text) { (result, error) in
             FoodbodyUtils.shared.hideLoadingHub(viewController: self);
@@ -65,7 +71,6 @@ class SearchFodiMapVC: BaseVC,UITextFieldDelegate{
     }
 }
 
-
 //MARK: UITableViewDelegate, UITableviewDatasource.
 
 extension SearchFodiMapVC:UITableViewDelegate, UITableViewDataSource{
@@ -76,17 +81,36 @@ extension SearchFodiMapVC:UITableViewDelegate, UITableViewDataSource{
         return self.listDisplay.count;
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell:SearchTypeFoodCell = tableView.dequeueReusableCell(withIdentifier: "SearchTypeFoodCell", for: indexPath) as! SearchTypeFoodCell;
         let obj:SearchFodiMapModel = self.listDisplay[indexPath.row];
-        cell.lblName.text = obj.document.name;
-        cell.lblType.text = obj.kind;
-        return cell;
+        if (obj.kind == "foods"){
+            let cell:SearchTypeFoodCell = tableView.dequeueReusableCell(withIdentifier: "SearchTypeFoodCell", for: indexPath) as! SearchTypeFoodCell;
+            
+            cell.lblName.text = obj.document.name;
+            cell.lblType.text = obj.kind;
+            return cell;
+        }else{
+            let cell:SearchTypeRestaurantCell = tableView.dequeueReusableCell(withIdentifier: "SearchTypeRestaurantCell", for: indexPath) as! SearchTypeRestaurantCell;
+            cell.lblName.text = obj.document.name;
+            cell.lblType.text = obj.kind;
+            cell.lblAddress.text = obj.document.address;
+            return cell;
+        }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let obj:SearchFodiMapModel = self.listDisplay[indexPath.row];
+        if obj.document.restaurant_id.count > 0 {
+            self.delegate?.CartInfoCellDelegate(cell: self, obj: obj);
+            self.dismiss(animated: true, completion: nil);
+        }else{
+            self.alertMessage(message: "restaurant id is nil");
+        }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100;
+        let obj:SearchFodiMapModel = self.listDisplay[indexPath.row];
+        if (obj.kind == "foods"){
+            return 50;
+        }else{
+            return 70;
+        }
     }
 }
