@@ -506,6 +506,76 @@
             </objects>
             <point key="canvasLocation" x="1683.75" y="833.45070422535207"/>
         </scene>
+        <!--Search Fodi MapVC-->
+        <scene sceneID="f2q-aQ-jRY">
+            <objects>
+                <viewController storyboardIdentifier="SearchFodiMapVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Pat-FE-qDc" customClass="SearchFodiMapVC" customModule="Foodbodi" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2tY-zk-SeL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ojM-Kj-MRM" userLabel="vSearch">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search Adress" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tcc-b3-UF1">
+                                        <rect key="frame" x="50" y="0.0" width="275" height="44"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lcr-XP-ODe">
+                                        <rect key="frame" x="325" y="0.0" width="50" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="BAz-wx-rEo"/>
+                                        </constraints>
+                                        <state key="normal" title="Search"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jiY-Nh-c7Z">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="bWd-wb-aIn"/>
+                                            <constraint firstAttribute="width" constant="50" id="ep9-xL-4kf"/>
+                                        </constraints>
+                                        <state key="normal" title="Cancel"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="tcc-b3-UF1" secondAttribute="bottom" id="4ID-aG-35j"/>
+                                    <constraint firstItem="jiY-Nh-c7Z" firstAttribute="leading" secondItem="ojM-Kj-MRM" secondAttribute="leading" id="6im-a0-xWt"/>
+                                    <constraint firstAttribute="trailing" secondItem="lcr-XP-ODe" secondAttribute="trailing" id="8CM-wq-KlL"/>
+                                    <constraint firstAttribute="height" constant="44" id="IrX-Sc-bt0"/>
+                                    <constraint firstItem="lcr-XP-ODe" firstAttribute="top" secondItem="ojM-Kj-MRM" secondAttribute="top" id="QXM-0D-NKK"/>
+                                    <constraint firstItem="tcc-b3-UF1" firstAttribute="top" secondItem="ojM-Kj-MRM" secondAttribute="top" id="Uml-uh-RJE"/>
+                                    <constraint firstAttribute="bottom" secondItem="lcr-XP-ODe" secondAttribute="bottom" id="egZ-es-4VU"/>
+                                    <constraint firstItem="lcr-XP-ODe" firstAttribute="leading" secondItem="tcc-b3-UF1" secondAttribute="trailing" id="ic3-iS-BWk"/>
+                                    <constraint firstAttribute="bottom" secondItem="jiY-Nh-c7Z" secondAttribute="bottom" id="lDz-FU-aVd"/>
+                                    <constraint firstItem="tcc-b3-UF1" firstAttribute="leading" secondItem="jiY-Nh-c7Z" secondAttribute="trailing" id="m7q-RZ-2yn"/>
+                                    <constraint firstItem="jiY-Nh-c7Z" firstAttribute="top" secondItem="ojM-Kj-MRM" secondAttribute="top" id="wON-B5-LHd"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RDT-RR-02Q">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="RCk-p6-MVo" firstAttribute="bottom" secondItem="RDT-RR-02Q" secondAttribute="bottom" id="KzS-SH-zPg"/>
+                            <constraint firstItem="RDT-RR-02Q" firstAttribute="top" secondItem="ojM-Kj-MRM" secondAttribute="bottom" id="edf-gd-9W1"/>
+                            <constraint firstItem="RCk-p6-MVo" firstAttribute="trailing" secondItem="RDT-RR-02Q" secondAttribute="trailing" id="glp-pp-Pp3"/>
+                            <constraint firstItem="ojM-Kj-MRM" firstAttribute="top" secondItem="RCk-p6-MVo" secondAttribute="top" id="tEy-Be-r6j"/>
+                            <constraint firstItem="RCk-p6-MVo" firstAttribute="trailing" secondItem="ojM-Kj-MRM" secondAttribute="trailing" id="vxb-IU-itF"/>
+                            <constraint firstItem="ojM-Kj-MRM" firstAttribute="leading" secondItem="RCk-p6-MVo" secondAttribute="leading" id="yqk-wm-dFP"/>
+                            <constraint firstItem="RDT-RR-02Q" firstAttribute="leading" secondItem="RCk-p6-MVo" secondAttribute="leading" id="zI0-dF-yf1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="RCk-p6-MVo"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e8u-UT-G4p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2672.8000000000002" y="795.6521739130435"/>
+        </scene>
         <!--Tab ChatVC-->
         <scene sceneID="1wr-gw-oxB">
             <objects>
@@ -563,7 +633,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="375" height="65"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="F9H-dx-J6Q" id="HXb-8l-WjV">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="64.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fHu-8l-h0k" userLabel="vBoss">

@@ -32,6 +32,7 @@ enum RequestService {
     case getOneReservationWithId(id:String)
     case updateReservationWithId(dic: ReservationRequest)
     case updateDailyLog(dic: DailyLogModel)
+    case searchFodiMap(id:String)
 }
 
 extension RequestService: TargetType {
@@ -95,6 +96,8 @@ extension RequestService: TargetType {
             return APIConstant.updateReservation + "/\(dic.reservationId)"
         case .updateDailyLog(let dic):
             return APIConstant.updateDailyLog + "/" + "\(dic.date ?? "")"
+        case .searchFodiMap(let id):
+            return APIConstant.searchFodiMap + "\(id)";
         }
         
     }

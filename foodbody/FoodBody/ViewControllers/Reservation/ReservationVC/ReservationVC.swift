@@ -68,7 +68,7 @@ extension ReservationVC: UITableViewDelegate, UITableViewDataSource,UIScrollView
         let cell:ReservationCell = tableView.dequeueReusableCell(withIdentifier: "ReservationCell", for: indexPath) as! ReservationCell;
         let obj:ReservationResponse = listReservation[indexPath.row];
         cell.lblName.text = obj.restaurant_name;
-        cell.lblCalo.text = String(format:"%d",obj.total);
+        cell.lblCalo.text = String(format:"%d kcal",obj.total);
         cell.lblTime.text = obj.sCreateDate;
         //color
         if obj.total < Int(FbConstants.lowCalo) {

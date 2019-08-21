@@ -12,12 +12,12 @@ import Firebase
 import GooglePlaces
 import Kingfisher
 
-class FodiMapVC: BaseVC,CLLocationManagerDelegate{
+class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate{
     //MARK: IBOutlet.
     @IBOutlet weak var btnAdd: UIButton!
     @IBOutlet weak var googleMapView:GMSMapView!
     @IBOutlet weak var clvFodi:UICollectionView!
-    @IBOutlet weak var tbvSearch:UITableView!
+    @IBOutlet weak var tfSearch:UITextField!
 	
     //MARK: variable.
     var locationManager:CLLocationManager? = nil;
@@ -61,8 +61,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
         self.clvFodi.delegate = self;
         self.clvFodi.dataSource = self;
         self.googleMapView.delegate = self;
-        self.tbvSearch.delegate = self;
-        self.tbvSearch.dataSource = self;
+        self.tfSearch.delegate = self;
 
     }
     
@@ -293,6 +292,12 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
 		alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
     }
+    //MARK: UItextFieldDelegate.
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        let vc:SearchFodiMapVC = getViewController(className: SearchFodiMapVC.className, storyboard: FbConstants.FodiMapSB) as! SearchFodiMapVC;
+        self.present(vc, animated: true, completion: nil);
+        return true;
+    }
     //MARK: others method.
     func averageCalo(listCalosData:NSArray) -> Double {
         if (listCalosData.count) > 0 {
@@ -307,6 +312,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate{
             return 0;
         }
     }
+    
 }
 
 extension FodiMapVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -395,20 +401,6 @@ extension FodiMapVC:GMSMapViewDelegate{
         }
     }
     
-}
-
-//MARK: UITableviewDelegate, UItableviewDatasource.
-
-extension FodiMapVC:UITableViewDelegate, UITableViewDataSource{
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1;
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5;
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell();
-    }
 }
 
 

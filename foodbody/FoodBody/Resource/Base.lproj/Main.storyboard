@@ -151,7 +151,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cow-i8-sVQ">
-                                <rect key="frame" x="300" y="72" width="45" height="33"/>
+                                <rect key="frame" x="300" y="80" width="45" height="45"/>
                                 <color key="backgroundColor" red="0.070588235289999995" green="0.74117647060000003" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="00y-PL-SVG"/>
@@ -168,16 +168,16 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sdv-f1-b32" userLabel="vSearch">
-                                <rect key="frame" x="67" y="28" width="240" height="36"/>
+                                <rect key="frame" x="10" y="30" width="355" height="45"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search Adress" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gat-e8-bDA">
-                                        <rect key="frame" x="0.0" y="3" width="71" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="310" height="45"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uIg-gf-2Ze">
-                                        <rect key="frame" x="190" y="7" width="22" height="22"/>
+                                        <rect key="frame" x="310" y="0.0" width="45" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="45" id="0nO-HR-WkN"/>
                                         </constraints>
@@ -223,6 +223,7 @@
                         <outlet property="btnAdd" destination="Cow-i8-sVQ" id="p66-a8-Jh8"/>
                         <outlet property="clvFodi" destination="V4N-G1-fev" id="Ax7-Qi-gyl"/>
                         <outlet property="googleMapView" destination="HFr-cC-qfp" id="ccB-RX-PXc"/>
+                        <outlet property="tfSearch" destination="gat-e8-bDA" id="dgw-NB-s65"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fxi-IG-DzE" userLabel="First Responder" sceneMemberID="firstResponder"/>
