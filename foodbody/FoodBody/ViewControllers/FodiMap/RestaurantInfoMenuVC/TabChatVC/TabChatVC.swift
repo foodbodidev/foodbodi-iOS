@@ -69,6 +69,10 @@ class TabChatVC: BaseVC {
     //MARK: UIAction.
     @IBAction func sendAction(sender:UIButton){
         print(tvChat.text as Any);
+        if if AppManager.user?.token == nil {
+            self.alertMessage(message: "You'll need to log in before you can use this feature!")
+            return;
+        }
         //send data
         let commentInfo: CommentRequest = CommentRequest()
         commentInfo.restaurant_id = self.restaurantId;

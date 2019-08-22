@@ -84,6 +84,10 @@ class ReservationUpdateVC: BaseVC, CartInfoCellDelegate{
     }
     //MARK: IBAction.
     @IBAction func actionUpdateReservation(sender:UIButton){
+        if (AppManager.user?.token.isEmpty)! {
+            self.alertMessage(message: "You'll need to log in before you can use this feature!")
+            return;
+        }
         let request = ReservationRequest()
         request.restaurant_id = self.restaurantId
         request.reservationId = self.reservationId
