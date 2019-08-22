@@ -106,6 +106,7 @@ class ReservationUpdateVC: BaseVC, CartInfoCellDelegate{
             }
             if let result = result {
                 if result.isSuccess {
+                NotificationCenter.default.post(name:.kFb_update_reservation, object: nil, userInfo:nil);
                     let alert = UIAlertController(title:nil, message: "Add reservation success", preferredStyle: .alert)
                     let action = UIAlertAction(title: "Ok", style: .default) {
                         UIAlertAction in

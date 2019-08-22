@@ -27,7 +27,7 @@ class ListReservationResponse: Mappable {
     func mapping(map: Map) {
         status_code <- map["status_code"]
         data <- map["data.reservations"]
-        cursor <- map["cursor"];
+        cursor <- map["data.cursor"];
         message <- map["message"]
         isSuccess = (status_code == 0) ? true : false
     }

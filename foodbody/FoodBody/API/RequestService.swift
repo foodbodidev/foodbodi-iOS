@@ -86,7 +86,7 @@ extension RequestService: TargetType {
             return APIConstant.addReservation;
         case .getListReservation(let cursor):
             if cursor.count > 0{
-                return APIConstant.getListReservation + "?" + "cursor=" + cursor;
+                return APIConstant.getListReservation;
             }else{
                 return APIConstant.getListReservation;
             }
@@ -99,6 +99,7 @@ extension RequestService: TargetType {
         case .searchFodiMap(let id):
             return APIConstant.searchFodiMap;
         }
+        
         
     }
     
@@ -182,7 +183,14 @@ extension RequestService: TargetType {
         case .updateReservationWithId(let dic):
             return .requestParameters(parameters: dic.toJSON(), encoding: JSONEncoding.default)
         case .searchFodiMap(let search):
-            return .requestParameters(parameters: ["q": "="+search], encoding: URLEncoding.queryString)
+            return .requestParameters(parameters: ["q":search], encoding: URLEncoding.queryString)
+        case .getListReservation(let cursor):
+            if cursor.count > 0{
+                return .requestParameters(parameters: ["cursor":cursor], encoding: URLEncoding.queryString)
+            }else{
+                return .requestPlain
+            }
+            
         default:
             return .requestPlain
         }

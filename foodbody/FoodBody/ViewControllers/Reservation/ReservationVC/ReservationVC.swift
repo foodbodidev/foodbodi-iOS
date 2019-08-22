@@ -13,16 +13,24 @@ class ReservationVC: BaseVC {
     @IBOutlet var tbvReservation:UITableView!
     var listReservation:[ReservationResponse] = [];
     var cursor:String = "";
-    var isLoadingNextPage:Bool = true;
+    var isLoadingNextPage:Bool = false;
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initUI();
+        self.initVar();
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.registerNotification();
+    }
+    func registerNotification(){
+        NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveUpdateReservation(_:)), name: .kFb_update_reservation, object:nil)
+    }
+    @objc func onDidReceiveUpdateReservation(_ notification: Notification)
+    {
+        print("update data reservation")
         self.initVar();
-        isLoadingNextPage = true;
     }
     //MARK: init UI.
     func initUI(){
@@ -33,7 +41,7 @@ class ReservationVC: BaseVC {
         if AppManager.user?.token.isEmpty == false {
             FoodbodyUtils.shared.showLoadingHub(viewController: self);
             
-            RequestManager.getListReservation(cursor:cursor) { (result, error) in
+            RequestManager.getListReservation(cursor:"") { (result, error) in
                 FoodbodyUtils.shared.hideLoadingHub(viewController: self);
                 if let error = error {
                     self.alertMessage(message: error.localizedDescription)
@@ -41,6 +49,7 @@ class ReservationVC: BaseVC {
                 if let result = result {
                     
                     if result.isSuccess {
+                        self.listReservation.removeAll();
                         self.listReservation = result.data;
                         for obj in result.data {
                             obj.created_date = obj.created_date/1000;
@@ -48,6 +57,7 @@ class ReservationVC: BaseVC {
                             obj.sCreateDate = date;
                         }
                         self.cursor = result.cursor;
+                        self.isLoadingNextPage = true;
                         self.tbvReservation.reloadData();
                     } else {
                         self.alertMessage(message: result.message)
