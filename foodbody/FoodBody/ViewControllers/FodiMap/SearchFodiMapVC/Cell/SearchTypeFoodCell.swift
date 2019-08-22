@@ -12,6 +12,7 @@ class SearchTypeFoodCell: UITableViewCell {
     //MARK: IBOutlet
     @IBOutlet var lblName:UILabel!
     @IBOutlet var lblType:UILabel!
+    @IBOutlet var imgType:UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

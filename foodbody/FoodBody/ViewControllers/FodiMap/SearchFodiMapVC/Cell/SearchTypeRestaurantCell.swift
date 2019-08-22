@@ -13,6 +13,7 @@ class SearchTypeRestaurantCell: UITableViewCell {
     @IBOutlet var lblName:UILabel!
     @IBOutlet var lblType:UILabel!
     @IBOutlet var lblAddress:UILabel!
+    @IBOutlet var imgType:UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

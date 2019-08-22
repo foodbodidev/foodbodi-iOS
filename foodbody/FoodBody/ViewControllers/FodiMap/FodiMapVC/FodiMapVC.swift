@@ -311,9 +311,9 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate,SearchFodi
         let vc:SearchFodiMapVC = getViewController(className: SearchFodiMapVC.className, storyboard: FbConstants.FodiMapSB) as! SearchFodiMapVC;
         vc.delegate = self;
         self.present(vc, animated: true, completion: nil);
-        return true;
+        return false;
     }
-    func CartInfoCellDelegate(cell: SearchFodiMapVC, obj: SearchFodiMapModel) {
+    func SearchFodiMapVCDelegate(cell: SearchFodiMapVC, obj: String) {
         FoodbodyUtils.shared.showLoadingHub(viewController: self)
         self.db.collection("restaurants").getDocuments { (querySnapshot, error) in
             FoodbodyUtils.shared.hideLoadingHub(viewController: self);
@@ -322,7 +322,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate,SearchFodi
             } else {
                 if let querySnapshot = querySnapshot {
                     for item in querySnapshot.documents {
-                        if item.documentID == obj.document.restaurant_id{
+                        if item.documentID == obj {
                             let vc:RestaurantInfoMenuVC = getViewController(className: RestaurantInfoMenuVC.className, storyboard: FbConstants.FodiMapSB) as! RestaurantInfoMenuVC
                             vc.document = item;
                             self.navigationController?.pushViewController(vc, animated: true)

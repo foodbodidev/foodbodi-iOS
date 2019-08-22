@@ -151,7 +151,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cow-i8-sVQ">
-                                <rect key="frame" x="300" y="80" width="45" height="45"/>
+                                <rect key="frame" x="320" y="80" width="45" height="45"/>
                                 <color key="backgroundColor" red="0.070588235289999995" green="0.74117647060000003" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="00y-PL-SVG"/>
@@ -172,6 +172,9 @@
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search Adress" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gat-e8-bDA">
                                         <rect key="frame" x="0.0" y="0.0" width="310" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="pxy-1a-SuE"/>
+                                        </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -193,10 +196,9 @@
                                     <constraint firstItem="uIg-gf-2Ze" firstAttribute="leading" secondItem="gat-e8-bDA" secondAttribute="trailing" id="3Qz-3c-RRA"/>
                                     <constraint firstItem="gat-e8-bDA" firstAttribute="leading" secondItem="Sdv-f1-b32" secondAttribute="leading" id="5dM-8k-s5A"/>
                                     <constraint firstAttribute="bottom" secondItem="uIg-gf-2Ze" secondAttribute="bottom" id="7xb-kq-piB"/>
-                                    <constraint firstAttribute="bottom" secondItem="gat-e8-bDA" secondAttribute="bottom" id="9PL-BM-Ify"/>
                                     <constraint firstAttribute="height" constant="45" id="Bsy-Ys-Y2i"/>
                                     <constraint firstItem="uIg-gf-2Ze" firstAttribute="top" secondItem="Sdv-f1-b32" secondAttribute="top" id="FnS-oa-YHD"/>
-                                    <constraint firstItem="gat-e8-bDA" firstAttribute="top" secondItem="Sdv-f1-b32" secondAttribute="top" id="bVe-0u-IBO"/>
+                                    <constraint firstItem="gat-e8-bDA" firstAttribute="centerY" secondItem="Sdv-f1-b32" secondAttribute="centerY" id="Pni-Sc-3qI"/>
                                 </constraints>
                             </view>
                         </subviews>

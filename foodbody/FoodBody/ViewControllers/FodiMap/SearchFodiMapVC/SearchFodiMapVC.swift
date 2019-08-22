@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 protocol SearchFodiMapVCDelegate:class {
-    func CartInfoCellDelegate(cell: SearchFodiMapVC, obj: SearchFodiMapModel)
+    func SearchFodiMapVCDelegate(cell: SearchFodiMapVC, obj: String)
 }
 class SearchFodiMapVC: BaseVC,UITextFieldDelegate{
     //MARK: IBOutlet.
@@ -40,14 +40,6 @@ class SearchFodiMapVC: BaseVC,UITextFieldDelegate{
     @IBAction func cancelAction() {
         self.dismiss(animated: true, completion: nil);
     }
-    @IBAction func searchAction() {
-        if let text = tfSearch.text {
-            if text.count > 0 {
-                self.searchDataWithText(text: text);
-            }
-        }
-        
-    }
     func searchDataWithText(text:String) {
         self.listDisplay.removeAll();
         tfSearch.resignFirstResponder();
@@ -58,9 +50,7 @@ class SearchFodiMapVC: BaseVC,UITextFieldDelegate{
                 self.alertMessage(message: error.localizedDescription)
             }
             if let result = result {
-                
                 if result.isSuccess {
-                    
                     self.listDisplay = result.data;
                     self.tbvSearch.reloadData();
                 } else {
@@ -87,22 +77,37 @@ extension SearchFodiMapVC:UITableViewDelegate, UITableViewDataSource{
             
             cell.lblName.text = obj.document.name;
             cell.lblType.text = obj.kind;
+            cell.imgType.image = UIImage.init(named: "ic_food");
             return cell;
         }else{
             let cell:SearchTypeRestaurantCell = tableView.dequeueReusableCell(withIdentifier: "SearchTypeRestaurantCell", for: indexPath) as! SearchTypeRestaurantCell;
             cell.lblName.text = obj.document.name;
             cell.lblType.text = obj.kind;
             cell.lblAddress.text = obj.document.address;
+            cell.imgType.image = UIImage.init(named: "ic_restaurant");
             return cell;
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let obj:SearchFodiMapModel = self.listDisplay[indexPath.row];
-        if obj.document.restaurant_id.count > 0 {
-            self.delegate?.CartInfoCellDelegate(cell: self, obj: obj);
-            self.dismiss(animated: true, completion: nil);
+        if (obj.kind == "foods"){
+            if obj.document.restaurant_id.count > 0 {
+                if let delegate = self.delegate{
+                    delegate.SearchFodiMapVCDelegate(cell: self, obj: obj.document.restaurant_id)
+                    self.dismiss(animated: true, completion: nil);
+                }
+            }else{
+                self.alertMessage(message: "restaurant id is nil");
+            }
         }else{
-            self.alertMessage(message: "restaurant id is nil");
+            if obj.document_id.count > 0 {
+                if let delegate = self.delegate{
+                    delegate.SearchFodiMapVCDelegate(cell: self, obj: obj.document_id)
+                    self.dismiss(animated: true, completion: nil);
+                }
+            }else{
+                self.alertMessage(message: "restaurant id is nil");
+            }
         }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
