@@ -55,7 +55,7 @@ class CartRestaurantVC: BaseVC, CartInfoCellDelegate {
     }
     
     @IBAction func btnReservation(sender:UIButton){
-        if if AppManager.user?.token == nil {
+        if AppManager.user?.token == nil {
             self.alertMessage(message: "You'll need to log in before you can use this feature!")
             return;
         }
