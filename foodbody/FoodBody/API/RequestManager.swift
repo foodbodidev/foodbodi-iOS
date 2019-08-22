@@ -517,6 +517,30 @@ struct RequestManager {
             }
         }
     }
+    
+    static func getDailyLog(dateString: String, completion: @escaping (_ result: DailyLogResponseModel?, _ error: Error?) -> ()){
+        
+        
+        provider.request(.getDailyLog(dateString: dateString)) { result in
+            do {
+                switch result {
+                case .success(let response):
+                    let json = try response.mapJSON()
+                    print(String(describing: response.request))
+                    print(String(describing: json))
+                    let response = Mapper<DailyLogResponseModel>().map(JSONObject:json)
+                    completion(response, nil)
+                case .failure(let error):
+                    completion(nil, error)
+                    print(error)
+                }
+            } catch let error {
+                completion(nil, error)
+                print(error)
+            }
+        }
+    }
+    
     static func searchFodiMap(text: String, completion: @escaping (_ result: ListDataSearchFodiMapModel?, _ error: Error?) -> ()){
         provider.request(.searchFodiMap(id: text)){ result in
             do {
@@ -537,6 +561,8 @@ struct RequestManager {
             }
         }
     }
+    
+    
     
 }
 

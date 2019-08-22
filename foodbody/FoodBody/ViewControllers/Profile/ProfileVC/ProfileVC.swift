@@ -22,6 +22,7 @@ class ProfileVC: BaseVC {
 	var rateDataSource: [Int] =  [70, 30]
 	
 	var totalCalo: Double = 3000 // by fefault
+    var calorEaten: Double = 0
     
     let dailyLogModel: DailyLogModel = DailyLogModel()
 
@@ -30,8 +31,10 @@ class ProfileVC: BaseVC {
         setupLayout()
 		setupChart()
         fetchData()
+        
        
     }
+
     
     @IBAction func actionLogout() {
         FBAppDelegate.gotoWelcome()
@@ -128,42 +131,50 @@ class ProfileVC: BaseVC {
     func fetchData() {
 		let yesterday = Date().dayBefore
 		let today = Date(timeInterval: 86400, since: yesterday)
-		getSteps(dateQuery: today) // get data of today
+		getData(dateQuery: today) // get data of today
     }
 	
-	func getSteps(dateQuery: Date) {
+	func getData(dateQuery: Date) {
+        self.showLoading()
 		HealthKitManager.shared.getSteps(dateQuery: dateQuery, completion: { step in
-			DispatchQueue.main.async {
-				self.bindData(steps: step)
-			}
+            RequestManager.getDailyLog(dateString: dateQuery.yyyyMMdd) { (result, error) in
+                self.hideLoading()
+                self.bindData(steps: step, caloEten: result?.total_eat ?? 0)
+                self.updateDailyLog(date: dateQuery, step: step)
+            }
 		})
 	}
 	
 	
-	func bindData(steps: Int) {
-		let caloLeft = caculateCaloriesLeft(steps: steps)
-		let caloLeftRate = Double(caloLeft)!/totalCalo*100
-		
-		self.stepLabel.text = "\(Int(steps)) Steps"
-		self.caloLabel.text = caloLeft
-		self.dailyLogModel.step = steps
-		self.updateDailyLog()
-		self.rateDataSource = [Int(caloLeftRate), 100 - Int(caloLeftRate)]
-		self.updateChartData()
-		print(steps)
+    func bindData(steps: Int, caloEten: Double) {
+        DispatchQueue.main.async {
+            let caloLeft = self.caculateCaloriesLeft(steps: steps, caloEten: caloEten)
+            let caloLeftRate = Double(caloLeft)!/self.totalCalo*100
+            self.stepLabel.text = "\(Int(steps)) Steps"
+            self.caloLabel.text = caloLeft
+            self.rateDataSource = [Int(caloLeftRate), 100 - Int(caloLeftRate)]
+            self.updateChartData()
+            print(steps)
+        }
 	}
     
-    func updateDailyLog() {
-        
-        dailyLogModel.date = Date().yyyyMMdd
+    func updateDailyLog(date: Date, step: Int) {
+        dailyLogModel.date = date.yyyyMMdd
+        dailyLogModel.step = step
         RequestManager.updateDailyLog(dailyLog: dailyLogModel) { (_, _) in
             
         }
     }
 	
-	private func caculateCaloriesLeft(steps: Int) -> String {
-		let duration = Double(steps)/1.38/60 // minutes
-		let calorLeft = totalCalo - Double((AppManager.user?.weight) ?? 50)*0.088*duration // default 3000 calor in a day
+	private func caculateCaloriesLeft(steps: Int, caloEten: Double) -> String {
+        var calorLeft = totalCalo + Double(steps*20/1000) - caloEten
+        if calorLeft < 0 {
+            calorLeft = 0
+        }
+        
+        if calorLeft > totalCalo {
+            calorLeft = totalCalo
+        }
 		return NSString(format:"%.0f", calorLeft) as String
 	}
 }
@@ -171,7 +182,7 @@ class ProfileVC: BaseVC {
 extension ProfileVC: CalendarVCDelegate {
 	func didSelectDate(date: Date) {
 		dateLabel.text = date.toString()
-		getSteps(dateQuery: date)
+		getData(dateQuery: date)
 		self.dismiss(animated: true, completion: nil)
 	}
 }

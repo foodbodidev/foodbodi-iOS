@@ -32,3 +32,27 @@ class DailyLogModel: Mappable  {
     }
     
 }
+
+class DailyLogResponseModel: Mappable  {
+    
+    var step: Int?
+    var calo_threshold: Double?
+    var total_eat: Double?
+    
+    required init?(map: Map) {
+        
+    }
+    
+    init() {
+        
+    }
+    
+    func mapping(map: Map) {
+        step <- map["data.step"]
+        calo_threshold <- map["data.calo_threshold"]
+        total_eat <- map["data.total_eat"]
+    }
+    
+}
+
+
