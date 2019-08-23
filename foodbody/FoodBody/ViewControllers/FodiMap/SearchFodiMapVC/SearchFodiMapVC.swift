@@ -113,9 +113,9 @@ extension SearchFodiMapVC:UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let obj:SearchFodiMapModel = self.listDisplay[indexPath.row];
         if (obj.kind == "foods"){
-            return 50;
+            return 80;
         }else{
-            return 70;
+            return 100;
         }
     }
 }
