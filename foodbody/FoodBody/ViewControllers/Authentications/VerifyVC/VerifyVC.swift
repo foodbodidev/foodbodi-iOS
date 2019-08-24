@@ -14,6 +14,7 @@ class VerifyVC: BaseVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = true
         setupLayout()
     }
     
@@ -23,7 +24,7 @@ class VerifyVC: BaseVC {
         backButton.tintColor = Style.Color.mainPurple
     }
     
-    @IBAction override func actionBack() {
-        self.navigationController?.popToRootViewController(animated: true)
-    }
+//    @IBAction override func actionBack() {
+//        self.navigationController?.popToRootViewController(animated: true)
+//    }
 }

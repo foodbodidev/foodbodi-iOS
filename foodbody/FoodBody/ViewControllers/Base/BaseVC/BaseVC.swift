@@ -28,19 +28,11 @@ class BaseVC: UIViewController {
 	}
 	
 	private func setupNavigationBarItem() {
-		let backButton = UIButton()
-		let image = UIImage(named: "backArow")?.withRenderingMode(.alwaysTemplate)
-		backButton.setImage(image, for: .normal)
-		backButton.tintColor = Style.Color.mainPurple
-		backButton.addTarget(self, action: #selector(actionBack), for: .touchUpInside)
-		backButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
-		navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
-        
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        self.navigationController?.navigationBar.tintColor = Style.Color.mainPurple
+        let textAttributes = [NSAttributedString.Key.foregroundColor: Style.Color.mainPurple]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")// hide line of nav
-	}
-	
-	@objc func actionBack() {
-		self.navigationController?.popViewController(animated: true)
 	}
     
     public func showLoading(){

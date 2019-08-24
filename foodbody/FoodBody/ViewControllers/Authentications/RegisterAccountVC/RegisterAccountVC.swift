@@ -45,21 +45,29 @@ class RegisterAccountVC: BaseLoginVC {
         emailView.layer.borderColor = UIColor(red: 25, green: 62, blue: 82).cgColor
         emailView.layer.borderWidth = 1
         
+        let backButton = UIButton()
+        let image = UIImage(named: "backArow")?.withRenderingMode(.alwaysTemplate)
+        backButton.setImage(image, for: .normal)
+        backButton.tintColor = Style.Color.mainPurple
+        backButton.addTarget(self, action: #selector(actionBack), for: .touchUpInside)
+        backButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
         
+        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")// hide line of nav
+    }
+    
+    @objc func actionBack() {
+        self.navigationController?.dismiss(animated: true, completion: nil)
     }
     
     //MARK: action.
     @IBAction func didTapSignOut(_ sender: AnyObject) {
         GIDSignIn.sharedInstance().signOut()
     }
-    
-	override func actionBack() {
-		self.navigationController?.dismiss(animated: true, completion: nil)
-	}
 	
     @IBAction func actionGoogleSignin(_ sender: Any?){
-        GIDSignIn.sharedInstance()?.presentingViewController = self
-        GIDSignIn.sharedInstance().signIn()
+//        GIDSignIn.sharedInstance()?.presentingViewController = self
+//        GIDSignIn.sharedInstance().signIn()
     }
     
     @IBAction func actionEmail(_ sender: Any?) {
