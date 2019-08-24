@@ -21,7 +21,7 @@ class ProfileVC: BaseVC {
 	
 	var rateDataSource: [Int] =  [70, 30]
 	
-	var totalCalo: Double = 3000 // by fefault
+	var totalCalo: Double = 2500 // by fefault
     var calorEaten: Double = 0
     
     let dailyLogModel: DailyLogModel = DailyLogModel()
@@ -139,16 +139,16 @@ class ProfileVC: BaseVC {
 		HealthKitManager.shared.getSteps(dateQuery: dateQuery, completion: { step in
             RequestManager.getDailyLog(dateString: dateQuery.yyyyMMdd) { (result, error) in
                 self.hideLoading()
-                self.bindData(steps: step, caloEten: result?.total_eat ?? 0)
-                self.updateDailyLog(date: dateQuery, step: step)
+                let caloLeft = self.caculateCaloriesLeft(steps: step, caloEten: result?.total_eat ?? 0)
+                self.bindData(steps: step, caloLeft: caloLeft)
+                self.updateDailyLog(date: dateQuery, step: step, caloLeft: caloLeft)
             }
 		})
 	}
 	
 	
-    func bindData(steps: Int, caloEten: Double) {
+    func bindData(steps: Int, caloLeft: String) {
         DispatchQueue.main.async {
-            let caloLeft = self.caculateCaloriesLeft(steps: steps, caloEten: caloEten)
             let caloLeftRate = Double(caloLeft)!/self.totalCalo*100
             self.stepLabel.text = "\(Int(steps)) Steps"
             self.caloLabel.text = caloLeft
@@ -158,9 +158,11 @@ class ProfileVC: BaseVC {
         }
 	}
     
-    func updateDailyLog(date: Date, step: Int) {
+    func updateDailyLog(date: Date, step: Int, caloLeft: String) {
         dailyLogModel.date = date.yyyyMMdd
         dailyLogModel.step = step
+        dailyLogModel.remain_calo = Double(caloLeft)
+        dailyLogModel.calo_threshold = totalCalo
         RequestManager.updateDailyLog(dailyLog: dailyLogModel) { (_, _) in
             
         }
