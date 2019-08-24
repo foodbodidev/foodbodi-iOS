@@ -236,6 +236,13 @@ extension AddRestaurantVC: UITableViewDataSource {
             }
         }
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.section == AddResEnum.foodDisplay.rawValue {
+            return true
+        }
+        return false
+    }
 }
 
 extension AddRestaurantVC: UITableViewDelegate {
