@@ -18,12 +18,12 @@ class VerifyVC: BaseVC {
     }
     
     private func setupLayout() {
-        let image = UIImage(named: "backArow")?.withRenderingMode(.alwaysTemplate)
-        backButton.setImage(image, for: .normal)
-        backButton.tintColor = Style.Color.mainPurple
+//        let image = UIImage(named: "backArow")?.withRenderingMode(.alwaysTemplate)
+//        backButton.setImage(image, for: .normal)
+//        backButton.tintColor = Style.Color.mainPurple
     }
     
-    @IBAction override func actionBack() {
-        self.navigationController?.popToRootViewController(animated: true)
-    }
+//    @IBAction override func actionBack() {
+//        self.navigationController?.popToRootViewController(animated: true)
+//    }
 }

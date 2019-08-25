@@ -30,11 +30,11 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate,SearchFodi
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initUI()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = true
         if let user = AppManager.user, !user.restaurantId.isEmpty {
             btnAdd.setImage(UIImage.init(named: "ic_edit"), for: .normal)
             btnAdd.setImage(UIImage.init(named: "ic_edit"), for: .highlighted)

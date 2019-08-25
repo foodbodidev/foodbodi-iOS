@@ -24,7 +24,6 @@ class ReservationUpdateVC: BaseVC, CartInfoCellDelegate{
         super.viewDidLoad();
         self.initUI();
         self.initVar();
-        self.navigationController?.navigationBar.isHidden = false;
     }
     //MARK: init UI.
     func initUI(){
@@ -90,7 +89,6 @@ class ReservationUpdateVC: BaseVC, CartInfoCellDelegate{
         }
         let request = ReservationRequest()
         request.restaurant_id = self.restaurantId
-        request.reservationId = self.reservationId
         request.date_string = FoodbodyUtils.shared.dateStringFromDate(date: Date() as NSDate);
         let foodReservation = listMenu.map({
             return FoodReservationModel(food_id: $0.id, amount: $0.amount)

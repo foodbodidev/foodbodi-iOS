@@ -40,9 +40,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     NotificationCenter.default.post(name:.kFb_update_restaurant, object: nil, userInfo: dict as [AnyHashable : Any]);
                 }
         }
+        db.collection("notifications").whereField("receiver", isEqualTo: AppManager.user?.email ?? "").whereField("read", isEqualTo: false).addSnapshotListener { (querySnapshot, error) in
+            let alert = UIAlertController(title:nil, message: "Add reservation success", preferredStyle: .alert)
+            
+            let action = UIAlertAction(title: "Ok", style: .default) {
+                UIAlertAction in
+                //go to company information.
+            }
+            alert.addAction(action)
+            self.window?.rootViewController?.navigationController?.present(alert, animated: true, completion: nil)
+        }
+        
         if AppManager.user?.token == nil{
             self.gotoWelcome()
         }else{
+            
             self.gotoMainTab()
         }
 		
@@ -88,14 +100,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let reservationVC = getViewController(className: ReservationVC.className, storyboard: FbConstants.mainSB);
         let profileVC = getViewController(className: ProfileVC.className, storyboard: FbConstants.mainSB);
         mainTabbar.viewControllers = [fodiMapVC, reservationVC, profileVC];
-        let navMain = UINavigationController.init(rootViewController: mainTabbar) ;
-        navMain.navigationBar.isHidden = true;
+        let navMain = UINavigationController.init(rootViewController: mainTabbar);
         self.window?.rootViewController = navMain;
+        UINavigationBar.appearance().barTintColor = UIColor.navColor()
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
     }
     func gotoWelcome() -> Void {
         let welcomeVC = getViewController(className: WelComeVC.className, storyboard:FbConstants.AuthenticationSB);
         let navigation = UINavigationController.init(rootViewController: welcomeVC)
-        navigation.navigationBar.isHidden = true;
         navigation.navigationBar.shadowImage = UIImage.init()
         navigation.navigationBar.isTranslucent = false
         self.window?.rootViewController = navigation

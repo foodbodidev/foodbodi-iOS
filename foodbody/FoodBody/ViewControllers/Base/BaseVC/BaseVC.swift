@@ -16,10 +16,7 @@ class BaseVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-		setupNavigationBarItem()
-        self.edgesForExtendedLayout = UIRectEdge.init()
-		
-
+//        self.edgesForExtendedLayout = UIRectEdge.init()
     }
 	
 	//click to view to hide keyboard
@@ -27,21 +24,21 @@ class BaseVC: UIViewController {
         self.view.endEditing(true)
 	}
 	
-	private func setupNavigationBarItem() {
-		let backButton = UIButton()
-		let image = UIImage(named: "backArow")?.withRenderingMode(.alwaysTemplate)
-		backButton.setImage(image, for: .normal)
-		backButton.tintColor = Style.Color.mainPurple
-		backButton.addTarget(self, action: #selector(actionBack), for: .touchUpInside)
-		backButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
-		navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
-        
-        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")// hide line of nav
-	}
+//    private func setupNavigationBarItem() {
+//        let backButton = UIButton()
+//        let image = UIImage(named: "backArow")?.withRenderingMode(.alwaysTemplate)
+//        backButton.setImage(image, for: .normal)
+//        backButton.tintColor = Style.Color.mainPurple
+//        backButton.addTarget(self, action: #selector(actionBack), for: .touchUpInside)
+//        backButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
+//
+//        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")// hide line of nav
+//    }
 	
-	@objc func actionBack() {
-		self.navigationController?.popViewController(animated: true)
-	}
+//    @objc func actionBack() {
+//        self.navigationController?.popViewController(animated: true)
+//    }
     
     public func showLoading(){
         DispatchQueue.main.async {

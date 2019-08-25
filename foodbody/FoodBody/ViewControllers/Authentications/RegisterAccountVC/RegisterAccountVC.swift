@@ -53,9 +53,9 @@ class RegisterAccountVC: BaseLoginVC {
         GIDSignIn.sharedInstance().signOut()
     }
     
-	override func actionBack() {
-		self.navigationController?.dismiss(animated: true, completion: nil)
-	}
+//    override func actionBack() {
+//        self.navigationController?.dismiss(animated: true, completion: nil)
+//    }
 	
     @IBAction func actionGoogleSignin(_ sender: Any?){
         GIDSignIn.sharedInstance()?.presentingViewController = self

@@ -37,4 +37,7 @@ extension UIColor {
     class func darkGray() -> UIColor {
         return #colorLiteral(red: 0.8666666667, green: 0.8666666667, blue: 0.8666666667, alpha: 1)
     }
+    class func navColor() ->UIColor{
+        return UIColor.init(rgb: 0x1ABC9C);
+    }
 }

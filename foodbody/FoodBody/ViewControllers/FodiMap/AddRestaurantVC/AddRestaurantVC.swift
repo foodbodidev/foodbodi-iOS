@@ -41,7 +41,7 @@ class AddRestaurantVC: BaseVC {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.isHidden = true
+//        self.navigationController?.navigationBar.isHidden = true
         registerNib()
         bindDataFromMyRestaurant()
         getFoodByResId()
@@ -49,9 +49,9 @@ class AddRestaurantVC: BaseVC {
 	
     //MARK: === ACTION  ===
 	
-    @IBAction func actionBacks() {
-        self.navigationController?.popViewController(animated: true)
-    }
+//    @IBAction func actionBacks() {
+//        self.navigationController?.popViewController(animated: true)
+//    }
 	
 	@IBAction func actionSubmit() {
         print(restaurant.toJSON())
