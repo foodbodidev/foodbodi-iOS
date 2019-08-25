@@ -9,6 +9,7 @@
 import UIKit
 import Charts
 import HealthKit
+import CoreMotion
 
 
 class ProfileVC: BaseVC {
@@ -25,6 +26,7 @@ class ProfileVC: BaseVC {
     var calorEaten: Double = 0
     
     let dailyLogModel: DailyLogModel = DailyLogModel()
+    let pedometer = CMPedometer() // use to update real time steps 
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -159,7 +161,16 @@ class ProfileVC: BaseVC {
             self.caloLabel.text = caloLeft
             self.rateDataSource = [Int(caloLeftRate), 100 - Int(caloLeftRate)]
             self.updateChartData()
-            print(steps)
+            
+            //update realtime steps
+            self.pedometer.startUpdates(from: Date()) { (data, error) in
+                guard let activityData = data else {
+                    return
+                }
+                DispatchQueue.main.async {
+                    self.stepLabel.text = "\(steps + Int(truncating: activityData.numberOfSteps)) Steps"
+                }
+            }
         }
 	}
     
