@@ -9,15 +9,9 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="SFProText-Semibold.otf">
-            <string>SFProText-Semibold</string>
-        </array>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VerifyVC" customModule="Foodbodi" customModuleProvider="target">
             <connections>
-                <outlet property="backButton" destination="WGd-JA-s3k" id="Zwi-Nd-v5e"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -53,52 +47,10 @@
                             <color key="textColor" red="0.098039215690000001" green="0.24313725489999999" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HnV-GX-cJc" userLabel="NAVIGATIONBAR">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
-                            <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kgn-Ey-K95" userLabel="lineView">
-                                    <rect key="frame" x="0.0" y="49" width="414" height="1"/>
-                                    <color key="backgroundColor" red="0.72549019609999998" green="0.76078431369999999" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="1" id="OCn-pp-vMB"/>
-                                    </constraints>
-                                </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verify" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbu-bN-Iek">
-                                    <rect key="frame" x="187.5" y="15.5" width="39.5" height="19"/>
-                                    <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="16"/>
-                                    <color key="textColor" red="0.098039215690000001" green="0.24313725489999999" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WGd-JA-s3k">
-                                    <rect key="frame" x="16" y="15" width="20" height="20"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="20" id="cmd-fl-C80"/>
-                                        <constraint firstAttribute="height" constant="20" id="kiU-hi-kkk"/>
-                                    </constraints>
-                                    <connections>
-                                        <action selector="actionBack" destination="-1" eventType="touchUpInside" id="1UM-0z-Kv6"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                            <constraints>
-                                <constraint firstItem="dbu-bN-Iek" firstAttribute="centerX" secondItem="HnV-GX-cJc" secondAttribute="centerX" id="24d-M5-Cxp"/>
-                                <constraint firstAttribute="bottom" secondItem="kgn-Ey-K95" secondAttribute="bottom" id="3Xo-Ts-FZ5"/>
-                                <constraint firstItem="WGd-JA-s3k" firstAttribute="leading" secondItem="HnV-GX-cJc" secondAttribute="leading" constant="16" id="93M-Kh-vuR"/>
-                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="AAM-CK-3N7"/>
-                                <constraint firstAttribute="height" constant="50" id="MZn-S3-gmN"/>
-                                <constraint firstItem="dbu-bN-Iek" firstAttribute="centerY" secondItem="HnV-GX-cJc" secondAttribute="centerY" id="Maj-z7-415"/>
-                                <constraint firstItem="WGd-JA-s3k" firstAttribute="centerY" secondItem="HnV-GX-cJc" secondAttribute="centerY" id="MiM-eH-odp"/>
-                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="R8H-Wy-IPs"/>
-                                <constraint firstAttribute="trailing" secondItem="kgn-Ey-K95" secondAttribute="trailing" id="aEq-Qe-QM1"/>
-                                <constraint firstItem="kgn-Ey-K95" firstAttribute="leading" secondItem="HnV-GX-cJc" secondAttribute="leading" id="hyv-Sl-fzP"/>
-                            </constraints>
-                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="zKJ-mW-qra" secondAttribute="bottom" constant="42" id="03w-gw-FHH"/>
-                        <constraint firstItem="HnV-GX-cJc" firstAttribute="leading" secondItem="OMo-3u-Py8" secondAttribute="leading" id="5UR-aF-lsz"/>
-                        <constraint firstItem="HnV-GX-cJc" firstAttribute="top" secondItem="OMo-3u-Py8" secondAttribute="top" id="Kcg-qX-5Ce"/>
                         <constraint firstAttribute="trailing" secondItem="zKJ-mW-qra" secondAttribute="trailing" constant="50" id="LMO-2v-Z4X"/>
                         <constraint firstItem="zKJ-mW-qra" firstAttribute="centerX" secondItem="OMo-3u-Py8" secondAttribute="centerX" id="LjV-sA-w3z"/>
                         <constraint firstItem="uoc-3e-ChG" firstAttribute="top" secondItem="34L-3P-MT4" secondAttribute="bottom" constant="50" id="NQL-lr-Cd7"/>
@@ -108,7 +60,6 @@
                         <constraint firstItem="zKJ-mW-qra" firstAttribute="leading" secondItem="OMo-3u-Py8" secondAttribute="leading" constant="50" id="lam-Ah-EWM"/>
                         <constraint firstAttribute="trailing" secondItem="uoc-3e-ChG" secondAttribute="trailing" constant="50" id="p0e-jS-w7s"/>
                         <constraint firstItem="34L-3P-MT4" firstAttribute="baseline" secondItem="OMo-3u-Py8" secondAttribute="centerY" id="pid-1b-Jzn"/>
-                        <constraint firstAttribute="trailing" secondItem="HnV-GX-cJc" secondAttribute="trailing" id="sE4-zk-YX4"/>
                     </constraints>
                 </view>
             </subviews>

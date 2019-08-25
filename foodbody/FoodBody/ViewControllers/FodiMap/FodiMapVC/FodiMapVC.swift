@@ -60,13 +60,11 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate,SearchFodi
         self.clvFodi.delegate = self;
         self.clvFodi.dataSource = self;
         self.googleMapView.delegate = self;
-        var tfSearch:UITextField!
-        tfSearch = UITextField.init(frame: CGRect.init(x: 5, y: 0, width: getScreenWidth(), height: 45))
-        tfSearch.placeholder = "Search Text";
-        tfSearch.backgroundColor = UIColor.white;
-        tfSearch.delegate = self;
-        self.navigationItem.titleView = tfSearch;
-
+        self.title = "FodiMap";
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated);
     }
     
     func registerNotification(){
