@@ -8,6 +8,7 @@
 
 import UIKit
 import GooglePlaces
+import INSPhotoGallery
 
 class AddRestaurantVC: BaseVC {
     
@@ -21,6 +22,15 @@ class AddRestaurantVC: BaseVC {
 	var photoFoodURL: String = ""
     var imagePicker = UIImagePickerController()
     var imageFood: UIImage?
+    
+    //for photo header
+    lazy var headerPhoto: [INSPhotoViewable] = {
+        return [
+            INSPhoto(imageURL: URL.init(string: restaurant.photo), thumbnailImage: nil)
+        ]
+    }()
+    
+    var useCustomOverlay = false
 	
 	enum AddResEnum: Int, CaseIterable {
 		case restaurant = 0
@@ -84,8 +94,15 @@ class AddRestaurantVC: BaseVC {
 	}
     
     @IBAction func actionOpenSelectionSheet() {
-		photoType = .restaurant
+        photoType = .restaurant
         openActionSheet()
+    }
+    
+    @IBAction func previewPhoto() {
+        if !restaurant.photo.isEmpty {
+            let galleryPreview = INSPhotosViewController(photos: headerPhoto, initialPhoto: headerPhoto.first, referenceView: self.view)
+            present(galleryPreview, animated: true, completion: nil)
+        } 
     }
 	
 	//MARK: OTHER METHOD

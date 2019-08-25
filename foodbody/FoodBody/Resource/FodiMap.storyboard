@@ -35,6 +35,21 @@
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f9w-ua-mQl">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="222.5"/>
                                             </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qIm-4C-bAL">
+                                                <rect key="frame" x="81" y="28" width="237" height="165"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="46" id="Nty-cj-vl0"/>
+                                                    <constraint firstAttribute="width" secondItem="qIm-4C-bAL" secondAttribute="height" multiplier="1:1" id="sb3-xf-vVj"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                                        <real key="value" value="23"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="previewPhoto" destination="BQH-t5-pHj" eventType="touchUpInside" id="j3A-2p-e8P"/>
+                                                </connections>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emK-Of-Dge">
                                                 <rect key="frame" x="164.5" y="40" width="46" height="46"/>
                                                 <constraints>
@@ -54,12 +69,18 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.89803921568627454" green="0.92941176470588238" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="qIm-4C-bAL" secondAttribute="bottom" id="2zD-Cl-Y0h"/>
                                             <constraint firstItem="f9w-ua-mQl" firstAttribute="top" secondItem="nEf-3M-LHG" secondAttribute="top" id="45R-nB-IVv"/>
+                                            <constraint firstItem="qIm-4C-bAL" firstAttribute="width" secondItem="qIm-4C-bAL" secondAttribute="height" multiplier="1:1" id="7MA-Hk-7WY"/>
                                             <constraint firstItem="emK-Of-Dge" firstAttribute="centerX" secondItem="nEf-3M-LHG" secondAttribute="centerX" id="Bpg-DB-5JZ"/>
                                             <constraint firstAttribute="bottom" secondItem="f9w-ua-mQl" secondAttribute="bottom" id="IYa-bB-YcI"/>
                                             <constraint firstItem="emK-Of-Dge" firstAttribute="top" secondItem="nEf-3M-LHG" secondAttribute="top" constant="40" id="TXy-bl-XQm"/>
                                             <constraint firstItem="emK-Of-Dge" firstAttribute="width" secondItem="emK-Of-Dge" secondAttribute="height" multiplier="1:1" id="XqE-Or-Ddy"/>
+                                            <constraint firstAttribute="trailing" secondItem="qIm-4C-bAL" secondAttribute="trailing" id="Zp5-DJ-tKd"/>
                                             <constraint firstAttribute="trailing" secondItem="f9w-ua-mQl" secondAttribute="trailing" id="aEj-SM-sbt"/>
+                                            <constraint firstItem="qIm-4C-bAL" firstAttribute="top" secondItem="nEf-3M-LHG" secondAttribute="top" id="cFA-u5-Hid"/>
+                                            <constraint firstItem="qIm-4C-bAL" firstAttribute="leading" secondItem="nEf-3M-LHG" secondAttribute="leading" id="lpo-0d-quN"/>
+                                            <constraint firstItem="qIm-4C-bAL" firstAttribute="width" secondItem="qIm-4C-bAL" secondAttribute="height" multiplier="1:1" id="pkZ-U4-LRn"/>
                                             <constraint firstItem="f9w-ua-mQl" firstAttribute="leading" secondItem="nEf-3M-LHG" secondAttribute="leading" id="uFr-lE-fY9"/>
                                         </constraints>
                                     </view>

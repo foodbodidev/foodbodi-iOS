@@ -19,6 +19,7 @@ target 'FoodBody' do
   pod 'MBProgressHUD'
   pod 'Charts'
 	pod 'FSCalendar', '~> 2.8.0'
+  pod 'INSPhotoGallery', '1.2.8'
 	
   target 'FoodBodyTests' do
     inherit! :search_paths
