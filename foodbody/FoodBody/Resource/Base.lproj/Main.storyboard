@@ -207,9 +207,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SW7-SL-K4s"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Fodimap" image="ic_fodimap" id="yVd-U4-drQ">
-                        <color key="badgeColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="Fodimap" image="ic_fodimap" id="x6s-sb-OZp"/>
                     <navigationItem key="navigationItem" id="m0n-BR-i7H"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -220,7 +218,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fxi-IG-DzE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1884" y="1390.2548725637182"/>
+            <point key="canvasLocation" x="2823.1999999999998" y="1390.2548725637182"/>
         </scene>
         <!--Reservation-->
         <scene sceneID="bwJ-KT-l9v">
@@ -260,7 +258,7 @@
                                                                 <constraint firstAttribute="height" constant="15" id="SBh-vf-paH"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="SFProText-Light" family="SF Pro Text" pointSize="12"/>
-                                                            <color key="textColor" red="0.72549019607843135" green="0.76078431372549016" blue="0.76862745098039209" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SPI-7R-qz4">

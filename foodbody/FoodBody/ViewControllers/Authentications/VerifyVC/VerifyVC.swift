@@ -9,15 +9,11 @@
 import UIKit
 
 class VerifyVC: BaseVC {
-    
-    @IBOutlet weak var backButton: UIButton! 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.isNavigationBarHidden = true
         setupLayout()
     }
-    
     private func setupLayout() {
 //        let image = UIImage(named: "backArow")?.withRenderingMode(.alwaysTemplate)
 //        backButton.setImage(image, for: .normal)

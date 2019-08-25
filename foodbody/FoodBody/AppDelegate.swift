@@ -102,9 +102,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         mainTabbar.viewControllers = [fodiMapVC, reservationVC, profileVC];
         let navMain = UINavigationController.init(rootViewController: mainTabbar)
         navMain.navigationBar.barTintColor = UIColor.navColor();
-        UINavigationBar.appearance().barTintColor = UIColor.navColor()
-        UINavigationBar.appearance().tintColor = UIColor.white
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+        navMain.navigationBar.tintColor = UIColor.white;
+        navMain.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white];
+        
+//        UINavigationBar.appearance().barTintColor = UIColor.navColor()
+//        UINavigationBar.appearance().tintColor = UIColor.white
+//        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
         self.window?.rootViewController = navMain;
     }
     func gotoWelcome() -> Void {
