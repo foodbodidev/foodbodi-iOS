@@ -14,6 +14,7 @@ class VerifyVC: BaseVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = true
         setupLayout()
     }
     

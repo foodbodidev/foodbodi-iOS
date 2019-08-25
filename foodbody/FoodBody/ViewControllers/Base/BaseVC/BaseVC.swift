@@ -22,23 +22,7 @@ class BaseVC: UIViewController {
 	//click to view to hide keyboard
 	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
-	}
-	
-//    private func setupNavigationBarItem() {
-//        let backButton = UIButton()
-//        let image = UIImage(named: "backArow")?.withRenderingMode(.alwaysTemplate)
-//        backButton.setImage(image, for: .normal)
-//        backButton.tintColor = Style.Color.mainPurple
-//        backButton.addTarget(self, action: #selector(actionBack), for: .touchUpInside)
-//        backButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
-//
-//        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")// hide line of nav
-//    }
-	
-//    @objc func actionBack() {
-//        self.navigationController?.popViewController(animated: true)
-//    }
+    }
     
     public func showLoading(){
         DispatchQueue.main.async {

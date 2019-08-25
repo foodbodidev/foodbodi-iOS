@@ -100,7 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let reservationVC = getViewController(className: ReservationVC.className, storyboard: FbConstants.mainSB);
         let profileVC = getViewController(className: ProfileVC.className, storyboard: FbConstants.mainSB);
         mainTabbar.viewControllers = [fodiMapVC, reservationVC, profileVC];
-        let navMain = UINavigationController.init(rootViewController: mainTabbar);
+        let navMain = UINavigationController.init(rootViewController: mainTabbar) ;
         self.window?.rootViewController = navMain;
         UINavigationBar.appearance().barTintColor = UIColor.navColor()
         UINavigationBar.appearance().tintColor = UIColor.white
