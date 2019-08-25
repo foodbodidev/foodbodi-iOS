@@ -65,16 +65,6 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate,SearchFodi
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
-//        let viSearch = UIView.init(frame: CGRect.init(x: 5, y: 0, width: getScreenWidth(), height: 45));
-//        viSearch.backgroundColor = UIColor.red
-//        var tfSearch:UITextField!
-//        tfSearch = UITextField.init(frame:viSearch.frame);
-//        tfSearch.placeholder = "Search Text";
-//        tfSearch.backgroundColor = UIColor.white;
-//        tfSearch.borderStyle = .none;
-//        tfSearch.delegate = self;
-//        viSearch.addSubview(tfSearch);
-//        self.navigationController?.navigationItem.titleView = viSearch;
     }
     
     func registerNotification(){

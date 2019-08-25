@@ -31,7 +31,6 @@ class ProfileVC: BaseVC {
         setupLayout()
 		setupChart()
         fetchData()
-        
        
     }
     
@@ -62,6 +61,7 @@ class ProfileVC: BaseVC {
        stepView.layer.borderColor = Style.Color.showDowColor.cgColor
        stepView.layer.borderWidth = 1
 	   dateLabel.text = "Today, \(Date().toString())"
+        self.title = "Profile";
     }
     
     

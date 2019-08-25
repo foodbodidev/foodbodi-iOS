@@ -96,19 +96,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func gotoMainTab() -> Void {
         let mainTabbar:MainTabBarVC;
         mainTabbar = getViewController(className: MainTabBarVC.className, storyboard: FbConstants.mainSB) as! MainTabBarVC
+        //FodiMap.
         let fodiMapVC = getViewController(className: FodiMapVC.className, storyboard: FbConstants.mainSB)
+        let navFodiMap = UINavigationController.init(rootViewController: fodiMapVC)
+        //Reservation
         let reservationVC = getViewController(className: ReservationVC.className, storyboard: FbConstants.mainSB)
+        let navReservation = UINavigationController.init(rootViewController: reservationVC)
+        //Profile.
         let profileVC = getViewController(className: ProfileVC.className, storyboard: FbConstants.mainSB)
-        mainTabbar.viewControllers = [fodiMapVC, reservationVC, profileVC];
-        let navMain = UINavigationController.init(rootViewController: mainTabbar)
-        navMain.navigationBar.barTintColor = UIColor.navColor();
-        navMain.navigationBar.tintColor = UIColor.white;
-        navMain.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white];
+        let navProfile = UINavigationController.init(rootViewController: profileVC)
         
-//        UINavigationBar.appearance().barTintColor = UIColor.navColor()
-//        UINavigationBar.appearance().tintColor = UIColor.white
-//        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
-        self.window?.rootViewController = navMain;
+        mainTabbar.viewControllers = [navFodiMap, navReservation, navProfile];
+        UINavigationBar.appearance().barTintColor = UIColor.navColor()
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+        self.window?.rootViewController = mainTabbar;
     }
     func gotoWelcome() -> Void {
         let welcomeVC = getViewController(className: WelComeVC.className, storyboard:FbConstants.AuthenticationSB);
