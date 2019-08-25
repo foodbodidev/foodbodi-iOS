@@ -95,23 +95,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //MARK: handle follow.
     func gotoMainTab() -> Void {
         let mainTabbar:MainTabBarVC;
-        mainTabbar = getViewController(className: MainTabBarVC.className, storyboard: FbConstants.mainSB) as! MainTabBarVC;
-        let fodiMapVC = getViewController(className: FodiMapVC.className, storyboard: FbConstants.mainSB);
-        let reservationVC = getViewController(className: ReservationVC.className, storyboard: FbConstants.mainSB);
-        let profileVC = getViewController(className: ProfileVC.className, storyboard: FbConstants.mainSB);
+        mainTabbar = getViewController(className: MainTabBarVC.className, storyboard: FbConstants.mainSB) as! MainTabBarVC
+        let fodiMapVC = getViewController(className: FodiMapVC.className, storyboard: FbConstants.mainSB)
+        let reservationVC = getViewController(className: ReservationVC.className, storyboard: FbConstants.mainSB)
+        let profileVC = getViewController(className: ProfileVC.className, storyboard: FbConstants.mainSB)
         mainTabbar.viewControllers = [fodiMapVC, reservationVC, profileVC];
-        let navMain = UINavigationController.init(rootViewController: mainTabbar) ;
-        self.window?.rootViewController = navMain;
+        let navMain = UINavigationController.init(rootViewController: mainTabbar)
+        navMain.navigationBar.barTintColor = UIColor.navColor();
         UINavigationBar.appearance().barTintColor = UIColor.navColor()
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+        self.window?.rootViewController = navMain;
     }
     func gotoWelcome() -> Void {
         let welcomeVC = getViewController(className: WelComeVC.className, storyboard:FbConstants.AuthenticationSB);
         let navigation = UINavigationController.init(rootViewController: welcomeVC)
-        navigation.navigationBar.shadowImage = UIImage.init()
-        navigation.navigationBar.isTranslucent = false
         self.window?.rootViewController = navigation
+        //
+        UINavigationBar.appearance().barTintColor = UIColor.navColor()
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
     }
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask

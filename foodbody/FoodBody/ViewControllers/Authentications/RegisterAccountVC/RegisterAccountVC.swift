@@ -18,9 +18,6 @@ class RegisterAccountVC: BaseLoginVC {
     @IBOutlet weak var facebookView: UIView!
     @IBOutlet weak var emailView: UIView!
     
-    
-    
-    
     var userInfor: UserRequest = UserRequest()
     
     override func viewDidLoad() {
@@ -48,7 +45,6 @@ class RegisterAccountVC: BaseLoginVC {
         let backButton = UIButton()
         let image = UIImage(named: "backArow")?.withRenderingMode(.alwaysTemplate)
         backButton.setImage(image, for: .normal)
-        backButton.tintColor = Style.Color.mainPurple
         backButton.addTarget(self, action: #selector(actionBack), for: .touchUpInside)
         backButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)

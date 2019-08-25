@@ -22,6 +22,7 @@ class WelComeVC: BaseVC {
     //MARK: action.
     @IBAction func actionStart(sender:UIButton){
         FBAppDelegate.gotoMainTab()
+        
     }
 
 }

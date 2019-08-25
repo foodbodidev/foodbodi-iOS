@@ -17,7 +17,6 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate,SearchFodi
     @IBOutlet weak var btnAdd: UIButton!
     @IBOutlet weak var googleMapView:GMSMapView!
     @IBOutlet weak var clvFodi:UICollectionView!
-    @IBOutlet weak var tfSearch:UITextField!
 	
     //MARK: variable.
     var locationManager:CLLocationManager? = nil;
@@ -61,7 +60,12 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate,SearchFodi
         self.clvFodi.delegate = self;
         self.clvFodi.dataSource = self;
         self.googleMapView.delegate = self;
-        self.tfSearch.delegate = self;
+        var tfSearch:UITextField!
+        tfSearch = UITextField.init(frame: CGRect.init(x: 5, y: 0, width: getScreenWidth(), height: 45))
+        tfSearch.placeholder = "Search Text";
+        tfSearch.backgroundColor = UIColor.white;
+        tfSearch.delegate = self;
+        self.navigationItem.titleView = tfSearch;
 
     }
     
