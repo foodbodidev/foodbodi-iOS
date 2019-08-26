@@ -17,7 +17,8 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate,SearchFodi
     @IBOutlet weak var btnAdd: UIButton!
     @IBOutlet weak var googleMapView:GMSMapView!
     @IBOutlet weak var clvFodi:UICollectionView!
-	
+    @IBOutlet weak var tfSearch: UITextField!
+    
     //MARK: variable.
     var locationManager:CLLocationManager? = nil;
     var currentLocation:CLLocationCoordinate2D = CLLocationCoordinate2D.init()
@@ -29,7 +30,8 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate,SearchFodi
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initUI()
-        
+        tfSearch.delegate = self
+        tfSearch.placeholder = "Search restaurant, food, ...."
     }
     
     override func viewWillAppear(_ animated: Bool) {

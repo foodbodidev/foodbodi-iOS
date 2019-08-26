@@ -27,29 +27,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Gy-eT-EMJ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nEf-3M-LHG">
-                                        <rect key="frame" x="0.0" y="52" width="375" height="170"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="215.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f9w-ua-mQl">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="222.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="215.5"/>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qIm-4C-bAL">
-                                                <rect key="frame" x="0.0" y="0.0" width="222.5" height="222.5"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="46" id="Nty-cj-vl0"/>
-                                                    <constraint firstAttribute="width" secondItem="qIm-4C-bAL" secondAttribute="height" multiplier="1:1" id="sb3-xf-vVj"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="radius">
-                                                        <real key="value" value="23"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="previewPhoto" destination="BQH-t5-pHj" eventType="touchUpInside" id="j3A-2p-e8P"/>
-                                                </connections>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emK-Of-Dge">
                                                 <rect key="frame" x="164.5" y="40" width="46" height="46"/>
                                                 <constraints>
@@ -69,22 +54,17 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.89803921568627454" green="0.92941176470588238" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="qIm-4C-bAL" secondAttribute="bottom" id="2zD-Cl-Y0h"/>
                                             <constraint firstItem="f9w-ua-mQl" firstAttribute="top" secondItem="nEf-3M-LHG" secondAttribute="top" id="45R-nB-IVv"/>
-                                            <constraint firstItem="qIm-4C-bAL" firstAttribute="width" secondItem="qIm-4C-bAL" secondAttribute="height" multiplier="1:1" id="7MA-Hk-7WY"/>
                                             <constraint firstItem="emK-Of-Dge" firstAttribute="centerX" secondItem="nEf-3M-LHG" secondAttribute="centerX" id="Bpg-DB-5JZ"/>
                                             <constraint firstAttribute="bottom" secondItem="f9w-ua-mQl" secondAttribute="bottom" id="IYa-bB-YcI"/>
                                             <constraint firstItem="emK-Of-Dge" firstAttribute="top" secondItem="nEf-3M-LHG" secondAttribute="top" constant="40" id="TXy-bl-XQm"/>
                                             <constraint firstItem="emK-Of-Dge" firstAttribute="width" secondItem="emK-Of-Dge" secondAttribute="height" multiplier="1:1" id="XqE-Or-Ddy"/>
-                                            <constraint firstAttribute="trailing" secondItem="qIm-4C-bAL" secondAttribute="trailing" id="Zp5-DJ-tKd"/>
                                             <constraint firstAttribute="trailing" secondItem="f9w-ua-mQl" secondAttribute="trailing" id="aEj-SM-sbt"/>
-                                            <constraint firstItem="qIm-4C-bAL" firstAttribute="leading" secondItem="nEf-3M-LHG" secondAttribute="leading" id="lpo-0d-quN"/>
-                                            <constraint firstItem="qIm-4C-bAL" firstAttribute="width" secondItem="qIm-4C-bAL" secondAttribute="height" multiplier="1:1" id="pkZ-U4-LRn"/>
                                             <constraint firstItem="f9w-ua-mQl" firstAttribute="leading" secondItem="nEf-3M-LHG" secondAttribute="leading" id="uFr-lE-fY9"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybU-WF-HcR" customClass="FoodBodyButton" customModule="Foodbodi" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="600.5" width="375" height="66.5"/>
+                                        <rect key="frame" x="0.0" y="582.5" width="375" height="64.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="-13" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="Submit"/>
@@ -98,10 +78,10 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bow-K1-wy6">
-                                        <rect key="frame" x="20" y="100" width="335" height="500.5"/>
+                                        <rect key="frame" x="20" y="100" width="335" height="482.5"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nnA-xc-dMF">
-                                                <rect key="frame" x="0.0" y="0.0" width="335" height="500.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="482.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
                                                     <outlet property="dataSource" destination="BQH-t5-pHj" id="dCM-i4-XNx"/>

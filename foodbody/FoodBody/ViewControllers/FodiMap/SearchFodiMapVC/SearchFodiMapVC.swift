@@ -24,6 +24,7 @@ class SearchFodiMapVC: BaseVC,UITextFieldDelegate{
         self.tbvSearch.delegate = self;
         self.tbvSearch.dataSource = self;
         tfSearch.delegate = self;
+        tfSearch.placeholder = "Search restaurant, food, ...."
         
     }
     //MARK UItextFieldDelegate.

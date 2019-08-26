@@ -170,6 +170,15 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sdv-f1-b32" userLabel="vSearch">
                                 <rect key="frame" x="10" y="30" width="355" height="45"/>
                                 <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l4e-dG-5aQ">
+                                        <rect key="frame" x="129" y="7" width="97" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="z4G-Zb-PGa"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uIg-gf-2Ze">
                                         <rect key="frame" x="310" y="0.0" width="45" height="45"/>
                                         <constraints>
@@ -185,8 +194,11 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="uIg-gf-2Ze" secondAttribute="trailing" id="1Q7-1X-bEV"/>
                                     <constraint firstAttribute="bottom" secondItem="uIg-gf-2Ze" secondAttribute="bottom" id="7xb-kq-piB"/>
-                                    <constraint firstAttribute="height" constant="45" id="Bsy-Ys-Y2i"/>
+                                    <constraint firstAttribute="height" constant="44" id="Bsy-Ys-Y2i"/>
                                     <constraint firstItem="uIg-gf-2Ze" firstAttribute="top" secondItem="Sdv-f1-b32" secondAttribute="top" id="FnS-oa-YHD"/>
+                                    <constraint firstItem="l4e-dG-5aQ" firstAttribute="leading" secondItem="Sdv-f1-b32" secondAttribute="leading" id="Y6t-X1-PNe"/>
+                                    <constraint firstItem="uIg-gf-2Ze" firstAttribute="leading" secondItem="l4e-dG-5aQ" secondAttribute="trailing" id="dD6-pW-KtS"/>
+                                    <constraint firstItem="l4e-dG-5aQ" firstAttribute="centerY" secondItem="Sdv-f1-b32" secondAttribute="centerY" id="feR-5f-7rT"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -214,6 +226,7 @@
                         <outlet property="btnAdd" destination="Cow-i8-sVQ" id="p66-a8-Jh8"/>
                         <outlet property="clvFodi" destination="V4N-G1-fev" id="Ax7-Qi-gyl"/>
                         <outlet property="googleMapView" destination="HFr-cC-qfp" id="ccB-RX-PXc"/>
+                        <outlet property="tfSearch" destination="l4e-dG-5aQ" id="YpT-c8-RVG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fxi-IG-DzE" userLabel="First Responder" sceneMemberID="firstResponder"/>
