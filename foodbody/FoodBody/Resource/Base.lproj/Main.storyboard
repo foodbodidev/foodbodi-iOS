@@ -358,46 +358,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iug-gn-WOP" userLabel="NAVIGATIONBAR">
-                                <rect key="frame" x="0.0" y="20" width="375" height="50"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="orA-EW-lT2" userLabel="lineView">
-                                        <rect key="frame" x="0.0" y="49" width="375" height="1"/>
-                                        <color key="backgroundColor" red="0.72549019607843135" green="0.76078431372549016" blue="0.76862745098039209" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="D3D-MX-9aV"/>
-                                        </constraints>
-                                    </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M0a-bW-7fK">
-                                        <rect key="frame" x="162" y="15.5" width="51.5" height="19"/>
-                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="16"/>
-                                        <color key="textColor" red="0.098039215690000001" green="0.24313725489999999" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WXT-nL-TVw">
-                                        <rect key="frame" x="319" y="5" width="46" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="46" id="QOB-iq-01j"/>
-                                        </constraints>
-                                        <state key="normal" image="iconmonstrLogOut7"/>
-                                        <connections>
-                                            <action selector="actionLogout" destination="ShK-Wb-dib" eventType="touchUpInside" id="8Iy-on-bfW"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="orA-EW-lT2" secondAttribute="trailing" id="7Ys-v9-b0H"/>
-                                    <constraint firstItem="M0a-bW-7fK" firstAttribute="centerY" secondItem="Iug-gn-WOP" secondAttribute="centerY" id="8Ht-hQ-Yg3"/>
-                                    <constraint firstAttribute="bottom" secondItem="WXT-nL-TVw" secondAttribute="bottom" constant="5" id="CEg-3O-vQF"/>
-                                    <constraint firstItem="WXT-nL-TVw" firstAttribute="top" secondItem="Iug-gn-WOP" secondAttribute="top" constant="5" id="Go1-fU-K1H"/>
-                                    <constraint firstItem="M0a-bW-7fK" firstAttribute="centerX" secondItem="Iug-gn-WOP" secondAttribute="centerX" id="N8o-fn-4yw"/>
-                                    <constraint firstItem="orA-EW-lT2" firstAttribute="leading" secondItem="Iug-gn-WOP" secondAttribute="leading" id="TYx-Ep-EL2"/>
-                                    <constraint firstAttribute="bottom" secondItem="orA-EW-lT2" secondAttribute="bottom" id="cTJ-9U-Vgu"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="xAK-EX-kz4"/>
-                                    <constraint firstAttribute="trailing" secondItem="WXT-nL-TVw" secondAttribute="trailing" constant="10" id="xK7-Td-nCu"/>
-                                    <constraint firstAttribute="height" constant="50" id="xvQ-QE-jGe"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wQU-8W-5h7" userLabel="calendarView">
                                 <rect key="frame" x="0.0" y="70" width="375" height="50"/>
                                 <subviews>
@@ -524,10 +484,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="wQU-8W-5h7" firstAttribute="leading" secondItem="YY1-n3-IJa" secondAttribute="leading" id="0jZ-3V-6jZ"/>
-                            <constraint firstItem="Iug-gn-WOP" firstAttribute="leading" secondItem="YY1-n3-IJa" secondAttribute="leading" id="2YS-Ki-Eha"/>
-                            <constraint firstItem="wQU-8W-5h7" firstAttribute="top" secondItem="Iug-gn-WOP" secondAttribute="bottom" id="75S-ad-zxP"/>
                             <constraint firstItem="YY1-n3-IJa" firstAttribute="trailing" secondItem="6Ko-GX-cm1" secondAttribute="trailing" id="9rZ-zj-Vkc"/>
-                            <constraint firstItem="Iug-gn-WOP" firstAttribute="trailing" secondItem="YY1-n3-IJa" secondAttribute="trailing" id="Hol-9P-iOu"/>
+                            <constraint firstItem="wQU-8W-5h7" firstAttribute="top" secondItem="YY1-n3-IJa" secondAttribute="top" id="Kiw-uN-6lM"/>
                             <constraint firstItem="6Ko-GX-cm1" firstAttribute="trailing" secondItem="YY1-n3-IJa" secondAttribute="trailing" id="ONw-56-RbP"/>
                             <constraint firstItem="QQT-mw-mS9" firstAttribute="top" secondItem="6Ko-GX-cm1" secondAttribute="bottom" constant="10" id="Oe3-EU-8Cn"/>
                             <constraint firstItem="QQT-mw-mS9" firstAttribute="height" secondItem="bXq-Rg-uzJ" secondAttribute="height" multiplier="1/3" id="TbH-O5-3hN"/>
@@ -539,7 +497,6 @@
                             <constraint firstItem="6Ko-GX-cm1" firstAttribute="leading" secondItem="YY1-n3-IJa" secondAttribute="leading" id="m5J-IE-1cT"/>
                             <constraint firstItem="6Ko-GX-cm1" firstAttribute="leading" secondItem="YY1-n3-IJa" secondAttribute="leading" id="pKQ-Cf-Skc"/>
                             <constraint firstItem="6Ko-GX-cm1" firstAttribute="top" secondItem="wQU-8W-5h7" secondAttribute="bottom" id="qIH-G8-1vB"/>
-                            <constraint firstItem="Iug-gn-WOP" firstAttribute="top" secondItem="YY1-n3-IJa" secondAttribute="top" id="xCr-kN-INw"/>
                             <constraint firstItem="QQT-mw-mS9" firstAttribute="leading" secondItem="YY1-n3-IJa" secondAttribute="leading" id="ynt-Ec-rRH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YY1-n3-IJa"/>
@@ -570,7 +527,6 @@
         <image name="ic_profile" width="24" height="24"/>
         <image name="ic_reservations" width="26" height="24"/>
         <image name="iconmonstrCalendar4" width="12" height="12"/>
-        <image name="iconmonstrLogOut7" width="24" height="20"/>
         <image name="running" width="41" height="31"/>
     </resources>
 </document>

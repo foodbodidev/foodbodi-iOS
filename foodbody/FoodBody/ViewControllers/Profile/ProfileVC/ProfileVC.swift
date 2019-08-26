@@ -40,12 +40,6 @@ class ProfileVC: BaseVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-
-    
-    @IBAction func actionLogout() {
-        FBAppDelegate.gotoWelcome()
-        AppManager.user = nil
-    }
 	
 	@IBAction func actionCalendar() {
 		let calendarVC = CalendarVC.init(nibName: "CalendarVC", bundle: nil)
@@ -64,8 +58,37 @@ class ProfileVC: BaseVC {
        stepView.layer.borderWidth = 1
 	   dateLabel.text = "Today, \(Date().toString())"
         self.title = "Profile";
+        self.addRightButton();
+        
+    }
+    func addRightButton(){
+        let viewFN = UIView(frame: CGRect.init(x: 0, y: 0, width: 40, height: 40))
+        viewFN.backgroundColor = UIColor.clear
+        let button1 = UIButton(frame:CGRect.init(x: 0, y: 8, width: 40, height: 30))
+        button1.setImage(UIImage(named: "iconmonstrLogOut7"), for: UIControl.State.normal)
+        button1.addTarget(self, action: #selector(self.actionLogout), for: UIControl.Event.touchUpInside)
+        viewFN.addSubview(button1)
+        let rightBarButton = UIBarButtonItem(customView: viewFN)
+        self.navigationItem.rightBarButtonItem = rightBarButton
+        
     }
     
+    @objc func actionLogout(){
+        let alert = UIAlertController(title:nil, message: "Do you want to log out ?", preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) {
+            UIAlertAction in
+            // It will dismiss action sheet
+        }
+        let action = UIAlertAction(title: "Ok", style: .default) {
+            UIAlertAction in
+            FBAppDelegate.gotoWelcome()
+            AppManager.user = nil
+        }
+        alert.addAction(action)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
     
 	private func setupChart() {
 	
