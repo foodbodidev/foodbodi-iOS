@@ -97,6 +97,9 @@
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybU-WF-HcR" customClass="FoodBodyButton" customModule="Foodbodi" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="582.5" width="375" height="64.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="RLH-bG-sQd"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="-13" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="Submit"/>
@@ -119,7 +122,6 @@
                                     <constraint firstAttribute="trailing" secondItem="nEf-3M-LHG" secondAttribute="trailing" id="QHq-GS-OO0"/>
                                     <constraint firstAttribute="trailing" secondItem="ybU-WF-HcR" secondAttribute="trailing" id="W7p-3b-DHC"/>
                                     <constraint firstItem="nEf-3M-LHG" firstAttribute="leading" secondItem="2Gy-eT-EMJ" secondAttribute="leading" id="Xsv-ye-KeF"/>
-                                    <constraint firstItem="ybU-WF-HcR" firstAttribute="height" secondItem="2Gy-eT-EMJ" secondAttribute="height" multiplier="0.1" id="Z7m-cW-qEI"/>
                                     <constraint firstItem="nEf-3M-LHG" firstAttribute="top" secondItem="2Gy-eT-EMJ" secondAttribute="top" id="oYg-6U-XxJ"/>
                                     <constraint firstItem="Bow-K1-wy6" firstAttribute="top" secondItem="nEf-3M-LHG" secondAttribute="bottom" id="ssx-lT-z8G"/>
                                     <constraint firstItem="Bow-K1-wy6" firstAttribute="leading" secondItem="2Gy-eT-EMJ" secondAttribute="leading" constant="20" id="wml-tf-agI"/>
