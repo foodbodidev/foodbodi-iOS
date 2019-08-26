@@ -370,24 +370,47 @@ extension FodiMapVC: UICollectionViewDelegate, UICollectionViewDataSource, UICol
         let object: QueryDocumentSnapshot = self.listRestaurant[indexPath.row]
         let dict: [String: Any] = object.data()
         cell.lblName.text = dict["name"] as? String
-        cell.lblCategory.text = dict["category"] as? String
+        if let category = dict["category"] as? String {
+            cell.lblCategory.text = category
+        }else{
+            cell.lblCategory.text = "ー"
+        }
         let listCalos:NSMutableArray? = NSMutableArray.init();
         if let kcals = dict["calo_values"] {
             if (kcals as AnyObject).count > 0 {
                 (kcals as AnyObject).enumerateObjects({ object, index, stop in
                     listCalos?.add(object);
                 })
+            }else{
+                cell.lblKcal.text = "ー";
             }
+        }else{
+            cell.lblKcal.text = "ー";
         }
         let averageCalo:Double = self.averageCalo(listCalosData: listCalos!);
-        cell.lblKcal.text = String(format: "%.f", averageCalo);
+        if averageCalo > 0{
+            cell.lblKcal.text = String(format: "%.f", averageCalo);
+        }else{
+            cell.lblKcal.text = "ー";
+        }
         if let openTime = dict["open_hour"] as? String,
             let closeTime = dict["open_hour"] as? String{
-            cell.lblTime.text =   openTime + "~" + closeTime
+           cell.lblTime.text = openTime + "~" + closeTime
+        }else{
+            cell.lblTime.text = "ー" + "~" + "ー"
         }
         
+        
         if let imageUrl = URL(string: dict["photo"] as? String ?? "") {
-            cell.imvRestaurant.kf.setImage(with: imageUrl, placeholder: UIImage.init(named: "iconmonstrPicture61"))
+            KingfisherManager.shared.retrieveImage(with: imageUrl, options: nil, progressBlock: nil, completionHandler: { image, error, cacheType, imageURL in
+                if image != nil {
+                    cell.imvRestaurant.image = image;
+                }else{
+                    cell.imvRestaurant.image = UIImage.init(named: "ic_placeholder");
+                }
+            })
+        }else{
+            cell.imvRestaurant.image = UIImage.init(named: "ic_placeholder");
         }
         return cell;
        
@@ -410,14 +433,14 @@ extension FodiMapVC: UICollectionViewDelegate, UICollectionViewDataSource, UICol
     }
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-		return 8
+		return 1
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-		return 8
+		return 1
 	}
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-		return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+		return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
 	}
 	
 	
