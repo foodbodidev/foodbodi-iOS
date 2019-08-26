@@ -62,8 +62,9 @@ class RegisterAccountVC: BaseLoginVC {
     }
 	
     @IBAction func actionGoogleSignin(_ sender: Any?){
-//        GIDSignIn.sharedInstance()?.presentingViewController = self
-//        GIDSignIn.sharedInstance().signIn()
+        //pod update to run this function.
+        GIDSignIn.sharedInstance().presentingViewController = self
+        GIDSignIn.sharedInstance().signIn()
     }
     
     @IBAction func actionEmail(_ sender: Any?) {
