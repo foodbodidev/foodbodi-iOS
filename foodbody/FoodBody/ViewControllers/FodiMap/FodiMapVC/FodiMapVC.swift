@@ -387,7 +387,7 @@ extension FodiMapVC: UICollectionViewDelegate, UICollectionViewDataSource, UICol
         }
         
         if let imageUrl = URL(string: dict["photo"] as? String ?? "") {
-            cell.imvRestaurant.kf.setImage(with: imageUrl, placeholder: nil)
+            cell.imvRestaurant.kf.setImage(with: imageUrl, placeholder: UIImage.init(named: "iconmonstrPicture61"))
         }
         return cell;
        
