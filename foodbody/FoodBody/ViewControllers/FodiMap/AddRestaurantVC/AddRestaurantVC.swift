@@ -9,12 +9,14 @@
 import UIKit
 import GooglePlaces
 import INSPhotoGallery
+import Kingfisher
 
 class AddRestaurantVC: BaseVC {
     
     //MARK: ==== OUTLET ====
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var headerImageView: UIImageView!
+//    @IBOutlet weak var headerImageView: UIImageView!
+    @IBOutlet weak var clvHeader: UICollectionView!
     
     //MARK: Properties
 	var restaurant: RestaurantRequest = RestaurantRequest()
@@ -22,7 +24,7 @@ class AddRestaurantVC: BaseVC {
 	var photoFoodURL: String = ""
     var imagePicker = UIImagePickerController()
     var imageFood: UIImage?
-    
+    var listPhotoRestaurant:NSMutableArray = NSMutableArray.init();
     //for photo header
     lazy var headerPhoto: [INSPhotoViewable] = {
         return [
@@ -55,6 +57,8 @@ class AddRestaurantVC: BaseVC {
         registerNib()
         bindDataFromMyRestaurant()
         getFoodByResId()
+        self.clvHeader.delegate = self;
+        self.clvHeader.dataSource = self;
     }
 	
     //MARK: === ACTION  ===
@@ -113,9 +117,9 @@ class AddRestaurantVC: BaseVC {
 			
 		}
         restaurant.mapDataFromMyRestaurant(myRestaurant: myRestaurant)
-		if let photoURL = URL.init(string: restaurant.photo) {
-			headerImageView.kf.setImage(with: photoURL)
-		}
+//        if let photoURL = URL.init(string: restaurant.photo) {
+//            headerImageView.kf.setImage(with: photoURL)
+//        }
 		
     }
     
@@ -351,14 +355,44 @@ extension AddRestaurantVC: UIImagePickerControllerDelegate, UINavigationControll
 					cellMenu.photoButton.setImage(image, for: .normal)
 
 				case .restaurant:
-					strongSelf.restaurant.photo = photoURL
-                    DispatchQueue.main.async {
-                        strongSelf.headerImageView.image = image
-                    }
+//                    strongSelf.restaurant.photo = photoURL
+//                    DispatchQueue.main.async {
+//
+//                        strongSelf.headerImageView.image = image
+//                    }
+                    strongSelf.listPhotoRestaurant.add(photoURL);
+                    self?.clvHeader.reloadData();
 				}
             })
         }
     }
-	
+}
+
+extension AddRestaurantVC:UICollectionViewDelegate, UICollectionViewDataSource{
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1;
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return listPhotoRestaurant.count;
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell:RestaurantHeaderClvCell = collectionView.dequeueReusableCell(withReuseIdentifier:"RestaurantHeaderClvCell", for: indexPath) as! RestaurantHeaderClvCell;
+        let sUrl = listPhotoRestaurant[indexPath.row];
+        if let imageUrl = URL(string:sUrl as? String ?? "") {
+            KingfisherManager.shared.retrieveImage(with: imageUrl, options: nil, progressBlock: nil, completionHandler: { image, error, cacheType, imageURL in
+                if image != nil {
+                    cell.imgRestaurant.image = image;
+                }else{
+                    cell.imgRestaurant.image = UIImage.init(named: "ic_placeholder");
+                }
+            })
+        }else{
+            cell.imgRestaurant.image = UIImage.init(named: "ic_placeholder");
+        }
+        return cell;
+    }
+    
 }
