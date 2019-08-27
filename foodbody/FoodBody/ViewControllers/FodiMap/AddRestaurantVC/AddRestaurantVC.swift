@@ -17,6 +17,7 @@ class AddRestaurantVC: BaseVC {
     @IBOutlet weak var tableView: UITableView!
 //    @IBOutlet weak var headerImageView: UIImageView!
     @IBOutlet weak var clvHeader: UICollectionView!
+    @IBOutlet weak var pageClvIndicator: UIPageControl!;
     
     //MARK: Properties
 	var restaurant: RestaurantRequest = RestaurantRequest()
@@ -53,12 +54,12 @@ class AddRestaurantVC: BaseVC {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.navigationController?.navigationBar.isHidden = true
         registerNib()
         bindDataFromMyRestaurant()
         getFoodByResId()
         self.clvHeader.delegate = self;
         self.clvHeader.dataSource = self;
+        
     }
 	
     //MARK: === ACTION  ===
@@ -120,7 +121,9 @@ class AddRestaurantVC: BaseVC {
 //        if let photoURL = URL.init(string: restaurant.photo) {
 //            headerImageView.kf.setImage(with: photoURL)
 //        }
-		
+        self.listPhotoRestaurant.add(restaurant.photo);
+        self.clvHeader.reloadData();
+        self.clvHeader.layoutIfNeeded();
     }
     
     private func openActionSheet() {
@@ -373,6 +376,7 @@ extension AddRestaurantVC:UICollectionViewDelegate, UICollectionViewDataSource{
         return 1;
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        self.pageClvIndicator.numberOfPages = listPhotoRestaurant.count;
         return listPhotoRestaurant.count;
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -393,6 +397,11 @@ extension AddRestaurantVC:UICollectionViewDelegate, UICollectionViewDataSource{
             cell.imgRestaurant.image = UIImage.init(named: "ic_placeholder");
         }
         return cell;
+    }
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if scrollView == self.clvHeader {
+            self.pageClvIndicator.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
+        }
     }
     
 }
