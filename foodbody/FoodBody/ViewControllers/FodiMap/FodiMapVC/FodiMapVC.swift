@@ -97,6 +97,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate,SearchFodi
         var listTwo:NSArray = NSArray.init();
         var listFour:NSArray = NSArray.init();
         var listSix:NSArray = NSArray.init();
+        //0,1,2,3.
         FoodbodyUtils.shared.showLoadingHub(viewController: self)
         db.collection("restaurants").whereField("geohash", isEqualTo: geohashCenter).getDocuments() { (querySnapshot, err) in
             if let err = err {
@@ -116,7 +117,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate,SearchFodi
                             listZero = self.insertDataIntoListFodiMap(querySnapshot: querySnapshot)
                         }
                         //2
-                        self.db.collection("restaurants").whereField("geohash", isEqualTo: listNeighbors[2]).getDocuments() { (querySnapshot, err) in
+                        self.db.collection("restaurants").whereField("geohash", isEqualTo: listNeighbors[1]).getDocuments() { (querySnapshot, err) in
                             if let err = err {
                                 FoodbodyUtils.shared.hideLoadingHub(viewController: self);
                                 self.alertMessage(message: "Error getting documents \(err.localizedDescription)")
@@ -125,7 +126,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate,SearchFodi
                                     listTwo = self.insertDataIntoListFodiMap(querySnapshot: querySnapshot)
                                 }
                                 //4
-                                self.db.collection("restaurants").whereField("geohash", isEqualTo: listNeighbors[4]).getDocuments() { (querySnapshot, err) in
+                                self.db.collection("restaurants").whereField("geohash", isEqualTo: listNeighbors[2]).getDocuments() { (querySnapshot, err) in
                                     if let err = err {
                                         FoodbodyUtils.shared.hideLoadingHub(viewController: self);
                                         self.alertMessage(message: "Error getting documents \(err.localizedDescription)")
@@ -134,7 +135,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate,SearchFodi
                                            listFour = self.insertDataIntoListFodiMap(querySnapshot: querySnapshot)
                                         }
                                         //6
-                                        self.db.collection("restaurants").whereField("geohash", isEqualTo: listNeighbors[6]).getDocuments() { (querySnapshot, err) in
+                                        self.db.collection("restaurants").whereField("geohash", isEqualTo: listNeighbors[3]).getDocuments() { (querySnapshot, err) in
                                             if let err = err {
                                                 FoodbodyUtils.shared.hideLoadingHub(viewController: self);
                                                 self.alertMessage(message: "Error getting documents \(err.localizedDescription)")
