@@ -166,6 +166,10 @@ class UserRequest: Mappable  {
 
 
 class MyRestaurant: NSObject, NSCoding, Mappable {
+    required init?(map: Map) {
+        self.photos = Array.init();
+    }
+    
 
     var name: String?
     var creator: String?
@@ -179,12 +183,9 @@ class MyRestaurant: NSObject, NSCoding, Mappable {
 	var category: String?
 	var open_hour: String?
 	var close_hour: String?
-    var photo: String? 
-	
+    var photos:[String]
     
-    required init?(map: Map) {
-        
-    }
+    
     
     func mapping(map: Map) {
         name <- map["name"]
@@ -200,12 +201,12 @@ class MyRestaurant: NSObject, NSCoding, Mappable {
 		close_hour <- map["close_hour"]
 		id <- map["id"]
 		created_date <- map["created_date"]
-        photo <- map["photo"]
+        photos <- map["photos"]
     }
     
-    init(category: String?,type: String?,photo: String?, name: String?, address: String?, open_hour: String?, close_hour: String?) {
+    init(category: String?,type: String?,photos:[String], name: String?, address: String?, open_hour: String?, close_hour: String?) {
         self.category = category
-        self.photo = photo
+        self.photos = photos
         self.name = name
         self.address = address
         self.open_hour = open_hour
@@ -215,7 +216,7 @@ class MyRestaurant: NSObject, NSCoding, Mappable {
     
     required convenience init?(coder aDecoder: NSCoder) {
         let category = aDecoder.decodeObject(forKey: "category") as? String
-        let photo = aDecoder.decodeObject(forKey: "photo") as? String
+        let photos = aDecoder.decodeObject(forKey: "photos") as? [String] ?? Array.init()
         let name = aDecoder.decodeObject(forKey: "name") as? String
         let address = aDecoder.decodeObject(forKey: "address") as? String
         let open_hour = aDecoder.decodeObject(forKey: "open_hour") as? String
@@ -223,12 +224,12 @@ class MyRestaurant: NSObject, NSCoding, Mappable {
         let type = aDecoder.decodeObject(forKey: "type") as? String
         
         
-        self.init(category: category, type: type, photo: photo,name: name, address: address, open_hour: open_hour, close_hour: close_hour)
+        self.init(category: category, type: type, photos: photos,name: name, address: address, open_hour: open_hour, close_hour: close_hour)
     }
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(category, forKey: "category")
-        aCoder.encode(photo, forKey: "photo")
+        aCoder.encode(photos, forKey: "photos")
         aCoder.encode(name, forKey: "name")
         aCoder.encode(address, forKey: "address")
         aCoder.encode(open_hour, forKey: "open_hour")

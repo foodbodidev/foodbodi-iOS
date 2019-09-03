@@ -26,12 +26,12 @@ class AddRestaurantVC: BaseVC {
     var imagePicker = UIImagePickerController()
     var imageFood: UIImage?
     var listPhotoRestaurant:NSMutableArray = NSMutableArray.init();
-    //for photo header
-    lazy var headerPhoto: [INSPhotoViewable] = {
-        return [
-            INSPhoto(imageURL: URL.init(string: restaurant.photo), thumbnailImage: nil)
-        ]
-    }()
+//    //for photo header
+//    lazy var headerPhoto: [INSPhotoViewable] = {
+//        return [
+//            INSPhoto(imageURL: URL.init(string: restaurant.photo), thumbnailImage: nil)
+//        ]
+//    }()
     
     var useCustomOverlay = false
 	
@@ -104,10 +104,10 @@ class AddRestaurantVC: BaseVC {
     }
     
     @IBAction func previewPhoto() {
-        if !restaurant.photo.isEmpty {
-            let galleryPreview = INSPhotosViewController(photos: headerPhoto, initialPhoto: headerPhoto.first, referenceView: self.view)
-            present(galleryPreview, animated: true, completion: nil)
-        } 
+        if !restaurant.photos.isEmpty {
+//            let galleryPreview = INSPhotosViewController(photos: headerPhoto, initialPhoto: headerPhoto.first, referenceView: self.view)
+//            present(galleryPreview, animated: true, completion: nil)
+        }
     }
 	
 	//MARK: OTHER METHOD
@@ -118,10 +118,11 @@ class AddRestaurantVC: BaseVC {
 			
 		}
         restaurant.mapDataFromMyRestaurant(myRestaurant: myRestaurant)
-//        if let photoURL = URL.init(string: restaurant.photo) {
-//            headerImageView.kf.setImage(with: photoURL)
-//        }
-        self.listPhotoRestaurant.add(restaurant.photo);
+        if restaurant.photos.count > 0 {
+            for photo in restaurant.photos{
+                self.listPhotoRestaurant.add(photo);
+            }
+        }
         self.clvHeader.reloadData();
         self.clvHeader.layoutIfNeeded();
     }
@@ -208,7 +209,6 @@ class AddRestaurantVC: BaseVC {
         }
     }
 }
-
 
 extension AddRestaurantVC: UITableViewDataSource {
     
@@ -322,12 +322,7 @@ extension AddRestaurantVC: RestaurantTableViewCellDelegate, MenuTableViewCellDel
 		photoType = .food
 		openActionSheet()
 	}
-    
-    
-
 }
-
-
 
 extension AddRestaurantVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
