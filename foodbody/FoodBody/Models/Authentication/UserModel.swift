@@ -166,6 +166,8 @@ class UserRequest: Mappable  {
 
 
 class MyRestaurant: NSObject, NSCoding, Mappable {
+    
+    
     required init?(map: Map) {
         self.photos = Array.init();
     }

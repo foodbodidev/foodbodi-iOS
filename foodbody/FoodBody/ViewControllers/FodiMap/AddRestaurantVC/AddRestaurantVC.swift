@@ -25,7 +25,11 @@ class AddRestaurantVC: BaseVC {
 	var photoFoodURL: String = ""
     var imagePicker = UIImagePickerController()
     var imageFood: UIImage?
-    var listPhotoRestaurant:NSMutableArray = NSMutableArray.init();
+    var listPhotoRestaurant: [String] = [] {
+        didSet {
+            self.restaurant.photos = listPhotoRestaurant
+        }
+    }
 //    //for photo header
 //    lazy var headerPhoto: [INSPhotoViewable] = {
 //        return [
@@ -119,8 +123,8 @@ class AddRestaurantVC: BaseVC {
 		}
         restaurant.mapDataFromMyRestaurant(myRestaurant: myRestaurant)
         if restaurant.photos.count > 0 {
-            for photo in restaurant.photos{
-                self.listPhotoRestaurant.add(photo);
+            for photo in restaurant.photos {
+                self.listPhotoRestaurant.append(photo)
             }
         }
         self.clvHeader.reloadData();
@@ -358,7 +362,7 @@ extension AddRestaurantVC: UIImagePickerControllerDelegate, UINavigationControll
 //
 //                        strongSelf.headerImageView.image = image
 //                    }
-                    strongSelf.listPhotoRestaurant.add(photoURL);
+                    strongSelf.listPhotoRestaurant.append(photoURL)
                     self?.clvHeader.reloadData();
 				}
             })
