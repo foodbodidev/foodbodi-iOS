@@ -89,106 +89,31 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate,SearchFodi
             return;
         }
         let geohashCenter:String = Geohash.encode(latitude: self.currentLocation.latitude, longitude: self.currentLocation.longitude, 5)
-        guard let listNeighbors: [String] = Geohash.neighbors(geohashCenter) else {
-            return
-        }
         var listCenter:NSArray = NSArray.init();
-        var listZero:NSArray = NSArray.init();
-        var listTwo:NSArray = NSArray.init();
-        var listFour:NSArray = NSArray.init();
-        var listSix:NSArray = NSArray.init();
-        //0,1,2,3.
         FoodbodyUtils.shared.showLoadingHub(viewController: self)
-        db.collection("restaurants").whereField("geohash", isEqualTo: geohashCenter).getDocuments() { (querySnapshot, err) in
+        db.collection("restaurants").whereField("neighbour_geohash", arrayContains: geohashCenter).getDocuments() { (querySnapshot, err) in
+            FoodbodyUtils.shared.hideLoadingHub(viewController: self);
             if let err = err {
-                FoodbodyUtils.shared.hideLoadingHub(viewController: self);
                 self.alertMessage(message: "Error getting documents \(err.localizedDescription)")
             } else {
                 if let querySnapshot = querySnapshot {
                     listCenter = self.insertDataIntoListFodiMap(querySnapshot: querySnapshot)
-                }
-                //0
-                self.db.collection("restaurants").whereField("geohash", isEqualTo: listNeighbors[0]).getDocuments() { (querySnapshot, err) in
-                    if let err = err {
-                        FoodbodyUtils.shared.hideLoadingHub(viewController: self);
-                        self.alertMessage(message: "Error getting documents \(err.localizedDescription)")
-                    } else {
-                        if let querySnapshot = querySnapshot {
-                            listZero = self.insertDataIntoListFodiMap(querySnapshot: querySnapshot)
+                    var listData: [QueryDocumentSnapshot] = [];
+                    if listCenter.count > 0 {
+                        for obj in listCenter{
+                            listData.append(obj as! QueryDocumentSnapshot);
                         }
-                        //2
-                        self.db.collection("restaurants").whereField("geohash", isEqualTo: listNeighbors[1]).getDocuments() { (querySnapshot, err) in
-                            if let err = err {
-                                FoodbodyUtils.shared.hideLoadingHub(viewController: self);
-                                self.alertMessage(message: "Error getting documents \(err.localizedDescription)")
-                            } else {
-                                if let querySnapshot = querySnapshot {
-                                    listTwo = self.insertDataIntoListFodiMap(querySnapshot: querySnapshot)
-                                }
-                                //4
-                                self.db.collection("restaurants").whereField("geohash", isEqualTo: listNeighbors[2]).getDocuments() { (querySnapshot, err) in
-                                    if let err = err {
-                                        FoodbodyUtils.shared.hideLoadingHub(viewController: self);
-                                        self.alertMessage(message: "Error getting documents \(err.localizedDescription)")
-                                    } else {
-                                        if let querySnapshot = querySnapshot {
-                                           listFour = self.insertDataIntoListFodiMap(querySnapshot: querySnapshot)
-                                        }
-                                        //6
-                                        self.db.collection("restaurants").whereField("geohash", isEqualTo: listNeighbors[3]).getDocuments() { (querySnapshot, err) in
-                                            if let err = err {
-                                                FoodbodyUtils.shared.hideLoadingHub(viewController: self);
-                                                self.alertMessage(message: "Error getting documents \(err.localizedDescription)")
-                                            } else {
-                                                FoodbodyUtils.shared.hideLoadingHub(viewController: self);
-                                                if let querySnapshot = querySnapshot {
-                                                   listSix = self.insertDataIntoListFodiMap(querySnapshot: querySnapshot)
-                                                }
-                                                var listData: [QueryDocumentSnapshot] = []
-                                                if listCenter.count > 0 {
-                                                    for obj in listCenter{
-                                                        listData.append(obj as! QueryDocumentSnapshot);
-                                                    }
-                                                }
-                                                if listZero.count > 0 {
-                                                    for obj in listZero{
-                                                        listData.append(obj as! QueryDocumentSnapshot);
-                                                    }
-                                                }
-                                                if listTwo.count > 0 {
-                                                    for obj in listTwo{
-                                                        listData.append(obj as! QueryDocumentSnapshot);
-                                                    }
-                                                }
-                                                if listFour.count > 0 {
-                                                    for obj in listFour{
-                                                        listData.append(obj as! QueryDocumentSnapshot);
-                                                    }
-                                                }
-                                                if listSix.count > 0 {
-                                                    for obj in listSix{
-                                                        listData.append(obj as! QueryDocumentSnapshot);
-                                                    }
-                                                }
-                                                
-                                                if listData.count > 0 {
-                                                    self.listRestaurant.removeAll();
-                                                    for obj in listData {
-                                                        self.listRestaurant.append(obj);
-                                                    }
-                                                    self.clvFodi.reloadData()
-                                                    self.showDataOnMapWithCurrentLocation(curentLocation: self.currentLocation)
-                                                    
-                                                }
-                                                 print(FbConstants.FoodbodiLog, "number count \(self.listRestaurant.count)")
-                                            }
-                                        }
-                                    }
-                                }
-                            }
+                    }
+                    if listData.count > 0 {
+                        self.listRestaurant.removeAll();
+                        for obj in listData {
+                            self.listRestaurant.append(obj);
                         }
+                        self.clvFodi.reloadData()
+                        self.showDataOnMapWithCurrentLocation(curentLocation: self.currentLocation)
                         
                     }
+                    print(FbConstants.FoodbodiLog, "number count \(self.listRestaurant.count)")
                 }
             }
         }
