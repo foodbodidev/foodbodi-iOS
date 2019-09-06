@@ -63,15 +63,22 @@ class AddRestaurantVC: BaseVC {
         getFoodByResId()
         self.clvHeader.delegate = self;
         self.clvHeader.dataSource = self;
+        //UICollectionView.
+        let layoutClv:UICollectionViewFlowLayout = UICollectionViewFlowLayout();
+        layoutClv.scrollDirection = .horizontal;
+        layoutClv.minimumLineSpacing = 0;
+        layoutClv.minimumInteritemSpacing = 0;
+        layoutClv.sectionInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0 );
+        layoutClv.itemSize = CGSize.init(width: getScreenWidth(), height: 300);
         
+        self.clvHeader.collectionViewLayout = layoutClv;
+        self.clvHeader.showsVerticalScrollIndicator = false;
+        self.clvHeader.showsHorizontalScrollIndicator = false;
+       
     }
 	
     //MARK: === ACTION  ===
-	
-//    @IBAction func actionBacks() {
-//        self.navigationController?.popViewController(animated: true)
-//    }
-	
+    
 	@IBAction func actionSubmit() {
         print(restaurant.toJSON())
 
@@ -375,7 +382,7 @@ extension AddRestaurantVC:UICollectionViewDelegate, UICollectionViewDataSource{
         return 1;
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        self.pageClvIndicator.numberOfPages = listPhotoRestaurant.count;
+//        self.pageClvIndicator.numberOfPages = listPhotoRestaurant.count;
         return listPhotoRestaurant.count;
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -384,23 +391,17 @@ extension AddRestaurantVC:UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell:RestaurantHeaderClvCell = collectionView.dequeueReusableCell(withReuseIdentifier:"RestaurantHeaderClvCell", for: indexPath) as! RestaurantHeaderClvCell;
         let sUrl = listPhotoRestaurant[indexPath.row];
-        if let imageUrl = URL(string:sUrl as? String ?? "") {
-            KingfisherManager.shared.retrieveImage(with: imageUrl, options: nil, progressBlock: nil, completionHandler: { image, error, cacheType, imageURL in
-                if image != nil {
-                    cell.imgRestaurant.image = image;
-                }else{
-                    cell.imgRestaurant.image = UIImage.init(named: "ic_placeholder");
-                }
-            })
-        }else{
-            cell.imgRestaurant.image = UIImage.init(named: "ic_placeholder");
+        if let url = URL.init(string: sUrl) {
+            cell.imgRestaurant.kf.setImage(with: url)
+        } else {
+            cell.imgRestaurant.image = nil
         }
         return cell;
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if scrollView == self.clvHeader {
-            self.pageClvIndicator.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
+//            self.pageClvIndicator.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
         }
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

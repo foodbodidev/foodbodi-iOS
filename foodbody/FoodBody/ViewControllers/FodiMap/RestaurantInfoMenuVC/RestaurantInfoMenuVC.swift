@@ -45,16 +45,28 @@ class RestaurantInfoMenuVC: BaseVC,UICollectionViewDelegate, UICollectionViewDat
     }
     //MARK: init.
     func initUI(){
-        self.viButton.layer.cornerRadius = 8;
-        self.viButton.layer.masksToBounds = true;
-        self.viHeader.layer.cornerRadius = 8;
-        self.viButton.layer.masksToBounds = true;
         self.btnCall.layer.cornerRadius = 12;
         self.btnCall.layer.masksToBounds = true;
         self.btnLike.layer.cornerRadius = 22;
         self.btnLike.layer.masksToBounds = true;
+        //UICollectionView.
+        let layoutClv:UICollectionViewFlowLayout = UICollectionViewFlowLayout();
+        layoutClv.scrollDirection = .horizontal;
+        layoutClv.minimumLineSpacing = 0;
+        layoutClv.minimumInteritemSpacing = 0;
+        layoutClv.sectionInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0 );
+        layoutClv.itemSize = CGSize.init(width: getScreenWidth(), height: 300);
+        
+        self.clvImage.collectionViewLayout = layoutClv;
+        self.clvImage.showsVerticalScrollIndicator = false;
+        self.clvImage.showsHorizontalScrollIndicator = false;
         self.clvImage.delegate = self;
         self.clvImage.dataSource = self;
+        DispatchQueue.main.async {
+            
+            self.btnMenu.setTitleColor(Style.Color.mainGreen, for: .normal)
+            self.btnChat.setTitleColor(Style.Color.mainGray, for: .normal)
+        }
     }
     func initVar() {
         
@@ -75,6 +87,7 @@ class RestaurantInfoMenuVC: BaseVC,UICollectionViewDelegate, UICollectionViewDat
             if (dict["photos"] != nil){
                  listImage = dict["photos"] as! NSArray
             }
+            self.clvImage.reloadData();
         }
         if (listCalos.count) > 0 {
             let averageCalo:Double = self.averageCalo(listCalosData: listCalos);
@@ -105,10 +118,19 @@ class RestaurantInfoMenuVC: BaseVC,UICollectionViewDelegate, UICollectionViewDat
     }
     //MARK: action
     @IBAction func menuAction(sender:UIButton){
-        
+        DispatchQueue.main.async {
+            
+            self.btnMenu.setTitleColor(Style.Color.mainGreen, for: .normal)
+            self.btnChat.setTitleColor(Style.Color.mainGray, for: .normal)
+        }
         self.navInfoMenu.setViewControllers([self.tabMenuVC!], animated: false)
     }
     @IBAction func chatAction(sender:UIButton){
+        DispatchQueue.main.async {
+            
+            self.btnChat.setTitleColor(Style.Color.mainGreen, for: .normal)
+            self.btnMenu.setTitleColor(Style.Color.mainGray, for: .normal)
+        }
          if let document = document {
             self.tabChatVC!.restaurantId = document.documentID;
             let dict:NSDictionary = document.data() as NSDictionary;
@@ -124,7 +146,9 @@ class RestaurantInfoMenuVC: BaseVC,UICollectionViewDelegate, UICollectionViewDat
         return listImage.count;
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell:ImageRestaurantInfoCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageRestaurantInfoCell", for: indexPath) as! ImageRestaurantInfoCell;
+       
         let sUrl:String = listImage[indexPath.row] as! String;
         if let url = URL.init(string: sUrl) {
             cell.imgRestaurant.kf.setImage(with: url)
@@ -136,6 +160,7 @@ class RestaurantInfoMenuVC: BaseVC,UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
+    
     
 
 }
