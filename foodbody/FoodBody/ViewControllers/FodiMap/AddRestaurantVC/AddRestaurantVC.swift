@@ -302,6 +302,11 @@ extension AddRestaurantVC: UITableViewDelegate {
 }
 
 extension AddRestaurantVC: RestaurantTableViewCellDelegate, MenuTableViewCellDelegate {
+    func didClickOnTextFieldCalos(kalos: UITextField, cell: MenuTableViewCell) {
+        let vc:AddCaloVC = getViewController(className: AddCaloVC.className, storyboard: FbConstants.FodiMapSB) as! AddCaloVC;
+        self.present(vc, animated: true, completion: nil);
+    }
+    
    
 	func didClickOnAddButton(food: Food, cell: MenuTableViewCell) {
         var foodRequest = FoodModel(name: food.name, price: food.price, calo: food.calor)

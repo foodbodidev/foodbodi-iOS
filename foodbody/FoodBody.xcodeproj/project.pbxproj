@@ -58,7 +58,6 @@
 		98CEA21422B94A9E00E82063 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CEA21322B94A9E00E82063 /* BaseVC.swift */; };
 		98D9AEC522C85E5600C5DD56 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D9AEC422C85E5600C5DD56 /* Style.swift */; };
 		98F74150230DAB3800D2B03C /* AddCaloVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F7414E230DAB3800D2B03C /* AddCaloVC.swift */; };
-		98F74151230DAB3800D2B03C /* AddCaloVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98F7414F230DAB3800D2B03C /* AddCaloVC.xib */; };
 		98F772CA22D9AF560027F4BE /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F772C922D9AF560027F4BE /* CategoryModel.swift */; };
 		98F772CC22DCBD500027F4BE /* FoodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F772CB22DCBD500027F4BE /* FoodModel.swift */; };
 		98FF7C2A2309502C006D6063 /* VerifyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FF7C282309502C006D6063 /* VerifyVC.swift */; };
@@ -98,6 +97,7 @@
 		D5B24B3222B73F0900DA16C4 /* ReservationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B24B3122B73F0900DA16C4 /* ReservationVC.swift */; };
 		D5B24B3522B73FB600DA16C4 /* MainTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B24B3422B73FB600DA16C4 /* MainTabBarVC.swift */; };
 		D5B285742322059A00E8CECA /* ImageRestaurantInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B285732322059A00E8CECA /* ImageRestaurantInfoCell.swift */; };
+		D5B285792322590C00E8CECA /* CaloInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B285782322590C00E8CECA /* CaloInfoCell.swift */; };
 		D5B4241822BC81DB00141818 /* RegisterAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4241722BC81DB00141818 /* RegisterAccountVC.swift */; };
 		D5B424D722BCD42100141818 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5B424D622BCD42100141818 /* Assets.xcassets */; };
 		D5B987DE22FBC2F8005D0733 /* Reservation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5B987DD22FBC2F7005D0733 /* Reservation.storyboard */; };
@@ -192,7 +192,6 @@
 		98CEA21622B94AF900E82063 /* SelectGenderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectGenderVC.swift; sourceTree = "<group>"; };
 		98D9AEC422C85E5600C5DD56 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		98F7414E230DAB3800D2B03C /* AddCaloVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCaloVC.swift; sourceTree = "<group>"; };
-		98F7414F230DAB3800D2B03C /* AddCaloVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCaloVC.xib; sourceTree = "<group>"; };
 		98F772C922D9AF560027F4BE /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		98F772CB22DCBD500027F4BE /* FoodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodModel.swift; sourceTree = "<group>"; };
 		98FF7C282309502C006D6063 /* VerifyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyVC.swift; sourceTree = "<group>"; };
@@ -238,6 +237,7 @@
 		D5B24B3122B73F0900DA16C4 /* ReservationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationVC.swift; sourceTree = "<group>"; };
 		D5B24B3422B73FB600DA16C4 /* MainTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarVC.swift; sourceTree = "<group>"; };
 		D5B285732322059A00E8CECA /* ImageRestaurantInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRestaurantInfoCell.swift; sourceTree = "<group>"; };
+		D5B285782322590C00E8CECA /* CaloInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloInfoCell.swift; sourceTree = "<group>"; };
 		D5B4241722BC81DB00141818 /* RegisterAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAccountVC.swift; sourceTree = "<group>"; };
 		D5B424D622BCD42100141818 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D5B424DD22BCD5D900141818 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -436,7 +436,7 @@
 			isa = PBXGroup;
 			children = (
 				98F7414E230DAB3800D2B03C /* AddCaloVC.swift */,
-				98F7414F230DAB3800D2B03C /* AddCaloVC.xib */,
+				D5B285782322590C00E8CECA /* CaloInfoCell.swift */,
 			);
 			path = "Add Calo";
 			sourceTree = "<group>";
@@ -976,7 +976,6 @@
 				2F427B9B22BD1E6000099B0F /* SFProText-Semibold.otf in Resources */,
 				2F3750DB22FDBBC0008B150D /* GoogleService-Info.plist in Resources */,
 				2F427B9A22BD1E6000099B0F /* SFProText-Light.otf in Resources */,
-				98F74151230DAB3800D2B03C /* AddCaloVC.xib in Resources */,
 				2F3750E422FDC838008B150D /* CartInfoCell.xib in Resources */,
 				98282BCF22BE89D3003ED8BC /* SignUpVC.xib in Resources */,
 				D5B24B2022B73D9700DA16C4 /* Authentication.storyboard in Resources */,
@@ -1206,6 +1205,7 @@
 				D5B24B2C22B73EC800DA16C4 /* FodiMapVC.swift in Sources */,
 				98D9AEC522C85E5600C5DD56 /* Style.swift in Sources */,
 				9805630C22CA60DE00A71566 /* AppManager.swift in Sources */,
+				D5B285792322590C00E8CECA /* CaloInfoCell.swift in Sources */,
 				98741F9C23015DE6009B0BAD /* HealthKitManager.swift in Sources */,
 				98CEA20B22B946EE00E82063 /* RequestManager.swift in Sources */,
 				D5B9AE4D22B9D32D0015DEB2 /* SelectGenderVC.swift in Sources */,

@@ -20,10 +20,11 @@ struct Food {
 protocol MenuTableViewCellDelegate: class {
 	func didClickOnAddButton(food: Food, cell: MenuTableViewCell)
 	func didAddFoodPhoto()
+    func didClickOnTextFieldCalos(kalos: UITextField, cell: MenuTableViewCell)
 }
 
 
-class MenuTableViewCell: UITableViewCell {
+class MenuTableViewCell: UITableViewCell, UITextFieldDelegate{
     
     //MARK: Outlet
     @IBOutlet weak var titleTextField: InforTextField!
@@ -40,6 +41,7 @@ class MenuTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.calorTextField.delegate = self;
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -93,6 +95,12 @@ class MenuTableViewCell: UITableViewCell {
         priceTextField.text = ""
         calorTextField.text = ""
 		photoButton.setImage(nil, for: .normal)
+    }
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if let delegate = self.delegate {
+            delegate.didClickOnTextFieldCalos(kalos: textField, cell: self);
+        }
+        return false;
     }
     
 }

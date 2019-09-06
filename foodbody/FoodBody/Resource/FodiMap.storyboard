@@ -559,6 +559,49 @@
             </objects>
             <point key="canvasLocation" x="985" y="885"/>
         </scene>
+        <!--Add CaloVC-->
+        <scene sceneID="DDo-De-SY5">
+            <objects>
+                <viewController storyboardIdentifier="AddCaloVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4Sq-Uy-CrH" customClass="AddCaloVC" customModule="Foodbodi" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ixs-7M-ONn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xDw-o8-958">
+                                <rect key="frame" x="5" y="20" width="365" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="DuG-BZ-azV"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nFm-h7-oNN">
+                                <rect key="frame" x="0.0" y="60" width="375" height="607"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xDw-o8-958" firstAttribute="top" secondItem="xYD-vm-xVh" secondAttribute="top" id="8Ls-ro-iTo"/>
+                            <constraint firstItem="nFm-h7-oNN" firstAttribute="leading" secondItem="xYD-vm-xVh" secondAttribute="leading" id="EVf-Os-MBd"/>
+                            <constraint firstItem="xDw-o8-958" firstAttribute="leading" secondItem="xYD-vm-xVh" secondAttribute="leading" constant="5" id="Szc-kF-OZ6"/>
+                            <constraint firstItem="xYD-vm-xVh" firstAttribute="trailing" secondItem="nFm-h7-oNN" secondAttribute="trailing" id="ZWL-cb-PVd"/>
+                            <constraint firstItem="xYD-vm-xVh" firstAttribute="bottom" secondItem="nFm-h7-oNN" secondAttribute="bottom" id="Zni-mp-vhI"/>
+                            <constraint firstItem="xYD-vm-xVh" firstAttribute="trailing" secondItem="xDw-o8-958" secondAttribute="trailing" constant="5" id="gNe-zY-MzY"/>
+                            <constraint firstItem="nFm-h7-oNN" firstAttribute="top" secondItem="xDw-o8-958" secondAttribute="bottom" id="lRM-lZ-BFg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xYD-vm-xVh"/>
+                    </view>
+                    <connections>
+                        <outlet property="tbvCalos" destination="nFm-h7-oNN" id="4YO-gf-UwC"/>
+                        <outlet property="tfSearch" destination="xDw-o8-958" id="DPC-vg-ihz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ADt-Ve-kIQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="196" y="1485"/>
+        </scene>
         <!--Tab MenuVC-->
         <scene sceneID="op3-QE-ODx">
             <objects>

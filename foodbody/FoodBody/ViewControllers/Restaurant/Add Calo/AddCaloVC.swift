@@ -8,23 +8,64 @@
 
 import UIKit
 
-class AddCaloVC: BaseVC {
-
+class AddCaloVC: BaseVC,UITableViewDelegate, UITableViewDataSource,UITextFieldDelegate {
+    @IBOutlet var tfSearch:UITextField!
+    @IBOutlet var tbvCalos:UITableView!
+    
+    let app_id:String = "0c28eb30";
+    let app_key:String = "4021856d25ff2e35461894dbaed4938a";
+    var listDisplay:NSMutableArray = NSMutableArray.init();
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.tbvCalos.delegate = self;
+        self.tbvCalos.dataSource = self;
+        self.tfSearch.delegate = self;
         // Do any additional setup after loading the view.
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //MARK UItextFieldDelegate.
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let text = tfSearch.text {
+            if text.count > 0 {
+                self.searchDataWithText(text: text);
+            }
+        }
+        return true;
     }
-    */
-
+    func searchDataWithText(text:String) {
+        
+        tfSearch.resignFirstResponder();
+        DispatchQueue.main.async{
+            FoodbodyUtils.shared.showLoadingHub(viewController: self);
+            let sUrl:String = String(format: "https://api.edamam.com/api/food-database/parser?ingr=%@&app_id=%@&app_key=%@", text,self.app_id,self.app_key)
+            let task = URLSession.shared.dataTask(with: NSURL(string: sUrl)! as URL, completionHandler: { (data, response, error) -> Void in
+                DispatchQueue.main.async{
+                     FoodbodyUtils.shared.hideLoadingHub(viewController: self);
+                }
+                do{
+                    let str = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as! [String:AnyObject]
+                    print(str)
+                    
+                }
+                catch {
+                    print("json error: \(error)")
+                }
+            })
+            task.resume()
+        }
+    }
+    
+    //MARK: UITableview.
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1;
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return listDisplay.count;
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:CaloInfoCell = tableView.dequeueReusableCell(withIdentifier: "CaloInfoCell", for: indexPath) as! CaloInfoCell;
+        return cell;
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80;
+    }
 }
