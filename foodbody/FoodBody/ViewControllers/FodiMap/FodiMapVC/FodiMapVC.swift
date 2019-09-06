@@ -320,14 +320,10 @@ extension FodiMapVC: UICollectionViewDelegate, UICollectionViewDataSource, UICol
             if listImage.count > 0 {
                 let sUrl = listImage.firstObject as! String;
                 if sUrl.count > 0 {
-                    if let imageUrl = URL(string: sUrl){
-                        KingfisherManager.shared.retrieveImage(with: imageUrl, options: nil, progressBlock: nil, completionHandler: { image, error, cacheType, imageURL in
-                            if image != nil {
-                                cell.imvRestaurant.image = image;
-                            }else{
-                                cell.imvRestaurant.image = UIImage.init(named: "plusWhite");
-                            }
-                        })
+                    if let url = URL.init(string: sUrl) {
+                        cell.imvRestaurant.kf.setImage(with: url)
+                    } else {
+                        cell.imvRestaurant.image = UIImage.init(named: "plusWhite")
                     }
                 }
             }

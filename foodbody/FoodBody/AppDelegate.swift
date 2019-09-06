@@ -40,16 +40,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     NotificationCenter.default.post(name:.kFb_update_restaurant, object: nil, userInfo: dict as [AnyHashable : Any]);
                 }
         }
-        db.collection("notifications").whereField("receiver", isEqualTo: AppManager.user?.email ?? "").whereField("read", isEqualTo: false).addSnapshotListener { (querySnapshot, error) in
-            let alert = UIAlertController(title:nil, message: "Add reservation success", preferredStyle: .alert)
-            
-            let action = UIAlertAction(title: "Ok", style: .default) {
-                UIAlertAction in
-                //go to company information.
-            }
-            alert.addAction(action)
-            self.window?.rootViewController?.navigationController?.present(alert, animated: true, completion: nil)
-        }
         
         if AppManager.user?.token == nil{
             self.gotoWelcome()

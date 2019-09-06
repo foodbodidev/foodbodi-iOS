@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginVC: BaseLoginVC {
     
@@ -75,6 +76,7 @@ class LoginVC: BaseLoginVC {
 				AppManager.user = result
 				strongSelf.getUserProfile()
                 strongSelf.getRestaurantWithProfile()
+                
             } else {
                 strongSelf.alertMessage(message: result.message)
             }

@@ -8,16 +8,30 @@
 
 import UIKit
 import Kingfisher
+import Firebase;
 
 let tagLoading: Int = 999999
 
 class BaseVC: UIViewController {
     
     lazy var loadingView: LoadingView = LoadingView(frame: CGRect(origin: .zero, size: CGSize.init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)))
-    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.edgesForExtendedLayout = UIRectEdge.init()
+        let db = Firestore.firestore()
+        var email = "";
+        email = AppManager.user!.email;
+        db.collection("notifications").whereField("receiver", isEqualTo: email).whereField("read", isEqualTo: false).addSnapshotListener { (querySnapshot, error) in
+            print("receive notifications accept restaurant!")
+            let alert = UIAlertController(title:nil, message: "Your restaurant is accepted by Fodimap!", preferredStyle: .alert)
+            
+            let action = UIAlertAction(title: "Ok", style: .default) {
+                UIAlertAction in
+                //go to company information.
+            }
+            alert.addAction(action)
+            self.appDelegate.window?.rootViewController?.navigationController?.present(alert, animated: false, completion: nil);
+        }
     }
 	
 	//click to view to hide keyboard
