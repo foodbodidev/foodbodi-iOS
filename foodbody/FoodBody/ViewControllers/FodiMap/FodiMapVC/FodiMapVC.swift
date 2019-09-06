@@ -298,8 +298,6 @@ extension FodiMapVC: UICollectionViewDelegate, UICollectionViewDataSource, UICol
         cell.lblName.text = dict["name"] as? String
         if let category = dict["category"] as? String {
             cell.lblCategory.text = category
-        }else{
-            cell.lblCategory.text = "ー"
         }
         let listCalos:NSMutableArray? = NSMutableArray.init();
         if let kcals = dict["calo_values"] {
@@ -307,36 +305,34 @@ extension FodiMapVC: UICollectionViewDelegate, UICollectionViewDataSource, UICol
                 (kcals as AnyObject).enumerateObjects({ object, index, stop in
                     listCalos?.add(object);
                 })
-            }else{
-                cell.lblKcal.text = "ー";
             }
-        }else{
-            cell.lblKcal.text = "ー";
         }
         let averageCalo:Double = self.averageCalo(listCalosData: listCalos!);
         if averageCalo > 0{
             cell.lblKcal.text = String(format: "%.f", averageCalo);
-        }else{
-            cell.lblKcal.text = "ー";
         }
         if let openTime = dict["open_hour"] as? String,
             let closeTime = dict["open_hour"] as? String{
            cell.lblTime.text = openTime + "~" + closeTime
-        }else{
-            cell.lblTime.text = "ー" + "~" + "ー"
         }
-        
-        
-        if let imageUrl = URL(string: dict["photo"] as? String ?? "") {
-            KingfisherManager.shared.retrieveImage(with: imageUrl, options: nil, progressBlock: nil, completionHandler: { image, error, cacheType, imageURL in
-                if image != nil {
-                    cell.imvRestaurant.image = image;
-                }else{
-                    cell.imvRestaurant.image = UIImage.init(named: "ic_placeholder");
+        if (dict["photos"] != nil){
+            let listImage:NSArray = dict["photos"] as! NSArray;
+            if listImage.count > 0 {
+                let sUrl = listImage.firstObject as! String;
+                if sUrl.count > 0 {
+                    if let imageUrl = URL(string: sUrl){
+                        KingfisherManager.shared.retrieveImage(with: imageUrl, options: nil, progressBlock: nil, completionHandler: { image, error, cacheType, imageURL in
+                            if image != nil {
+                                cell.imvRestaurant.image = image;
+                            }else{
+                                cell.imvRestaurant.image = UIImage.init(named: "plusWhite");
+                            }
+                        })
+                    }
                 }
-            })
+            }
         }else{
-            cell.imvRestaurant.image = UIImage.init(named: "ic_placeholder");
+            cell.imvRestaurant.image = UIImage.init(named: "plusWhite");
         }
         return cell;
        

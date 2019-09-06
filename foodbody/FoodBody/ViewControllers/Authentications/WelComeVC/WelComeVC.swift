@@ -16,13 +16,13 @@ class WelComeVC: BaseVC {
     //MARK: cycle view.
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Welcome";
     }
     
     
     //MARK: action.
     @IBAction func actionStart(sender:UIButton){
         FBAppDelegate.gotoMainTab()
-        
     }
 
 }

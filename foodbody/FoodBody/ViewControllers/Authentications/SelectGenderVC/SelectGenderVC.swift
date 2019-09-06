@@ -24,6 +24,7 @@ class SelectGenderVC: BaseVC {
         btnMale.layer.borderWidth = 1
         btnFemale.layer.cornerRadius = FbConstants.crRadius
         btnFemale.layer.borderWidth = 1
+        self.title = "Gender";
     }
     
     //MARK: action.

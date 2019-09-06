@@ -11,7 +11,6 @@ import UIKit
 class ReservationUpdateVC: BaseVC, CartInfoCellDelegate{
     //MARK: variable.
     var reservationId:String = ""
-    var restaurantId:String = ""
     var totalCalo:CGFloat = 0;
     var listMenu: [FoodModel] = []
     var reservationModel:OneReservationModel = OneReservationModel()
@@ -88,7 +87,7 @@ class ReservationUpdateVC: BaseVC, CartInfoCellDelegate{
             return;
         }
         let request = ReservationRequest()
-        request.restaurant_id = self.restaurantId
+        request.reservationId = self.reservationId;
         request.date_string = FoodbodyUtils.shared.dateStringFromDate(date: Date() as NSDate);
         let foodReservation = listMenu.map({
             return FoodReservationModel(food_id: $0.id, amount: $0.amount)
@@ -105,7 +104,7 @@ class ReservationUpdateVC: BaseVC, CartInfoCellDelegate{
             if let result = result {
                 if result.isSuccess {
                 NotificationCenter.default.post(name:.kFb_update_reservation, object: nil, userInfo:nil);
-                    let alert = UIAlertController(title:nil, message: "Add reservation success", preferredStyle: .alert)
+                    let alert = UIAlertController(title:nil, message: "Update reservation success", preferredStyle: .alert)
                     let action = UIAlertAction(title: "Ok", style: .default) {
                         UIAlertAction in
                         //go to company information.
