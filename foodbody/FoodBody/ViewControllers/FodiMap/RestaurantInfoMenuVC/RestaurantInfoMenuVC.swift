@@ -8,15 +8,17 @@
 
 import UIKit
 import Firebase
+import Kingfisher
 
-class RestaurantInfoMenuVC: BaseVC {
+class RestaurantInfoMenuVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource {
     // MARK: variables
     var document:QueryDocumentSnapshot? = nil
     var listMenu:NSMutableArray?
     var tabMenuVC:TabMenuVC?
     var tabChatVC:TabChatVC?
     weak var navInfoMenu:UINavigationController!
-    var listCalos:NSMutableArray? = NSMutableArray.init();
+    var listCalos:NSMutableArray = NSMutableArray.init();
+    var listImage:NSArray = [];
     // MARK: IBOutlet.
     @IBOutlet weak var viContainer: UIView!
     @IBOutlet weak var btnMenu: UIButton!
@@ -29,6 +31,8 @@ class RestaurantInfoMenuVC: BaseVC {
     @IBOutlet weak var viHeader: UIView!
     @IBOutlet weak var btnCall: UIButton!
     @IBOutlet weak var btnLike: UIButton!
+    @IBOutlet weak var clvImage: UICollectionView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +53,8 @@ class RestaurantInfoMenuVC: BaseVC {
         self.btnCall.layer.masksToBounds = true;
         self.btnLike.layer.cornerRadius = 22;
         self.btnLike.layer.masksToBounds = true;
+        self.clvImage.delegate = self;
+        self.clvImage.dataSource = self;
     }
     func initVar() {
         
@@ -59,16 +65,19 @@ class RestaurantInfoMenuVC: BaseVC {
             if let kcals = dict.object(forKey: "calo_values") {
                 if (kcals as AnyObject).count > 0 {
                     (kcals as AnyObject).enumerateObjects({ object, index, stop in
-                        listCalos?.add(object);
+                        listCalos.add(object);
                     })
                 }
             }
             self.lblTime.text = FoodbodyUtils.shared.checkDataString(dict: dict, key: "open_hour") + "-" + FoodbodyUtils.shared.checkDataString(dict: dict, key: "close_hour");
             self.tabMenuVC!.idRestaurant = document.documentID;
             self.navInfoMenu.setViewControllers([self.tabMenuVC!], animated: false);
+            if (dict["photos"] != nil){
+                 listImage = dict["photos"] as! NSArray
+            }
         }
-        if (listCalos?.count)! > 0 {
-            let averageCalo:Double = self.averageCalo(listCalosData: listCalos!);
+        if (listCalos.count) > 0 {
+            let averageCalo:Double = self.averageCalo(listCalosData: listCalos);
              self.lblKcal.text = String(format: "%.2f",averageCalo);
         }
     }
@@ -107,5 +116,26 @@ class RestaurantInfoMenuVC: BaseVC {
         }
         self.navInfoMenu.setViewControllers([self.tabChatVC!], animated: false);
     }
+    //MARK: UICollectionView.
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1;
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return listImage.count;
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell:ImageRestaurantInfoCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageRestaurantInfoCell", for: indexPath) as! ImageRestaurantInfoCell;
+        let sUrl:String = listImage[indexPath.row] as! String;
+        if let url = URL.init(string: sUrl) {
+            cell.imgRestaurant.kf.setImage(with: url)
+        } else {
+            cell.imgRestaurant.image = nil
+        }
+        return cell;
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
 
 }

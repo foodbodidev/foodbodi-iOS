@@ -43,7 +43,7 @@
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RestaurantHeaderClvCell" id="RB4-aA-u4i" customClass="RestaurantHeaderClvCell" customModule="Foodbodi" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="235"/>
+                                                        <rect key="frame" x="0.0" y="-7.5" width="375" height="235"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                             <rect key="frame" x="0.0" y="0.0" width="375" height="235"/>
@@ -79,14 +79,14 @@
                                                 </cells>
                                             </collectionView>
                                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="8h8-eq-SHc">
-                                                <rect key="frame" x="0.0" y="195" width="375" height="20"/>
+                                                <rect key="frame" x="0.0" y="10" width="375" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="Lgj-sV-cG0"/>
                                                 </constraints>
                                                 <color key="pageIndicatorTintColor" red="0.070588235289999995" green="0.74117647060000003" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                                             </pageControl>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DAA-cF-bgU">
-                                                <rect key="frame" x="10" y="10" width="40" height="40"/>
+                                                <rect key="frame" x="167.5" y="90" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="1oZ-lO-cea"/>
                                                     <constraint firstAttribute="height" constant="40" id="Jsh-57-jkh"/>
@@ -117,10 +117,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bow-K1-wy6" userLabel="vTableView">
-                                        <rect key="frame" x="20" y="220" width="335" height="377"/>
+                                        <rect key="frame" x="10" y="180" width="355" height="417"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nnA-xc-dMF">
-                                                <rect key="frame" x="0.0" y="0.0" width="335" height="377"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="355" height="417"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
                                                     <outlet property="dataSource" destination="BQH-t5-pHj" id="dCM-i4-XNx"/>
@@ -196,8 +196,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LDZ-VT-95q">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="444.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="vcB-ml-4Fj">
+                                    <size key="itemSize" width="375" height="245"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageRestaurantInfoCell" id="ZLc-J7-eVw" customClass="ImageRestaurantInfoCell" customModule="Foodbodi" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="100" width="375" height="245"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="245"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vaZ-Si-gbW">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="245"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xaw-0J-4dk">
+                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="245"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="xaw-0J-4dk" firstAttribute="top" secondItem="vaZ-Si-gbW" secondAttribute="top" id="3V3-3n-Kqp"/>
+                                                        <constraint firstItem="xaw-0J-4dk" firstAttribute="leading" secondItem="vaZ-Si-gbW" secondAttribute="leading" id="Fh9-1X-STw"/>
+                                                        <constraint firstAttribute="bottom" secondItem="xaw-0J-4dk" secondAttribute="bottom" id="hcd-1u-P3Q"/>
+                                                        <constraint firstAttribute="trailing" secondItem="xaw-0J-4dk" secondAttribute="trailing" id="tAn-aM-Fcx"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="vaZ-Si-gbW" firstAttribute="leading" secondItem="ZLc-J7-eVw" secondAttribute="leading" id="BQP-PY-X2H"/>
+                                            <constraint firstItem="vaZ-Si-gbW" firstAttribute="top" secondItem="ZLc-J7-eVw" secondAttribute="top" id="LO8-vx-T4C"/>
+                                            <constraint firstAttribute="bottom" secondItem="vaZ-Si-gbW" secondAttribute="bottom" id="UUj-iC-BRb"/>
+                                            <constraint firstAttribute="trailing" secondItem="vaZ-Si-gbW" secondAttribute="trailing" id="elh-sx-fPV"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imgRestaurant" destination="xaw-0J-4dk" id="Pgg-pc-Zzt"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hdu-bS-7xa">
-                                <rect key="frame" x="20" y="60" width="335" height="150"/>
+                                <rect key="frame" x="20" y="120" width="335" height="150"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iP6-CF-UTD" userLabel="viName">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="95"/>
@@ -296,7 +342,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wjj-PP-1Vz" userLabel="ViButton">
-                                <rect key="frame" x="20" y="220" width="335" height="40"/>
+                                <rect key="frame" x="20" y="280" width="335" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b9g-Pq-V0d">
                                         <rect key="frame" x="167.5" y="0.0" width="167.5" height="40"/>
@@ -332,7 +378,7 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DoX-ZM-8vY">
-                                <rect key="frame" x="0.0" y="270" width="375" height="397"/>
+                                <rect key="frame" x="0.0" y="330" width="375" height="337"/>
                                 <connections>
                                     <segue destination="y7g-rG-0Yy" kind="embed" identifier="nav_info_menu" id="x8D-da-Sqt"/>
                                 </connections>
@@ -340,11 +386,15 @@
                         </subviews>
                         <color key="backgroundColor" red="0.89803921568627454" green="0.92941176470588238" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Hdu-bS-7xa" firstAttribute="top" secondItem="peS-4Q-uUR" secondAttribute="top" constant="40" id="87a-Cb-DYq"/>
+                            <constraint firstAttribute="trailing" secondItem="LDZ-VT-95q" secondAttribute="trailing" id="6q1-jf-ee0"/>
+                            <constraint firstItem="Hdu-bS-7xa" firstAttribute="top" secondItem="peS-4Q-uUR" secondAttribute="top" constant="60" id="87a-Cb-DYq"/>
+                            <constraint firstItem="LDZ-VT-95q" firstAttribute="leading" secondItem="pSm-aX-XYS" secondAttribute="leading" id="D22-AS-NJO"/>
+                            <constraint firstItem="LDZ-VT-95q" firstAttribute="height" secondItem="pSm-aX-XYS" secondAttribute="height" multiplier="2:3" id="H3x-hH-TYo"/>
+                            <constraint firstItem="LDZ-VT-95q" firstAttribute="top" secondItem="pSm-aX-XYS" secondAttribute="top" id="ISL-4g-K3l"/>
                             <constraint firstItem="peS-4Q-uUR" firstAttribute="bottom" secondItem="DoX-ZM-8vY" secondAttribute="bottom" id="MNh-HK-lx0"/>
-                            <constraint firstItem="Hdu-bS-7xa" firstAttribute="leading" secondItem="peS-4Q-uUR" secondAttribute="leading" constant="20" id="RkX-PD-sdh"/>
+                            <constraint firstItem="Hdu-bS-7xa" firstAttribute="leading" secondItem="peS-4Q-uUR" secondAttribute="leading" constant="10" id="RkX-PD-sdh"/>
                             <constraint firstItem="peS-4Q-uUR" firstAttribute="trailing" secondItem="Wjj-PP-1Vz" secondAttribute="trailing" constant="20" id="TIw-Yc-Er1"/>
-                            <constraint firstItem="peS-4Q-uUR" firstAttribute="trailing" secondItem="Hdu-bS-7xa" secondAttribute="trailing" constant="20" id="Tdh-FF-UZ9"/>
+                            <constraint firstItem="peS-4Q-uUR" firstAttribute="trailing" secondItem="Hdu-bS-7xa" secondAttribute="trailing" constant="10" id="Tdh-FF-UZ9"/>
                             <constraint firstItem="peS-4Q-uUR" firstAttribute="trailing" secondItem="DoX-ZM-8vY" secondAttribute="trailing" id="Z14-qx-LGF"/>
                             <constraint firstItem="DoX-ZM-8vY" firstAttribute="leading" secondItem="peS-4Q-uUR" secondAttribute="leading" id="ljx-St-v0J"/>
                             <constraint firstItem="Wjj-PP-1Vz" firstAttribute="top" secondItem="Hdu-bS-7xa" secondAttribute="bottom" constant="10" id="pUi-9f-qhk"/>
@@ -358,6 +408,7 @@
                         <outlet property="btnChat" destination="b9g-Pq-V0d" id="qHS-uO-mgj"/>
                         <outlet property="btnLike" destination="vhw-uL-aol" id="QPa-AC-EEm"/>
                         <outlet property="btnMenu" destination="Rxp-0j-7IY" id="sUj-uY-MEw"/>
+                        <outlet property="clvImage" destination="LDZ-VT-95q" id="EOL-Xw-KgL"/>
                         <outlet property="lblCategory" destination="bRU-6h-hKj" id="gzk-n0-A56"/>
                         <outlet property="lblKcal" destination="ZZe-cx-XrS" id="woS-7d-qVX"/>
                         <outlet property="lblName" destination="xn5-Uy-xO6" id="7Hf-ci-OPg"/>
@@ -369,7 +420,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fBS-mG-5jk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="868.125" y="33.802816901408448"/>
+            <point key="canvasLocation" x="868" y="33.733133433283363"/>
         </scene>
         <!--Company InfoVC-->
         <scene sceneID="LNd-JL-xbI">

@@ -97,6 +97,7 @@
 		D5B24B2F22B73EE400DA16C4 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B24B2E22B73EE300DA16C4 /* ProfileVC.swift */; };
 		D5B24B3222B73F0900DA16C4 /* ReservationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B24B3122B73F0900DA16C4 /* ReservationVC.swift */; };
 		D5B24B3522B73FB600DA16C4 /* MainTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B24B3422B73FB600DA16C4 /* MainTabBarVC.swift */; };
+		D5B285742322059A00E8CECA /* ImageRestaurantInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B285732322059A00E8CECA /* ImageRestaurantInfoCell.swift */; };
 		D5B4241822BC81DB00141818 /* RegisterAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4241722BC81DB00141818 /* RegisterAccountVC.swift */; };
 		D5B424D722BCD42100141818 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5B424D622BCD42100141818 /* Assets.xcassets */; };
 		D5B987DE22FBC2F8005D0733 /* Reservation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5B987DD22FBC2F7005D0733 /* Reservation.storyboard */; };
@@ -236,6 +237,7 @@
 		D5B24B2E22B73EE300DA16C4 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		D5B24B3122B73F0900DA16C4 /* ReservationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationVC.swift; sourceTree = "<group>"; };
 		D5B24B3422B73FB600DA16C4 /* MainTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarVC.swift; sourceTree = "<group>"; };
+		D5B285732322059A00E8CECA /* ImageRestaurantInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRestaurantInfoCell.swift; sourceTree = "<group>"; };
 		D5B4241722BC81DB00141818 /* RegisterAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAccountVC.swift; sourceTree = "<group>"; };
 		D5B424D622BCD42100141818 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D5B424DD22BCD5D900141818 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 				D587C45922DC27B100C119BA /* TabChatVC */,
 				D587C45622DC278900C119BA /* TabMenuVC */,
 				2F03660422DB837B001C15FE /* RestaurantInfoMenuVC.swift */,
+				D5B285732322059A00E8CECA /* ImageRestaurantInfoCell.swift */,
 			);
 			path = RestaurantInfoMenuVC;
 			sourceTree = "<group>";
@@ -1207,6 +1210,7 @@
 				98CEA20B22B946EE00E82063 /* RequestManager.swift in Sources */,
 				D5B9AE4D22B9D32D0015DEB2 /* SelectGenderVC.swift in Sources */,
 				D5B987E022FBC7DA005D0733 /* OneReservationModel.swift in Sources */,
+				D5B285742322059A00E8CECA /* ImageRestaurantInfoCell.swift in Sources */,
 				98CEA20222B9431200E82063 /* Date.swift in Sources */,
 				D51E659D230CE57400743801 /* SearchTypeFoodCell.swift in Sources */,
 				D5B24B1B22B73CB800DA16C4 /* UIViewController.swift in Sources */,

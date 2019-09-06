@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 let tagLoading: Int = 999999
 
