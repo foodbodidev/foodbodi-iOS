@@ -97,10 +97,11 @@ class MenuTableViewCell: UITableViewCell, UITextFieldDelegate{
 		photoButton.setImage(nil, for: .normal)
     }
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if let delegate = self.delegate {
-            delegate.didClickOnTextFieldCalos(kalos: textField, cell: self);
-        }
-        return false;
+//        if let delegate = self.delegate {
+//            delegate.didClickOnTextFieldCalos(kalos: textField, cell: self);
+//        }
+//        return false;
+        return true;
     }
     
 }
