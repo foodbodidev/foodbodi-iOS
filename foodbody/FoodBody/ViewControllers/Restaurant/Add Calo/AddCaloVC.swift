@@ -37,7 +37,7 @@ class AddCaloVC: BaseVC,UITableViewDelegate, UITableViewDataSource,UITextFieldDe
         
         if let delegate = self.delegate{
             let temp:Double = Double(self.getTotalCalo())
-            delegate.AddCaloVCDelegate(cell: self, obj: String.init(format: "%f", temp))
+            delegate.AddCaloVCDelegate(cell: self, obj: String.init(format: "%.1f", temp))
             self.dismiss(animated: true, completion: nil);
         }
     }
@@ -103,7 +103,7 @@ class AddCaloVC: BaseVC,UITableViewDelegate, UITableViewDataSource,UITextFieldDe
         let calosData:CalosInfo = self.listDisplay[indexPath.row];
         cell.lblCategory.text = calosData.categoryLabel;
         cell.lblENERC_KCAL.text = String.init(format: "%f kcal", calosData.nutrients.ENERC_KCAL);
-        cell.lblAmount.text = String.init(format: "%f", calosData.amount);
+        cell.lblAmount.text = String.init(format: "%.1f", calosData.amount);
         cell.delegate = self;
         return cell;
     }

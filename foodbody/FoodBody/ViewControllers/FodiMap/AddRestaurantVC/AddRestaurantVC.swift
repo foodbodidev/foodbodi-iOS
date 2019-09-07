@@ -248,12 +248,12 @@ extension AddRestaurantVC: UITableViewDataSource {
         case AddResEnum.addMenu.rawValue :
             let addMenuCell = tableView.dequeueReusableCell(withIdentifier: MenuTableViewCell.className, for: indexPath) as! MenuTableViewCell
             addMenuCell.delegate = self
+            addMenuCell.calorTextField.text = self.calosTotla;
             return addMenuCell
             
         case AddResEnum.foodDisplay.rawValue:
             let foodCell = tableView.dequeueReusableCell(withIdentifier: FoodTableViewCell.className, for: indexPath) as! FoodTableViewCell
             foodCell.bindData(data: self.foodModel[indexPath.row])
-            foodCell.calorLabel.text = self.calosTotla;
             return foodCell
         default:
             return UITableViewCell()
