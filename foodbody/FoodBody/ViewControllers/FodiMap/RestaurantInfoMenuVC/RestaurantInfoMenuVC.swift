@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import Kingfisher
+import INSPhotoGallery
 
 class RestaurantInfoMenuVC: BaseVC,UICollectionViewDelegate, UICollectionViewDataSource {
     // MARK: variables
@@ -161,6 +162,15 @@ class RestaurantInfoMenuVC: BaseVC,UICollectionViewDelegate, UICollectionViewDat
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let sUrl:String = listImage[indexPath.row] as! String;
+        let headerPhoto: [INSPhotoViewable] = {
+            return [
+                INSPhoto(imageURL: URL.init(string: sUrl), thumbnailImage: nil)
+            ]
+        }()
+        let galleryPreview = INSPhotosViewController(photos: headerPhoto, initialPhoto: headerPhoto.first, referenceView: self.view)
+        present(galleryPreview, animated: true, completion: nil)
+    }
 
 }

@@ -31,11 +31,6 @@ class AddRestaurantVC: BaseVC {
         }
     }
 //    //for photo header
-//    lazy var headerPhoto: [INSPhotoViewable] = {
-//        return [
-//            INSPhoto(imageURL: URL.init(string: restaurant.photo), thumbnailImage: nil)
-//        ]
-//    }()
     
     var useCustomOverlay = false
 	
@@ -369,11 +364,6 @@ extension AddRestaurantVC: UIImagePickerControllerDelegate, UINavigationControll
 					cellMenu.photoButton.setImage(image, for: .normal)
 
 				case .restaurant:
-//                    strongSelf.restaurant.photo = photoURL
-//                    DispatchQueue.main.async {
-//
-//                        strongSelf.headerImageView.image = image
-//                    }
                     strongSelf.listPhotoRestaurant.append(photoURL)
                     self?.clvHeader.reloadData();
 				}
@@ -391,7 +381,14 @@ extension AddRestaurantVC:UICollectionViewDelegate, UICollectionViewDataSource{
         return listPhotoRestaurant.count;
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let sUrl = listPhotoRestaurant[indexPath.row];
+       let headerPhoto: [INSPhotoViewable] = {
+            return [
+                INSPhoto(imageURL: URL.init(string: sUrl), thumbnailImage: nil)
+            ]
+        }()
+        let galleryPreview = INSPhotosViewController(photos: headerPhoto, initialPhoto: headerPhoto.first, referenceView: self.view)
+        present(galleryPreview, animated: true, completion: nil)
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell:RestaurantHeaderClvCell = collectionView.dequeueReusableCell(withReuseIdentifier:"RestaurantHeaderClvCell", for: indexPath) as! RestaurantHeaderClvCell;
@@ -418,5 +415,6 @@ extension AddRestaurantVC:UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
+    
     
 }

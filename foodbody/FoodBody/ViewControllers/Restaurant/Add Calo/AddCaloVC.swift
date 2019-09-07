@@ -80,7 +80,7 @@ class AddCaloVC: BaseVC,UITableViewDelegate, UITableViewDataSource,UITextFieldDe
         let cell:CaloInfoCell = tableView.dequeueReusableCell(withIdentifier: "CaloInfoCell", for: indexPath) as! CaloInfoCell;
         let calosData:CalosInfo = self.listDisplay[indexPath.row] as! CalosInfo;
         cell.lblCategory.text = calosData.categoryLabel;
-        cell.lblENERC_KCAL.text = String.init(format: "%f", calosData.nutrients.ENERC_KCAL);
+        cell.lblENERC_KCAL.text = String.init(format: "%f kcal", calosData.nutrients.ENERC_KCAL);
         return cell;
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
