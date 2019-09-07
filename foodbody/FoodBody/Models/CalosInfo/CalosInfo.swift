@@ -13,7 +13,9 @@ class CalosInfo: NSObject {
     var label: String = ""
     var category: String = ""
     var categoryLabel: String = ""
+    var amount:NSInteger = 0;
     var nutrients: Nutrients = Nutrients();
+    
     init(dict: NSDictionary) {
         if (dict["foodId"] != nil){
             self.foodId = dict["foodId"] as! String;

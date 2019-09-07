@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddCaloVC: BaseVC,UITableViewDelegate, UITableViewDataSource,UITextFieldDelegate {
+class AddCaloVC: BaseVC,UITableViewDelegate, UITableViewDataSource,UITextFieldDelegate,CaloInfoCellDelegate {
     @IBOutlet var tfSearch:UITextField!
     @IBOutlet var tbvCalos:UITableView!
     
@@ -73,17 +73,39 @@ class AddCaloVC: BaseVC,UITableViewDelegate, UITableViewDataSource,UITextFieldDe
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1;
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listDisplay.count;
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:CaloInfoCell = tableView.dequeueReusableCell(withIdentifier: "CaloInfoCell", for: indexPath) as! CaloInfoCell;
         let calosData:CalosInfo = self.listDisplay[indexPath.row] as! CalosInfo;
         cell.lblCategory.text = calosData.categoryLabel;
         cell.lblENERC_KCAL.text = String.init(format: "%f kcal", calosData.nutrients.ENERC_KCAL);
+        cell.lblAmount.text = String.init(format: "%d", calosData.amount);
+        cell.delegate = self;
         return cell;
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100;
+    }
+    //MARK: CaloInfoCellDelegate
+    func CaloInfoCellDelegate(cell: CaloInfoCell, actionAdd: UIButton) {
+        let indexPath:IndexPath = self.tbvCalos.indexPath(for: cell)!
+        let row = indexPath.row
+        let data:CalosInfo = self.listDisplay[row] as! CalosInfo
+        data.amount = data.amount + 1;
+        self.tbvCalos.reloadData();
+    }
+    func CaloInfoCellDelegate(cell: CaloInfoCell, actionSub: UIButton) {
+        let indexPath:IndexPath = self.tbvCalos.indexPath(for: cell)!
+        let row = indexPath.row
+        let data:CalosInfo = self.listDisplay[row] as! CalosInfo
+        if data.amount > 0 {
+            data.amount = data.amount - 1;
+            self.tbvCalos.reloadData();
+        }
     }
 }

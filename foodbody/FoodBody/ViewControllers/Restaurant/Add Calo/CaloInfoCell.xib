@@ -19,7 +19,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CaloInfoCell" rowHeight="100" id="R7b-oq-rfk" customClass="CaloInfoCell" customModule="Foodbodi" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CaloInfoCell" rowHeight="100" id="R7b-oq-rfk" customClass="CaloInfoCell" customModule="Foodbodi" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="471" height="130"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="R7b-oq-rfk" id="bPi-Fn-12d">
@@ -80,6 +80,9 @@
                                                         <real key="value" value="4"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="addActionWithSender:" destination="R7b-oq-rfk" eventType="touchUpInside" id="Qgq-uz-2yd"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9P-5v-cEZ">
                                                 <rect key="frame" x="120" y="11" width="40" height="18"/>
@@ -104,6 +107,9 @@
                                                         <real key="value" value="4"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="subActionWithSender:" destination="R7b-oq-rfk" eventType="touchUpInside" id="dSD-9d-1sJ"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -161,6 +167,9 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="btnAdd" destination="Tef-tk-N3M" id="8CC-Ef-QvX"/>
+                <outlet property="btnSub" destination="MWI-w7-UWP" id="Ncw-JX-bhI"/>
+                <outlet property="lblAmount" destination="e9P-5v-cEZ" id="QMP-FK-KD8"/>
                 <outlet property="lblCategory" destination="L38-Tr-P4K" id="o5E-rd-2Kk"/>
                 <outlet property="lblENERC_KCAL" destination="Cuj-Gw-qkr" id="bdM-Dy-Fgh"/>
             </connections>
