@@ -11,14 +11,19 @@ import GooglePlaces
 import INSPhotoGallery
 import Kingfisher
 
-class AddRestaurantVC: BaseVC {
+class AddRestaurantVC: BaseVC,AddCaloVCDelegate {
+    func AddCaloVCDelegate(cell: AddCaloVC, obj: String) {
+        calosTotla = obj;
+        self.tableView.reloadData();
+    }
+    
     
     //MARK: ==== OUTLET ====
     @IBOutlet weak var tableView: UITableView!
 //    @IBOutlet weak var headerImageView: UIImageView!
     @IBOutlet weak var clvHeader: UICollectionView!
     @IBOutlet weak var pageClvIndicator: UIPageControl!;
-    
+    var calosTotla = "";
     //MARK: Properties
 	var restaurant: RestaurantRequest = RestaurantRequest()
     var foodModel: [FoodModel] = []
@@ -248,6 +253,7 @@ extension AddRestaurantVC: UITableViewDataSource {
         case AddResEnum.foodDisplay.rawValue:
             let foodCell = tableView.dequeueReusableCell(withIdentifier: FoodTableViewCell.className, for: indexPath) as! FoodTableViewCell
             foodCell.bindData(data: self.foodModel[indexPath.row])
+            foodCell.calorLabel.text = self.calosTotla;
             return foodCell
         default:
             return UITableViewCell()
@@ -299,6 +305,7 @@ extension AddRestaurantVC: UITableViewDelegate {
 extension AddRestaurantVC: RestaurantTableViewCellDelegate, MenuTableViewCellDelegate {
     func didClickOnTextFieldCalos(kalos: UITextField, cell: MenuTableViewCell) {
         let vc:AddCaloVC = getViewController(className: AddCaloVC.className, storyboard: FbConstants.ReservationSB) as! AddCaloVC;
+        vc.delegate = self;
         self.present(vc, animated: true, completion: nil);
     }
     

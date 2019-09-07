@@ -13,7 +13,7 @@ class CalosInfo: NSObject {
     var label: String = ""
     var category: String = ""
     var categoryLabel: String = ""
-    var amount:NSInteger = 0;
+    var amount:Double = 0;
     var nutrients: Nutrients = Nutrients();
     
     init(dict: NSDictionary) {

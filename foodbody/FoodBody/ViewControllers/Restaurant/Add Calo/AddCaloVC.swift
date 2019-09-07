@@ -8,13 +8,19 @@
 
 import UIKit
 
+protocol AddCaloVCDelegate:class {
+    func AddCaloVCDelegate(cell: AddCaloVC, obj: String)
+}
+
 class AddCaloVC: BaseVC,UITableViewDelegate, UITableViewDataSource,UITextFieldDelegate,CaloInfoCellDelegate {
     @IBOutlet var tfSearch:UITextField!
     @IBOutlet var tbvCalos:UITableView!
+    weak var delegate: AddCaloVCDelegate?
+    var totalCalo:CGFloat = 0;
     
     let app_id:String = "0c28eb30";
     let app_key:String = "4021856d25ff2e35461894dbaed4938a";
-    var listDisplay:NSMutableArray = NSMutableArray.init();
+    var listDisplay:[CalosInfo] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tbvCalos.delegate = self;
@@ -25,10 +31,24 @@ class AddCaloVC: BaseVC,UITableViewDelegate, UITableViewDataSource,UITextFieldDe
     }
     //MARK: Action
     @IBAction func onbtnCancelPress(sender:Any){
-        self.dismiss(animated: false, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     @IBAction func onbtnSavePress(sender:Any){
-        self.dismiss(animated: false, completion: nil)
+        
+        if let delegate = self.delegate{
+            let temp:Double = Double(self.getTotalCalo())
+            delegate.AddCaloVCDelegate(cell: self, obj: String.init(format: "%f", temp))
+            self.dismiss(animated: true, completion: nil);
+        }
+    }
+    func getTotalCalo()->CGFloat{
+        var totalData:CGFloat = 0
+        for calosData in listDisplay {
+            let totalCaloOneFood = calosData.amount * calosData.nutrients.ENERC_KCAL
+            totalData = totalData + CGFloat(totalCaloOneFood)
+        }
+        
+        return CGFloat(totalData);
     }
     //MARK: UItextFieldDelegate.
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -55,7 +75,7 @@ class AddCaloVC: BaseVC,UITableViewDelegate, UITableViewDataSource,UITextFieldDe
                     listData.enumerateObjects({ (dict, index, stop)  in
                         let food:NSDictionary = (dict as AnyObject).object(forKey: "food") as! NSDictionary
                         let calosData:CalosInfo = CalosInfo.init(dict: food );
-                        self.listDisplay.add(calosData);
+                        self.listDisplay.append(calosData);
                     })
                     DispatchQueue.main.async{
                         self.tbvCalos.reloadData();
@@ -80,10 +100,10 @@ class AddCaloVC: BaseVC,UITableViewDelegate, UITableViewDataSource,UITextFieldDe
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:CaloInfoCell = tableView.dequeueReusableCell(withIdentifier: "CaloInfoCell", for: indexPath) as! CaloInfoCell;
-        let calosData:CalosInfo = self.listDisplay[indexPath.row] as! CalosInfo;
+        let calosData:CalosInfo = self.listDisplay[indexPath.row];
         cell.lblCategory.text = calosData.categoryLabel;
         cell.lblENERC_KCAL.text = String.init(format: "%f kcal", calosData.nutrients.ENERC_KCAL);
-        cell.lblAmount.text = String.init(format: "%d", calosData.amount);
+        cell.lblAmount.text = String.init(format: "%f", calosData.amount);
         cell.delegate = self;
         return cell;
     }
@@ -95,14 +115,14 @@ class AddCaloVC: BaseVC,UITableViewDelegate, UITableViewDataSource,UITextFieldDe
     func CaloInfoCellDelegate(cell: CaloInfoCell, actionAdd: UIButton) {
         let indexPath:IndexPath = self.tbvCalos.indexPath(for: cell)!
         let row = indexPath.row
-        let data:CalosInfo = self.listDisplay[row] as! CalosInfo
+        let data:CalosInfo = self.listDisplay[row]
         data.amount = data.amount + 1;
         self.tbvCalos.reloadData();
     }
     func CaloInfoCellDelegate(cell: CaloInfoCell, actionSub: UIButton) {
         let indexPath:IndexPath = self.tbvCalos.indexPath(for: cell)!
         let row = indexPath.row
-        let data:CalosInfo = self.listDisplay[row] as! CalosInfo
+        let data:CalosInfo = self.listDisplay[row]
         if data.amount > 0 {
             data.amount = data.amount - 1;
             self.tbvCalos.reloadData();
