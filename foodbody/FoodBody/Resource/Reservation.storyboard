@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -10,6 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="SFProText-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
         <array key="SFProText-Semibold.otf">
             <string>SFProText-Semibold</string>
         </array>
@@ -20,15 +23,15 @@
             <objects>
                 <viewController storyboardIdentifier="ReservationUpdateVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lyY-2A-CCg" customClass="ReservationUpdateVC" customModule="Foodbodi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Q1i-Gx-wHJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="e2P-9D-cCi">
-                                <rect key="frame" x="0.0" y="44" width="414" height="763"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="592"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oMw-4i-nyc">
-                                <rect key="frame" x="10" y="807" width="394" height="50"/>
+                                <rect key="frame" x="10" y="612" width="355" height="50"/>
                                 <color key="backgroundColor" red="0.92156862745098034" green="0.42745098039215684" blue="0.29019607843137252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="qgG-YS-oBE"/>
@@ -68,5 +71,95 @@
             </objects>
             <point key="canvasLocation" x="2997.5999999999999" y="-72.413793103448285"/>
         </scene>
+        <!--Add CaloVC-->
+        <scene sceneID="L8h-kv-a6G">
+            <objects>
+                <viewController storyboardIdentifier="AddCaloVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PRN-gv-2W9" customClass="AddCaloVC" customModule="Foodbodi" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CWK-GM-hnz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qOV-oV-g3F" userLabel="vSearch">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search Adress" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sDJ-c4-cfn">
+                                        <rect key="frame" x="40" y="2" width="275" height="40"/>
+                                        <color key="tintColor" red="0.8980392157" green="0.92941176469999998" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="kK1-85-HJy"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QA4-ji-BM1">
+                                        <rect key="frame" x="0.0" y="2" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="aZ6-4P-Cfy"/>
+                                            <constraint firstAttribute="height" constant="40" id="yPK-8i-pp8"/>
+                                        </constraints>
+                                        <state key="normal" image="backArow">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onbtnCancelPressWithSender:" destination="PRN-gv-2W9" eventType="touchUpInside" id="rdr-8q-qa2"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sGm-1x-kFu">
+                                        <rect key="frame" x="315" y="0.0" width="60" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="NRv-0s-uUs"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
+                                        <state key="normal" title="Save">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onbtnSavePressWithSender:" destination="PRN-gv-2W9" eventType="touchUpInside" id="SRY-Ds-MQZ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.1019607843" green="0.73725490199999999" blue="0.61176470589999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="6lD-JG-zfa"/>
+                                    <constraint firstItem="sDJ-c4-cfn" firstAttribute="centerY" secondItem="qOV-oV-g3F" secondAttribute="centerY" id="9JT-Fo-pLT"/>
+                                    <constraint firstItem="sDJ-c4-cfn" firstAttribute="leading" secondItem="QA4-ji-BM1" secondAttribute="trailing" id="CuU-nl-2Uv"/>
+                                    <constraint firstAttribute="bottom" secondItem="sGm-1x-kFu" secondAttribute="bottom" id="Fcj-Cc-Ix0"/>
+                                    <constraint firstAttribute="trailing" secondItem="sGm-1x-kFu" secondAttribute="trailing" id="WB2-mw-avG"/>
+                                    <constraint firstItem="QA4-ji-BM1" firstAttribute="centerY" secondItem="qOV-oV-g3F" secondAttribute="centerY" id="jQ1-mz-eno"/>
+                                    <constraint firstItem="sGm-1x-kFu" firstAttribute="top" secondItem="qOV-oV-g3F" secondAttribute="top" id="tV4-Lr-CUa"/>
+                                    <constraint firstItem="sGm-1x-kFu" firstAttribute="leading" secondItem="sDJ-c4-cfn" secondAttribute="trailing" id="u2K-uL-wB9"/>
+                                    <constraint firstItem="QA4-ji-BM1" firstAttribute="leading" secondItem="qOV-oV-g3F" secondAttribute="leading" id="w4x-uu-1SA"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4kN-nZ-JYo">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="qOV-oV-g3F" firstAttribute="top" secondItem="KQi-Cv-IZs" secondAttribute="top" id="4om-b3-dzG"/>
+                            <constraint firstItem="4kN-nZ-JYo" firstAttribute="top" secondItem="qOV-oV-g3F" secondAttribute="bottom" id="E5Y-id-xzz"/>
+                            <constraint firstItem="KQi-Cv-IZs" firstAttribute="bottom" secondItem="4kN-nZ-JYo" secondAttribute="bottom" id="TgE-V7-6II"/>
+                            <constraint firstItem="qOV-oV-g3F" firstAttribute="trailing" secondItem="KQi-Cv-IZs" secondAttribute="trailing" id="YFd-WI-0vj"/>
+                            <constraint firstItem="4kN-nZ-JYo" firstAttribute="leading" secondItem="KQi-Cv-IZs" secondAttribute="leading" id="dY3-5d-gUb"/>
+                            <constraint firstItem="4kN-nZ-JYo" firstAttribute="trailing" secondItem="KQi-Cv-IZs" secondAttribute="trailing" id="ueK-Pw-civ"/>
+                            <constraint firstItem="qOV-oV-g3F" firstAttribute="leading" secondItem="KQi-Cv-IZs" secondAttribute="leading" id="xor-cx-r3C"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="KQi-Cv-IZs"/>
+                    </view>
+                    <connections>
+                        <outlet property="tbvCalos" destination="4kN-nZ-JYo" id="FK0-ne-Qj1"/>
+                        <outlet property="tfSearch" destination="sDJ-c4-cfn" id="wUi-ZI-Rag"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K7O-j5-VZZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="196" y="1484.7076461769116"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="backArow" width="24" height="24"/>
+    </resources>
 </document>
