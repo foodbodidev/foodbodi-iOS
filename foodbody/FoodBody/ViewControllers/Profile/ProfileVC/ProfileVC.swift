@@ -32,13 +32,13 @@ class ProfileVC: BaseVC {
         super.viewDidLoad()
         setupLayout()
 		setupChart()
-        fetchData()
        
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+         fetchData()
     }
 	
 	@IBAction func actionCalendar() {
