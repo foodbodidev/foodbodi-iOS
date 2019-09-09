@@ -60,6 +60,7 @@ func getScreenHeight() -> CGFloat{
 extension Notification.Name {
     static let kFb_update_restaurant = Notification.Name("kFb_update_restaurant")
     static let kFb_update_reservation = Notification.Name("kFb_update_reservation")
+    static let kFB_notifi_registerRestaurant = Notification.Name("kFB_notifi_registerRestaurant");
     
 }
 

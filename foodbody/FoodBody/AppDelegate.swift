@@ -40,18 +40,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     NotificationCenter.default.post(name:.kFb_update_restaurant, object: nil, userInfo: dict as [AnyHashable : Any]);
                 }
         }
-        var email = "";
-        email = AppManager.user!.email;
-        db.collection("notifications").whereField("receiver", isEqualTo: email).whereField("read", isEqualTo: false).addSnapshotListener { (querySnapshot, error) in
-            print("receive notifications accept restaurant!")
-            let alert = UIAlertController(title:nil, message: "Your restaurant is accepted by Fodimap!", preferredStyle: .alert)
-            
-            let action = UIAlertAction(title: "Ok", style: .default) {
-                UIAlertAction in
-                //go to company information.
+        
+        if let user = AppManager.user {
+            var email = "";
+            email = user.email;
+            print("preparing register notifications accept restaurant!")
+            db.collection("notifications").whereField("receiver", isEqualTo: email).whereField("read", isEqualTo: false).addSnapshotListener { (querySnapshot, error) in
+                print("receive notifications accept restaurant!")
+                let alert = UIAlertController(title:nil, message: "Your restaurant is accepted by Fodimap!", preferredStyle: .alert)
+                
+                let action = UIAlertAction(title: "Ok", style: .default) {
+                    UIAlertAction in
+                    //go to company information.
+                }
+                alert.addAction(action)
+                self.window?.rootViewController?.present(alert, animated: true, completion: nil)
             }
-            alert.addAction(action)
-            self.window?.rootViewController?.navigationController?.present(alert, animated: false, completion: nil);
+        }else{
+            NotificationCenter.default.addObserver(self, selector: #selector(onDidNotifiRegisterRestaurant(_:)), name: .kFB_notifi_registerRestaurant, object:nil)
         }
         
         if AppManager.user?.token == nil{
@@ -63,6 +69,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		getCategory()
         return true
+    }
+    @objc func onDidNotifiRegisterRestaurant(_ notification: Notification)
+    {
+        if let user = AppManager.user {
+            let db = Firestore.firestore()
+            var email = "";
+            email = user.email;
+            print("preparing register notifications accept restaurant!")
+            db.collection("notifications").whereField("receiver", isEqualTo: email).whereField("read", isEqualTo: false).addSnapshotListener { (querySnapshot, error) in
+                print("receive notifications accept restaurant!")
+                let alert = UIAlertController(title:nil, message: "Your restaurant is accepted by Fodimap!", preferredStyle: .alert)
+                
+                let action = UIAlertAction(title: "Ok", style: .default) {
+                    UIAlertAction in
+                    //go to company information.
+                }
+                alert.addAction(action)
+                self.window?.rootViewController?.present(alert, animated: true, completion: nil)
+            }
+        }
+        
     }
 	
 	private func getCategory() {
