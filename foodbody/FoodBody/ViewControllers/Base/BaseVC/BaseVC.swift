@@ -18,22 +18,6 @@ class BaseVC: UIViewController {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
-        let db = Firestore.firestore()
-        var email = "";
-        if let user = AppManager.user{
-             email = user.email
-            db.collection("notifications").whereField("receiver", isEqualTo: email).whereField("read", isEqualTo: false).addSnapshotListener { (querySnapshot, error) in
-                print("receive notifications accept restaurant!")
-                let alert = UIAlertController(title:nil, message: "Your restaurant is accepted by Fodimap!", preferredStyle: .alert)
-                
-                let action = UIAlertAction(title: "Ok", style: .default) {
-                    UIAlertAction in
-                    //go to company information.
-                }
-                alert.addAction(action)
-                self.appDelegate.window?.rootViewController?.navigationController?.present(alert, animated: false, completion: nil);
-            }
-        }
        
     }
 	
