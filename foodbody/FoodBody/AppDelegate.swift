@@ -40,6 +40,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     NotificationCenter.default.post(name:.kFb_update_restaurant, object: nil, userInfo: dict as [AnyHashable : Any]);
                 }
         }
+        var email = "";
+        email = AppManager.user!.email;
+        db.collection("notifications").whereField("receiver", isEqualTo: email).whereField("read", isEqualTo: false).addSnapshotListener { (querySnapshot, error) in
+            print("receive notifications accept restaurant!")
+            let alert = UIAlertController(title:nil, message: "Your restaurant is accepted by Fodimap!", preferredStyle: .alert)
+            
+            let action = UIAlertAction(title: "Ok", style: .default) {
+                UIAlertAction in
+                //go to company information.
+            }
+            alert.addAction(action)
+            self.window?.rootViewController?.navigationController?.present(alert, animated: false, completion: nil);
+        }
         
         if AppManager.user?.token == nil{
             self.gotoWelcome()
