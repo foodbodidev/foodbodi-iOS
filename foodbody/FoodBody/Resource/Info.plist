@@ -75,6 +75,8 @@
 	<string>update</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>App</string>
+	<key>NSMotionUsageDescription</key>
+	<string>App</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>$(PRODUCT_NAME) want to use the gallery to upload food photo</string>
 	<key>UIAppFonts</key>
@@ -104,7 +106,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSMotionUsageDescription</key>
-	<string>App</string>
 </dict>
 </plist>

@@ -180,6 +180,8 @@ extension RequestService: TargetType {
             return .requestParameters(parameters: ["include_restaurant" : "true"], encoding: URLEncoding.queryString)
         case .deleteFood(let foodModel):
             return .requestParameters(parameters: ["restaurant_id": foodModel.restaurant_id], encoding: URLEncoding.queryString)
+        case .updateDailyLog(let dic):
+            return .requestParameters(parameters: dic.toJSON(), encoding: JSONEncoding.default)
        //reservation.
         case .addReservation(let dic):
              return .requestParameters(parameters: dic, encoding: JSONEncoding.default)

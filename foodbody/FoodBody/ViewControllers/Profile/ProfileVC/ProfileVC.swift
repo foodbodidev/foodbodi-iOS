@@ -32,13 +32,8 @@ class ProfileVC: BaseVC {
         super.viewDidLoad()
         setupLayout()
 		setupChart()
-       
-    }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-         fetchData()
+        fetchData()
+        addObserver()
     }
 	
 	@IBAction func actionCalendar() {
@@ -61,6 +56,17 @@ class ProfileVC: BaseVC {
         self.addRightButton();
         
     }
+    
+    
+    private func addObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(listenEventUpdateData), name: .kFb_update_reservation, object:nil)
+    }
+    
+    @objc func listenEventUpdateData() {
+        print(#function)
+        fetchData() // update chart when have any update data
+    }
+    
     func addRightButton(){
         let viewFN = UIView(frame: CGRect.init(x: 0, y: 0, width: 40, height: 40))
         viewFN.backgroundColor = UIColor.clear
