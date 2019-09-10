@@ -45,14 +45,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             var email = "";
             email = user.email;
             print("preparing register notifications accept restaurant! \(email)")
-            db.collection("notifications").whereField("receiver", isEqualTo: email).whereField("read", isEqualTo: false).addSnapshotListener { (querySnapshot, error) in
+            
+            db.collection("notifications").whereField("receiver", isEqualTo: email).whereField("read", isEqualTo: false).addSnapshotListener { (documentSnapshot, error) in
                 print("receive notifications accept restaurant!")
+                guard let document = documentSnapshot else {
+                    print("Error fetching document: \(error!)")
+                    return
+                }
+               
+                print("data \(document.metadata)")
                 let alert = UIAlertController(title:nil, message: "Your restaurant is accepted by Fodimap!", preferredStyle: .alert)
                 
                 let action = UIAlertAction(title: "Ok", style: .default) {
                     UIAlertAction in
-                    if (querySnapshot?.documents.count)! > 0{
-                        let fir:QueryDocumentSnapshot = (querySnapshot?.documents.first)!;
+                    
+                    if (documentSnapshot?.documents.count)! > 0{
+                        let fir:QueryDocumentSnapshot = (documentSnapshot?.documents.first)!;
                         RequestManager.notifySuccessRegisterRestaurant(text:fir.documentID, completion: { (result, error) in
                             
                         })
@@ -82,14 +90,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             var email = "";
             email = user.email;
             print("preparing register notifications accept restaurant! \(email)")
-            db.collection("notifications").whereField("receiver", isEqualTo: email).whereField("read", isEqualTo: false).addSnapshotListener { (querySnapshot, error) in
+            db.collection("notifications").whereField("receiver", isEqualTo: email).whereField("read", isEqualTo: false).addSnapshotListener { (documentSnapshot, error) in
                 print("receive notifications accept restaurant!")
+                guard let document = documentSnapshot else {
+                    print("Error fetching document: \(error!)")
+                    return
+                }
+                
+                print("data \(document.metadata)")
                 let alert = UIAlertController(title:nil, message: "Your restaurant is accepted by Fodimap!", preferredStyle: .alert)
                 
                 let action = UIAlertAction(title: "Ok", style: .default) {
                     UIAlertAction in
-                    if (querySnapshot?.documents.count)! > 0{
-                        let fir:QueryDocumentSnapshot = (querySnapshot?.documents.first)!;
+                    if (documentSnapshot?.documents.count)! > 0{
+                        let fir:QueryDocumentSnapshot = (documentSnapshot?.documents.first)!;
                         RequestManager.notifySuccessRegisterRestaurant(text:fir.documentID, completion: { (result, error) in
                             
                         })
