@@ -74,7 +74,6 @@ class LoginVC: BaseLoginVC {
                 
             if result.isSuccess {
 				AppManager.user = result
-                NotificationCenter.default.post(name:.kFB_notifi_registerRestaurant, object: nil, userInfo:nil);
 				strongSelf.getUserProfile()
                 strongSelf.getRestaurantWithProfile()
                 

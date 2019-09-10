@@ -106,7 +106,6 @@ class RegisterAccountVC: BaseLoginVC {
             if let result = result {
                 if result.isSuccess {
                     AppManager.user = result
-                    NotificationCenter.default.post(name:.kFB_notifi_registerRestaurant, object: nil, userInfo:nil);
                     self.getUserProfile()
                     self.getRestaurantWithProfile()
                 } else {
@@ -139,7 +138,6 @@ extension RegisterAccountVC:GIDSignInDelegate{
                     if result.isSuccess {
 						AppManager.user = result
                         self?.getUserProfile()
-                        NotificationCenter.default.post(name:.kFB_notifi_registerRestaurant, object: nil, userInfo:nil);
                         self?.getRestaurantWithProfile()
                     } else {
                         self?.alertMessage(message: result.message)
