@@ -50,6 +50,8 @@ class RestaurantInfoMenuVC: BaseVC,UICollectionViewDelegate, UICollectionViewDat
         self.btnCall.layer.masksToBounds = true;
         self.btnLike.layer.cornerRadius = 22;
         self.btnLike.layer.masksToBounds = true;
+        self.viHeader.layer.cornerRadius = 10;
+        self.viHeader.layer.masksToBounds = true;
         //UICollectionView.
         let layoutClv:UICollectionViewFlowLayout = UICollectionViewFlowLayout();
         layoutClv.scrollDirection = .horizontal;
