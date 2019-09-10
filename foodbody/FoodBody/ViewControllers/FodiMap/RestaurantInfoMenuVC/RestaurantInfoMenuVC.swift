@@ -89,7 +89,11 @@ class RestaurantInfoMenuVC: BaseVC,UICollectionViewDelegate, UICollectionViewDat
                     })
                 }
             }
-            self.lblTime.text = FoodbodyUtils.shared.checkDataString(dict: dict, key: "open_hour") + "-" + FoodbodyUtils.shared.checkDataString(dict: dict, key: "close_hour");
+            if let open_hour = dict.object(forKey: "open_hour"){
+                self.lblTime.text = FoodbodyUtils.shared.checkDataString(dict: dict, key: "open_hour") + "-" + FoodbodyUtils.shared.checkDataString(dict: dict, key: "close_hour");
+            }else{
+                //nothing to do.
+            }
             self.tabMenuVC!.idRestaurant = document.documentID;
             self.navInfoMenu.setViewControllers([self.tabMenuVC!], animated: false);
             if (dict["photos"] != nil){
