@@ -44,16 +44,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let user = AppManager.user {
             var email = "";
             email = user.email;
-            print("preparing register notifications accept restaurant!")
+            print("preparing register notifications accept restaurant! \(email)")
             db.collection("notifications").whereField("receiver", isEqualTo: email).whereField("read", isEqualTo: false).addSnapshotListener { (querySnapshot, error) in
                 print("receive notifications accept restaurant!")
                 let alert = UIAlertController(title:nil, message: "Your restaurant is accepted by Fodimap!", preferredStyle: .alert)
                 
                 let action = UIAlertAction(title: "Ok", style: .default) {
                     UIAlertAction in
-                    RequestManager.notifySuccessRegisterRestaurant(text:"", completion: { (result, error) in
-                        
-                    })
+                    if (querySnapshot?.documents.count)! > 0{
+                        let fir:QueryDocumentSnapshot = (querySnapshot?.documents.first)!;
+                        RequestManager.notifySuccessRegisterRestaurant(text:fir.documentID, completion: { (result, error) in
+                            
+                        })
+                    }
                 }
                 alert.addAction(action)
                 self.window?.rootViewController?.present(alert, animated: true, completion: nil)
@@ -78,16 +81,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let db = Firestore.firestore()
             var email = "";
             email = user.email;
-            print("preparing register notifications accept restaurant!")
+            print("preparing register notifications accept restaurant! \(email)")
             db.collection("notifications").whereField("receiver", isEqualTo: email).whereField("read", isEqualTo: false).addSnapshotListener { (querySnapshot, error) in
                 print("receive notifications accept restaurant!")
                 let alert = UIAlertController(title:nil, message: "Your restaurant is accepted by Fodimap!", preferredStyle: .alert)
                 
                 let action = UIAlertAction(title: "Ok", style: .default) {
                     UIAlertAction in
-                    RequestManager.notifySuccessRegisterRestaurant(text:"", completion: { (result, error) in
-                        
-                    })
+                    if (querySnapshot?.documents.count)! > 0{
+                        let fir:QueryDocumentSnapshot = (querySnapshot?.documents.first)!;
+                        RequestManager.notifySuccessRegisterRestaurant(text:fir.documentID, completion: { (result, error) in
+                            
+                        })
+                    }
                 }
                 alert.addAction(action)
                 self.window?.rootViewController?.present(alert, animated: true, completion: nil)
