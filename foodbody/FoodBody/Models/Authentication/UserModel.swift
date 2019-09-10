@@ -25,12 +25,14 @@ class User: NSObject, Mappable, NSCoding {
     var status_code: Int = -1
     var message: String = ""
     var restaurantId: String = ""
+    var daily_calo: Double = 2500.0
   
     
     init(token: String, email: String, sex: String,
          height: Int, weight: Int, target_weight: Int,
          first_name: String, last_name: String, age: Int,
-         restaurantId: String) {
+         restaurantId: String,
+         daily_calo: Double) {
         self.token = token
         self.email = email
         self.sex = sex
@@ -41,6 +43,7 @@ class User: NSObject, Mappable, NSCoding {
         self.last_name = last_name
         self.age = age
         self.restaurantId = restaurantId
+        self.daily_calo = daily_calo
     }
     
     required init?(map: Map) {
@@ -61,8 +64,10 @@ class User: NSObject, Mappable, NSCoding {
         
         let restaurantId = aDecoder.decodeObject(forKey: "restaurantId") as! String
         
+        //let daily_calo = aDecoder.decodeDouble(forKey: "daily_calo")
+        
         self.init(token: token, email: email, sex: sex, height: height, weight: weight, target_weight: target_weight, first_name: first_name, last_name: last_name, age: age,
-                  restaurantId: restaurantId)
+                  restaurantId: restaurantId, daily_calo: 2500)
     }
     
     func encode(with aCoder: NSCoder) {
@@ -76,6 +81,7 @@ class User: NSObject, Mappable, NSCoding {
         aCoder.encode(weight, forKey: "weight")
         aCoder.encode(target_weight, forKey: "target_weight")
         aCoder.encode(restaurantId, forKey: "restaurantId")
+        //aCoder.encode(restaurantId, forKey: "daily_calo")
     }
     
     func mapping(map: Map) {
@@ -90,6 +96,7 @@ class User: NSObject, Mappable, NSCoding {
         last_name <- map["data.user.last_name"]
         status_code <- map["status_code"]
         message <- map["message"]
+        daily_calo <- map["data.user.daily_calo"]
         isSuccess = (status_code == 0) ? true : false
     }
     
@@ -112,6 +119,7 @@ class UserProfile: User { // user to map user when get user profile
 		message <- map["message"]
         myRestaurant <- map["data.restaurants"]
 		isSuccess = (status_code == 0) ? true : false
+        daily_calo <- map["data.daily_calo"]
 	}
 }
 
@@ -132,6 +140,7 @@ class UserRequest: Mappable  {
     var facebook_access_token: String?
     var userId: String?
     var google_id_token: String?
+    var daily_calo: Int?
     
     required init?(map: Map) {
         
@@ -160,6 +169,7 @@ class UserRequest: Mappable  {
         facebook_access_token <- map["facebook_access_token"]
         userId <- map["user_id"]
         google_id_token <- map["google_id_token"]
+        daily_calo <- map["daily_calo"]
     }
     
 }

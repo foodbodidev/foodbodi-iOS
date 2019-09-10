@@ -22,7 +22,7 @@ class ProfileVC: BaseVC {
 	
 	var rateDataSource: [Int] =  [70, 30]
 	
-	var totalCalo: Double = 2500 // by fefault
+    var totalCalo: Double =  2500
     var calorEaten: Double = 0
     
     let dailyLogModel: DailyLogModel = DailyLogModel()
@@ -224,6 +224,17 @@ class ProfileVC: BaseVC {
         }
 		return NSString(format:"%.0f", calorLeft) as String
 	}
+    
+    @IBAction func actionInputColories() {
+        let inputVC = PopupInputVC.init(nibName: "PopupInputVC", bundle: nil)
+        inputVC.modalTransitionStyle = .crossDissolve
+        inputVC.modalPresentationStyle = .overFullScreen
+        inputVC.blockDissmis = {  caloMax in
+            self.totalCalo = Double(caloMax)
+            self.fetchData()
+        }
+        self.present(inputVC, animated: true, completion: nil)
+    }
 }
 
 extension ProfileVC: CalendarVCDelegate {

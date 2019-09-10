@@ -56,6 +56,8 @@
 		98CEA20B22B946EE00E82063 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CEA20A22B946EE00E82063 /* RequestManager.swift */; };
 		98CEA20D22B946FF00E82063 /* RequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CEA20C22B946FF00E82063 /* RequestService.swift */; };
 		98CEA21422B94A9E00E82063 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CEA21322B94A9E00E82063 /* BaseVC.swift */; };
+		98D558EA2327EE1000C86743 /* PopupInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D558E82327EE1000C86743 /* PopupInputVC.swift */; };
+		98D558EB2327EE1000C86743 /* PopupInputVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98D558E92327EE1000C86743 /* PopupInputVC.xib */; };
 		98D9AEC522C85E5600C5DD56 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D9AEC422C85E5600C5DD56 /* Style.swift */; };
 		98F74150230DAB3800D2B03C /* AddCaloVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F7414E230DAB3800D2B03C /* AddCaloVC.swift */; };
 		98F772CA22D9AF560027F4BE /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F772C922D9AF560027F4BE /* CategoryModel.swift */; };
@@ -193,6 +195,8 @@
 		98CEA20F22B94A5700E82063 /* WelComeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelComeVC.swift; sourceTree = "<group>"; };
 		98CEA21322B94A9E00E82063 /* BaseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		98CEA21622B94AF900E82063 /* SelectGenderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectGenderVC.swift; sourceTree = "<group>"; };
+		98D558E82327EE1000C86743 /* PopupInputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupInputVC.swift; sourceTree = "<group>"; };
+		98D558E92327EE1000C86743 /* PopupInputVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopupInputVC.xib; sourceTree = "<group>"; };
 		98D9AEC422C85E5600C5DD56 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		98F7414E230DAB3800D2B03C /* AddCaloVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCaloVC.swift; sourceTree = "<group>"; };
 		98F772C922D9AF560027F4BE /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
@@ -656,6 +660,8 @@
 				D5B24B2D22B73ED800DA16C4 /* ProfileVC */,
 				BAC0B955230296540096BA6E /* CalendarVC.swift */,
 				BAC0B957230296BF0096BA6E /* CalendarVC.xib */,
+				98D558E82327EE1000C86743 /* PopupInputVC.swift */,
+				98D558E92327EE1000C86743 /* PopupInputVC.xib */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1005,6 +1011,7 @@
 				98C34F5F22CFAE3400A933DE /* RestaurantTableViewCell.xib in Resources */,
 				D5B424D722BCD42100141818 /* Assets.xcassets in Resources */,
 				98282BE622C26E64003ED8BC /* YourBasicVC.xib in Resources */,
+				98D558EB2327EE1000C86743 /* PopupInputVC.xib in Resources */,
 				98FF7C2B2309502C006D6063 /* VerifyVC.xib in Resources */,
 				BAC0B958230296BF0096BA6E /* CalendarVC.xib in Resources */,
 				98C34F5722CE57C100A933DE /* MenuTableViewCell.xib in Resources */,
@@ -1253,6 +1260,7 @@
 				2F49414F22EC285D004437BD /* ChatTbvCell.swift in Sources */,
 				D5B24B3522B73FB600DA16C4 /* MainTabBarVC.swift in Sources */,
 				D5C0FDA522B8EE2A00411488 /* SignUpVC.swift in Sources */,
+				98D558EA2327EE1000C86743 /* PopupInputVC.swift in Sources */,
 				98CEA1FF22B9431200E82063 /* String.swift in Sources */,
 				2FCA49B922D63F2D00E3497D /* GeohashBox.swift in Sources */,
 				98282BE522C26E64003ED8BC /* YourBasicVC.swift in Sources */,

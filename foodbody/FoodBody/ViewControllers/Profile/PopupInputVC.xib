@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SFProText-Light.otf">
+            <string>SFProText-Light</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PopupInputVC" customModule="Foodbodi" customModuleProvider="target">
+            <connections>
+                <outlet property="inPutTextField" destination="qIN-lT-k9s" id="f1B-Xe-7wM"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gRF-fi-Gbu">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <action selector="actionDismiss" destination="-1" eventType="touchUpInside" id="LXc-z7-hkO"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vXI-dO-IeB">
+                    <rect key="frame" x="20" y="144" width="374" height="300"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qIN-lT-k9s" customClass="FBTextField" customModule="Foodbodi" customModuleProvider="target">
+                            <rect key="frame" x="10" y="71" width="354" height="80"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="80" id="z73-HM-zxY"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Input Your Calories" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="36H-gs-nSP">
+                            <rect key="frame" x="59" y="8" width="256" height="35"/>
+                            <fontDescription key="fontDescription" name="SFProText-Light" family="SF Pro Text" pointSize="29"/>
+                            <color key="textColor" red="0.098039215690000001" green="0.24313725489999999" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BVj-fz-o7J" customClass="FoodBodyButton" customModule="Foodbodi" customModuleProvider="target">
+                            <rect key="frame" x="107" y="216" width="166" height="46"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="166" id="Zli-Zz-PmX"/>
+                                <constraint firstAttribute="height" constant="46" id="h4o-o7-nHh"/>
+                            </constraints>
+                            <state key="normal" title="Ok"/>
+                            <connections>
+                                <action selector="actionOk" destination="-1" eventType="touchUpInside" id="Hui-zA-7b3"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="300" id="CZ8-ZX-iKe"/>
+                        <constraint firstItem="qIN-lT-k9s" firstAttribute="top" secondItem="36H-gs-nSP" secondAttribute="bottom" constant="28" id="IOF-3y-HqE"/>
+                        <constraint firstItem="36H-gs-nSP" firstAttribute="top" secondItem="vXI-dO-IeB" secondAttribute="top" constant="8" id="TZw-aL-Odg"/>
+                        <constraint firstItem="qIN-lT-k9s" firstAttribute="leading" secondItem="vXI-dO-IeB" secondAttribute="leading" constant="10" id="VQm-M5-glt"/>
+                        <constraint firstAttribute="trailing" secondItem="qIN-lT-k9s" secondAttribute="trailing" constant="10" id="XT1-Yp-gtT"/>
+                        <constraint firstItem="36H-gs-nSP" firstAttribute="centerX" secondItem="vXI-dO-IeB" secondAttribute="centerX" id="YKj-Bg-HTe"/>
+                        <constraint firstAttribute="bottom" secondItem="BVj-fz-o7J" secondAttribute="bottom" constant="38" id="m77-T0-7fS"/>
+                        <constraint firstItem="BVj-fz-o7J" firstAttribute="centerX" secondItem="vXI-dO-IeB" secondAttribute="centerX" id="sTy-3B-vqg"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gRF-fi-Gbu" secondAttribute="trailing" id="Ewg-mA-iUi"/>
+                <constraint firstItem="vXI-dO-IeB" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="K8i-JB-td0"/>
+                <constraint firstItem="gRF-fi-Gbu" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="MBI-uA-KQt"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="vXI-dO-IeB" secondAttribute="trailing" constant="20" id="Uv3-yn-ALp"/>
+                <constraint firstItem="vXI-dO-IeB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="100" id="Zki-Ui-b1s"/>
+                <constraint firstAttribute="bottom" secondItem="gRF-fi-Gbu" secondAttribute="bottom" id="hkb-mN-nbE"/>
+                <constraint firstItem="gRF-fi-Gbu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ner-ep-dsI"/>
+                <constraint firstItem="vXI-dO-IeB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="u4S-1H-yJQ"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="142" y="153"/>
+        </view>
+    </objects>
+</document>
