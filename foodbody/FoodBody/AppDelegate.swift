@@ -51,7 +51,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 let action = UIAlertAction(title: "Ok", style: .default) {
                     UIAlertAction in
-                    //go to company information.
+                    RequestManager.notifySuccessRegisterRestaurant(text:"", completion: { (result, error) in
+                        
+                    })
                 }
                 alert.addAction(action)
                 self.window?.rootViewController?.present(alert, animated: true, completion: nil)
@@ -83,7 +85,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 let action = UIAlertAction(title: "Ok", style: .default) {
                     UIAlertAction in
-                    //go to company information.
+                    RequestManager.notifySuccessRegisterRestaurant(text:"", completion: { (result, error) in
+                        
+                    })
                 }
                 alert.addAction(action)
                 self.window?.rootViewController?.present(alert, animated: true, completion: nil)
@@ -100,6 +104,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			}
 		}
 	}
+    
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

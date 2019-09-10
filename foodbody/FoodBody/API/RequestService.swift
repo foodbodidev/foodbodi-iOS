@@ -34,6 +34,7 @@ enum RequestService {
     case updateDailyLog(dic: DailyLogModel)
     case getDailyLog(dateString: String)
     case searchFodiMap(id:String)
+    case notifySuccessRegisterRestaurant(id:String);
 }
 
 extension RequestService: TargetType {
@@ -101,6 +102,9 @@ extension RequestService: TargetType {
             return APIConstant.getDailyLog + "/" + "\(dateString)"
         case .searchFodiMap(let id):
             return APIConstant.searchFodiMap;
+        case .notifySuccessRegisterRestaurant(let id):
+            return APIConstant.notifySuccessRegisterRestaurant
+            
         }
         
         
@@ -129,7 +133,8 @@ extension RequestService: TargetType {
             return .delete
         case .getListReservation: return .get
         case .searchFodiMap: return .get;
-        
+        case .notifySuccessRegisterRestaurant:
+            return .get;
         default:
             return .get
         }
@@ -195,7 +200,12 @@ extension RequestService: TargetType {
             }else{
                 return .requestPlain
             }
-            
+        case .notifySuccessRegisterRestaurant(let id):
+            if id.count > 0 {
+                 return .requestParameters(parameters: ["id":id], encoding: URLEncoding.queryString)
+            }else{
+                return .requestPlain
+            }
         default:
             return .requestPlain
         }

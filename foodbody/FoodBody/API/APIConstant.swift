@@ -39,6 +39,8 @@ struct APIConstant {
     static let getDailyLog = "/api/dailylog"
     //API search.
     static let searchFodiMap = "/api/search"
+    //API notifications.
+    static let notifySuccessRegisterRestaurant = "/api/notification/markRead"
 }
 
 
