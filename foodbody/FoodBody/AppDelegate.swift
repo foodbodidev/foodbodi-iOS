@@ -42,33 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         if let user = AppManager.user {
-            var email = "";
-            email = user.email;
-            print("preparing register notifications accept restaurant! \(email)")
-            
-            db.collection("notifications").whereField("receiver", isEqualTo: email).whereField("read", isEqualTo: false).addSnapshotListener { (documentSnapshot, error) in
-                print("receive notifications accept restaurant!")
-                guard let document = documentSnapshot else {
-                    print("Error fetching document: \(error!)")
-                    return
-                }
-               
-                print("data \(document.metadata)")
-                let alert = UIAlertController(title:nil, message: "Your restaurant is accepted by Fodimap!", preferredStyle: .alert)
-                
-                let action = UIAlertAction(title: "Ok", style: .default) {
-                    UIAlertAction in
-                    
-                    if (documentSnapshot?.documents.count)! > 0{
-                        let fir:QueryDocumentSnapshot = (documentSnapshot?.documents.first)!;
-                        RequestManager.notifySuccessRegisterRestaurant(text:fir.documentID, completion: { (result, error) in
-                            
-                        })
-                    }
-                }
-                alert.addAction(action)
-                self.window?.rootViewController?.present(alert, animated: true, completion: nil)
-            }
+            self.registerNotifycation(user: user);
         }else{
             NotificationCenter.default.addObserver(self, selector: #selector(onDidNotifiRegisterRestaurant(_:)), name: .kFB_notifi_registerRestaurant, object:nil)
         }
@@ -85,23 +59,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     @objc func onDidNotifiRegisterRestaurant(_ notification: Notification)
     {
-        if let user = AppManager.user {
-            let db = Firestore.firestore()
-            var email = "";
-            email = user.email;
-            print("preparing register notifications accept restaurant! \(email)")
-            db.collection("notifications").whereField("receiver", isEqualTo: email).whereField("read", isEqualTo: false).addSnapshotListener { (documentSnapshot, error) in
-                print("receive notifications accept restaurant!")
-                guard let document = documentSnapshot else {
-                    print("Error fetching document: \(error!)")
-                    return
-                }
-                
-                print("data \(document.metadata)")
-                let alert = UIAlertController(title:nil, message: "Your restaurant is accepted by Fodimap!", preferredStyle: .alert)
-                
+        if let user = AppManager.user
+        {
+            self.registerNotifycation(user: user);
+        }
+    }
+    
+    private func registerNotifycation(user:User){
+        var email = "";
+        email = user.email;
+        print("preparing register notifications accept restaurant! \(email)")
+        let db = Firestore.firestore()
+        db.collection("notifications").whereField("receiver", isEqualTo: email).whereField("read", isEqualTo: false).addSnapshotListener { (documentSnapshot, error) in
+            print("receive notifications accept restaurant!")
+            guard let document = documentSnapshot else {
+                print("Error fetching document: \(error!)")
+                return
+            }
+            
+            print("data \(document.metadata)")
+            
+            let alert = UIAlertController(title:nil, message: "Your restaurant is accepted by Fodimap!", preferredStyle: .alert)
+            if (documentSnapshot?.documents.count)! > 0{
                 let action = UIAlertAction(title: "Ok", style: .default) {
                     UIAlertAction in
+                    
                     if (documentSnapshot?.documents.count)! > 0{
                         let fir:QueryDocumentSnapshot = (documentSnapshot?.documents.first)!;
                         RequestManager.notifySuccessRegisterRestaurant(text:fir.documentID, completion: { (result, error) in
@@ -113,7 +95,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.window?.rootViewController?.present(alert, animated: true, completion: nil)
             }
         }
-        
     }
 	
 	private func getCategory() {
