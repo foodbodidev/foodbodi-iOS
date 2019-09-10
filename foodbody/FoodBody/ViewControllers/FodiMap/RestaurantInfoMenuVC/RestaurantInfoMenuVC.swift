@@ -52,6 +52,11 @@ class RestaurantInfoMenuVC: BaseVC,UICollectionViewDelegate, UICollectionViewDat
         self.btnLike.layer.masksToBounds = true;
         self.viHeader.layer.cornerRadius = 10;
         self.viHeader.layer.masksToBounds = true;
+        self.viButton.layer.cornerRadius = 10;
+        self.viButton.layer.masksToBounds = true;
+        self.viContainer.layer.cornerRadius = 10;
+        self.viContainer.layer.masksToBounds = true;
+        
         //UICollectionView.
         let layoutClv:UICollectionViewFlowLayout = UICollectionViewFlowLayout();
         layoutClv.scrollDirection = .horizontal;
@@ -84,7 +89,11 @@ class RestaurantInfoMenuVC: BaseVC,UICollectionViewDelegate, UICollectionViewDat
                     })
                 }
             }
-            self.lblTime.text = FoodbodyUtils.shared.checkDataString(dict: dict, key: "open_hour") + "-" + FoodbodyUtils.shared.checkDataString(dict: dict, key: "close_hour");
+            if let open_hour = dict.object(forKey: "open_hour"){
+                self.lblTime.text = FoodbodyUtils.shared.checkDataString(dict: dict, key: "open_hour") + "-" + FoodbodyUtils.shared.checkDataString(dict: dict, key: "close_hour");
+            }else{
+                //nothing to do.
+            }
             self.tabMenuVC!.idRestaurant = document.documentID;
             self.navInfoMenu.setViewControllers([self.tabMenuVC!], animated: false);
             if (dict["photos"] != nil){

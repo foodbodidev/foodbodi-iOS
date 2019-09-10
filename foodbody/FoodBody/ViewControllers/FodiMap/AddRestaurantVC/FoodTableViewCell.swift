@@ -37,8 +37,9 @@ class FoodTableViewCell: UITableViewCell {
         foodImageView.image = data.image
         if let url = URL.init(string: data.photo) {
             foodImageView.kf.setImage(with: url)
+            
         } else {
-            foodImageView.image = nil
+            foodImageView.image = UIImage.init(named: "ic_bg");
         }
         
     }
