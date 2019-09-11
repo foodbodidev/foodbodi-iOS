@@ -22,7 +22,7 @@ class ProfileVC: BaseVC {
 	
 	var rateDataSource: [Int] =  [70, 30]
 	
-    var totalCalo: Double =  2500
+    var totalCalo: Double =  AppManager.user?.daily_calo ?? 2500
     var calorEaten: Double = 0
     
     let dailyLogModel: DailyLogModel = DailyLogModel()
@@ -184,6 +184,11 @@ class ProfileVC: BaseVC {
 	
 	
     func bindData(steps: Int, caloLeft: String) {
+        
+        if totalCalo == 0 {
+            return
+        }
+        
         DispatchQueue.main.async {
             let caloLeftRate = Double(caloLeft)!/self.totalCalo*100
             self.stepLabel.text = "\(Int(steps)) Steps"
@@ -231,6 +236,10 @@ class ProfileVC: BaseVC {
         inputVC.modalPresentationStyle = .overFullScreen
         inputVC.blockDissmis = {  caloMax in
             self.totalCalo = Double(caloMax)
+            if let user = AppManager.user {
+                user.daily_calo = Double(caloMax)
+                AppManager.user = user
+            }
             self.fetchData()
         }
         self.present(inputVC, animated: true, completion: nil)

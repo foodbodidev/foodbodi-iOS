@@ -30,6 +30,18 @@ class PopupInputVC: BaseVC {
     
     @IBAction func actionOk() {
         
+        if let value = Int(self.inPutTextField.textField.text!), value == 0 {
+            self.alertMessage(message: "Please input value greater than 0")
+            return
+        }
+        
+        if let value = Int(self.inPutTextField.textField.text!), value >  30000 {
+            self.alertMessage(message: "Please input value less than 30000")
+            return
+        }
+        
+        
+        
          let userInfo: UserRequest = UserRequest()
          userInfo.daily_calo = Int(inPutTextField.textField.text!)
         

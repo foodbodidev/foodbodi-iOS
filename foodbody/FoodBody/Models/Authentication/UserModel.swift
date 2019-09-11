@@ -25,7 +25,7 @@ class User: NSObject, Mappable, NSCoding {
     var status_code: Int = -1
     var message: String = ""
     var restaurantId: String = ""
-    var daily_calo: Double = 2500.0
+    var daily_calo: Double = 2500
   
     
     init(token: String, email: String, sex: String,
@@ -64,10 +64,10 @@ class User: NSObject, Mappable, NSCoding {
         
         let restaurantId = aDecoder.decodeObject(forKey: "restaurantId") as! String
         
-        //let daily_calo = aDecoder.decodeDouble(forKey: "daily_calo")
+        let daily_calo = aDecoder.decodeDouble(forKey: "daily_calo")
         
         self.init(token: token, email: email, sex: sex, height: height, weight: weight, target_weight: target_weight, first_name: first_name, last_name: last_name, age: age,
-                  restaurantId: restaurantId, daily_calo: 2500)
+                  restaurantId: restaurantId, daily_calo: daily_calo)
     }
     
     func encode(with aCoder: NSCoder) {
@@ -81,7 +81,7 @@ class User: NSObject, Mappable, NSCoding {
         aCoder.encode(weight, forKey: "weight")
         aCoder.encode(target_weight, forKey: "target_weight")
         aCoder.encode(restaurantId, forKey: "restaurantId")
-        //aCoder.encode(restaurantId, forKey: "daily_calo")
+        aCoder.encode(daily_calo, forKey: "daily_calo")
     }
     
     func mapping(map: Map) {
