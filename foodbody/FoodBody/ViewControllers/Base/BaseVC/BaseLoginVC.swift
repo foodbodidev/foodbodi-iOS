@@ -25,7 +25,10 @@ class BaseLoginVC: BaseVC {
 			guard let result = result else { return }
 			
 			if result.isSuccess {
+                AppManager.user = result;
+                
 				if self.shouldUpdateProfile(user: result) {
+            
 					// this means user dose not update user detail
 					let selectGenderVC = getViewController(className: SelectGenderVC.className, storyboard: FbConstants.AuthenticationSB)
 				NotificationCenter.default.post(name:.kFB_notifi_registerRestaurant, object: nil, userInfo:nil);	self.navigationController?.pushViewController(selectGenderVC, animated: true)

@@ -80,20 +80,22 @@ class ProfileVC: BaseVC {
     }
     
     @objc func actionLogout(){
-        let alert = UIAlertController(title:nil, message: "Do you want to log out ?", preferredStyle: .alert)
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) {
-            UIAlertAction in
-            // It will dismiss action sheet
+        if AppManager.user?.token.isEmpty == false{
+            let alert = UIAlertController(title:nil, message: "Do you want to log out ?", preferredStyle: .alert)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) {
+                UIAlertAction in
+                // It will dismiss action sheet
+            }
+            let action = UIAlertAction(title: "Ok", style: .default) {
+                UIAlertAction in
+                FBAppDelegate.gotoWelcome()
+                AppManager.user = nil
+            }
+            alert.addAction(action)
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
         }
-        let action = UIAlertAction(title: "Ok", style: .default) {
-            UIAlertAction in
-            FBAppDelegate.gotoWelcome()
-            AppManager.user = nil
-        }
-        alert.addAction(action)
-        alert.addAction(cancelAction)
-        self.present(alert, animated: true, completion: nil)
     }
     
 	private func setupChart() {
