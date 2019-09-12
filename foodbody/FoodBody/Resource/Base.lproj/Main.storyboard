@@ -57,7 +57,6 @@
                                                                     <rect key="frame" x="35" y="2" width="80" height="80"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="100" id="3BS-nM-gyo"/>
                                                                         <constraint firstAttribute="height" constant="80" id="YDd-bd-r3t"/>
                                                                     </constraints>
                                                                     <userDefinedRuntimeAttributes>
@@ -131,7 +130,9 @@
                                                                 <constraint firstItem="zHU-ti-GEB" firstAttribute="top" secondItem="F9s-3p-L17" secondAttribute="bottom" constant="5" id="26B-kA-0eZ"/>
                                                                 <constraint firstItem="zHU-ti-GEB" firstAttribute="leading" secondItem="wZh-eH-fSy" secondAttribute="leading" id="KLY-jo-JfF"/>
                                                                 <constraint firstAttribute="bottom" secondItem="zHU-ti-GEB" secondAttribute="bottom" id="Nwx-R3-jt7"/>
+                                                                <constraint firstAttribute="trailing" secondItem="F9s-3p-L17" secondAttribute="trailing" constant="10" id="RBw-pj-DbR"/>
                                                                 <constraint firstItem="F9s-3p-L17" firstAttribute="top" secondItem="wZh-eH-fSy" secondAttribute="top" constant="2" id="c5e-wz-9qN"/>
+                                                                <constraint firstItem="F9s-3p-L17" firstAttribute="leading" secondItem="wZh-eH-fSy" secondAttribute="leading" constant="10" id="pHA-Kc-kkB"/>
                                                                 <constraint firstAttribute="trailing" secondItem="zHU-ti-GEB" secondAttribute="trailing" id="vPa-oc-OfU"/>
                                                                 <constraint firstItem="F9s-3p-L17" firstAttribute="centerX" secondItem="wZh-eH-fSy" secondAttribute="centerX" id="zS9-C6-k5b"/>
                                                             </constraints>
