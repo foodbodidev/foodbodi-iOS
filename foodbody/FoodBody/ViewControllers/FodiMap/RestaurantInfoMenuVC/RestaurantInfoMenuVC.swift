@@ -89,8 +89,8 @@ class RestaurantInfoMenuVC: BaseVC,UICollectionViewDelegate, UICollectionViewDat
                     })
                 }
             }
-            if let open_hour = dict.object(forKey: "open_hour"){
-                self.lblTime.text = FoodbodyUtils.shared.checkDataString(dict: dict, key: "open_hour") + "-" + FoodbodyUtils.shared.checkDataString(dict: dict, key: "close_hour");
+            if dict.object(forKey: "open_hour") != nil{
+                self.lblTime.text = FoodbodyUtils.shared.checkDataString(dict: dict, key: "open_hour") + "~" + FoodbodyUtils.shared.checkDataString(dict: dict, key: "close_hour");
             }else{
                 //nothing to do.
             }
@@ -103,7 +103,16 @@ class RestaurantInfoMenuVC: BaseVC,UICollectionViewDelegate, UICollectionViewDat
         }
         if (listCalos.count) > 0 {
             let averageCalo:Double = self.averageCalo(listCalosData: listCalos);
-             self.lblKcal.text = String(format: "%.2f",averageCalo);
+            self.lblKcal.text = String(format: "%.0f kcal",averageCalo);
+            if averageCalo < FbConstants.lowCalo {
+                self.lblKcal.textColor = UIColor.lowKcalColor()
+            }
+            if averageCalo >= FbConstants.lowCalo && averageCalo < FbConstants.highCalo {
+                self.lblKcal.textColor = UIColor.mediumKcalColor()
+            }
+            if averageCalo >= FbConstants.highCalo {
+                self.lblKcal.textColor = UIColor.highKcalColor()
+            }
         }
     }
     func averageCalo(listCalosData:NSArray) -> Double {

@@ -40,4 +40,13 @@ extension UIColor {
     class func navColor() ->UIColor{
         return UIColor.init(rgb: 0x12BD76);
     }
+    class func highKcalColor() ->UIColor{
+        return UIColor.init(rgb: 0xe95975);
+    }
+    class func mediumKcalColor() ->UIColor{
+        return UIColor.init(rgb: 0xfbd402);
+    }
+    class func lowKcalColor() ->UIColor{
+        return UIColor.init(rgb: 0x7398de);
+    }
 }

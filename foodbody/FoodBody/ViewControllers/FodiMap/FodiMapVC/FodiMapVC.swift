@@ -278,7 +278,6 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate,SearchFodi
             return 0;
         }
     }
-    
 }
 
 extension FodiMapVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -309,7 +308,16 @@ extension FodiMapVC: UICollectionViewDelegate, UICollectionViewDataSource, UICol
         }
         let averageCalo:Double = self.averageCalo(listCalosData: listCalos!);
         if averageCalo > 0{
-            cell.lblKcal.text = String(format: "%.f", averageCalo);
+            cell.lblKcal.text = String(format: "%.0f kcal", averageCalo);
+            if averageCalo < FbConstants.lowCalo {
+                cell.lblKcal.textColor = UIColor.lowKcalColor()
+            }
+            if averageCalo >= FbConstants.lowCalo && averageCalo < FbConstants.highCalo {
+                cell.lblKcal.textColor = UIColor.mediumKcalColor()
+            }
+            if averageCalo >= FbConstants.highCalo {
+                cell.lblKcal.textColor = UIColor.highKcalColor()
+            }
         }
         if let openTime = dict["open_hour"] as? String,
             let closeTime = dict["open_hour"] as? String{
@@ -323,12 +331,12 @@ extension FodiMapVC: UICollectionViewDelegate, UICollectionViewDataSource, UICol
                     if let url = URL.init(string: sUrl) {
                         cell.imvRestaurant.kf.setImage(with: url)
                     } else {
-                        cell.imvRestaurant.image = UIImage.init(named: "plusWhite")
+                        cell.imvRestaurant.image = UIImage.init(named: "ic_bg")
                     }
                 }
             }
         }else{
-            cell.imvRestaurant.image = UIImage.init(named: "plusWhite");
+            cell.imvRestaurant.image = UIImage.init(named: "ic_bg");
         }
         return cell;
        
