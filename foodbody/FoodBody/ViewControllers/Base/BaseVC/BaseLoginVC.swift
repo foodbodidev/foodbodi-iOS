@@ -25,7 +25,10 @@ class BaseLoginVC: BaseVC {
 			guard let result = result else { return }
 			
 			if result.isSuccess {
-                AppManager.user = result;
+                
+                result.token = AppManager.user?.token ?? ""
+                AppManager.user = result
+            
                 
 				if self.shouldUpdateProfile(user: result) {
             

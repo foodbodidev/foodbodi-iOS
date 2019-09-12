@@ -105,8 +105,7 @@ class User: NSObject, Mappable, NSCoding {
 class UserProfile: User { // user to map user when get user profile
     var myRestaurant: [MyRestaurant] = []
     
-	override func mapping(map: Map) {
-		token <- map["data.token"]
+    override func mapping(map: Map) {
 		email <- map["data.email"]
 		sex <- map["data.sex"]
 		height <- map["data.height"]
