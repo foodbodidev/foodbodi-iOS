@@ -16,6 +16,8 @@ class ReservationCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.lblCalo.layer.cornerRadius = 5;
+        self.lblCalo.layer.masksToBounds = true;
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

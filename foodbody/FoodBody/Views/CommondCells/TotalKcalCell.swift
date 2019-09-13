@@ -10,8 +10,11 @@ import UIKit
 
 class TotalKcalCell: UITableViewCell {
     @IBOutlet weak var lblTotal: UILabel!
+    @IBOutlet weak var viView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        viView.layer.masksToBounds = true;
+        viView.layer.cornerRadius = 8;
     }
 }

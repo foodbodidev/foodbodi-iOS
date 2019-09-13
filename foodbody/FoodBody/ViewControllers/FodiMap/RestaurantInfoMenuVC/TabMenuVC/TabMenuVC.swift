@@ -72,7 +72,7 @@ extension TabMenuVC: UITableViewDelegate, UITableViewDataSource{
         
         let sectionLabel = UILabel(frame: CGRect(x: 8, y: 10, width:
             tableView.bounds.size.width, height: tableView.bounds.size.height))
-        sectionLabel.font = UIFont.sfProTextLight(16)
+        sectionLabel.font = UIFont.sfProTextSemibold(18)
         sectionLabel.textColor = UIColor.black
         sectionLabel.text = "For you"
         sectionLabel.sizeToFit()
