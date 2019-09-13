@@ -81,7 +81,8 @@ class RestaurantInfoMenuVC: BaseVC,UICollectionViewDelegate, UICollectionViewDat
         if let document = document {
             let dict:NSDictionary = document.data() as NSDictionary;
             self.lblName.text = FoodbodyUtils.shared.checkDataString(dict: dict, key: "name");
-            self.lblCategory.text = FoodbodyUtils.shared.checkDataString(dict: dict, key: "category");
+            let category = FoodbodyUtils.shared.checkDataString(dict: dict, key: "category");
+            self.lblCategory.text = getValueFromKey(key: category)
             if let kcals = dict.object(forKey: "calo_values") {
                 if (kcals as AnyObject).count > 0 {
                     (kcals as AnyObject).enumerateObjects({ object, index, stop in
