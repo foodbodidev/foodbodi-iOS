@@ -61,7 +61,7 @@ struct AppManager {
 	
 	static var step: Int {
 		get {
-			guard let decoded = UserDefaults.standard.object(forKey: defaultsKeys.kRestaurant) else {
+			guard let decoded = UserDefaults.standard.object(forKey: defaultsKeys.kStepKey) else {
 				return 0
 			}
 			
@@ -73,7 +73,7 @@ struct AppManager {
 		}
 		set {
 			let encodeData = NSKeyedArchiver.archivedData(withRootObject: newValue)
-			UserDefaults.standard.set(encodeData, forKey: defaultsKeys.kRestaurant)
+			UserDefaults.standard.set(encodeData, forKey: defaultsKeys.kStepKey)
 			UserDefaults.standard.synchronize()
 		}
 	}

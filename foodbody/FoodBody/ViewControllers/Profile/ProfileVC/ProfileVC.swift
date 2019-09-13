@@ -246,6 +246,10 @@ class ProfileVC: BaseVC {
 					self.stepLabel.text = "\(steps) Steps"
 					let caloLeft = self.caculateCaloriesLeft(steps: steps, caloEten: self.totalEatToday)
 					self.bindData(steps: steps, caloLeft: caloLeft)
+                    
+                    //
+                    AppManager.step = steps // store step real-time
+                    
 				}
 			}
 		}
