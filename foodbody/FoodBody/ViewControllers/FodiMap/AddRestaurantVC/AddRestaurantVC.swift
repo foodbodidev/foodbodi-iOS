@@ -20,7 +20,6 @@ class AddRestaurantVC: BaseVC,AddCaloVCDelegate {
     
     //MARK: ==== OUTLET ====
     @IBOutlet weak var tableView: UITableView!
-//    @IBOutlet weak var headerImageView: UIImageView!
     @IBOutlet weak var clvHeader: UICollectionView!
     @IBOutlet weak var pageClvIndicator: UIPageControl!;
     var calosTotla = "";
@@ -212,7 +211,6 @@ class AddRestaurantVC: BaseVC,AddCaloVCDelegate {
     
     private func getFoodByResId() {
         self.showLoading()
-        
         RequestManager.getFoodWithRestaurantId(id: AppManager.user?.restaurantId ?? "") { (result, error) in
 			self.hideLoading()
             self.foodModel = result?.data ?? []

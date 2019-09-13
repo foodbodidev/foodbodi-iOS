@@ -152,6 +152,8 @@
                 <outlet property="foodTruckButton" destination="5qP-S0-uaf" id="uBq-7h-aMc"/>
                 <outlet property="openHoursTextField" destination="MEp-zo-Xsh" id="rr9-Tw-eXy"/>
                 <outlet property="restaurantButton" destination="4wb-bk-ZRA" id="3rs-vc-g6g"/>
+                <outlet property="viButton" destination="k8s-Sc-ILL" id="mux-iK-9qD"/>
+                <outlet property="viContent" destination="rxQ-72-aYT" id="u4h-EV-79j"/>
             </connections>
             <point key="canvasLocation" x="157.97101449275362" y="160.04464285714286"/>
         </tableViewCell>

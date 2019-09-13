@@ -22,7 +22,8 @@ class RestaurantTableViewCell: UITableViewCell {
     
     @IBOutlet weak var restaurantButton: UIButton!
     @IBOutlet weak var foodTruckButton: UIButton!
-    
+    @IBOutlet weak var viButton:UIView!
+    @IBOutlet weak var viContent:UIView!
     
     var categoryList: [CategoryModel] = AppManager.categoryList
 	
@@ -78,7 +79,10 @@ class RestaurantTableViewCell: UITableViewCell {
         super.awakeFromNib()
         self.setupDatePiker()
         self.setupCategoryPicker()
-		
+        self.viContent.layer.cornerRadius = 10;
+        self.viContent.layer.masksToBounds = true;
+        self.viButton.layer.cornerRadius = 10;
+        self.viButton.layer.masksToBounds = true;
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
