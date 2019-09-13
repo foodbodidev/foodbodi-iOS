@@ -31,7 +31,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="drt-1q-q1x">
-                        <rect key="frame" x="10" y="0.0" width="310" height="66"/>
+                        <rect key="frame" x="10" y="0.0" width="310" height="71"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hCA-dZ-BbU" userLabel="vButton">
                                 <rect key="frame" x="10" y="25" width="290" height="40"/>
@@ -68,7 +68,7 @@
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hIu-A6-4JB">
                                                 <rect key="frame" x="185" y="0.0" width="100" height="38"/>
-                                                <color key="backgroundColor" red="0.92156862750000001" green="0.42745098040000001" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="Gw1-Ol-NSP"/>
                                                 </constraints>
@@ -164,7 +164,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6yu-JN-ndV" userLabel="line">
-                                <rect key="frame" x="10" y="65" width="290" height="1"/>
+                                <rect key="frame" x="10" y="70" width="290" height="1"/>
                                 <color key="backgroundColor" red="0.8980392157" green="0.92941176469999998" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="fN3-Fz-uYg"/>
@@ -180,7 +180,7 @@
                             <constraint firstAttribute="trailing" secondItem="hCA-dZ-BbU" secondAttribute="trailing" constant="10" id="Oqo-ma-s5u"/>
                             <constraint firstAttribute="bottom" secondItem="6yu-JN-ndV" secondAttribute="bottom" id="Tde-Ot-KL8"/>
                             <constraint firstItem="EV6-hq-hU3" firstAttribute="leading" secondItem="drt-1q-q1x" secondAttribute="leading" constant="10" id="WFS-gP-YBB"/>
-                            <constraint firstItem="6yu-JN-ndV" firstAttribute="top" secondItem="hCA-dZ-BbU" secondAttribute="bottom" id="hLl-Ik-oxQ"/>
+                            <constraint firstItem="6yu-JN-ndV" firstAttribute="top" secondItem="hCA-dZ-BbU" secondAttribute="bottom" constant="5" id="hLl-Ik-oxQ"/>
                             <constraint firstAttribute="trailing" secondItem="6yu-JN-ndV" secondAttribute="trailing" constant="10" id="jel-5F-IB0"/>
                             <constraint firstItem="6yu-JN-ndV" firstAttribute="leading" secondItem="drt-1q-q1x" secondAttribute="leading" constant="10" id="pJo-d9-4AI"/>
                         </constraints>
