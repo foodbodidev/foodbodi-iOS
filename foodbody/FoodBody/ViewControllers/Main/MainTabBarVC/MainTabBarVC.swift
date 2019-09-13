@@ -14,6 +14,7 @@ class MainTabBarVC: UITabBarController {
         super.viewDidLoad()
         setupTabbarAppearance()
         setupNavigationBar()
+        self.delegate = self
 
         // Do any additional setup after loading the view.
     }
@@ -52,4 +53,29 @@ class MainTabBarVC: UITabBarController {
     }
     */
 
+}
+
+
+extension MainTabBarVC: UITabBarControllerDelegate {
+   
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+    
+        
+        if let nav = viewController as? UINavigationController {
+            
+            if nav.viewControllers[0] is ReservationVC || nav.viewControllers[0] is FodiMapVC {
+                return true
+            }
+        }
+        
+        if AppManager.user != nil {
+            return true
+            
+        } else {
+            let registerAccountVC = getViewController(className: RegisterAccountVC.className, storyboard: FbConstants.AuthenticationSB) as! RegisterAccountVC
+            let nav = UINavigationController.init(rootViewController: registerAccountVC);
+            self.present(nav, animated: true, completion: nil)
+            return false
+        }
+    }
 }
