@@ -41,6 +41,16 @@ func getBottomPaddingiPhoneX() -> CGFloat {
     return 0.0
 }
 
+func getValueFromKey(key: String) -> String {
+    let arayCategory = AppManager.categoryList
+    for element in arayCategory {
+        if element.key == key {
+            return element.name
+        }
+    }
+    return ""
+}
+
 func isiPhoneX() -> Bool {
     if UIApplication.shared.statusBarFrame.height >= CGFloat(44) {
         return true

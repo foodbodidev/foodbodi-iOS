@@ -297,7 +297,7 @@ extension FodiMapVC: UICollectionViewDelegate, UICollectionViewDataSource, UICol
         cell.lblName.text = dict["name"] as? String
         if (dict["category"] != nil) {
             let category:String = dict["category"] as! String
-            cell.lblCategory.text = category
+            cell.lblCategory.text = getValueFromKey(key: category)
         }
         let listCalos:NSMutableArray? = NSMutableArray.init();
         if let kcals = dict["calo_values"] {
