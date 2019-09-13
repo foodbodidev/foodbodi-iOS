@@ -23,7 +23,9 @@ class ProfileVC: BaseVC {
 	var rateDataSource: [Int] =  [70, 30]
 	
     var totalCalo: Double =  AppManager.user?.daily_calo ?? 2500
-    var calorEaten: Double = 0
+	
+	var totalEatToday: Double = 0
+	var dateQuery: Date = Date()
     
     let dailyLogModel: DailyLogModel = DailyLogModel()
     let pedometer = CMPedometer() // use to update real time steps 
@@ -34,6 +36,8 @@ class ProfileVC: BaseVC {
 		setupChart()
         fetchData()
         addObserver()
+		getStepToday()
+		updateRealTimeStep()
     }
 	
 	@IBAction func actionCalendar() {
@@ -177,10 +181,40 @@ class ProfileVC: BaseVC {
 		HealthKitManager.shared.getSteps(dateQuery: dateQuery, completion: { step in
             RequestManager.getDailyLog(dateString: dateQuery.yyyyMMdd) { (result, error) in
                 self.hideLoading()
-                let caloLeft = self.caculateCaloriesLeft(steps: step, caloEten: result?.total_eat ?? 0)
-                self.bindData(steps: step, caloLeft: caloLeft)
-                self.updateDailyLog(date: dateQuery, step: step, caloLeft: caloLeft)
+				
+				var steps = step
+				
+				if dateQuery.yyyyMMdd == Date().yyyyMMdd {
+					self.totalEatToday = result?.total_eat ?? 0
+					if steps > AppManager.step {
+						AppManager.step = steps
+					} else {
+						steps = AppManager.step
+					}
+				}
+				
+                let caloLeft = self.caculateCaloriesLeft(steps: steps, caloEten: result?.total_eat ?? 0)
+                self.bindData(steps: steps, caloLeft: caloLeft)
+                self.updateDailyLog(date: dateQuery, step: steps, caloLeft: caloLeft)
             }
+		})
+	}
+	
+	func getStepToday() {
+		let yesterday = Date().dayBefore
+		let today = Date(timeInterval: 86400, since: yesterday)
+		self.showLoading()
+		HealthKitManager.shared.getSteps(dateQuery: today, completion: { step in
+			var steps = step
+			if steps > AppManager.step {
+				AppManager.step = steps
+			} else {
+				steps = AppManager.step
+			}
+			
+			let caloLeft = self.caculateCaloriesLeft(steps: steps, caloEten: self.totalEatToday)
+			self.bindData(steps: steps, caloLeft: caloLeft)
+			self.hideLoading()
 		})
 	}
 	
@@ -197,17 +231,24 @@ class ProfileVC: BaseVC {
             self.caloLabel.text = caloLeft
             self.rateDataSource = [Int(caloLeftRate), 100 - Int(caloLeftRate)]
             self.updateChartData()
-            
-            //update realtime steps
-            self.pedometer.startUpdates(from: Date()) { (data, error) in
-                guard let activityData = data else {
-                    return
-                }
-                DispatchQueue.main.async {
-                    self.stepLabel.text = "\(steps + Int(truncating: activityData.numberOfSteps)) Steps"
-                }
-            }
         }
+	}
+	
+	func updateRealTimeStep() {
+		//update realtime steps
+		self.pedometer.startUpdates(from: Date()) { (data, error) in
+			guard let activityData = data else {
+				return
+			}
+			DispatchQueue.main.async {
+				if self.dateQuery.yyyyMMdd == Date().yyyyMMdd {
+					let steps = AppManager.step + Int(truncating: activityData.numberOfSteps)
+					self.stepLabel.text = "\(steps) Steps"
+					let caloLeft = self.caculateCaloriesLeft(steps: steps, caloEten: self.totalEatToday)
+					self.bindData(steps: steps, caloLeft: caloLeft)
+				}
+			}
+		}
 	}
     
     func updateDailyLog(date: Date, step: Int, caloLeft: String) {
@@ -250,6 +291,7 @@ class ProfileVC: BaseVC {
 
 extension ProfileVC: CalendarVCDelegate {
 	func didSelectDate(date: Date) {
+		dateQuery = date
 		dateLabel.text = date.toString()
 		getData(dateQuery: date)
 		self.dismiss(animated: true, completion: nil)

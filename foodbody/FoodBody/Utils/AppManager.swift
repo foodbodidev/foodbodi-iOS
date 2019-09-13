@@ -58,4 +58,24 @@ struct AppManager {
     }
 	
 	static var categoryList: [CategoryModel] = []
+	
+	static var step: Int {
+		get {
+			guard let decoded = UserDefaults.standard.object(forKey: defaultsKeys.kRestaurant) else {
+				return 0
+			}
+			
+			guard let steps = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(decoded as! Data) as? Int else {
+				return 0
+			}
+			
+			return steps
+		}
+		set {
+			let encodeData = NSKeyedArchiver.archivedData(withRootObject: newValue)
+			UserDefaults.standard.set(encodeData, forKey: defaultsKeys.kRestaurant)
+			UserDefaults.standard.synchronize()
+		}
+	}
+	
 }
