@@ -22,6 +22,9 @@ class FoodTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        foodImageView.layer.cornerRadius = 5;
+        foodImageView.layer.masksToBounds = true;
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

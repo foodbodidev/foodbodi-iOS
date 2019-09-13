@@ -62,6 +62,23 @@ class TabMenuVC: BaseVC {
 }
 
 extension TabMenuVC: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40;
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.white
+        
+        let sectionLabel = UILabel(frame: CGRect(x: 8, y: 10, width:
+            tableView.bounds.size.width, height: tableView.bounds.size.height))
+        sectionLabel.font = UIFont.sfProTextLight(16)
+        sectionLabel.textColor = UIColor.black
+        sectionLabel.text = "For you"
+        sectionLabel.sizeToFit()
+        headerView.addSubview(sectionLabel)
+        return headerView
+    }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -93,8 +110,6 @@ extension TabMenuVC: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let row = indexPath.row
-//        let data:FoodModel = self.listMenu[row]
         let vc:CartRestaurantVC = getViewController(className: CartRestaurantVC.className, storyboard: FbConstants.FodiMapSB) as! CartRestaurantVC;
         vc.listMenu = listMenu
         self.parent?.navigationController?.pushViewController(vc, animated: true);

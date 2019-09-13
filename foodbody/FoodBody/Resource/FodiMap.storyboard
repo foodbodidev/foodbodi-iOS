@@ -259,13 +259,13 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Caste" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bRU-6h-hKj">
-                                                        <rect key="frame" x="10" y="40" width="54.5" height="35"/>
+                                                        <rect key="frame" x="10" y="40" width="52.5" height="35"/>
                                                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="20"/>
                                                         <color key="textColor" red="0.69019607843137254" green="0.69019607843137254" blue="0.69019607843137254" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZe-cx-XrS">
-                                                        <rect key="frame" x="74.5" y="40" width="100" height="35"/>
+                                                        <rect key="frame" x="72.5" y="40" width="100" height="35"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="100" id="km6-tD-5Qn"/>
                                                         </constraints>

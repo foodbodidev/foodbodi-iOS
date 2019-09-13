@@ -295,7 +295,8 @@ extension FodiMapVC: UICollectionViewDelegate, UICollectionViewDataSource, UICol
         let object: QueryDocumentSnapshot = self.listRestaurant[indexPath.row]
         let dict: [String: Any] = object.data()
         cell.lblName.text = dict["name"] as? String
-        if let category = dict["category"] as? String {
+        if (dict["category"] != nil) {
+            let category:String = dict["category"] as! String
             cell.lblCategory.text = category
         }
         let listCalos:NSMutableArray? = NSMutableArray.init();

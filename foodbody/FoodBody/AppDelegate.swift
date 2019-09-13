@@ -46,15 +46,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }else{
             NotificationCenter.default.addObserver(self, selector: #selector(onDidNotifiRegisterRestaurant(_:)), name: .kFB_notifi_registerRestaurant, object:nil)
         }
-        
+        getCategory()
         if AppManager.user?.token == nil{
             self.gotoWelcome()
         }else{
             
             self.gotoMainTab()
         }
-		
-		getCategory()
         return true
     }
     @objc func onDidNotifiRegisterRestaurant(_ notification: Notification)
