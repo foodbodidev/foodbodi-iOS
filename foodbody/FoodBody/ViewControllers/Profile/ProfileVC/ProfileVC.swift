@@ -27,6 +27,8 @@ class ProfileVC: BaseVC {
 	var totalEatToday: Double = 0
 	var dateQuery: Date = Date()
     
+    var stepConst = AppManager.step
+    
     let dailyLogModel: DailyLogModel = DailyLogModel()
     let pedometer = CMPedometer() // use to update real time steps 
 
@@ -242,14 +244,13 @@ class ProfileVC: BaseVC {
 			}
 			DispatchQueue.main.async {
 				if self.dateQuery.yyyyMMdd == Date().yyyyMMdd {
-					let steps = AppManager.step + Int(truncating: activityData.numberOfSteps)
+                    
+					let steps = self.stepConst + Int(truncating: activityData.numberOfSteps)
 					self.stepLabel.text = "\(steps) Steps"
 					let caloLeft = self.caculateCaloriesLeft(steps: steps, caloEten: self.totalEatToday)
 					self.bindData(steps: steps, caloLeft: caloLeft)
                     
-                    //
-                    AppManager.step = steps // store step real-time
-                    
+                    AppManager.step = steps
 				}
 			}
 		}
