@@ -54,7 +54,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F9s-3p-L17">
-                                                                    <rect key="frame" x="35" y="2" width="80" height="80"/>
+                                                                    <rect key="frame" x="10" y="2" width="130" height="80"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="80" id="YDd-bd-r3t"/>
@@ -66,25 +66,24 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </imageView>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zHU-ti-GEB">
-                                                                    <rect key="frame" x="0.0" y="90" width="195" height="49"/>
+                                                                    <rect key="frame" x="0.0" y="87" width="150" height="63"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VdU-cq-O7P" userLabel="lblName">
-                                                                            <rect key="frame" x="76" y="0.0" width="42" height="14"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VdU-cq-O7P" userLabel="lblName">
+                                                                            <rect key="frame" x="5" y="0.0" width="140" height="14"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hW4-D3-ONr" userLabel="viCalos">
-                                                                            <rect key="frame" x="20" y="14" width="98" height="15"/>
+                                                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hW4-D3-ONr" userLabel="viCalos">
+                                                                            <rect key="frame" x="5" y="14" width="140" height="15"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Jk-6h-8ZL" userLabel="lblType">
-                                                                                    <rect key="frame" x="0.0" y="-3" width="20" height="21"/>
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rPi-iT-RRg" userLabel="lblKcal">
-                                                                                    <rect key="frame" x="42" y="-3" width="28" height="21"/>
+                                                                                    <rect key="frame" x="5" y="0.0" width="100" height="0.0"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="width" constant="100" id="RfM-QE-htT"/>
                                                                                     </constraints>
@@ -103,8 +102,8 @@
                                                                                 <constraint firstItem="3Jk-6h-8ZL" firstAttribute="leading" secondItem="hW4-D3-ONr" secondAttribute="leading" id="tIk-HY-Ofe"/>
                                                                             </constraints>
                                                                         </view>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZEO-ev-wel" userLabel="lblTime">
-                                                                            <rect key="frame" x="76" y="35" width="42" height="14"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZEO-ev-wel" userLabel="lblTime">
+                                                                            <rect key="frame" x="5" y="35" width="140" height="14"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -316,7 +315,7 @@
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="radius">
-                                                            <real key="value" value="4"/>
+                                                            <real key="value" value="10"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>

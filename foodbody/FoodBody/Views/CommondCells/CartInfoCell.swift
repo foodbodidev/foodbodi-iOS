@@ -20,11 +20,16 @@ class CartInfoCell: UITableViewCell {
     @IBOutlet weak var lblAmount: UILabel!
     @IBOutlet weak var btnAdd: UIButton!
     @IBOutlet weak var btnSub: UIButton!
+    @IBOutlet weak var viFood: UIView!
     //MARK: Properties
     weak var delegate: CartInfoCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        foodImageView.layer.masksToBounds = true;
+        foodImageView.layer.cornerRadius = 8;
+        viFood.layer.masksToBounds = true;
+        viFood.layer.cornerRadius = 8;
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
