@@ -49,4 +49,5 @@ extension UIColor {
     class func lowKcalColor() ->UIColor{
         return UIColor.init(rgb: 0x7398de);
     }
+    
 }

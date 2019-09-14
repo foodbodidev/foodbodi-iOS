@@ -70,7 +70,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate,SearchFodi
         self.googleMapView.delegate = self;
         self.title = "FodiMap";
         self.viSearch.layer.cornerRadius = 8;
-        self.viSearch.layer.borderColor = (UIColor.init(rgb: 0xd8d8d8) as! CGColor);
+        self.viSearch.layer.borderColor = UIColor.backgroundGray().cgColor;
         self.viSearch.layer.borderWidth = 1;
     }
     
