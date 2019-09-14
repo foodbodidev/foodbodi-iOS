@@ -16,7 +16,10 @@ class WelComeVC: BaseVC {
     //MARK: cycle view.
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Welcome";
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
+        self.navigationController?.navigationBar.isHidden = true;
     }
     
     

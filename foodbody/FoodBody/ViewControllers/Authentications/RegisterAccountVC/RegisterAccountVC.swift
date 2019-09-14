@@ -30,13 +30,12 @@ class RegisterAccountVC: BaseLoginVC {
     }
     
     fileprivate func configureLayout() {
-        emailView.layer.cornerRadius = 15
+        emailView.layer.cornerRadius = 27
         emailView.clipsToBounds = true
         emailView.layer.borderWidth = 1
-        
-        facebookView.layer.cornerRadius = 15
+        facebookView.layer.cornerRadius = 27
         facebookView.clipsToBounds = true
-        btnGoogleSignin.layer.cornerRadius = 15
+        btnGoogleSignin.layer.cornerRadius = 27
         btnGoogleSignin.clipsToBounds = true
         
         emailView.layer.borderColor = UIColor(red: 25, green: 62, blue: 82).cgColor
