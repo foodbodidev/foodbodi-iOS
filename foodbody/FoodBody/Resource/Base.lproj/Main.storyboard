@@ -255,6 +255,7 @@
                         <outlet property="clvFodi" destination="V4N-G1-fev" id="Ax7-Qi-gyl"/>
                         <outlet property="googleMapView" destination="HFr-cC-qfp" id="ccB-RX-PXc"/>
                         <outlet property="tfSearch" destination="l4e-dG-5aQ" id="YpT-c8-RVG"/>
+                        <outlet property="viSearch" destination="Sdv-f1-b32" id="veQ-F6-mv2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fxi-IG-DzE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -596,7 +597,7 @@
         <image name="ic_location" width="22" height="22"/>
         <image name="ic_profile" width="24" height="24"/>
         <image name="ic_reservations" width="26" height="24"/>
-        <image name="ic_search" width="25" height="25"/>
+        <image name="ic_search" width="14" height="14"/>
         <image name="iconmonstrCalendar4" width="12" height="12"/>
         <image name="running" width="41" height="31"/>
     </resources>
