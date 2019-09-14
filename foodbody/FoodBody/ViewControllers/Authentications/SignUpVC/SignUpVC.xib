@@ -18,7 +18,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignUpVC" customModule="FoodBody" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignUpVC" customModule="Foodbodi" customModuleProvider="target">
             <connections>
                 <outlet property="emailTextField" destination="Yjf-Ky-aQN" id="6NQ-7u-8Gi"/>
                 <outlet property="firstTextField" destination="sMe-Ol-JrH" id="5U2-xs-wxM"/>
@@ -38,16 +38,16 @@
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="KhF-F1-rN5">
                             <rect key="frame" x="40" y="179.5" width="240" height="276"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sMe-Ol-JrH" customClass="FBTextField" customModule="FoodBody" customModuleProvider="target">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sMe-Ol-JrH" customClass="FBTextField" customModule="Foodbodi" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="240" height="69"/>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FBq-Fo-g53" customClass="FBTextField" customModule="FoodBody" customModuleProvider="target">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FBq-Fo-g53" customClass="FBTextField" customModule="Foodbodi" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="69" width="240" height="69"/>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yjf-Ky-aQN" customClass="FBTextField" customModule="FoodBody" customModuleProvider="target">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yjf-Ky-aQN" customClass="FBTextField" customModule="Foodbodi" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="138" width="240" height="69"/>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W7v-SW-6Yw" customClass="FBTextField" customModule="FoodBody" customModuleProvider="target">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W7v-SW-6Yw" customClass="FBTextField" customModule="Foodbodi" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="207" width="240" height="69"/>
                                 </view>
                             </subviews>
@@ -68,7 +68,7 @@
                             <color key="textColor" red="0.098039215690000001" green="0.24313725489999999" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bb0-gh-6c0" customClass="FoodBodyButton" customModule="FoodBody" customModuleProvider="target">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bb0-gh-6c0" customClass="FoodBodyButton" customModule="Foodbodi" customModuleProvider="target">
                             <rect key="frame" x="40" y="455.5" width="240" height="44"/>
                             <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -101,16 +101,25 @@
                         <constraint firstItem="KhF-F1-rN5" firstAttribute="top" secondItem="2FT-SF-2xL" secondAttribute="bottom" constant="50" id="ywW-ME-pVa"/>
                     </constraints>
                 </view>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_path" translatesAutoresizingMaskIntoConstraints="NO" id="qkG-TI-6Ko">
+                    <rect key="frame" x="0.0" y="178" width="320" height="212"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="aVd-4f-YoE" firstAttribute="leading" secondItem="04x-i8-1F5" secondAttribute="leading" id="Mcx-yn-yDz"/>
+                <constraint firstAttribute="bottom" secondItem="qkG-TI-6Ko" secondAttribute="bottom" id="XSD-Bs-RTc"/>
                 <constraint firstItem="04x-i8-1F5" firstAttribute="trailing" secondItem="aVd-4f-YoE" secondAttribute="trailing" id="YrW-uB-XAz"/>
+                <constraint firstAttribute="trailing" secondItem="qkG-TI-6Ko" secondAttribute="trailing" id="af5-I5-0FK"/>
                 <constraint firstItem="aVd-4f-YoE" firstAttribute="top" secondItem="04x-i8-1F5" secondAttribute="top" id="dxa-NW-w4n"/>
+                <constraint firstItem="qkG-TI-6Ko" firstAttribute="leading" secondItem="Tri-Je-hGQ" secondAttribute="leading" id="o1E-pM-XV2"/>
                 <constraint firstItem="04x-i8-1F5" firstAttribute="bottom" secondItem="aVd-4f-YoE" secondAttribute="bottom" id="q0O-7H-eLT"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="04x-i8-1F5"/>
             <point key="canvasLocation" x="63.75" y="95.070422535211264"/>
         </view>
     </objects>
+    <resources>
+        <image name="bg_path" width="307" height="212"/>
+    </resources>
 </document>

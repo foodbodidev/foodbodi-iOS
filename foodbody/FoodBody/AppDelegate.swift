@@ -151,7 +151,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigation = UINavigationController.init(rootViewController: welcomeVC)
         self.window?.rootViewController = navigation
         //
-        UINavigationBar.appearance().barTintColor = UIColor.navColor()
+        UINavigationBar.appearance().barTintColor = UIColor.white
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
     }
