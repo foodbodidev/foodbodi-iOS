@@ -18,6 +18,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate,SearchFodi
     @IBOutlet weak var googleMapView:GMSMapView!
     @IBOutlet weak var clvFodi:UICollectionView!
     @IBOutlet weak var tfSearch: UITextField!
+    @IBOutlet weak var viSearch: UIView!
     
     //MARK: variable.
     var locationManager:CLLocationManager? = nil;
@@ -36,6 +37,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate,SearchFodi
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true;
         if let user = AppManager.user, !user.restaurantId.isEmpty {
             btnAdd.setImage(UIImage.init(named: "ic_edit"), for: .normal)
             btnAdd.setImage(UIImage.init(named: "ic_edit"), for: .highlighted)
@@ -46,6 +48,10 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate,SearchFodi
             btnAdd.backgroundColor = Style.Color.mainGreen
         }
         self.registerNotification();
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated);
     }
     
     //MARK:init.
@@ -63,10 +69,9 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate,SearchFodi
         self.clvFodi.dataSource = self;
         self.googleMapView.delegate = self;
         self.title = "FodiMap";
-        
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated);
+        self.viSearch.layer.cornerRadius = 8;
+        self.viSearch.layer.borderColor = (UIColor.init(rgb: 0xd8d8d8) as! CGColor);
+        self.viSearch.layer.borderWidth = 1;
     }
     
     func registerNotification(){

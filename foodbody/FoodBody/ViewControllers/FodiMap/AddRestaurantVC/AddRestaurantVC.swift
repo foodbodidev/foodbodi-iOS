@@ -75,6 +75,10 @@ class AddRestaurantVC: BaseVC,AddCaloVCDelegate {
         self.clvHeader.showsHorizontalScrollIndicator = false;
        
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = false;
+    }
 	
     //MARK: === ACTION  ===
     

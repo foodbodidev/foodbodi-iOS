@@ -183,8 +183,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sdv-f1-b32" userLabel="vSearch">
                                 <rect key="frame" x="10" y="30" width="355" height="44"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l4e-dG-5aQ">
-                                        <rect key="frame" x="0.0" y="2" width="310" height="40"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l4e-dG-5aQ">
+                                        <rect key="frame" x="75" y="2" width="235" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="z4G-Zb-PGa"/>
                                         </constraints>
@@ -202,16 +202,31 @@
                                             <action selector="currentLocaltionActionWithSender:" destination="JPT-Hk-ugd" eventType="touchUpInside" id="Tec-G7-4s9"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sc1-E7-BbU" userLabel="btnSearch">
+                                        <rect key="frame" x="-21" y="0.0" width="72" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="45" id="EEO-ES-cUM"/>
+                                        </constraints>
+                                        <state key="normal" image="ic_search"/>
+                                        <connections>
+                                            <action selector="currentLocaltionActionWithSender:" destination="JPT-Hk-ugd" eventType="touchUpInside" id="K7V-sW-9ni"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="uIg-gf-2Ze" secondAttribute="trailing" id="1Q7-1X-bEV"/>
+                                    <constraint firstItem="l4e-dG-5aQ" firstAttribute="top" secondItem="Sdv-f1-b32" secondAttribute="top" constant="2" id="2R6-On-uHz"/>
+                                    <constraint firstItem="sc1-E7-BbU" firstAttribute="leading" secondItem="Sdv-f1-b32" secondAttribute="leading" id="2br-hV-5Nf"/>
                                     <constraint firstAttribute="bottom" secondItem="uIg-gf-2Ze" secondAttribute="bottom" id="7xb-kq-piB"/>
                                     <constraint firstAttribute="height" constant="44" id="Bsy-Ys-Y2i"/>
                                     <constraint firstItem="uIg-gf-2Ze" firstAttribute="top" secondItem="Sdv-f1-b32" secondAttribute="top" id="FnS-oa-YHD"/>
-                                    <constraint firstItem="l4e-dG-5aQ" firstAttribute="leading" secondItem="Sdv-f1-b32" secondAttribute="leading" id="Y6t-X1-PNe"/>
+                                    <constraint firstItem="sc1-E7-BbU" firstAttribute="top" secondItem="Sdv-f1-b32" secondAttribute="top" id="Kdo-Ha-pRm"/>
                                     <constraint firstItem="uIg-gf-2Ze" firstAttribute="leading" secondItem="l4e-dG-5aQ" secondAttribute="trailing" id="dD6-pW-KtS"/>
                                     <constraint firstItem="l4e-dG-5aQ" firstAttribute="centerY" secondItem="Sdv-f1-b32" secondAttribute="centerY" id="feR-5f-7rT"/>
+                                    <constraint firstItem="l4e-dG-5aQ" firstAttribute="leading" secondItem="sc1-E7-BbU" secondAttribute="trailing" id="gkZ-9r-sFd"/>
+                                    <constraint firstAttribute="bottom" secondItem="sc1-E7-BbU" secondAttribute="bottom" id="hcz-ei-hyA"/>
+                                    <constraint firstAttribute="bottom" secondItem="l4e-dG-5aQ" secondAttribute="bottom" constant="2" id="v8K-ZJ-oWr"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -388,7 +403,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="50"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tbJ-ha-vOJ">
-                                        <rect key="frame" x="127.5" y="0.0" width="120" height="50"/>
+                                        <rect key="frame" x="137" y="0.0" width="101" height="50"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconmonstrCalendar4" translatesAutoresizingMaskIntoConstraints="NO" id="OyT-e2-UA4">
                                                 <rect key="frame" x="0.0" y="17" width="16" height="16"/>
@@ -398,7 +413,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today, 25 5월" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="COD-ni-47c">
-                                                <rect key="frame" x="26" y="18" width="94" height="14"/>
+                                                <rect key="frame" x="26" y="18" width="75" height="14"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Light" family="SF Pro Text" pointSize="12"/>
                                                 <color key="textColor" red="0.098039215690000001" green="0.24313725489999999" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -581,6 +596,7 @@
         <image name="ic_location" width="22" height="22"/>
         <image name="ic_profile" width="24" height="24"/>
         <image name="ic_reservations" width="26" height="24"/>
+        <image name="ic_search" width="25" height="25"/>
         <image name="iconmonstrCalendar4" width="12" height="12"/>
         <image name="running" width="41" height="31"/>
     </resources>
