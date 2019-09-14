@@ -15,6 +15,7 @@ struct defaultsKeys {
     static let kUserlogin = "kUserlogin"
     static let kRestaurant = "kRestaurant"
     static let kStepKey = "kStepKey"
+    static let kLatestUpdateStep = "kLatestUpdateStep"
 }
 func Log(_ s: CustomStringConvertible, file: String = #file, line: Int = #line) {
     #if DEBUG

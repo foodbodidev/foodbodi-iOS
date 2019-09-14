@@ -77,5 +77,24 @@ struct AppManager {
 			UserDefaults.standard.synchronize()
 		}
 	}
+    
+    static var latestUpdateStep: String {
+        get {
+            guard let decoded = UserDefaults.standard.object(forKey: defaultsKeys.kLatestUpdateStep) else {
+                return ""
+            }
+            
+            guard let latestUpdate = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(decoded as! Data) as? String else {
+                return ""
+            }
+            
+            return latestUpdate
+        }
+        set {
+            let encodeData = NSKeyedArchiver.archivedData(withRootObject: newValue)
+            UserDefaults.standard.set(encodeData, forKey: defaultsKeys.kLatestUpdateStep)
+            UserDefaults.standard.synchronize()
+        }
+    }
 	
 }

@@ -34,6 +34,7 @@ class ProfileVC: BaseVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        resetStepIfNeeded()
         setupLayout()
 		setupChart()
         fetchData()
@@ -41,6 +42,14 @@ class ProfileVC: BaseVC {
 		getStepToday()
 		updateRealTimeStep()
     }
+    
+    
+    private func resetStepIfNeeded() { // reset step when it's going to next day
+        if AppManager.latestUpdateStep !=  Date().yyyyMMdd {
+            AppManager.step = 0
+        }
+    }
+
 	
 	@IBAction func actionCalendar() {
 		let calendarVC = CalendarVC.init(nibName: "CalendarVC", bundle: nil)
@@ -251,6 +260,7 @@ class ProfileVC: BaseVC {
 					self.bindData(steps: steps, caloLeft: caloLeft)
                     
                     AppManager.step = steps
+                    AppManager.latestUpdateStep = Date().yyyyMMdd
 				}
 			}
 		}
