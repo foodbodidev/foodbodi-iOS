@@ -285,6 +285,8 @@ class ProfileVC: BaseVC {
         if calorLeft > totalCalo {
             calorLeft = totalCalo
         }
+        
+        AppManager.caloLeft = calorLeft
 		return NSString(format:"%.0f", calorLeft) as String
 	}
     

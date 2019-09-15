@@ -96,5 +96,7 @@ struct AppManager {
             UserDefaults.standard.synchronize()
         }
     }
+    
+    static var caloLeft: Double = 2500
 	
 }
