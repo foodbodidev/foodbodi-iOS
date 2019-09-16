@@ -94,7 +94,7 @@ extension TabMenuVC: UITableViewDelegate, UITableViewDataSource{
                         tableView.bounds.size.width, height: tableView.bounds.size.height))
                     sectionLabel.font = UIFont.sfProTextSemibold(18)
                     sectionLabel.textColor = UIColor.black
-                    sectionLabel.text = "Menu"
+                    sectionLabel.text = "Name of foods"
                     sectionLabel.sizeToFit()
                     headerView.addSubview(sectionLabel)
                     return headerView
@@ -108,7 +108,7 @@ extension TabMenuVC: UITableViewDelegate, UITableViewDataSource{
                 tableView.bounds.size.width, height: tableView.bounds.size.height))
             sectionLabel.font = UIFont.sfProTextSemibold(18)
             sectionLabel.textColor = UIColor.black
-            sectionLabel.text = "Menu"
+            sectionLabel.text = "Name of foods"
             sectionLabel.sizeToFit()
             headerView.addSubview(sectionLabel)
             return headerView

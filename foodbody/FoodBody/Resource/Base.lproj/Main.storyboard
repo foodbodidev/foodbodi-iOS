@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="SFProText-Light.otf">
+        <array key="SF-Pro-Text-Light.otf">
             <string>SFProText-Light</string>
         </array>
-        <array key="SFProText-Regular.otf">
+        <array key="SF-Pro-Text-Regular.otf">
             <string>SFProText-Regular</string>
         </array>
     </customFonts>
@@ -184,7 +184,7 @@
                                 <rect key="frame" x="10" y="30" width="355" height="44"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l4e-dG-5aQ">
-                                        <rect key="frame" x="75" y="2" width="235" height="40"/>
+                                        <rect key="frame" x="45" y="2" width="265" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="z4G-Zb-PGa"/>
                                         </constraints>
@@ -203,7 +203,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sc1-E7-BbU" userLabel="btnSearch">
-                                        <rect key="frame" x="-21" y="0.0" width="72" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="45" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="45" id="EEO-ES-cUM"/>
                                         </constraints>
@@ -262,7 +262,7 @@
             </objects>
             <point key="canvasLocation" x="2823.1999999999998" y="1390.2548725637182"/>
         </scene>
-        <!--Reservation-->
+        <!--Calories intake-->
         <scene sceneID="bwJ-KT-l9v">
             <objects>
                 <viewController storyboardIdentifier="ReservationVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yo5-ma-305" customClass="ReservationVC" customModule="Foodbodi" customModuleProvider="target" sceneMemberID="viewController">
@@ -363,7 +363,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nHZ-jd-GgW"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Reservation" image="ic_reservations" id="Xof-AJ-XwG">
+                    <tabBarItem key="tabBarItem" title="Calories intake" image="ic_reservations" id="Xof-AJ-XwG">
                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" id="rp0-DD-3by"/>

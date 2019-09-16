@@ -212,6 +212,8 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate,SearchFodi
 		} else {
 			let registerAccountVC = getViewController(className: RegisterAccountVC.className, storyboard: FbConstants.AuthenticationSB) as! RegisterAccountVC
 			let nav = UINavigationController.init(rootViewController: registerAccountVC);
+            nav.navigationBar.backgroundColor = UIColor.white;
+            nav.navigationBar.tintColor = UIColor.white;
 			self.present(nav, animated: true, completion: nil)
 		}
     }
