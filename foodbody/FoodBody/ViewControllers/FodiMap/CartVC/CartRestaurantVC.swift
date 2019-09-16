@@ -139,7 +139,7 @@ extension CartRestaurantVC:UITableViewDataSource, UITableViewDelegate{
             } else {
                 cell.foodImageView.image = nil
             }
-            cell.lblAmount.text = String(format: "%d", data.amount);
+            cell.lblAmount.text = String(format: "%.f", data.amount);
             totalCalo = totalCalo + CGFloat(data.amount * data.calo);
             cell.delegate = self;
             return cell;

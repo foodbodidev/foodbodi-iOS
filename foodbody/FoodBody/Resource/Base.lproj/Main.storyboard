@@ -78,6 +78,7 @@
                                                                             <rect key="frame" x="5" y="14" width="140" height="15"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Jk-6h-8ZL" userLabel="lblType">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
@@ -262,7 +263,7 @@
             </objects>
             <point key="canvasLocation" x="2823.1999999999998" y="1390.2548725637182"/>
         </scene>
-        <!--Calories intake-->
+        <!--Reservation-->
         <scene sceneID="bwJ-KT-l9v">
             <objects>
                 <viewController storyboardIdentifier="ReservationVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yo5-ma-305" customClass="ReservationVC" customModule="Foodbodi" customModuleProvider="target" sceneMemberID="viewController">
@@ -363,7 +364,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nHZ-jd-GgW"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Calories intake" image="ic_reservations" id="Xof-AJ-XwG">
+                    <tabBarItem key="tabBarItem" title="Reservation" image="ic_reservations" id="Xof-AJ-XwG">
                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" id="rp0-DD-3by"/>

@@ -367,6 +367,7 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Wt-Ec-0A2">
                                                         <rect key="frame" x="0.0" y="0.0" width="177" height="40"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                         <state key="normal" title="Name of foods">
                                                             <color key="titleColor" red="0.070588235289999995" green="0.74117647060000003" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
