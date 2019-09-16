@@ -10,13 +10,13 @@ import UIKit
 import ObjectMapper
 class FoodReservationModel: Mappable {
     var food_id: String = ""
-    var amount:Int = 0;
+    var amount:Double = 0;
     
     required init?(map: Map) {
         
     }
     
-    init(food_id: String, amount: Int) {
+    init(food_id: String, amount: Double) {
         self.food_id = food_id
         self.amount = amount
     }

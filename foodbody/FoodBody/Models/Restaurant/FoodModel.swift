@@ -38,13 +38,13 @@ class FoodModel: Mappable  {
     var name: String = ""
     var restaurant_id: String = AppManager.user?.restaurantId ?? ""
     var creator: String = ""
-    var calo: Int = 0
-    var price: Int = 0
+    var calo: Double = 0
+    var price: Double = 0
     var description: String = ""
     var created_date: String = ""
     var photo: String = ""
     var id: String = ""
-    var amount:Int = 0;
+    var amount:Double = 0;
     
     var image: UIImage?  // use for displaying layout
 
@@ -55,7 +55,7 @@ class FoodModel: Mappable  {
         
     }
     
-    init(name: String, price: Int, calo: Int) {
+    init(name: String, price: Double, calo: Double) {
         self.name = name
         self.price = price
         self.calo = calo

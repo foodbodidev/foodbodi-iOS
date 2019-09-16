@@ -20,6 +20,7 @@ class RestaurantInfoMenuVC: BaseVC,UICollectionViewDelegate, UICollectionViewDat
     weak var navInfoMenu:UINavigationController!
     var listCalos:NSMutableArray = NSMutableArray.init();
     var listImage:NSArray = [];
+    
     // MARK: IBOutlet.
     @IBOutlet weak var viContainer: UIView!
     @IBOutlet weak var btnMenu: UIButton!

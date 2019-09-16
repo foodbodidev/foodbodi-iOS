@@ -96,7 +96,8 @@ struct AppManager {
             UserDefaults.standard.synchronize()
         }
     }
-    
+    //WARNING:
+    //App don't change caloLeft because value is static, Please update qickly.
     static var caloLeft: Double = 2500
 	
 }
