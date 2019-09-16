@@ -47,6 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NotificationCenter.default.addObserver(self, selector: #selector(onDidNotifiRegisterRestaurant(_:)), name: .kFB_notifi_registerRestaurant, object:nil)
         }
         getCategory()
+        caculateRemainColor()
         if AppManager.user?.token == nil{
             self.gotoWelcome()
         }else{
@@ -103,6 +104,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			}
 		}
 	}
+    
+    
+    private func caculateRemainColor() {
+        AppManager.caculateCaloriesLeft()
+    }
     
 
     func applicationWillResignActive(_ application: UIApplication) {

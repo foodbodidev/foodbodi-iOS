@@ -99,5 +99,24 @@ struct AppManager {
     //WARNING:
     //App don't change caloLeft because value is static, Please update qickly.
     static var caloLeft: Double = 2500
+    
+    static func caculateCaloriesLeft()  {
+        let yesterday = Date().dayBefore
+        let today = Date(timeInterval: 86400, since: yesterday)
+       
+        
+        HealthKitManager.shared.getSteps(dateQuery: today, completion: { step in
+            RequestManager.getDailyLog(dateString: today.yyyyMMdd) { (result, error) in
+                
+            let totalCalo = AppManager.user?.daily_calo ?? 2500
+                
+            let totalEat = result?.total_eat ?? 0
+                
+            let caloLeft =  totalCalo + Double(step*20/1000) - totalEat
+                
+            AppManager.caloLeft = caloLeft
+            }
+        })
+    }
 	
 }
