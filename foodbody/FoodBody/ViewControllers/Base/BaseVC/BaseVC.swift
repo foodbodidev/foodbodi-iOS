@@ -59,11 +59,9 @@ class BaseVC: UIViewController {
                 }
                 
                 AppManager.restaurant = result.myRestaurant.first
+                AppManager.caculateCaloriesLeft()
             }
         }
         
     }
-    
-    
-
 }
