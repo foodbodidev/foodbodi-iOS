@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="SFProText-Regular.otf">
+        <array key="SF-Pro-Text-Regular.otf">
             <string>SFProText-Regular</string>
         </array>
-        <array key="SFProText-Semibold.otf">
+        <array key="SF-Pro-Text-Semibold.otf">
             <string>SFProText-Semibold</string>
         </array>
     </customFonts>
@@ -267,13 +267,13 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Caste" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bRU-6h-hKj">
-                                                        <rect key="frame" x="10" y="40" width="52.5" height="35"/>
+                                                        <rect key="frame" x="10" y="40" width="54.5" height="35"/>
                                                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="20"/>
                                                         <color key="textColor" red="0.69019607843137254" green="0.69019607843137254" blue="0.69019607843137254" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZe-cx-XrS">
-                                                        <rect key="frame" x="72.5" y="40" width="100" height="35"/>
+                                                        <rect key="frame" x="74.5" y="40" width="100" height="35"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="100" id="km6-tD-5Qn"/>
                                                         </constraints>
@@ -367,7 +367,7 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Wt-Ec-0A2">
                                                         <rect key="frame" x="0.0" y="0.0" width="177" height="40"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <state key="normal" title="Menu">
+                                                        <state key="normal" title="Name of foods">
                                                             <color key="titleColor" red="0.070588235289999995" green="0.74117647060000003" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
                                                         <connections>
@@ -925,7 +925,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="375" height="65"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="F9H-dx-J6Q" id="HXb-8l-WjV">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="64.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fHu-8l-h0k" userLabel="vBoss">
@@ -1034,7 +1034,7 @@ Also, in the story board don't set the height of the label that contains a large
         </scene>
     </scenes>
     <resources>
-        <image name="backArow" width="24" height="24"/>
+        <image name="backArow" width="16" height="16"/>
         <image name="ic_Favorite" width="24" height="22"/>
         <image name="plusWhite" width="48" height="48"/>
     </resources>

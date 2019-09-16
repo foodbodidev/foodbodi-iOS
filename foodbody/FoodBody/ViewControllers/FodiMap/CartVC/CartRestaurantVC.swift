@@ -147,7 +147,7 @@ extension CartRestaurantVC:UITableViewDataSource, UITableViewDelegate{
             let cell:TotalKcalCell = tableView.dequeueReusableCell(withIdentifier: "TotalKcalCell", for: indexPath) as! TotalKcalCell;
             totalCalo = 0;
             totalCalo = self.getTotalCalo();
-            cell.lblTotal.text = String(format: "%.f", totalCalo);
+            cell.lblTotal.text = String(format: "%.f Kcal", totalCalo);
             return cell;
         }
     }

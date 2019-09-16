@@ -42,7 +42,7 @@ class RegisterAccountVC: BaseLoginVC {
         emailView.layer.borderWidth = 1
         
         let backButton = UIButton()
-        let image = UIImage(named: "backArow")?.withRenderingMode(.alwaysTemplate)
+        let image = UIImage(named: "backArow")
         backButton.setImage(image, for: .normal)
         backButton.addTarget(self, action: #selector(actionBack), for: .touchUpInside)
         backButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
