@@ -27,10 +27,10 @@ class MainTabBarVC: UITabBarController {
         UITabBar.appearance().isTranslucent = false
         
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.07058823529, green: 0.7411764706, blue: 0.462745098, alpha: 1),
-                                                          NSAttributedString.Key.font: Style.FontStyle.regular.font(with: 12)],
+                                                          NSAttributedString.Key.font: Style.FontStyle.appleSDGothicNeoBold.font(with: 12)],
                                                          for: .selected)
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.09803921569, green: 0.2431372549, blue: 0.3215686275, alpha: 1),
-                                                          NSAttributedString.Key.font: Style.FontStyle.regular.font(with: 12)],
+                                                          NSAttributedString.Key.font: Style.FontStyle.appleSDGothicNeoBold.font(with: 12)],
                                                          for: .normal)
         
     }
