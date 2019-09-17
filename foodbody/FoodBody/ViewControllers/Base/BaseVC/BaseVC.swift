@@ -18,7 +18,19 @@ class BaseVC: UIViewController {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
+        let backButton = UIButton()
+        let image = UIImage(named: "backArow")
+        backButton.setImage(image, for: .normal)
+        backButton.addTarget(self, action: #selector(actionBack), for: .touchUpInside)
+        backButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
        
+    }
+    
+    
+    @objc func actionBack() {
+        // can overide
+        self.navigationController?.popViewController(animated: true)
     }
 	
 	//click to view to hide keyboard

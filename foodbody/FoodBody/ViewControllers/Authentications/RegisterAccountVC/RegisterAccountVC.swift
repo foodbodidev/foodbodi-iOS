@@ -41,17 +41,11 @@ class RegisterAccountVC: BaseLoginVC {
         emailView.layer.borderColor = UIColor(red: 25, green: 62, blue: 82).cgColor
         emailView.layer.borderWidth = 1
         
-        let backButton = UIButton()
-        let image = UIImage(named: "backArow")
-        backButton.setImage(image, for: .normal)
-        backButton.addTarget(self, action: #selector(actionBack), for: .touchUpInside)
-        backButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
         
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")// hide line of nav
     }
     
-    @objc func actionBack() {
+    @objc override func actionBack() {
         self.navigationController?.dismiss(animated: true, completion: nil)
     }
     
