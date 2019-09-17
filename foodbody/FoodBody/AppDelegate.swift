@@ -147,9 +147,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navProfile = UINavigationController.init(rootViewController: profileVC)
         
         mainTabbar.viewControllers = [navFodiMap, navReservation, navProfile];
-        UINavigationBar.appearance().barTintColor = UIColor.navColor()
+        UINavigationBar.appearance().barTintColor = .white
         UINavigationBar.appearance().tintColor = UIColor.white
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: Style.Color.mainPurple]
         self.window?.rootViewController = mainTabbar;
     }
     func gotoWelcome() -> Void {
