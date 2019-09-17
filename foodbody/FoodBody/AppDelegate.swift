@@ -23,6 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         
+        
+         let font = UIFont(name: "AppleSDGothicNeo-Bold", size: 16)
+        
+        
+        
+        
         IQKeyboardManager.shared.enable = true // use to manage keyboard
         GIDSignIn.sharedInstance().clientID = FbConstants.REVERSED_CLIENT_ID;
         GMSServices.provideAPIKey(FbConstants.MAP_API_KEY)

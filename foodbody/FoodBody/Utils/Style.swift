@@ -26,6 +26,12 @@ enum Style { // now all style of app should use this stype uniformly
         case regular
         case light
         case bold
+        case appleSDGothicNeoBold
+        case sFProDisplayBold
+        case sFProDisplayLight
+        
+        
+        
         
         func font(with size: CGFloat) -> UIFont {
             switch self {
@@ -41,6 +47,21 @@ enum Style { // now all style of app should use this stype uniformly
                 return UIFont.boldSystemFont(ofSize: size)
             case .bold:
                 if let temp = UIFont(name: "SFProText-Semibold", size: size) {
+                    return temp
+                }
+                return UIFont.boldSystemFont(ofSize: size)
+            case .appleSDGothicNeoBold:
+                if let temp = UIFont(name: "AppleSDGothicNeo-Bold", size: size) {
+                    return temp
+                }
+                return UIFont.boldSystemFont(ofSize: size)
+            case .sFProDisplayBold:
+                if let temp = UIFont(name: "SFProDisplay-Bold", size: size) {
+                    return temp
+                }
+                return UIFont.boldSystemFont(ofSize: size)
+            case .sFProDisplayLight:
+                if let temp = UIFont(name: "SFProDisplay-Light", size: size) {
                     return temp
                 }
                 return UIFont.boldSystemFont(ofSize: size)
