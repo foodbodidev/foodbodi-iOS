@@ -89,7 +89,7 @@ extension ReservationVC: UITableViewDelegate, UITableViewDataSource,UIScrollView
         formatter.dateFormat = "yyyy-MM-dd"
         let currectDate = formatter.string(from: dateNow)
         if obj.sCreateDate != currectDate {
-            cell.viBoder.backgroundColor = UIColor.lightGray;
+            cell.viBoder.backgroundColor = UIColor.white;
         }else{
             cell.viBoder.backgroundColor = UIColor.white;
         }
@@ -114,7 +114,7 @@ extension ReservationVC: UITableViewDelegate, UITableViewDataSource,UIScrollView
         formatter.dateFormat = "yyyy-MM-dd"
         let currectDate = formatter.string(from: dateNow)
         if obj.sCreateDate != currectDate {
-            
+            self.alertMessage(message: "You are only allowed to update today records");
         }else{
             let vc:ReservationUpdateVC = getViewController(className: ReservationUpdateVC.className, storyboard:FbConstants.ReservationSB) as! ReservationUpdateVC;
             vc.reservationId = obj.id;
