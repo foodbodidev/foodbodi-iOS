@@ -12,6 +12,7 @@ class ReservationCell: UITableViewCell {
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblTime: UILabel!
     @IBOutlet weak var lblCalo: UILabel!
+    @IBOutlet weak var viBoder: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

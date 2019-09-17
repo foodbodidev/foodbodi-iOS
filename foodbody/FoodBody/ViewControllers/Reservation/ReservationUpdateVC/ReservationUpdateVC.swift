@@ -44,9 +44,13 @@ class ReservationUpdateVC: BaseVC, CartInfoCellDelegate{
                 if result.isSuccess {
                     self.reservationModel = result;
                     for obj in self.reservationModel.reservation.foods{
-                        let food: FoodModel = self.reservationModel.foods[obj.food_id]!;
-                        food.amount = obj.amount;
-                        self.listMenu.append(food)
+                        if obj.food_id.count > 0 {
+                            let food: FoodModel = self.reservationModel.foods[obj.food_id]!;
+                            food.amount = obj.amount;
+                            self.listMenu.append(food)
+                        }else{
+                            //ignored food because food of reservation was be deleted.
+                        }
                     }
                     self.tbvCart.reloadData();
                 } else {

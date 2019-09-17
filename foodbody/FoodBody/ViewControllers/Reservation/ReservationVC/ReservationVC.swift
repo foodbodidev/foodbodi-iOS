@@ -83,13 +83,23 @@ extension ReservationVC: UITableViewDelegate, UITableViewDataSource,UIScrollView
         cell.lblName.text = obj.restaurant_name;
         cell.lblCalo.text = String(format:"%d kcal",obj.total);
         cell.lblTime.text = obj.sCreateDate;
+        
+        let dateNow = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let currectDate = formatter.string(from: dateNow)
+        if obj.sCreateDate != currectDate {
+            cell.viBoder.backgroundColor = UIColor.lightGray;
+        }else{
+            cell.viBoder.backgroundColor = UIColor.white;
+        }
         //color
         if obj.total < Int(FbConstants.lowCalo) {
-            cell.lblCalo.backgroundColor = UIColor.init(rgb: 0xfbd402)
+            cell.lblCalo.backgroundColor = UIColor.lowKcalColor()
         }else if obj.total >= Int(FbConstants.lowCalo) && obj.total < Int(FbConstants.highCalo) {
-            cell.lblCalo.backgroundColor = UIColor.init(rgb: 0x7398de);
+            cell.lblCalo.backgroundColor = UIColor.mediumKcalColor();
         }else if obj.total >= Int(FbConstants.highCalo) {
-            cell.lblCalo.backgroundColor = UIColor.init(rgb: 0xeb6d4a);
+            cell.lblCalo.backgroundColor = UIColor.highKcalColor();
         }
         return cell;
     }
@@ -97,10 +107,19 @@ extension ReservationVC: UITableViewDelegate, UITableViewDataSource,UIScrollView
         return 150;
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc:ReservationUpdateVC = getViewController(className: ReservationUpdateVC.className, storyboard:FbConstants.ReservationSB) as! ReservationUpdateVC;
+        
         let obj:ReservationResponse = listReservation[indexPath.row];
-        vc.reservationId = obj.id;
-        self.navigationController?.pushViewController(vc, animated: true);
+        let dateNow = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let currectDate = formatter.string(from: dateNow)
+        if obj.sCreateDate != currectDate {
+            
+        }else{
+            let vc:ReservationUpdateVC = getViewController(className: ReservationUpdateVC.className, storyboard:FbConstants.ReservationSB) as! ReservationUpdateVC;
+            vc.reservationId = obj.id;
+            self.navigationController?.pushViewController(vc, animated: true);
+        }
     }
    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if self.isLoadingNextPage == true {

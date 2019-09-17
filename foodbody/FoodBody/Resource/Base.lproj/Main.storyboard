@@ -78,7 +78,6 @@
                                                                             <rect key="frame" x="5" y="14" width="140" height="15"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Jk-6h-8ZL" userLabel="lblType">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
@@ -350,6 +349,7 @@
                                             <outlet property="lblCalo" destination="SPI-7R-qz4" id="OQK-i1-Ch3"/>
                                             <outlet property="lblName" destination="aNa-QC-slf" id="mC0-La-LA6"/>
                                             <outlet property="lblTime" destination="qTo-ZS-i7g" id="j4w-ra-Dl1"/>
+                                            <outlet property="viBoder" destination="f28-gB-sL8" id="Q4Q-iH-yMg"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
