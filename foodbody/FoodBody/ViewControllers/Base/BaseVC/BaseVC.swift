@@ -22,7 +22,7 @@ class BaseVC: UIViewController {
         let image = UIImage(named: "backArow")
         backButton.setImage(image, for: .normal)
         backButton.addTarget(self, action: #selector(actionBack), for: .touchUpInside)
-        backButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        backButton.frame = CGRect(x: 0, y: 0, width:30, height: 44)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
        
     }

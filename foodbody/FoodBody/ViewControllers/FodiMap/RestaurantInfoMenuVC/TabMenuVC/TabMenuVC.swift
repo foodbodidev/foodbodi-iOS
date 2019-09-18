@@ -92,7 +92,7 @@ extension TabMenuVC: UITableViewDelegate, UITableViewDataSource{
                     
                     let sectionLabel = UILabel(frame: CGRect(x: 8, y: 10, width:
                         tableView.bounds.size.width, height: tableView.bounds.size.height))
-                    sectionLabel.font = UIFont.sfProTextRegular(18)
+                    sectionLabel.font = UIFont.sfProTextLight(28)
                     sectionLabel.textColor = UIColor.black
                     sectionLabel.text = "Name of foods"
                     sectionLabel.sizeToFit()
@@ -106,7 +106,7 @@ extension TabMenuVC: UITableViewDelegate, UITableViewDataSource{
             
             let sectionLabel = UILabel(frame: CGRect(x: 8, y: 10, width:
                 tableView.bounds.size.width, height: tableView.bounds.size.height))
-            sectionLabel.font = UIFont.sfProTextRegular(18)
+            sectionLabel.font = UIFont.sfProTextLight(28)
             sectionLabel.textColor = UIColor.black
             sectionLabel.text = "Name of foods"
             sectionLabel.sizeToFit()
