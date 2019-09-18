@@ -19,7 +19,7 @@ class ReservationVC: BaseVC {
         super.viewDidLoad()
         self.initUI();
         self.initVar();
-        self.title = "Reservation";
+        self.title = "Calories intake";
         
     }
     override func viewWillAppear(_ animated: Bool) {
