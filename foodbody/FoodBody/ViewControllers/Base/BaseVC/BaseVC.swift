@@ -18,12 +18,16 @@ class BaseVC: UIViewController {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
-        let backButton = UIButton()
-        let image = UIImage(named: "backArow")
-        backButton.setImage(image, for: .normal)
-        backButton.addTarget(self, action: #selector(actionBack), for: .touchUpInside)
-        backButton.frame = CGRect(x: 0, y: 0, width:30, height: 44)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
+        if self.isKind(of: ReservationVC.self) || self.isKind(of: ProfileVC.self) {
+           //
+        }else{
+            let backButton = UIButton()
+            let image = UIImage(named: "backArow")
+            backButton.setImage(image, for: .normal)
+            backButton.addTarget(self, action: #selector(actionBack), for: .touchUpInside)
+            backButton.frame = CGRect(x: 0, y: 0, width:30, height: 44)
+            navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
+        }
        
     }
     
