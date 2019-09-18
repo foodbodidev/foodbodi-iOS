@@ -45,7 +45,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKJ-mW-qra">
-                            <rect key="frame" x="50" y="475.66666666666669" width="314" height="57.666666666666686"/>
+                            <rect key="frame" x="50" y="499.66666666666669" width="314" height="57.666666666666686"/>
                             <string key="text">현재 관리자의 허가를 기다리는 중입니다.
 (최대 1~3일 정도의 기간이 소요 됩니다)
 </string>
@@ -54,10 +54,10 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CUh-NV-Ycs">
-                            <rect key="frame" x="82" y="435.66666666666669" width="250" height="30"/>
+                            <rect key="frame" x="59.666666666666657" y="435.66666666666669" width="295" height="54"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="AUs-MT-hjJ"/>
-                                <constraint firstAttribute="width" constant="250" id="jhv-Zv-G4W"/>
+                                <constraint firstAttribute="height" constant="54" id="AUs-MT-hjJ"/>
+                                <constraint firstAttribute="width" constant="295" id="jhv-Zv-G4W"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="SFCompactText-Semibold" family="SF Compact Text" pointSize="17"/>
                             <state key="normal" title="Continue">

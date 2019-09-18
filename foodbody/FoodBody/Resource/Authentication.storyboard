@@ -73,7 +73,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e0G-oS-RJE" customClass="FoodBodyButton" customModule="Foodbodi" customModuleProvider="target">
-                                <rect key="frame" x="60" y="417" width="200" height="50"/>
+                                <rect key="frame" x="65.5" y="417" width="189" height="52"/>
                                 <color key="backgroundColor" red="0.070588235294117646" green="0.74117647058823533" blue="0.46274509803921571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="jwV-Zk-Maj"/>
@@ -440,7 +440,7 @@
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_path" translatesAutoresizingMaskIntoConstraints="NO" id="Tll-E3-w6w">
-                                <rect key="frame" x="65" y="439" width="320" height="212"/>
+                                <rect key="frame" x="0.0" y="552" width="320" height="16"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
