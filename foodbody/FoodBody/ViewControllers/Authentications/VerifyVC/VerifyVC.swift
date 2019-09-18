@@ -9,18 +9,20 @@
 import UIKit
 
 class VerifyVC: BaseVC {
-
+    @IBOutlet var btnContinues:UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
     }
     private func setupLayout() {
-//        let image = UIImage(named: "backArow")?.withRenderingMode(.alwaysTemplate)
-//        backButton.setImage(image, for: .normal)
-//        backButton.tintColor = Style.Color.mainPurple
+        btnContinues.layer.cornerRadius = 27
+        btnContinues.clipsToBounds = true
+        btnContinues.layer.borderWidth = 1
+        btnContinues.layer.borderColor = UIColor(red: 25, green: 62, blue: 82).cgColor
     }
     
-//    @IBAction override func actionBack() {
-//        self.navigationController?.popToRootViewController(animated: true)
-//    }
+    @IBAction func actionContinues() {
+        self.navigationController?.popToRootViewController(animated: true);
+    }
 }

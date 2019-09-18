@@ -18,7 +18,7 @@ class BaseVC: UIViewController {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
-        if self.isKind(of: ReservationVC.self) || self.isKind(of: ProfileVC.self) {
+        if self.isKind(of: ReservationVC.self) || self.isKind(of: ProfileVC.self) || self.isKind(of: VerifyVC.self) {
            //
         }else{
             let backButton = UIButton()
