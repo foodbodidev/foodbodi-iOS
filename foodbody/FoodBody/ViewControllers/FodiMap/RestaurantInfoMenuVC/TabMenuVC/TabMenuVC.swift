@@ -33,7 +33,7 @@ class TabMenuVC: BaseVC {
     
     func getDataFromServer() {
         FoodbodyUtils.shared.showLoadingHub(viewController:self);
-        db.collection("foods").whereField("restaurant_id", isEqualTo: idRestaurant).getDocuments { (querySnapshot, error) in
+        db.collection("foods").whereField("restaurant_id", isEqualTo: idRestaurant).whereField("trash",isEqualTo:false).getDocuments { (querySnapshot, error) in
             FoodbodyUtils.shared.hideLoadingHub(viewController: self);
             if let err = error {
                 FoodbodyUtils.shared.hideLoadingHub(viewController: self);

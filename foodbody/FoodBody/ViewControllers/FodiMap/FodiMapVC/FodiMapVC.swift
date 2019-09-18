@@ -96,7 +96,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate,SearchFodi
         let geohashCenter:String = Geohash.encode(latitude: self.currentLocation.latitude, longitude: self.currentLocation.longitude, 5)
         var listCenter:NSArray = NSArray.init();
         FoodbodyUtils.shared.showLoadingHub(viewController: self)
-        db.collection("restaurants").whereField("neighbour_geohash", arrayContains: geohashCenter).getDocuments() { (querySnapshot, err) in
+        db.collection("restaurants").whereField("neighbour_geohash", arrayContains: geohashCenter).whereField("license.status", isEqualTo:"APPROVED").getDocuments() { (querySnapshot, err) in
             FoodbodyUtils.shared.hideLoadingHub(viewController: self);
             if let err = err {
                 self.alertMessage(message: "Error getting documents \(err.localizedDescription)")
