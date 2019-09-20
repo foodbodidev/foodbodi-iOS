@@ -36,25 +36,20 @@
                                 <constraint firstAttribute="width" constant="206" id="wBI-dd-Uu5"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uoc-3e-ChG">
-                            <rect key="frame" x="50" y="363" width="314" height="62.666666666666686"/>
-                            <string key="text">사업자정보 등록이
-완료 되었습니다.</string>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your restaurant information is submitted and being processed by our team." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uoc-3e-ChG">
+                            <rect key="frame" x="50" y="363" width="314" height="125"/>
                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="26"/>
                             <color key="textColor" red="0.098039215686274508" green="0.24313725490196078" blue="0.32156862745098036" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKJ-mW-qra">
-                            <rect key="frame" x="50" y="499.66666666666669" width="314" height="57.666666666666686"/>
-                            <string key="text">현재 관리자의 허가를 기다리는 중입니다.
-(최대 1~3일 정도의 기간이 소요 됩니다)
-</string>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We will let you know when it is approved. (This may take up to 3 days)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKJ-mW-qra">
+                            <rect key="frame" x="50" y="562" width="314" height="38.666666666666629"/>
                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="16"/>
                             <color key="textColor" red="0.098039215690000001" green="0.24313725489999999" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CUh-NV-Ycs">
-                            <rect key="frame" x="59.666666666666657" y="435.66666666666669" width="295" height="54"/>
+                            <rect key="frame" x="59.666666666666657" y="498" width="295" height="54"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="54" id="AUs-MT-hjJ"/>
                                 <constraint firstAttribute="width" constant="295" id="jhv-Zv-G4W"/>
