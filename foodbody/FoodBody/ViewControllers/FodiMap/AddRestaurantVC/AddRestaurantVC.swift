@@ -10,6 +10,7 @@ import UIKit
 import GooglePlaces
 import INSPhotoGallery
 import Kingfisher
+import TOCropViewController
 
 class AddRestaurantVC: BaseVC,AddCaloVCDelegate {
     func AddCaloVCDelegate(cell: AddCaloVC, obj: String) {
@@ -344,7 +345,40 @@ extension AddRestaurantVC: RestaurantTableViewCellDelegate, MenuTableViewCellDel
 	}
 }
 
-extension AddRestaurantVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension AddRestaurantVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate,TOCropViewControllerDelegate {
+    func presentCropViewController(imageData:UIImage) {
+        let image: UIImage = imageData
+        
+        let cropViewController = TOCropViewController.init(image: image);
+        cropViewController.delegate = self
+        present(cropViewController, animated: true, completion: nil)
+    }
+    func cropViewController(_ cropViewController: TOCropViewController, didCropTo image: UIImage, with cropRect: CGRect, angle: Int) {
+        self.dismiss(animated: true, completion: nil);
+        self.showLoading()
+        DispatchQueue.main.async {
+            
+            let dataImage = image.jpegData(compressionQuality: 0.05)
+            RequestManager.uploadPhoto(dataImage: dataImage!, completion: {  [weak self ](result, error) in
+                
+                guard let strongSelf = self, let photoURL = result?.mediaLink else { return }
+                strongSelf.hideLoading()
+                
+                switch strongSelf.photoType {
+                case .food:
+                    strongSelf.photoFoodURL = photoURL
+                    strongSelf.imageFood = image
+                    
+                    let cellMenu = strongSelf.tableView.cellForRow(at: IndexPath.init(row: 0, section: AddResEnum.addMenu.rawValue)) as! MenuTableViewCell
+                    cellMenu.photoButton.setImage(image, for: .normal)
+                    
+                case .restaurant:
+                    strongSelf.listPhotoRestaurant.append(photoURL)
+                    self?.clvHeader.reloadData();
+                }
+            })
+        }
+    }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true)
@@ -353,31 +387,7 @@ extension AddRestaurantVC: UIImagePickerControllerDelegate, UINavigationControll
             print("No image found")
             return
         }
-		
-		self.showLoading()
-
-        DispatchQueue.main.async {
-
-            let dataImage = image.jpegData(compressionQuality: 0.05)
-            RequestManager.uploadPhoto(dataImage: dataImage!, completion: {  [weak self ](result, error) in
-
-				guard let strongSelf = self, let photoURL = result?.mediaLink else { return }
-				strongSelf.hideLoading()
-
-				switch strongSelf.photoType {
-				case .food:
-					strongSelf.photoFoodURL = photoURL
-                    strongSelf.imageFood = image
-
-					let cellMenu = strongSelf.tableView.cellForRow(at: IndexPath.init(row: 0, section: AddResEnum.addMenu.rawValue)) as! MenuTableViewCell
-					cellMenu.photoButton.setImage(image, for: .normal)
-
-				case .restaurant:
-                    strongSelf.listPhotoRestaurant.append(photoURL)
-                    self?.clvHeader.reloadData();
-				}
-            })
-        }
+        self .presentCropViewController(imageData: image);
     }
 }
 

@@ -20,6 +20,7 @@ target 'FoodBody' do
   pod 'Charts'
 	pod 'FSCalendar', '~> 2.8.0'
   pod 'INSPhotoGallery', '1.2.8'
+  pod 'TOCropViewController'
 	
   target 'FoodBodyTests' do
     inherit! :search_paths
