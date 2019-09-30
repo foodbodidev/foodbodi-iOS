@@ -81,10 +81,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if (documentSnapshot?.documents.count)! > 0{
                 let action = UIAlertAction(title: "Ok", style: .default) {
                     UIAlertAction in
-                    
-                    if (documentSnapshot?.documents.count)! > 0{
-                        let fir:QueryDocumentSnapshot = (documentSnapshot?.documents.first)!;
-                        RequestManager.notifySuccessRegisterRestaurant(text:fir.documentID, completion: { (result, error) in
+                    if let id = AppManager.restaurant?.id{
+                        RequestManager.notifySuccessRegisterRestaurant(text:id, completion: { (result, error) in
                             
                         })
                     }

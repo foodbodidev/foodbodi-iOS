@@ -36,7 +36,7 @@ class FoodResponse: Mappable  {
 
 class FoodModel: Mappable  {
     var name: String = ""
-    var restaurant_id: String = AppManager.user?.restaurantId ?? ""
+    var restaurant_id: String = AppManager.restaurant?.id ?? "";
     var creator: String = ""
     var calo: Double = 0
     var price: Double = 0

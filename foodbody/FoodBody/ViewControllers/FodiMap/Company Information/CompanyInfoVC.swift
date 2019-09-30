@@ -19,7 +19,7 @@ class CompanyInfoVC: BaseVC {
     let companyInfoRequest = CompanyInfoModel()
     
     @IBOutlet weak var contentView: UIView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addressTextField.delegate = self
@@ -50,11 +50,9 @@ class CompanyInfoVC: BaseVC {
             self.hideLoading()
             if  let result = result{
                 if result.isSuccess {
-					
-					if let user = AppManager.user {
-						user.restaurantId = result.id
-						AppManager.user = user
-					}
+                    
+                    let restaurant = MyRestaurant.init(restaurant_id:result.id);
+                    AppManager.restaurant = restaurant;
                     let verifyVC = VerifyVC.init(nibName: "VerifyVC", bundle: nil)
                     self.navigationController?.pushViewController(verifyVC, animated: true)
                 } else {
@@ -104,7 +102,7 @@ class CompanyInfoVC: BaseVC {
         seachAddressVC.delegate = self
         present(seachAddressVC, animated: true, completion: nil)
     }
-
+    
 }
 
 extension CompanyInfoVC: GMSAutocompleteViewControllerDelegate {

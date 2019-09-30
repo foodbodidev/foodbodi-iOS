@@ -109,7 +109,7 @@ class AddRestaurantVC: BaseVC,AddCaloVCDelegate {
                 if error == nil {
                     if let result = result {
                         if result.isSuccess {
-                            self.navigationController?.popToRootViewController(animated: true)
+                            AppManager.restaurant = nil; self.navigationController?.popToRootViewController(animated: true)
                         }else{
                             self.alertMessage(message: result.message);
                         }
@@ -256,7 +256,7 @@ class AddRestaurantVC: BaseVC,AddCaloVCDelegate {
     
     private func getFoodByResId() {
         self.showLoading()
-        RequestManager.getFoodWithRestaurantId(id: AppManager.user?.restaurantId ?? "") { (result, error) in
+        RequestManager.getFoodWithRestaurantId(id: AppManager.restaurant?.id ?? "") { (result, error) in
 			self.hideLoading()
             self.foodModel = result?.data ?? []
             self.tableView.reloadData()

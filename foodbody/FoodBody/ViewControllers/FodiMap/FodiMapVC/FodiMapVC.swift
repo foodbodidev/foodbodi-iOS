@@ -38,7 +38,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate,SearchFodi
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true;
-        if let user = AppManager.user, !user.restaurantId.isEmpty {
+        if AppManager.user != nil, AppManager.restaurant != nil {
             btnAdd.setImage(UIImage.init(named: "ic_edit"), for: .normal)
             btnAdd.setImage(UIImage.init(named: "ic_edit"), for: .highlighted)
             btnAdd.backgroundColor = .white
@@ -201,8 +201,8 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate,SearchFodi
     
     @IBAction func addAction(sender:UIButton){
 		
-		if let user = AppManager.user {
-			if user.restaurantId.isEmpty { // need to input company infor
+		if AppManager.user != nil {
+			if AppManager.restaurant == nil { // need to input company infor
 				popupNotifyInputInfo()
 			} else {
 				let addRestaurantVC = getViewController(className: AddRestaurantVC.className, storyboard: FbConstants.FodiMapSB) as! AddRestaurantVC;

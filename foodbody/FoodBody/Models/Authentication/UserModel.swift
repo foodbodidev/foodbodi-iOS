@@ -24,14 +24,13 @@ class User: NSObject, Mappable, NSCoding {
     var isSuccess: Bool = false
     var status_code: Int = -1
     var message: String = ""
-    var restaurantId: String = ""
     var daily_calo: Double = 2500
   
     
     init(token: String, email: String, sex: String,
          height: Int, weight: Int, target_weight: Int,
          first_name: String, last_name: String, age: Int,
-         restaurantId: String,
+        
          daily_calo: Double) {
         self.token = token
         self.email = email
@@ -42,7 +41,7 @@ class User: NSObject, Mappable, NSCoding {
         self.first_name = first_name
         self.last_name = last_name
         self.age = age
-        self.restaurantId = restaurantId
+//        self.restaurantId = restaurantId
         self.daily_calo = daily_calo
     }
     
@@ -62,12 +61,12 @@ class User: NSObject, Mappable, NSCoding {
         let weight = aDecoder.decodeInteger(forKey: "weight")
         let target_weight = aDecoder.decodeInteger(forKey: "target_weight")
         
-        let restaurantId = aDecoder.decodeObject(forKey: "restaurantId") as! String
+//        let restaurantId = aDecoder.decodeObject(forKey: "restaurantId") as! String
         
         let daily_calo = aDecoder.decodeDouble(forKey: "daily_calo")
         
         self.init(token: token, email: email, sex: sex, height: height, weight: weight, target_weight: target_weight, first_name: first_name, last_name: last_name, age: age,
-                  restaurantId: restaurantId, daily_calo: daily_calo)
+                  daily_calo: daily_calo)
     }
     
     func encode(with aCoder: NSCoder) {
@@ -80,7 +79,7 @@ class User: NSObject, Mappable, NSCoding {
         aCoder.encode(height, forKey: "height")
         aCoder.encode(weight, forKey: "weight")
         aCoder.encode(target_weight, forKey: "target_weight")
-        aCoder.encode(restaurantId, forKey: "restaurantId")
+//        aCoder.encode(restaurantId, forKey: "restaurantId")
         aCoder.encode(daily_calo, forKey: "daily_calo")
     }
     
@@ -181,6 +180,11 @@ class MyRestaurant: NSObject, NSCoding, Mappable {
         self.photos = Array.init();
     }
     
+    required init(restaurant_id:String) {
+        self.photos = Array.init();
+        self.id = restaurant_id;
+    }
+    
 
     var name: String?
     var creator: String?
@@ -215,7 +219,7 @@ class MyRestaurant: NSObject, NSCoding, Mappable {
         photos <- map["photos"]
     }
     
-    init(category: String?,type: String?,photos:[String], name: String?, address: String?, open_hour: String?, close_hour: String?) {
+    init(category: String?,type: String?,photos:[String], name: String?, address: String?, open_hour: String?, close_hour: String?, id: String?) {
         self.category = category
         self.photos = photos
         self.name = name
@@ -223,6 +227,7 @@ class MyRestaurant: NSObject, NSCoding, Mappable {
         self.open_hour = open_hour
         self.close_hour = close_hour
         self.type = type
+        self.id = id
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -233,9 +238,8 @@ class MyRestaurant: NSObject, NSCoding, Mappable {
         let open_hour = aDecoder.decodeObject(forKey: "open_hour") as? String
         let close_hour = aDecoder.decodeObject(forKey: "close_hour") as? String
         let type = aDecoder.decodeObject(forKey: "type") as? String
-        
-        
-        self.init(category: category, type: type, photos: photos,name: name, address: address, open_hour: open_hour, close_hour: close_hour)
+        let id = aDecoder.decodeObject(forKey: "id") as? String
+        self.init(category: category, type: type, photos: photos,name: name, address: address, open_hour: open_hour, close_hour: close_hour, id: id)
     }
     
     func encode(with aCoder: NSCoder) {
@@ -246,5 +250,7 @@ class MyRestaurant: NSObject, NSCoding, Mappable {
         aCoder.encode(open_hour, forKey: "open_hour")
         aCoder.encode(close_hour, forKey: "close_hour")
         aCoder.encode(type, forKey: "type")
+        aCoder.encode(id, forKey: "id")
+        
     }
 }
