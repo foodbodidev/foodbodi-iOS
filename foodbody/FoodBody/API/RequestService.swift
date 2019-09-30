@@ -35,6 +35,7 @@ enum RequestService {
     case getDailyLog(dateString: String)
     case searchFodiMap(id:String)
     case notifySuccessRegisterRestaurant(id:String);
+    case deleteRestaurant(model: RestaurantRequest);
 }
 
 extension RequestService: TargetType {
@@ -73,7 +74,12 @@ extension RequestService: TargetType {
 			} else {
 				return APIConstant.updateRestaurant
 			}
-			
+        case .deleteRestaurant:
+            if let resID = AppManager.user?.restaurantId, !resID.isEmpty {
+                return APIConstant.updateRestaurant + "/\(resID)"
+            } else {
+                return APIConstant.updateRestaurant
+            }
         case .addComment:
             return APIConstant.addComment
         case .getRestaurantWithProfile:
@@ -129,7 +135,8 @@ extension RequestService: TargetType {
         case .updateRestaurant,
              .updateReservationWithId:
             return .put
-        case .deleteFood:
+        case .deleteFood: return .delete
+        case .deleteRestaurant:
             return .delete
         case .getListReservation: return .get
         case .searchFodiMap: return .get;
@@ -206,6 +213,9 @@ extension RequestService: TargetType {
             }else{
                 return .requestPlain
             }
+        case .deleteRestaurant(let model):
+            return .requestParameters(parameters: model.toJSON(), encoding: JSONEncoding.default)
+            
         default:
             return .requestPlain
         }

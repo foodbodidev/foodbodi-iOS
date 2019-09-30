@@ -226,6 +226,28 @@ struct RequestManager {
         }
     }
     
+    static func deleteRestaurant(request: RestaurantRequest, completion: @escaping (_ result: ResonseModel?, _ error: Error?) -> ()){
+        print(request.toJSON())
+        
+        provider.request(.deleteRestaurant(model: request)) { result in
+            do {
+                switch result {
+                case .success(let response):
+                    let json = try response.mapJSON()
+                    print(String(describing: response.request))
+                    print(String(describing: json))
+                    let response = Mapper<ResonseModel>().map(JSONObject:json)
+                    completion(response, nil)
+                case .failure(let error):
+                    completion(nil, error)
+                    print(error)
+                }
+            } catch let error {
+                completion(nil, error)
+                print(error)
+            }
+        }
+    }
    
     static func getCategoty(completion: @escaping (_ result: [CategoryModel]?, _ error: Error?) -> ()){
     

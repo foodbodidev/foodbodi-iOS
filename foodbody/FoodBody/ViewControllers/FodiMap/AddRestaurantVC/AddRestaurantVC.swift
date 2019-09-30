@@ -74,15 +74,55 @@ class AddRestaurantVC: BaseVC,AddCaloVCDelegate {
         self.clvHeader.collectionViewLayout = layoutClv;
         self.clvHeader.showsVerticalScrollIndicator = false;
         self.clvHeader.showsHorizontalScrollIndicator = false;
+        self.addRightButton();
        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false;
     }
+    func addRightButton(){
+        let viewFN = UIView(frame: CGRect.init(x: 0, y: 0, width: 40, height: 40))
+        viewFN.backgroundColor = UIColor.clear
+        let button1 = UIButton(frame:CGRect.init(x: 0, y: 8, width: 40, height: 30))
+        button1.setImage(UIImage(named: "iconmonstrLogOut7"), for: UIControl.State.normal)
+        button1.addTarget(self, action: #selector(self.actionDelete), for: UIControl.Event.touchUpInside)
+        viewFN.addSubview(button1)
+        let rightBarButton = UIBarButtonItem(customView: viewFN)
+        self.navigationItem.rightBarButtonItem = rightBarButton
+        
+    }
 	
     //MARK: === ACTION  ===
-    
+    @objc func actionDelete(){
+        let alert = UIAlertController(title:nil, message: "Do you want to delete this restaurant ?", preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) {
+            UIAlertAction in
+            // It will dismiss action sheet
+        }
+        let action = UIAlertAction(title: "Ok", style: .default) {
+            UIAlertAction in
+            FoodbodyUtils.shared.showLoadingHub(viewController: self);
+            RequestManager.deleteRestaurant(request: self.restaurant, completion: { (result, error) in
+                FoodbodyUtils.shared.hideLoadingHub(viewController: self);
+                if error == nil {
+                    if let result = result {
+                        if result.isSuccess {
+                            self.navigationController?.popToRootViewController(animated: true)
+                        }else{
+                            self.alertMessage(message: result.message);
+                        }
+                    }
+                }else{
+                    self.alertMessage(message: "Can't delete restaurant!");
+                }
+            })
+        }
+        alert.addAction(action)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
 	@IBAction func actionSubmit() {
         print(restaurant.toJSON())
 

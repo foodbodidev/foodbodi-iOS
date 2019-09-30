@@ -33,7 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .addSnapshotListener { querySnapshot, error in
 
                 if  querySnapshot?.documents.count ?? 0 <= 0 {
-                    print("Error fetching documents: \(error!)")
                     return
                 }else{
                     let dict:Dictionary = ["KquerySnapshot":querySnapshot]
