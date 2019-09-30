@@ -69,11 +69,6 @@ class BaseVC: UIViewController {
             
             if result.isSuccess {
                 
-                if let user = AppManager.user {
-//                    user.restaurantId = result.myRestaurant.first?.id ?? ""
-                    AppManager.user = user
-                }
-                
                 AppManager.restaurant = result.myRestaurant.first
                 AppManager.caculateCaloriesLeft()
             }
