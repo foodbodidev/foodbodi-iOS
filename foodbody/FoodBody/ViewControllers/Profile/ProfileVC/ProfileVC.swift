@@ -188,8 +188,8 @@ class ProfileVC: BaseVC {
     }
 	
 	func getData(dateQuery: Date) {
-        self.showLoading()
 		HealthKitManager.shared.getSteps(dateQuery: dateQuery, completion: { step in
+            self.showLoading()
             RequestManager.getDailyLog(dateString: dateQuery.yyyyMMdd) { (result, error) in
                 self.hideLoading()
 				
@@ -214,7 +214,6 @@ class ProfileVC: BaseVC {
 	func getStepToday() {
 		let yesterday = Date().dayBefore
 		let today = Date(timeInterval: 86400, since: yesterday)
-		self.showLoading()
 		HealthKitManager.shared.getSteps(dateQuery: today, completion: { step in
 			var steps = step
 			if steps > AppManager.step {
@@ -225,7 +224,6 @@ class ProfileVC: BaseVC {
 			
 			let caloLeft = self.caculateCaloriesLeft(steps: steps, caloEten: self.totalEatToday)
 			self.bindData(steps: steps, caloLeft: caloLeft)
-			self.hideLoading()
 		})
 	}
 	
