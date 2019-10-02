@@ -72,11 +72,11 @@
 	<key>NSHealthUpdateUsageDescription</key>
 	<string>$(PRODUCT_NAME) want to use the healthkit to suggest food for you</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>update</string>
+	<string>$(PRODUCT_NAME) want to use the location to suggest foods near you</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>App</string>
+	<string>$(PRODUCT_NAME) want to use the location to suggest foods near you</string>
 	<key>NSMotionUsageDescription</key>
-	<string>App</string>
+	<string>$(PRODUCT_NAME) want to use core motion to to keep track of your steps</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>$(PRODUCT_NAME) want to use the gallery to upload food photo</string>
 	<key>UIAppFonts</key>
