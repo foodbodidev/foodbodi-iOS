@@ -84,7 +84,7 @@ class AddRestaurantVC: BaseVC,AddCaloVCDelegate {
     func addRightButton(){
         let viewFN = UIView(frame: CGRect.init(x: 0, y: 0, width: 40, height: 40))
         viewFN.backgroundColor = UIColor.clear
-        let button1 = UIButton(frame:CGRect.init(x: 0, y: 8, width: 40, height: 30))
+        let button1 = UIButton(frame:CGRect.init(x: 0, y: 5, width: 30, height: 30))
         button1.setImage(UIImage(named: "ic_delete"), for: UIControl.State.normal)
         button1.addTarget(self, action: #selector(self.actionDelete), for: UIControl.Event.touchUpInside)
         viewFN.addSubview(button1)
