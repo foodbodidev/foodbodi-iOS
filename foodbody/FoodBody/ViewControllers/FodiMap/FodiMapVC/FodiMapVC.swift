@@ -336,11 +336,7 @@ extension FodiMapVC: UICollectionViewDelegate, UICollectionViewDataSource, UICol
             if listImage.count > 0 {
                 let sUrl = listImage.firstObject as! String;
                 if sUrl.count > 0 {
-                    if let url = URL.init(string: sUrl) {
-                        cell.imvRestaurant.kf.setImage(with: url)
-                    } else {
-                        cell.imvRestaurant.image = UIImage.init(named: "ic_bg")
-                    }
+                  cell.imvRestaurant.setImageWithUrl(url: sUrl)
                 }
             }
         }else{

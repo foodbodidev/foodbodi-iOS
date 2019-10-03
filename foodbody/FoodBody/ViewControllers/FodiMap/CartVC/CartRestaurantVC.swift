@@ -134,11 +134,7 @@ extension CartRestaurantVC:UITableViewDataSource, UITableViewDelegate{
             cell.nameLabel.text = data.name
             cell.priceLabel.text = "\(data.price)" + "$"
             cell.calorLabel.text = "\(data.calo)" + " Kcal"
-            if let url = URL.init(string: data.photo) {
-                cell.foodImageView.kf.setImage(with: url)
-            } else {
-                cell.foodImageView.image = nil
-            }
+            cell.foodImageView.setImageWithUrl(url: data.photo)
             cell.lblAmount.text = String(format: "%.f", data.amount);
             totalCalo = totalCalo + CGFloat(data.amount * data.calo);
             cell.delegate = self;

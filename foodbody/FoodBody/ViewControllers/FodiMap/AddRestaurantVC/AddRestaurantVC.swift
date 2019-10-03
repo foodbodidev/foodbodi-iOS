@@ -452,11 +452,7 @@ extension AddRestaurantVC:UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell:RestaurantHeaderClvCell = collectionView.dequeueReusableCell(withReuseIdentifier:"RestaurantHeaderClvCell", for: indexPath) as! RestaurantHeaderClvCell;
         let sUrl = listPhotoRestaurant[indexPath.row];
-        if let url = URL.init(string: sUrl) {
-            cell.imgRestaurant.kf.setImage(with: url)
-        } else {
-            cell.imgRestaurant.image = nil
-        }
+        cell.imgRestaurant.setImageWithUrl(url: sUrl)
         return cell;
     }
     

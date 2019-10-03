@@ -150,11 +150,7 @@ extension TabMenuVC: UITableViewDelegate, UITableViewDataSource{
                     foodCell.nameLabel.text = data.name
                     foodCell.priceLabel.text = "\(data.price)" + "$"
                     foodCell.calorLabel.text = "\(data.calo)" + " Kcal"
-                    if let url = URL.init(string: data.photo) {
-                        foodCell.foodImageView.kf.setImage(with: url)
-                    } else {
-                        foodCell.foodImageView.image = nil
-                    }
+                    foodCell.foodImageView.setImageWithUrl(url: data.photo)
                     return foodCell;
                 }else{
                     let row = indexPath.row
@@ -164,11 +160,7 @@ extension TabMenuVC: UITableViewDelegate, UITableViewDataSource{
                     foodCell.nameLabel.text = data.name
                     foodCell.priceLabel.text = "\(data.price)" + "$"
                     foodCell.calorLabel.text = "\(data.calo)" + " Kcal"
-                    if let url = URL.init(string: data.photo) {
-                        foodCell.foodImageView.kf.setImage(with: url)
-                    } else {
-                        foodCell.foodImageView.image = nil
-                    }
+                    foodCell.foodImageView.setImageWithUrl(url: data.photo)
                     return foodCell;
                 }
             }
@@ -180,11 +172,7 @@ extension TabMenuVC: UITableViewDelegate, UITableViewDataSource{
             foodCell.nameLabel.text = data.name
             foodCell.priceLabel.text = "\(data.price)" + "$"
             foodCell.calorLabel.text = "\(data.calo)" + " Kcal"
-            if let url = URL.init(string: data.photo) {
-                foodCell.foodImageView.kf.setImage(with: url)
-            } else {
-                foodCell.foodImageView.image = nil
-            }
+            foodCell.foodImageView.setImageWithUrl(url: data.photo)
             return foodCell;
         }
         return UITableViewCell.init();

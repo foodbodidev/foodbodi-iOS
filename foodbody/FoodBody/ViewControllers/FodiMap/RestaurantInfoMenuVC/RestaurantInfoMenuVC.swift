@@ -174,11 +174,7 @@ class RestaurantInfoMenuVC: BaseVC,UICollectionViewDelegate, UICollectionViewDat
         let cell:ImageRestaurantInfoCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageRestaurantInfoCell", for: indexPath) as! ImageRestaurantInfoCell;
        
         let sUrl:String = listImage[indexPath.row] as! String;
-        if let url = URL.init(string: sUrl) {
-            cell.imgRestaurant.kf.setImage(with: url)
-        } else {
-            cell.imgRestaurant.image = nil
-        }
+        cell.imgRestaurant.setImageWithUrl(url: sUrl)
         return cell;
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
