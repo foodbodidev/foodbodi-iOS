@@ -14,20 +14,23 @@ import Firebase
 import GooglePlaces
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-    
+class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate {
+     //MARK: variable.
     var window: UIWindow?
-    
+    var locationManager:CLLocationManager? = nil;
+    var currentLocation:CLLocationCoordinate2D = CLLocationCoordinate2D.init()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        //register firebase.
         FirebaseApp.configure()
-
         IQKeyboardManager.shared.enable = true // use to manage keyboard
         GIDSignIn.sharedInstance().clientID = FbConstants.REVERSED_CLIENT_ID;
         GMSServices.provideAPIKey(FbConstants.MAP_API_KEY)
         GMSPlacesClient.provideAPIKey(FbConstants.MAP_API_KEY)
         GIDSignIn.sharedInstance().signOut()
+        //init location.
+        self.initCurrentLocation();
+        
         let db = Firestore.firestore()
         db.collection("restaurants")
             .addSnapshotListener { querySnapshot, error in
@@ -105,6 +108,56 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func caculateRemainColor() {
         AppManager.caculateCaloriesLeft()
+    }
+    private func initCurrentLocation(){
+        self.locationManager = CLLocationManager();
+        self.locationManager?.requestAlwaysAuthorization()
+        self.locationManager?.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled() {
+            if let localtionCheck = self.locationManager{
+                localtionCheck.delegate = self;
+                localtionCheck.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+                localtionCheck.startUpdatingLocation();
+            }
+        }else{
+            let alert = UIAlertController(title:nil, message: "Location Service Disabled", preferredStyle: .alert)
+            self.window?.rootViewController?.present(alert, animated: true, completion: nil);
+        }
+    }
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let locationValue: CLLocationCoordinate2D = manager.location?.coordinate {
+            self.currentLocation = locationValue;
+            print(FbConstants.FoodbodiLog, (currentLocation))
+        }
+    }
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .notDetermined:
+            let alert = UIAlertController(title:nil, message: "Your location not determined", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Ok", style: .default) {
+                UIAlertAction in
+            }
+            alert.addAction(action)
+            self.window?.rootViewController?.present(alert, animated: true, completion: nil);
+            break;
+        case .denied:
+            let alert = UIAlertController(title:nil, message: "Your location has been denied", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Ok", style: .default) {
+                UIAlertAction in
+            }
+            alert.addAction(action)
+            self.window?.rootViewController?.present(alert, animated: true, completion: nil);
+            break;
+        case .authorizedAlways:
+            self.locationManager?.startUpdatingLocation();
+            break
+        case .authorizedWhenInUse:
+            self.locationManager?.startUpdatingLocation();
+            let dict:NSDictionary = NSDictionary();
+            NotificationCenter.default.post(name:.kFB_update_restaurant_when_enable_location, object: nil, userInfo: (dict as! [AnyHashable : Any]));
+            break;
+        default: break
+        }
     }
     
 
