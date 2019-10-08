@@ -127,6 +127,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let locationValue: CLLocationCoordinate2D = manager.location?.coordinate {
             self.currentLocation = locationValue;
+            
             print(FbConstants.FoodbodiLog, (currentLocation))
         }
     }
@@ -153,8 +154,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
             break
         case .authorizedWhenInUse:
             self.locationManager?.startUpdatingLocation();
-            let dict:NSDictionary = NSDictionary();
-            NotificationCenter.default.post(name:.kFB_update_restaurant_when_enable_location, object: nil, userInfo: (dict as! [AnyHashable : Any]));
             break;
         default: break
         }
