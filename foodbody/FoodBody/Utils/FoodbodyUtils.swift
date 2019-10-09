@@ -57,4 +57,11 @@ class FoodbodyUtils: NSObject {
         let time:String = dateFormartor.string(from: date as Date);
         return time;
     }
+    func setStatusLoadingFodiMap(hasLoading:Bool){
+        UserDefaults.standard.set(hasLoading, forKey:"loadingFodiMap" );
+    }
+    func getStatusLoadingFodiMap()->Bool{
+        let result:Bool = UserDefaults.standard.bool(forKey: "loadingFodiMap");
+        return result;
+    }
 }

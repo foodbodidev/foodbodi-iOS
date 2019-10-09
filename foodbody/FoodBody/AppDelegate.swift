@@ -127,7 +127,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let locationValue: CLLocationCoordinate2D = manager.location?.coordinate {
             self.currentLocation = locationValue;
-            
+            let hasLoading = FoodbodyUtils.shared.getStatusLoadingFodiMap();
+            if hasLoading{
+                let dict:Dictionary = ["loading":true]
+                NotificationCenter.default.post(name:.kFB_update_restaurant_when_enable_location, object: nil, userInfo: dict as [AnyHashable : Any]);
+                FoodbodyUtils .shared.setStatusLoadingFodiMap(hasLoading: false);
+            }
             print(FbConstants.FoodbodiLog, (currentLocation))
         }
     }
@@ -148,11 +153,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
             }
             alert.addAction(action)
             self.window?.rootViewController?.present(alert, animated: true, completion: nil);
+            FoodbodyUtils .shared.setStatusLoadingFodiMap(hasLoading: false);
             break;
         case .authorizedAlways:
+            FoodbodyUtils.shared.setStatusLoadingFodiMap(hasLoading: true);
             self.locationManager?.startUpdatingLocation();
             break
         case .authorizedWhenInUse:
+            FoodbodyUtils.shared.setStatusLoadingFodiMap(hasLoading: true);
             self.locationManager?.startUpdatingLocation();
             break;
         default: break

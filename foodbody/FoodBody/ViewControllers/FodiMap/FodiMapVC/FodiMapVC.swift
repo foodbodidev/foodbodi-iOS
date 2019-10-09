@@ -21,8 +21,6 @@ class FodiMapVC: BaseVC,UITextFieldDelegate,SearchFodiMapVCDelegate{
     @IBOutlet weak var viSearch: UIView!
     
     //MARK: variable.
-//    var locationManager:CLLocationManager? = nil;
-//    var currentLocation:CLLocationCoordinate2D = CLLocationCoordinate2D.init()
     var listRestaurant: [QueryDocumentSnapshot] = []
     
     let db = Firestore.firestore()
@@ -86,9 +84,6 @@ class FodiMapVC: BaseVC,UITextFieldDelegate,SearchFodiMapVCDelegate{
     }
     
     @objc func getDataRestaurant() {
-        if FBAppDelegate.currentLocation.longitude == 0 && FBAppDelegate.currentLocation.latitude == 0 {
-            return;
-        }
         let geohashCenter:String = Geohash.encode(latitude: FBAppDelegate.currentLocation.latitude, longitude: FBAppDelegate.currentLocation.longitude, 5)
         var listCenter:NSArray = NSArray.init();
         FoodbodyUtils.shared.showLoadingHub(viewController: self)
@@ -183,16 +178,6 @@ class FodiMapVC: BaseVC,UITextFieldDelegate,SearchFodiMapVCDelegate{
             marker.map = googleMapView
         }
     }
-    
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        if let locationValue: CLLocationCoordinate2D = manager.location?.coordinate {
-//            self.currentLocation = locationValue;
-//            print(FbConstants.FoodbodiLog, (currentLocation))
-//            self.getDataRestaurant();
-//            locationManager?.stopUpdatingLocation();
-//            locationManager = nil;
-//        }
-//    }
     //MARK: action.
     
     @IBAction func addAction(sender:UIButton){
