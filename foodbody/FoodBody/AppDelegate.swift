@@ -139,12 +139,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .notDetermined:
-            let alert = UIAlertController(title:nil, message: "Your location not determined", preferredStyle: .alert)
-            let action = UIAlertAction(title: "Ok", style: .default) {
-                UIAlertAction in
-            }
-            alert.addAction(action)
-            self.window?.rootViewController?.present(alert, animated: true, completion: nil);
             break;
         case .denied:
             let alert = UIAlertController(title:nil, message: "Your location has been denied", preferredStyle: .alert)
