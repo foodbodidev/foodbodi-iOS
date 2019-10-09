@@ -11,6 +11,7 @@ import UIKit
 
 
 let FBAppDelegate = UIApplication.shared.delegate as! AppDelegate
+
 struct defaultsKeys {
     static let kUserlogin = "kUserlogin"
     static let kRestaurant = "kRestaurant"
