@@ -91,7 +91,8 @@ class RestaurantRequest: Mappable  {
     var geohash: String = ""
     var open_hour: String = ""
     var close_hour: String = ""
-	
+    var lat:Double = 0;
+    var lng:Double = 0;
 	
 	var isValidTime: Bool = false 
     
@@ -109,7 +110,9 @@ class RestaurantRequest: Mappable  {
         self.open_hour = myRestaurant.open_hour ?? ""
         self.close_hour = myRestaurant.close_hour ?? ""
         self.type = myRestaurant.type ?? ""
-        self.isValidTime = true // because this time has been validated 
+        self.isValidTime = true // because this time has been validated
+        self.lat = myRestaurant.lat ?? 0;
+        self.lng = myRestaurant.lng ?? 0;
     }
     
     func mapping(map: Map) {

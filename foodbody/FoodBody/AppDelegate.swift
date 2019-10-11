@@ -139,7 +139,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
                     if let type = myrestaurant.type{
                         let isEqual = (type == "FOOD_TRUCK")
                         if isEqual {
-                            timerUpdateFoodTruck = Timer.scheduledTimer(timeInterval:5, target: self, selector:#selector(postUpdateRestaurant(timer:)), userInfo: ["lat": locationValue.latitude,"lng": locationValue.longitude], repeats: false)
+                            timerUpdateFoodTruck = Timer.scheduledTimer(timeInterval:600, target: self, selector:#selector(postUpdateRestaurant(timer:)), userInfo: ["lat": locationValue.latitude,"lng": locationValue.longitude], repeats: false)
                         }else{
                             timerUpdateFoodTruck.invalidate();
                         }
@@ -160,14 +160,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
                 restaurant.type = myrestaurant.type ?? "";
                 restaurant.open_hour = myrestaurant.open_hour ?? "";
                 restaurant.close_hour = myrestaurant.close_hour ?? "";
-                //Add lat,lng in there.
-                //                myrestaurant.lat = lat;
-                //                myrestaurant.lng = lng;
-                if let vc = FBAppDelegate.window?.rootViewController{
-                    FoodbodyUtils.shared.showLoadingHub(viewController: vc);
-                    RequestManager.updateRestaurant(request: restaurant) { (result, error) in
-                        FoodbodyUtils.shared.hideLoadingHub(viewController: vc)
-                    }
+                restaurant.lat = lat;
+                restaurant.lng = lng;
+                RequestManager.updateRestaurant(request: restaurant) { (result, error) in
+                    let dict:Dictionary = ["loading":true]
+                    NotificationCenter.default.post(name:.kFB_update_restaurant_when_enable_location, object: nil, userInfo: dict as [AnyHashable : Any]);
                 }
             }
         }

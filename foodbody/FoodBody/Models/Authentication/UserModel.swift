@@ -191,8 +191,8 @@ class MyRestaurant: NSObject, NSCoding, Mappable {
     var priority: Int?
     var created_date: String?
 	var address: String?
-	var lat: Float?
-	var lng: Float?
+	var lat: Double?
+	var lng: Double?
 	var id: String?
 	var type: String?
 	var category: String?
