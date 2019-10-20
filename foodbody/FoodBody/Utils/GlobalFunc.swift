@@ -11,6 +11,7 @@ import UIKit
 
 
 let FBAppDelegate = UIApplication.shared.delegate as! AppDelegate
+
 struct defaultsKeys {
     static let kUserlogin = "kUserlogin"
     static let kRestaurant = "kRestaurant"
@@ -74,7 +75,7 @@ extension Notification.Name {
     static let kFb_update_restaurant = Notification.Name("kFb_update_restaurant")
     static let kFb_update_reservation = Notification.Name("kFb_update_reservation")
     static let kFB_notifi_registerRestaurant = Notification.Name("kFB_notifi_registerRestaurant");
-    
+    static let kFB_update_restaurant_when_enable_location = Notification.Name("kFB_update_restaurant_when_enable_location");
 }
 
 extension UITableView {

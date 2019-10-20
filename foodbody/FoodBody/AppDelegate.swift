@@ -14,20 +14,24 @@ import Firebase
 import GooglePlaces
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-    
+class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate {
+     //MARK: variable.
     var window: UIWindow?
-    
+    var locationManager:CLLocationManager? = nil;
+    var currentLocation:CLLocationCoordinate2D = CLLocationCoordinate2D.init()
+    var timerUpdateFoodTruck:Timer = Timer.init();
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        //register firebase.
         FirebaseApp.configure()
-
         IQKeyboardManager.shared.enable = true // use to manage keyboard
         GIDSignIn.sharedInstance().clientID = FbConstants.REVERSED_CLIENT_ID;
         GMSServices.provideAPIKey(FbConstants.MAP_API_KEY)
         GMSPlacesClient.provideAPIKey(FbConstants.MAP_API_KEY)
         GIDSignIn.sharedInstance().signOut()
+        //init location.
+        self.initCurrentLocation();
+        
         let db = Firestore.firestore()
         db.collection("restaurants")
             .addSnapshotListener { querySnapshot, error in
@@ -105,6 +109,89 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func caculateRemainColor() {
         AppManager.caculateCaloriesLeft()
+    }
+    private func initCurrentLocation(){
+        self.locationManager = CLLocationManager();
+        self.locationManager?.requestAlwaysAuthorization()
+        self.locationManager?.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled() {
+            if let localtionCheck = self.locationManager{
+                localtionCheck.delegate = self;
+                localtionCheck.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+                localtionCheck.startUpdatingLocation();
+            }
+        }else{
+            let alert = UIAlertController(title:nil, message: "Location Service Disabled", preferredStyle: .alert)
+            self.window?.rootViewController?.present(alert, animated: true, completion: nil);
+        }
+    }
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let locationValue: CLLocationCoordinate2D = manager.location?.coordinate {
+            self.currentLocation = locationValue;
+            let hasLoading = FoodbodyUtils.shared.getStatusLoadingFodiMap();
+            if hasLoading{
+                let dict:Dictionary = ["loading":true]
+                NotificationCenter.default.post(name:.kFB_update_restaurant_when_enable_location, object: nil, userInfo: dict as [AnyHashable : Any]);
+                FoodbodyUtils .shared.setStatusLoadingFodiMap(hasLoading: false);
+            }else{
+                //food truck.
+                if let myrestaurant = AppManager.restaurant{
+                    if let type = myrestaurant.type{
+                        let isEqual = (type == "FOOD_TRUCK")
+                        if isEqual {
+                            timerUpdateFoodTruck = Timer.scheduledTimer(timeInterval:600, target: self, selector:#selector(postUpdateRestaurant(timer:)), userInfo: ["lat": locationValue.latitude,"lng": locationValue.longitude], repeats: false)
+                        }else{
+                            timerUpdateFoodTruck.invalidate();
+                        }
+                    }
+                }
+            }
+            print(FbConstants.FoodbodiLog, (currentLocation))
+        }
+    }
+    @objc func postUpdateRestaurant(timer: Timer)
+    {
+        if  let userInfo = timer.userInfo as? [String: Double],
+            let lat = userInfo["lat"], let lng = userInfo["lng"]{
+            print("Your lat \(lat) lng \(lng)")
+            if let myrestaurant = AppManager.restaurant{
+                let restaurant: RestaurantRequest = RestaurantRequest()
+                restaurant.category = myrestaurant.category ?? "";
+                restaurant.type = myrestaurant.type ?? "";
+                restaurant.open_hour = myrestaurant.open_hour ?? "";
+                restaurant.close_hour = myrestaurant.close_hour ?? "";
+                restaurant.lat = lat;
+                restaurant.lng = lng;
+                RequestManager.updateRestaurant(request: restaurant) { (result, error) in
+                    let dict:Dictionary = ["loading":true]
+                    NotificationCenter.default.post(name:.kFB_update_restaurant_when_enable_location, object: nil, userInfo: dict as [AnyHashable : Any]);
+                }
+            }
+        }
+    }
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .notDetermined:
+            break;
+        case .denied:
+            let alert = UIAlertController(title:nil, message: "Your location has been denied", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Ok", style: .default) {
+                UIAlertAction in
+            }
+            alert.addAction(action)
+            self.window?.rootViewController?.present(alert, animated: true, completion: nil);
+            FoodbodyUtils .shared.setStatusLoadingFodiMap(hasLoading: false);
+            break;
+        case .authorizedAlways:
+            FoodbodyUtils.shared.setStatusLoadingFodiMap(hasLoading: true);
+            self.locationManager?.startUpdatingLocation();
+            break
+        case .authorizedWhenInUse:
+            FoodbodyUtils.shared.setStatusLoadingFodiMap(hasLoading: true);
+            self.locationManager?.startUpdatingLocation();
+            break;
+        default: break
+        }
     }
     
 

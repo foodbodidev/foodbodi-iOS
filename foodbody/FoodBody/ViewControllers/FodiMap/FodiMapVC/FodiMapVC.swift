@@ -12,7 +12,7 @@ import Firebase
 import GooglePlaces
 import Kingfisher
 
-class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate,SearchFodiMapVCDelegate{
+class FodiMapVC: BaseVC,UITextFieldDelegate,SearchFodiMapVCDelegate{
     //MARK: IBOutlet.
     @IBOutlet weak var btnAdd: UIButton!
     @IBOutlet weak var googleMapView:GMSMapView!
@@ -21,8 +21,6 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate,SearchFodi
     @IBOutlet weak var viSearch: UIView!
     
     //MARK: variable.
-    var locationManager:CLLocationManager? = nil;
-    var currentLocation:CLLocationCoordinate2D = CLLocationCoordinate2D.init()
     var listRestaurant: [QueryDocumentSnapshot] = []
     
     let db = Firestore.firestore()
@@ -31,8 +29,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate,SearchFodi
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initUI()
-        tfSearch.delegate = self
-        tfSearch.placeholder = "Search restaurant, food, ...."
+        self.getDataRestaurant();
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,19 +49,15 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate,SearchFodi
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
+        if CLLocationManager .authorizationStatus() == .denied || CLLocationManager.authorizationStatus() == .notDetermined{
+             self.alertMessage(message: "Please visit your device settings to enable location permissions.");
+        }
     }
     
     //MARK:init.
     func initUI(){
-        
-        locationManager = CLLocationManager();
-        self.locationManager?.requestAlwaysAuthorization()
-        self.locationManager?.requestWhenInUseAuthorization()
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager?.delegate = self
-            locationManager?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager?.startUpdatingLocation()
-        }
+        tfSearch.delegate = self
+        tfSearch.placeholder = "Search restaurant, food, ...."
         self.clvFodi.delegate = self;
         self.clvFodi.dataSource = self;
         self.googleMapView.delegate = self;
@@ -76,6 +69,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate,SearchFodi
     
     func registerNotification(){
         NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveUpdateRestaurant(_:)), name: .kFb_update_restaurant, object:nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(getDataRestaurant), name:.kFB_update_restaurant_when_enable_location , object:nil);
     }
     
     @objc func onDidReceiveUpdateRestaurant(_ notification: Notification)
@@ -83,17 +77,14 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate,SearchFodi
         print(" fetching documents update ....")
         let querySnapshot = notification.userInfo!["KquerySnapshot"] as! QuerySnapshot;
         if querySnapshot.documents.count > 0 {
-            if  self.currentLocation.latitude > 0 &&  self.currentLocation.longitude > 0{
+            if  FBAppDelegate.currentLocation.latitude > 0 &&  FBAppDelegate.currentLocation.longitude > 0{
                 getDataRestaurant()
             }
         }
     }
     
-    func getDataRestaurant() {
-        if self.currentLocation.longitude == 0 && self.currentLocation.latitude == 0 {
-            return;
-        }
-        let geohashCenter:String = Geohash.encode(latitude: self.currentLocation.latitude, longitude: self.currentLocation.longitude, 5)
+    @objc func getDataRestaurant() {
+        let geohashCenter:String = Geohash.encode(latitude: FBAppDelegate.currentLocation.latitude, longitude: FBAppDelegate.currentLocation.longitude, 5)
         var listCenter:NSArray = NSArray.init();
         FoodbodyUtils.shared.showLoadingHub(viewController: self)
         db.collection("restaurants").whereField("neighbour_geohash", arrayContains: geohashCenter).whereField("license.status", isEqualTo:"APPROVED").getDocuments() { (querySnapshot, err) in
@@ -115,7 +106,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate,SearchFodi
                             self.listRestaurant.append(obj);
                         }
                         self.clvFodi.reloadData()
-                        self.showDataOnMapWithCurrentLocation(curentLocation: self.currentLocation)
+                        self.showDataOnMapWithCurrentLocation(curentLocation: FBAppDelegate.currentLocation)
                         
                     }
                     print(FbConstants.FoodbodiLog, "number count \(self.listRestaurant.count)")
@@ -141,7 +132,7 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate,SearchFodi
         
         //Add current location on mapView.
         let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D.init(latitude: currentLocation.latitude, longitude: currentLocation.longitude);
+        marker.position = CLLocationCoordinate2D.init(latitude: curentLocation.latitude, longitude: curentLocation.longitude);
          marker.icon = UIImage.init(named: "ic_location")
         marker.map = googleMapView;
         
@@ -187,16 +178,6 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate,SearchFodi
             marker.map = googleMapView
         }
     }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let locationValue: CLLocationCoordinate2D = manager.location?.coordinate {
-            self.currentLocation = locationValue;
-            print(FbConstants.FoodbodiLog, (currentLocation))
-            self.getDataRestaurant();
-            locationManager?.stopUpdatingLocation();
-            locationManager = nil;
-        }
-    }
     //MARK: action.
     
     @IBAction func addAction(sender:UIButton){
@@ -218,10 +199,10 @@ class FodiMapVC: BaseVC,CLLocationManagerDelegate,UITextFieldDelegate,SearchFodi
 		}
     }
     @IBAction func currentLocaltionAction(sender:UIButton){
-        if self.currentLocation.longitude == 0 && self.currentLocation.latitude == 0 {
+        if FBAppDelegate.currentLocation.longitude == 0 && FBAppDelegate.currentLocation.latitude == 0 {
             return;
         }
-        let camera = GMSCameraPosition.camera(withLatitude: self.currentLocation.latitude, longitude: self.currentLocation.longitude, zoom: 15.0)
+        let camera = GMSCameraPosition.camera(withLatitude: FBAppDelegate.currentLocation.latitude, longitude: FBAppDelegate.currentLocation.longitude, zoom: 15.0)
         googleMapView.moveCamera(GMSCameraUpdate.setCamera(camera));
     }
 	
