@@ -108,6 +108,8 @@ class FodiMapVC: BaseVC,UITextFieldDelegate,SearchFodiMapVCDelegate{
                         self.clvFodi.reloadData()
                         self.showDataOnMapWithCurrentLocation(curentLocation: FBAppDelegate.currentLocation)
                         
+                    }else{
+                        self.showDataOnMapWithCurrentLocation(curentLocation: FBAppDelegate.currentLocation)
                     }
                     print(FbConstants.FoodbodiLog, "number count \(self.listRestaurant.count)")
                 }
