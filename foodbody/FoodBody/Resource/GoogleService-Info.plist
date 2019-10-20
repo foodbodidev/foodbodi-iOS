@@ -3,23 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>513844011252-k6keale0or7hu3m84nuhb2hpfp5ieeo7.apps.googleusercontent.com</string>
+	<string>367920415756-be1vln9fajttpon358fbc5rgtu94h99h.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.513844011252-k6keale0or7hu3m84nuhb2hpfp5ieeo7</string>
-	<key>ANDROID_CLIENT_ID</key>
-	<string>513844011252-imr6kje3hjjkt47dl4qb6jo0vunpe5i8.apps.googleusercontent.com</string>
+	<string>com.googleusercontent.apps.367920415756-be1vln9fajttpon358fbc5rgtu94h99h</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBC8UFhnXxS42swOHOKyWc3B-Ot_5WfKQA</string>
+	<string>AIzaSyCtalXEqR-McpdQDCqGQeCC9Syt708T_KQ</string>
 	<key>GCM_SENDER_ID</key>
-	<string>513844011252</string>
+	<string>367920415756</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>KPT.FoodBodi.dev</string>
 	<key>PROJECT_ID</key>
-	<string>foodbodi</string>
+	<string>foodbodi-prod</string>
 	<key>STORAGE_BUCKET</key>
-	<string>foodbodi.appspot.com</string>
+	<string>foodbodi-prod.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:513844011252:ios:c1784af432561571</string>
+	<string>1:367920415756:ios:a769aa8f8e24aaf3c39a29</string>
 	<key>DATABASE_URL</key>
-	<string>https://foodbodi.firebaseio.com</string>
+	<string>https://foodbodi-prod.firebaseio.com</string>
 </dict>
 </plist>

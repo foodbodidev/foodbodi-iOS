@@ -9,7 +9,7 @@
 import Foundation
 
 struct APIConstant {
-    static let BASE_URL = "https://foodbodi.appspot.com"
+    static let BASE_URL = "https://foodbodi-prod.appspot.com"
     static let login = "/api/login"
     static let signup = "/api/register"
     static let googleSignIn = "/api/googleSignIn"
