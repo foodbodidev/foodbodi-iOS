@@ -13,10 +13,10 @@
 		2F3750E422FDC838008B150D /* CartInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F3750E222FDC838008B150D /* CartInfoCell.xib */; };
 		2F49414F22EC285D004437BD /* ChatTbvCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F49414E22EC285D004437BD /* ChatTbvCell.swift */; };
 		2F92CB1E235C1430001BAF3D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F92CB1D235C1430001BAF3D /* GoogleService-Info.plist */; };
-		2F92CB20235C180A001BAF3D /* client_367920415756-85nal9alv15oqtp6qlheir821t8bmra4.apps.googleusercontent.com.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F92CB1F235C180A001BAF3D /* client_367920415756-85nal9alv15oqtp6qlheir821t8bmra4.apps.googleusercontent.com.plist */; };
 		2F9DD27E22FDCD33007E3D59 /* TotalKcalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F9DD27D22FDCD33007E3D59 /* TotalKcalCell.xib */; };
 		2FC0053322F9CAEE004C5A98 /* FoodReservationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC0053222F9CAEE004C5A98 /* FoodReservationModel.swift */; };
 		2FC0053622F9DAE5004C5A98 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FC0053522F9DAE5004C5A98 /* HealthKit.framework */; };
+		2FC9A621235C90A30069C8EB /* client_367920415756-85nal9alv15oqtp6qlheir821t8bmra4.apps.googleusercontent.com.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2FC9A620235C90A30069C8EB /* client_367920415756-85nal9alv15oqtp6qlheir821t8bmra4.apps.googleusercontent.com.plist */; };
 		2FCA49B922D63F2D00E3497D /* GeohashBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCA49B722D63F2D00E3497D /* GeohashBox.swift */; };
 		2FCA49BC22D63F5400E3497D /* Geohash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCA49BB22D63F5300E3497D /* Geohash.swift */; };
 		2FCF0F04230AED340019297C /* SearchFodiMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF0F03230AED340019297C /* SearchFodiMapVC.swift */; };
@@ -202,11 +202,11 @@
 		2F3750E222FDC838008B150D /* CartInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartInfoCell.xib; sourceTree = "<group>"; };
 		2F49414E22EC285D004437BD /* ChatTbvCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTbvCell.swift; sourceTree = "<group>"; };
 		2F92CB1D235C1430001BAF3D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "FoodBody/Resource/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
-		2F92CB1F235C180A001BAF3D /* client_367920415756-85nal9alv15oqtp6qlheir821t8bmra4.apps.googleusercontent.com.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "client_367920415756-85nal9alv15oqtp6qlheir821t8bmra4.apps.googleusercontent.com.plist"; sourceTree = "<group>"; };
 		2F9DD27D22FDCD33007E3D59 /* TotalKcalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TotalKcalCell.xib; sourceTree = "<group>"; };
 		2FC0053222F9CAEE004C5A98 /* FoodReservationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodReservationModel.swift; sourceTree = "<group>"; };
 		2FC0053422F9DAE5004C5A98 /* FoodBody.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FoodBody.entitlements; sourceTree = "<group>"; };
 		2FC0053522F9DAE5004C5A98 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		2FC9A620235C90A30069C8EB /* client_367920415756-85nal9alv15oqtp6qlheir821t8bmra4.apps.googleusercontent.com.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "client_367920415756-85nal9alv15oqtp6qlheir821t8bmra4.apps.googleusercontent.com.plist"; sourceTree = "<group>"; };
 		2FCA49B722D63F2D00E3497D /* GeohashBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeohashBox.swift; sourceTree = "<group>"; };
 		2FCA49BB22D63F5300E3497D /* Geohash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geohash.swift; sourceTree = "<group>"; };
 		2FCF0F03230AED340019297C /* SearchFodiMapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFodiMapVC.swift; sourceTree = "<group>"; };
@@ -861,7 +861,7 @@
 		D5B24B1E22B73D8400DA16C4 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				2F92CB1F235C180A001BAF3D /* client_367920415756-85nal9alv15oqtp6qlheir821t8bmra4.apps.googleusercontent.com.plist */,
+				2FC9A620235C90A30069C8EB /* client_367920415756-85nal9alv15oqtp6qlheir821t8bmra4.apps.googleusercontent.com.plist */,
 				2F92CB1D235C1430001BAF3D /* GoogleService-Info.plist */,
 				D5B424DD22BCD5D900141818 /* Info.plist */,
 				D5C04370232F4EF200CCE6A2 /* Fonts */,
@@ -1202,7 +1202,7 @@
 				D5C043E8232F4EF300CCE6A2 /* SF-Compact-Rounded-Semibold.otf in Resources */,
 				D5C043C2232F4EF300CCE6A2 /* SF-Pro-Display-LightItalic.otf in Resources */,
 				D5C043C5232F4EF300CCE6A2 /* SF-Pro-Text-BoldItalic.otf in Resources */,
-				2F92CB20235C180A001BAF3D /* client_367920415756-85nal9alv15oqtp6qlheir821t8bmra4.apps.googleusercontent.com.plist in Resources */,
+				2FC9A621235C90A30069C8EB /* client_367920415756-85nal9alv15oqtp6qlheir821t8bmra4.apps.googleusercontent.com.plist in Resources */,
 				D5C043D4232F4EF300CCE6A2 /* SF-Compact-Display-Thin.otf in Resources */,
 				D5C043CF232F4EF300CCE6A2 /* SF-Compact-Display-Black.otf in Resources */,
 				98282BCF22BE89D3003ED8BC /* SignUpVC.xib in Resources */,
