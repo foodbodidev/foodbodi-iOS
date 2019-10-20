@@ -3,12 +3,12 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>513844011252-2qlodmja1av20n55vro79uv0jc5vj3ck.apps.googleusercontent.com</string>
+	<string>367920415756-85nal9alv15oqtp6qlheir821t8bmra4.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.513844011252-2qlodmja1av20n55vro79uv0jc5vj3ck</string>
+	<string>com.googleusercontent.apps.367920415756-85nal9alv15oqtp6qlheir821t8bmra4</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>KPT.FoodBody</string>
+	<string>KPT.FoodBodi.dev</string>
 </dict>
 </plist>
